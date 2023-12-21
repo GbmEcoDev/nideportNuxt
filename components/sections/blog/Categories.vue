@@ -1,20 +1,26 @@
 <template>
     <div class="w-full">
       <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Categorías</p>
-      <ul>
-       <!--  <li v-for="category in categories" :key="category.id" @click="selectCategory(category)" class="text-gray-600  dark:text-white border rounded-lg p-2 mb-1 hover:-translate-x-1">
-          {{ category.name }} 
-        </li> -->
-        <li v-for="category in categories" :key="category.id" @click="$emit('categorySelected', category)" class="text-gray-600  dark:text-white border rounded-lg p-2 mb-1 hover:-translate-x-1">
+<!--       <ul>
+      <li v-for="category in categories" :key="category.id" @click="selectCategory(category)" class="text-gray-600  dark:text-white border rounded-lg p-2 mb-1 hover:-translate-x-1">
           {{ category.name }} 
         </li>
-      </ul>
+      </ul> -->
+        <NuxtLink
+          v-for="category in categories"
+          :key="(category as any).id"
+          :to="`/categories/${(category as any).name}`"
+          class="flex items-center justify-center py-2 px-4 rounded text-primary shadow-md hover:shadow-lg duration-200 text-sm uppercase"
+        >
+          <span class="font-semibold">{{ (category as any).name }}</span>
+        </NuxtLink>
+
+
     </div>
   </template>
   
   <script setup lang="ts">
-  import { ref, defineEmits } from 'vue';
-
+  import { ref } from 'vue';
   const { locale } = useI18n()
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
@@ -30,6 +36,7 @@
               node {
                 id
                 name
+                slug
               }
             }
           }
@@ -44,17 +51,13 @@
     }
   });
   
-  const categories = ref(categoriesData || []);
+const categories = ref(categoriesData || []);
 
-  defineEmits(['categorySelected']);
-  /* const selectCategory = (category:any) => {
-    const appContext = getCurrentInstance();
+/*
+  const selectCategory = (category:any) => {
+    
     console.log('Categoría seleccionada:', category.name);
-    if (appContext) {
-      appContext.emit('categorySelected', category.name);
-    } else {
-      console.error('appContext es null');
-    }
-  }; */
+       
+  };  */
   </script>
   
