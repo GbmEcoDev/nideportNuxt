@@ -165,19 +165,20 @@ export default{
     }
   },
   async created() {
-    const response = await fetch('https://demo.nideport.com/capas/limites.geojson')
+    const config = useRuntimeConfig();
+    const response = await fetch(config.public.url_base + '/capas/limites.geojson')
     const data = await response.json();
     this.limites = data;
 
-    const responseC = await fetch('https://demo.nideport.com/capas/cuadriculas.geojson')
+    const responseC = await fetch(config.public.url_base + '/capas/cuadriculas.geojson')
     const dataC = await responseC.json();
     this.cuadriculas = dataC;
 
-    const responseF = await fetch('https://demo.nideport.com/capas/reforestacion_fajas.geojson')
+    const responseF = await fetch(config.public.url_base + '/capas/reforestacion_fajas.geojson')
     const dataF = await responseF.json();
     this.fajas = dataF;
 
-    const responseFo = await fetch('https://demo.nideport.com/capas/fotos.geojson')
+    const responseFo = await fetch(config.public.url_base + '/capas/fotos.geojson')
     const dataFo = await responseFo.json();
     this.fotos = dataFo;
 

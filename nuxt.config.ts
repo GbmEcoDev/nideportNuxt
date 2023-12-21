@@ -94,7 +94,8 @@ export default defineNuxtConfig({
 /* */  
   runtimeConfig: {
     public: {
-        wordpressUrl: 'https://oaks.malvinasargentinas.ar/web/graphql'
+        wordpressUrl: 'https://oaks.malvinasargentinas.ar/web/graphql',
+        url_base : process.env.BASE_URL
     }
 } 
 })
