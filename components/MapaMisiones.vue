@@ -85,17 +85,17 @@ export default{
       },
       styleFunctionCuadriculas:{
         color: 'green',
-        weight: 2,
-        opacity: 0.7,
+        weight: 1.5,
+        opacity: 0.6,
         fillOpacity: 0.0,
-        interactive: false
+        interactive: true
       },
       styleFunctionFajas:{
         color: 'red',
         weight: 2,
         opacity: 0.7,
         fillOpacity: 0.0,
-        interactive: false
+        interactive: true
       }
     };
   },
@@ -107,7 +107,8 @@ export default{
                   'iconUrl': '/images/rgs1_nov_23/'+feature.properties.foto ,
                   'iconSize': [30, 30],
                   'iconAnchor': [13, 27],
-                  'popupAnchor':  [1, -24]
+                  'popupAnchor':  [1, -24],
+                  'className': 'fotosClass'
                 })});
             },
         onEachFeature: this.onEachFeatureFotos
@@ -116,13 +117,17 @@ export default{
     optionsAlertasRayos() {
       return {
         filter: function(feature, layer) {
-            if(feature.properties.tipo == 'Rayo') return true;
+            if((feature.properties.tipo == 'Rayo')
+            && (feature.properties.acq_date >= '2023-11-15')
+            && (feature.properties.acq_date <= '2023-12-15')
+            ) 
+            return true;
         },
         pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: new L.Icon({
                   'iconUrl': '/images/icon/alertas-thunder.svg',
                   'iconSize': [20, 20],
-                  'iconAnchor': [13, 27],
+                  'iconAnchor': [0, 0],
                   'popupAnchor':  [1, -24]
                 })});
             },
@@ -138,7 +143,7 @@ export default{
                 return L.marker(latlng, {icon: new L.Icon({
                   'iconUrl': '/images/icon/alertas-fire-baja.svg',
                   'iconSize': [20, 20],
-                  'iconAnchor': [13, 27],
+                  'iconAnchor': [0, 0],
                   'popupAnchor':  [1, -24]
                 })});
             },
@@ -165,19 +170,20 @@ export default{
     }
   },
   async created() {
-    const response = await fetch('https://demo.nideport.com/capas/limites.geojson')
+    const config = useRuntimeConfig();
+    const response = await fetch(config.public.url_base + '/capas/limites.geojson')
     const data = await response.json();
     this.limites = data;
 
-    const responseC = await fetch('https://demo.nideport.com/capas/cuadriculas.geojson')
+    const responseC = await fetch(config.public.url_base + '/capas/cuadriculas.geojson')
     const dataC = await responseC.json();
     this.cuadriculas = dataC;
 
-    const responseF = await fetch('https://demo.nideport.com/capas/reforestacion_fajas.geojson')
+    const responseF = await fetch(config.public.url_base + '/capas/reforestacion_fajas.geojson')
     const dataF = await responseF.json();
     this.fajas = dataF;
 
-    const responseFo = await fetch('https://demo.nideport.com/capas/fotos.geojson')
+    const responseFo = await fetch(config.public.url_base + '/capas/fotos.geojson')
     const dataFo = await responseFo.json();
     this.fotos = dataFo;
 
@@ -195,5 +201,9 @@ export default{
   }
   .leaflet-popup-content {
     width: 250px;
+  }
+  .fotosClass {
+    border-color: rgb(255, 255, 255);
+    border-width: 1px;
   }
 </style>
