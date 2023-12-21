@@ -85,17 +85,17 @@ export default{
       },
       styleFunctionCuadriculas:{
         color: 'green',
-        weight: 2,
-        opacity: 0.7,
+        weight: 1.5,
+        opacity: 0.6,
         fillOpacity: 0.0,
-        interactive: false
+        interactive: true
       },
       styleFunctionFajas:{
         color: 'red',
         weight: 2,
         opacity: 0.7,
         fillOpacity: 0.0,
-        interactive: false
+        interactive: true
       }
     };
   },
@@ -107,7 +107,8 @@ export default{
                   'iconUrl': '/images/rgs1_nov_23/'+feature.properties.foto ,
                   'iconSize': [30, 30],
                   'iconAnchor': [13, 27],
-                  'popupAnchor':  [1, -24]
+                  'popupAnchor':  [1, -24],
+                  'className': 'fotosClass'
                 })});
             },
         onEachFeature: this.onEachFeatureFotos
@@ -116,13 +117,17 @@ export default{
     optionsAlertasRayos() {
       return {
         filter: function(feature, layer) {
-            if(feature.properties.tipo == 'Rayo') return true;
+            if((feature.properties.tipo == 'Rayo')
+            && (feature.properties.acq_date >= '2023-11-15')
+            && (feature.properties.acq_date <= '2023-12-15')
+            ) 
+            return true;
         },
         pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: new L.Icon({
                   'iconUrl': '/images/icon/alertas-thunder.svg',
                   'iconSize': [20, 20],
-                  'iconAnchor': [13, 27],
+                  'iconAnchor': [0, 0],
                   'popupAnchor':  [1, -24]
                 })});
             },
@@ -138,7 +143,7 @@ export default{
                 return L.marker(latlng, {icon: new L.Icon({
                   'iconUrl': '/images/icon/alertas-fire-baja.svg',
                   'iconSize': [20, 20],
-                  'iconAnchor': [13, 27],
+                  'iconAnchor': [0, 0],
                   'popupAnchor':  [1, -24]
                 })});
             },
@@ -196,5 +201,9 @@ export default{
   }
   .leaflet-popup-content {
     width: 250px;
+  }
+  .fotosClass {
+    border-color: rgb(255, 255, 255);
+    border-width: 1px;
   }
 </style>
