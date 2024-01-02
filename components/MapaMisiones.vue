@@ -36,11 +36,25 @@
         name="Rayos"
       />
       <l-geo-json 
-        :geojson="alertas" 
+        :geojson="alertas"
+        :options="optionsAlertasAlta" 
+        :options-style="styleFunctionAlertasAlta" 
+        layer-type="overlay" 
+        name="Alertas probabilidad alta"
+      />
+      <l-geo-json 
+        :geojson="alertas"
+        :options="optionsAlertasMedia" 
+        :options-style="styleFunctionAlertasMedia" 
+        layer-type="overlay" 
+        name="Alertas probabilidad media"
+      />
+      <l-geo-json 
+        :geojson="alertas"
         :options="optionsAlertasBajas" 
         :options-style="styleFunctionAlertasBaja" 
         layer-type="overlay" 
-        name="Alertas baja probabilidad"
+        name="Alertas probabilidad baja"
       />
       <l-geo-json 
         :geojson="fotos" 
@@ -148,8 +162,40 @@ export default{
                 })});
             },
         onEachFeature: this.onEachFeatureFunction
-    }
+      }
     },
+    optionsAlertasMedia() {
+      return {
+        filter: function(feature, layer) {
+            if(feature.properties.tipo == 'Con probabilidad media') return true;
+        },
+        pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {icon: new L.Icon({
+                  'iconUrl': '/images/icon/alertas-fire-media.svg',
+                  'iconSize': [20, 20],
+                  'iconAnchor': [0, 0],
+                  'popupAnchor':  [1, -24]
+                })});
+            },
+        onEachFeature: this.onEachFeatureFunction
+      }
+    },
+    optionsAlertasAlta() {
+      return {
+        filter: function(feature, layer) {
+            if(feature.properties.tipo == 'Con probabilidad alta') return true;
+        },
+        pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {icon: new L.Icon({
+                  'iconUrl': '/images/icon/alertas-fire-alta.svg',
+                  'iconSize': [20, 20],
+                  'iconAnchor': [0, 0],
+                  'popupAnchor':  [1, -24]
+                })});
+            },
+        onEachFeature: this.onEachFeatureFunction
+      }
+    },  
     onEachFeatureFunction() {
       return (feature, layer) => {
         layer.bindTooltip(
