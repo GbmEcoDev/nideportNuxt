@@ -5,7 +5,7 @@
       <p class="text-left text-base text-secondary my-4  dark:text-white">Completa tus datos</p>
     </div>
     <div class="mx-32 mt-8 max-sm:mx-1">
-      <form  @submit.prevent="submit(form)" class="px-8 pt-6 pb-8 mb-4 max-sm:px-0">
+      <form @submit.prevent="submit(form)" class="px-8 pt-6 pb-8 mb-4 max-sm:px-0"><!--   -->
         <div class="mb-4">
           <label for="nombre" class="block text-secondary text-sm mb-2  dark:text-white">Tu nombre:</label>
           <input type="text" id="nombre" v-model="form.nombre" class="border-b border-secondary w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
@@ -45,10 +45,10 @@
         </div>
   
         <div class="flex items-center justify-center">
-          <button type="submit" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            <template v-if="waiting">enviado</template>
-			      <template v-if="!waiting">enviar</template>
-          </button>
+          <button type="submit" :disabled="waiting" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <template v-if="waiting">Enviando...</template>
+          <template v-else>Enviar</template>
+        </button>
           <p v-if="errors"> error.</p>
       
 		      <p v-if="succsess"> envio!</p>
@@ -59,46 +59,38 @@
   </AtomsContainer>
   </template>
 
-  <script setup>
+
+<script setup>
+import { ref } from 'vue';
+//import { send } from './composables/email.js';
 
 const form = ref({
-	nombre: '',
-	empresa: '',
-  telefono:'',
-	email: '',
-	terminos: '',
-  notificaciones: '',
+  nombre: '',
+  empresa: '',
+  telefono: '',
+  email: '',
+  terminos: false,
+  notificaciones: false,
 });
-
-const errors = ref(false);
-const succsess = ref(false);
 const waiting = ref(false);
+const errors = ref(false);
+const success = ref(false);
 
-async function submit(form) {
-	this.waiting = true;
-	await $fetch('http://localhost:3000/api/contact', {
-		method: 'POST',
-		body: form,
-	})
-		.then(() => {
-			this.errors = false;
-			this.succsess = true;
-			this.waiting = false;
-			this.form = {
-        nombre: '',
-        empresa: '',
-        telefono:'',
-        email: '',
-        terminos: '',
-        notificaciones: '',
-			};
-		})
-		.catch((error) => {
-			console.error('Error en la solicitud:', error);
-			this.errors = true;
-			this.succsess = false;
-			this.waiting = false;
-		});
+async function submit() {
+  try {
+    waiting.value = true;
+    await send({
+      from: form.value.email,
+      subject: 'Mensaje desde formulario de contacto',
+      text: `Nombre: ${form.value.nombre}\nEmpresa: ${form.value.empresa}\nTeléfono: ${form.value.telefono}\nEmail: ${form.value.email}`,
+    });
+    success.value = true;
+  } catch (error) {
+    console.error('Error al enviar el formulario:', error);
+    errors.value = true;
+  } finally {
+    waiting.value = false;
+  }
 }
 </script>
   <style scoped>h2{

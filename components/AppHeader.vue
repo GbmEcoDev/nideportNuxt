@@ -15,17 +15,17 @@
                 </NuxtLink> 
               </div>
               <div 
-                  class="menu absolute top-full px-5 sm:px-8 md:px-12 lg:px-0 z-50
+                  class="menu absolute top-full px-5 sm:px-8 md:px-12 lg:px-0 z-50 right-1
                   lg:pt-0 lg:top-0 invisible opacity-40 lg:opacity-100 bg-body rounded-xl border border-box-border shadow-lg shadow-box-shadow 
                   lg:border-none lg:shadow-none lg:rounded-none
                   lg:bg-transparent w-full lg:w-max py-3 lg:py-0 lg:visible lg:relative flex 
-                  transition-all duration-300 ease-linear origin-top translate-y-6 lg:translate-y-0 " 
+                  transition-all duration-300 ease-linear origin-top translate-y-6 lg:translate-y-0 max-lg:w-1/3 max-sm:w-1/2 " 
                   :class="{
                       'scrollUp ': scrollY > 0,
                        'scrollDown': scrollY === 0,
                        '!visible !opacity-100 !translate-y-0': navIsOpen
                        }">
-                  <ul class="text-white max-sm:text-secondary dark:text-gray-100 w-full flex lg:items-center gap-y-4 lg:gap-x-8 flex-col lg:flex-row lg:h-20">
+                  <ul class="text-white max-sm:text-secondary max-md:text-secondary max-lg:text-secondary dark:text-gray-100 w-full flex lg:items-center gap-y-4 lg:gap-x-8 flex-col lg:flex-row lg:h-20">
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg " :to="localePath({ name: 'index' })">{{ $t('nav_home') }}</NuxtLink></li> 
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'about' })">{{ $t('nav_about') }}</NuxtLink></li>
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'projects' })">{{ $t('nav_projects') }}</NuxtLink></li>

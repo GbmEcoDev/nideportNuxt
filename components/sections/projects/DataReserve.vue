@@ -4,19 +4,31 @@
           <Carousel :items-to-show="carouselItemsToShow" :wrap-around="true" :starting-from="1" :snap-align="'start'">
             <Slide key="1">
               <div class="carousel__item ">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex-col items-center w-[24.5rem] h-[28,15rem] mx-2">
-                      <div class="w-full">
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex-col items-center w-[24.5rem] h-[28,15rem] mx-2 
+                  max-sm:p-4 
+                  max-sm:w-full 
+                  max-sm:h-[28,5rem]
+                  max-lg:p-4 
+                  max-lg:w-full 
+                  max-lg:h-[28,75rem]">
+                      <div class="w-full max-sm:mt-10">
                           <img src="/images/objetive-1.svg" alt="" class="pb-5 mx-auto">
                       </div>
-                      <AtomsTitleH2 texte="Composición del bosque" alignTxt="center" colorTxt="secondary" sizeTxt="text-3xl" weightTxt="bold" />
+                      <AtomsTitleH2 texte="Composición del bosque" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
                       <p class="text-md text-center py-8 text-gray-500 dark:text-white">22,878 hectares of Atlantic Forest</p>
                   </div>
               </div>
             </Slide>
             <Slide key="2">
               <div class="carousel__item">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[24.5rem] h-[28,15rem] mx-2">
-                      <div class="w-full">
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[24.5rem] h-[27,5rem] mx-2
+                  max-sm:p-4 
+                  max-sm:w-full 
+                  max-sm:h-[28rem]
+                  max-lg:p-4 
+                  max-lg:w-full 
+                  max-lg:h-[28,75rem]">
+                      <div class="w-full max-sm:mt-10">
                           <img src="/images/objetive-2.svg" alt="" class="pb-5 mx-auto">
                       </div>
                       <AtomsTitleH2 texte="Biodiversidad" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
@@ -26,8 +38,14 @@
             </Slide>
             <Slide key="3">
               <div class="carousel__item">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[24.5rem] h-[28,15rem] mx-2">
-                      <div class="w-full">
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[24.5rem] h-[28,15rem] mx-2
+                  max-sm:p-4 
+                  max-sm:w-full 
+                  max-sm:h-[28,5rem]
+                  max-lg:p-4 
+                  max-lg:w-full 
+                  max-lg:h-[28,75rem]">
+                      <div class="w-full max-sm:mt-10">
                           <img src="/images/objetive-3.svg" alt="" class="pb-5 mx-auto">
                       </div>
                       <AtomsTitleH2 texte="Sumidero de carbono" alignTxt="center" colorTxt="secondary" weightTxt="bold" />

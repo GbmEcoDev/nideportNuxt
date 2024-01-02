@@ -1,10 +1,10 @@
 <template>
     <div class="lg:p-1 relative h-auto flex flex-col">
       <div class="relative h-max min-h-max flex items-center">
-        <nuxt-img :src="coverImage" alt="Teamimage" class="aspect-ratio-square mx-auto w-48 h-48 sm:h-36 md:h-36 lg:h-48 rounded-full object-cover scale-100 hover:scale-105 grayscale hover:grayscale-0"/>
+        <nuxt-img :src="coverImage" alt="Teamimage" class="aspect-ratio-square mx-auto border-green-950 w-48 h-48 max-sm:w-full max-sm:h-full max-lg:h-full max-lg:w-full border-2 rounded-full object-cover scale-100 hover:scale-105 grayscale hover:grayscale-0"/>
         <span class="absolute bottom-2 right-0 max-sm:right-0 px-2 rounded-full text-sm text-white ">
             <NuxtLink target="_blank" :to="`${ linkedin }`" class="transition hover:!scale-110 ">
-                        <img src="/images/icon/LN.svg" class="icons"/>
+                        <img src="/images/icon/LN-blue.svg" class="icons"/>
                     </NuxtLink>
         </span>
       </div>
