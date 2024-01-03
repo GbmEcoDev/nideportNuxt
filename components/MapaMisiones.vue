@@ -198,8 +198,10 @@ export default{
     },  
     onEachFeatureFunction() {
       return (feature, layer) => {
+        let opciones = { year: 'numeric', month: 'short', day: 'numeric' }
+        let fecha = new Date(feature.properties.acq_date).toLocaleDateString('es-AR', opciones)
         layer.bindTooltip(
-          'Fecha: '+feature.properties.acq_date,
+          'Fecha: '+fecha,
           { permanent: false, sticky: true }
         );
       };
