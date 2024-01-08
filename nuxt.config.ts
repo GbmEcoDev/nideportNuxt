@@ -95,7 +95,8 @@ export default defineNuxtConfig({
 /* */  
   runtimeConfig: {
       public: {
-          wordpressUrl: 'https://oaks.malvinasargentinas.ar/web/graphql',
+           wordpressUrl: 'https://blog.nideport.com/graphql',
+          //wordpressUrl: 'https://oaks.malvinasargentinas.ar/web/graphql',
           url_base : process.env.BASE_URL,
           MAILHOST: process.env.MAILHOST,
           MAILPORT: process.env.MAILPORT,

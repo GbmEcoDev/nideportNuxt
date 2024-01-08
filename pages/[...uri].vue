@@ -7,27 +7,31 @@
                 'transition opacity-100 ': scrollY === 0
                 }"
         >
-      <div class="absolute top-0 w-full h-full" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 20%, rgba(0, 0, 0, 0.00) 100%);"></div><div class="absolute bottom-0 w-full h-[24em]" style="background: linear-gradient(0deg, rgba(255, 2555, 255, 1) 50%, rgba(255, 255, 255, 0.00) 100%);"></div>
+      <div class="absolute top-0 w-full h-full" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 20%, rgba(0, 0, 0, 0.00) 100%);"></div>
+      <div class="absolute bottom-0 w-full h-[24em]" 
+      style="background:linear-gradient(0deg, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 0.00) 100%);"
+      :style="{ background: getLinearGradient() }"
+     ></div>
     </div>
    <div class="relative mt-[-18em] z-2" >
     
       <AtomsContainer>
       <div class="my-4 px-40 max-sm:px-2">
         <NuxtLink to="/" class="text-blue-500 hover:underline">Inicio</NuxtLink>
-        <span class="mx-2  text-gray-600">/</span>
+        <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
         <NuxtLink to="/Noticias" class="text-blue-500 hover:underline">Noticias</NuxtLink>
-        <span class="mx-2  text-gray-600">/</span>
-        <span class=" text-gray-600">{{ data.title }}</span>
+        <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
+        <span class=" text-gray-600 dark:text-slate-300">{{ data.title }}</span>
       </div>
         <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
-          <h1 class="text-6xl font-bold text-gray-600">{{ data.title }}</h1>
-          <div class="flex items-center text-xs mt-4 border-b text-gray-600 border-gray-200">
+          <h1 class="text-6xl font-bold text-gray-600 dark:text-slate-300">{{ data.title }}</h1>
+          <div class="flex items-center text-xs mt-4 pb-3 border-b text-gray-600 dark:text-slate-300 border-gray-500">
             <span>{{ new Date(data.date).toLocaleDateString() }}</span>
             <span class="mx-2">-</span>
             <span>{{ formatCategories(data.categories) }}</span>
           </div>
-          <article class="mt-4 space-y-2 text-gray-600" v-html="data.content"></article>
-            <div class="mt-4 text-xs border-t border-gray-200 pt-3 text-right">Compartir en:
+          <article class="mt-4 space-y-2 text-gray-600 dark:text-slate-300" v-html="data.content"></article>
+            <div class="mt-4 text-xs border-t border-gray-200 pt-3 text-right text-gray-600 dark:text-slate-300">Compartir en:
             <button @click="shareOnTwitter" class="mr-2"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
               <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
             </svg></button>
@@ -49,6 +53,15 @@
   const route = useRoute();
   const uri = route.params.uri.join('/');
   const config = useRuntimeConfig();
+
+  const color = useColorMode();
+  //console.log("mode",color.value);
+
+  function getLinearGradient() {
+  return color.value === 'dark'
+    ? 'linear-gradient(0deg, rgba(17, 24, 39, 1) 65%, rgba(17, 24, 39, 0.00) 100%)'
+    : 'linear-gradient(0deg, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 0.00) 100%);';
+} 
   const { data, pending, error } = await useFetch(config.public.wordpressUrl, {
     method: 'get',
     query: {

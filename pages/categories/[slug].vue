@@ -26,10 +26,17 @@
 </template>
 
 <script setup lang="ts">
-  import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+
+  const { locale, setLocale } = useI18n();
+  const language = locale.value.toUpperCase();
+  console.log(language);
 
   const router = useRouter()
   const currentRoute = router.currentRoute.value.path
   const routeParts = currentRoute.split('/')
-  const categoryName = routeParts[2]
+  //const categoryName = routeParts[2]
+  const categoryName = language === "ES" ? routeParts[2] : routeParts[3]
+  console.log("routerparts:", categoryName)
 </script>

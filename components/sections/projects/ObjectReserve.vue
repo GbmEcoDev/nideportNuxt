@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-gradient-to-b from-[rgb(1,106,129)] to-[rgb(15,95,57)] p-24 max-sm:px-1 scroll-snap-align-start">
+    <section class="bg-gradient-to-b from-[rgb(1,106,129)] to-[rgb(15,95,57)] p-24 max-sm:px-1 scroll-snap-align-start dark:from-[rgba(1,106,129,0.16)]">
         <AtomsContainer>
             <AtomsTitleH2 :texte="$t('project_object_title1')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
              <div class="mb-6"><p class="text-white text-base pt-10 text-center">

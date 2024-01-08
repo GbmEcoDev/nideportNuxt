@@ -44,7 +44,8 @@ const language = locale.value.toUpperCase();
 const selectedCategory = ref(categorySel);
 const postsCount = ref(100);
 //const page = ref(1);
-
+console.log(language,"idioma");
+console.log(selectedCategory.value, "cat");
 const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
     lazy: true,
     method: 'post',

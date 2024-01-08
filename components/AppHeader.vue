@@ -1,6 +1,6 @@
 <template>
   <header class="inset-x-0 top-0 py-0 dark:bg-body sticky bg-black-10 " :class="{
-                'scrollUp hidden': scrollY > 0,
+                'scrollUp translate-y-[-100px] !visible': scrollY > 0,
                 'scrollDown translate-y-0 ': scrollY === 0
                 }">
       <AtomsContainer class="relative">
