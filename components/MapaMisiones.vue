@@ -23,10 +23,17 @@
       />
       <l-geo-json 
         :geojson="fajas" 
-        :options="options" 
+        :options="optionsFajas" 
         :options-style="styleFunctionFajas"  
         layer-type="overlay" 
         name="Fajas" 
+      />
+      <l-geo-json 
+        :geojson="areasDegradadas" 
+        :options="optionsAreasDeg" 
+        :options-style="styleFunctionAreasDeg"  
+        layer-type="overlay" 
+        name="Áreas degradadas" 
       />
       <l-geo-json 
         :geojson="alertas" 
@@ -88,6 +95,7 @@ export default{
       fajas: null,
       alertas: null,
       fotos: null,
+      areasDegradadas: null,
       optionsAlerts: '',
       styleFunction: '',
       styleFunctionLimites:{
@@ -110,6 +118,13 @@ export default{
         opacity: 0.7,
         fillOpacity: 0.0,
         interactive: true
+      },
+      styleFunctionAreasDeg:{
+        color: 'black',
+        weight: 2,
+        opacity: 0.5,
+        fillOpacity: 0.0,
+        interactive: true
       }
     };
   },
@@ -126,7 +141,17 @@ export default{
                 })});
             },
         onEachFeature: this.onEachFeatureFotos
-    }
+      }
+    },
+    optionsAreasDeg() {
+      return {
+        onEachFeature: this.onEachFeatureAreasDeg
+      }
+    },
+    optionsFajas() {
+      return {
+        onEachFeature: this.onEachFeatureFajas
+      }
     },
     optionsAlertasRayos() {
       return {
@@ -201,7 +226,7 @@ export default{
         let opciones = { year: 'numeric', month: 'short', day: 'numeric' }
         let fecha = new Date(feature.properties.acq_date).toLocaleDateString('es-AR', opciones)
         layer.bindTooltip(
-          'Fecha: '+fecha,
+          'Fecha: '+ fecha,
           { permanent: false, sticky: true }
         );
       };
@@ -210,10 +235,26 @@ export default{
       return (feature, layer) => {
         if(feature.properties.foto) {
           layer.bindPopup(
-          '<img src="/images/rgs1_nov_23/'+feature.properties.foto+'" />',
-          { permanent: false, sticky: true }
+          '<img src="/images/rgs1_nov_23/'+feature.properties.foto+'" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: '+feature.properties.Name+'<br/>Fecha: '+feature.properties.Date+'',
+          { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
         );
         }
+      };
+    },
+    onEachFeatureAreasDeg() {
+      return (feature, layer) => {
+          layer.bindPopup(
+            'Nombre: '+feature.properties.Name,
+          { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+        );
+      };
+    },
+    onEachFeatureFajas() {
+      return (feature, layer) => {
+          layer.bindPopup(
+            feature.properties.description,
+          { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+        );
       };
     }
   },
@@ -239,6 +280,9 @@ export default{
     const dataA = await responseA.json();
     this.alertas = dataA;
 
+    const responseAreas = await fetch(config.public.url_base + '/capas/areas_degradadas.geojson')
+    const dataAreas = await responseAreas.json();
+    this.areasDegradadas = dataAreas;
   }
 };
 </script>
@@ -253,5 +297,38 @@ export default{
   .fotosClass {
     border-color: rgb(255, 255, 255);
     border-width: 1px;
+  }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip{
+    color: white;
+    background: rgba(0, 0, 0, 0.67);
+    box-shadow: inset;
+    text-align: left; 
+    border: 1cap;
+    border-radius: 14px;
+  }
+  .leaflet-tooltip {
+    color: white;
+    background: rgba(0, 0, 0, 0.67);
+    box-shadow: inset;
+    text-align: left; 
+    border: 0cap;
+    border-radius: 14px;
+    padding: 1cap;
+  }
+  .leaflet-bar a{
+    background-color: rgba(0, 0, 0, 0.67);
+  }
+  .leaflet-bar a span{
+    color: white;
+  }
+  .leaflet-bar a span:hover{
+    color: rgba(2, 2, 2, 0.836);
+  }
+  .leaflet-control-layers {
+    background-color: rgba(0, 0, 0, 0.67);
+    color: white;
+  }
+  .popUpClass{
+    width: fit-content;
   }
 </style>

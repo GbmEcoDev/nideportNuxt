@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <style scope>
-img {
+/*img {
     width:185px;
-}
+}*/
 </style>
