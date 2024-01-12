@@ -9,14 +9,14 @@ export default defineNuxtConfig({
   modules:[
     '@nuxt/image',
     '@nuxt/devtools',
-    '@nuxtjs/tailwindcss',
+    //'@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
     '@nuxt/content',
-    '@nuxtjs/color-mode',
+    //'@nuxtjs/color-mode',
     'vue3-carousel-nuxt',
     'nuxt-swiper',
     'nuxt3-leaflet',
-
+    '@nuxt/ui',
   ],
   carousel: {
     prefix: 'MyPrefix'
@@ -70,21 +70,13 @@ export default defineNuxtConfig({
       map: {
         en: '/map', 
         es: '/mapa'     
+      },
+      tech: {
+        en: '/tech', 
+        es: '/tecno'     
       }
     },
-/*     generate: {
-      exclude: [
-        '/en/categories/technology-en',
-        '/categories/biodiversidad',
-        '/categories/tecnologia',
-        '/categories/seguridad',
-        '/categories/sustentabilidad',
-        '/categories/destacadas',
-        '/blog',
-        '/en/blog',
-        // Agrega aquí cualquier otra ruta problemática
-      ],
-    }, */
+
     lazy: true,
     langDir: "locales",
     strategy: "prefix_except_default",
