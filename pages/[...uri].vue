@@ -22,17 +22,13 @@
       </div>
         <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
           <h1 class="text-6xl font-bold text-gray-600 dark:text-slate-300">{{ data.title }}</h1>
-          <div class="flex items-center text-xs mt-4 pb-3 border-b text-gray-600 dark:text-slate-300 border-gray-500">
-            <span>{{ new Date(data.date).toLocaleDateString() }}</span>
-            <span class="mx-2">-</span>
-            <span>{{ formatCategories(data.categories) }}</span>
-          </div>
-          <article class="mt-4 space-y-2 text-gray-600 dark:text-slate-300" v-html="data.content"></article>
-          <!-- <div v-for="image in postImages" :key="image.src" class="border-2">
-           <img :src="image.src" :alt="image.alt" />
-          </div> -->
-          <GalleryPicture v-if="postImages" :images="postImages"/>
-            <div class="mt-4 text-xs border-t border-gray-200 pt-3 text-right text-gray-600 dark:text-slate-300">Compartir en:
+          <div class="flex items-center justify-between text-xs mt-4 pt-3 pb-3 border-t text-gray-600 border-b border-b-gray-200 dark:text-slate-300 border-t-gray-500">
+            <div class="w-1/2">
+              <span>{{ new Date(data.date).toLocaleDateString() }}</span>
+              <span class="mx-2">-</span>
+              <span>{{ formatCategories(data.categories) }} </span>
+            </div>
+            <div class="w-1/2 text-xs flex items-center justify-end text-gray-600 dark:text-slate-300"><span class="mr-3">Compartir en:</span>
             <button @click="shareOnTwitter" class="mr-2"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
               <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
             </svg></button>
@@ -42,6 +38,15 @@
               </svg>
             </button>
             </div>
+          </div>
+          
+          <article class="mt-4 space-y-2 text-gray-600 dark:text-slate-300 border-b border-b-gray-200 mb-3" v-html="data.content"></article>
+          <!-- <div v-for="image in postImages" :key="image.src" class="border-2">
+           <img :src="image.src" :alt="image.alt" />
+          </div> -->
+          <UBadge variant="outline"  v-if="hashtags" v-for="(tag, index) in hashtags" :key="index" class="m-2">{{tag}}</UBadge>
+          <GalleryPicture v-if="images" :images="images"/>
+          <SectionsBlogRelationPost :categoryRel="formatCategories(data.categories)"/>
         </main>
       </AtomsContainer>
   </div>
@@ -132,24 +137,31 @@ const handleScroll = () => {
 // Función para extraer imágenes del contenido del post
 const extractImages = (content) => {
   const imageRegex = /<div class="wp-block-image">.*?<img[^>]+src=['"]([^'"]+)['"][^>]*>.*?<\/div>/gs;
+  const hashtagRegex = /#[^\s#]+/g;
   const images = [];
+  const hashtags = [];
   let match;
-
+  // Extraer imagenes. ojo formato buscado en wp, modificar lo requerido en wp
   while ((match = imageRegex.exec(content)) !== null) {
     const [, src] = match;
     images.push(src);
   }
-
-  return images;
+  // Extraer palabras con #. Atencion en wp tienen que ponerle <pre>
+  const hashtagMatches = content.match(hashtagRegex);
+  if (hashtagMatches) {
+    hashtags.push(...hashtagMatches);
+  }
+  return {images, hashtags};
 };
 
 // Construye el array de objetos con la información de las imágenes
 //console.log(data.value.content,"content")
-const postImages = extractImages(data.value.content);
-console.log(postImages,"postImages")
-  </script>
+const  { images, hashtags }  = extractImages(data.value.content);
+console.log(hashtags,"hashtags");
+
+</script>
   <style scoped>
-  article >>> .wp-block-image {
+  article >>> .wp-block-image, article >>> pre {
     /*float: left;
     margin: 0 20px 20px 0; */
     display:none;
