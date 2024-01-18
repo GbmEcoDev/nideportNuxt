@@ -6,7 +6,7 @@ export default defineAppConfig({
             "wrapper": "fixed inset-0 flex z-50",
             "overlay": {
                 "base": "fixed inset-0 transition-opacity",
-                "background": "bg-teal-900/75 dark:bg-teal-900/75",
+                "background": "bg-teal-900/10 dark:bg-teal-900/10",
                 "transition": {
                     "enter": "ease-in-out duration-500",
                     "enterFrom": "opacity-0",
