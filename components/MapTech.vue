@@ -1,14 +1,16 @@
 <template>
  
   <div class="relative z-50 h-screen w-screen">
-    
+    <p>Id desde otro componente: {{ fotoId }}</p> 
+
     <l-map ref="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.8127]">
      <l-control-layers position="topright" ></l-control-layers>
       <l-tile-layer
         url="https://mt3.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}"
         layer-type="base"
         name="Google Satellite"
-      ></l-tile-layer><UBadge>alerta</UBadge>
+      ></l-tile-layer>
+      <UBadge>alert</UBadge>
       <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" />
       <l-geo-json :geojson="cuadriculas" :options="options" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" />
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" />
@@ -19,17 +21,24 @@
       <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" />
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" />
     </l-map>
-    <p>ID: {{ idFotoSelect }}</p>
+
   </div>
 </template>
 <script setup>
 import "leaflet/dist/leaflet.css";
-import { ref, onMounted } from 'vue';
+import { ref, onMounted,watch } from 'vue';
 import { LMap, LTileLayer, LGeoJson, LControlLayers, LIcon } from "@vue-leaflet/vue-leaflet";
 
-const props = defineProps({
-  idFotoSelect: String
-});
+// Definir la prop para recibir el ID
+const props = defineProps(['fotoId']);
+
+// Usar ref para almacenar el ID recibido
+const idToShow = ref(props.fotoId);
+
+// Acciones a realizar cuando cambia el ID
+watch(() => {
+  idToShow.value = props.fotoId;
+}, { immediate: true });
 
 const zoom = ref(12);
 const limites = ref(null);
@@ -255,4 +264,4 @@ onMounted(() => {
   .popUpClass{
     width: fit-content;
   }
-</style>~/composable/useEventData~/composables/useEventData
+</style>
