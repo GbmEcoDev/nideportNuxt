@@ -9,7 +9,7 @@ useHead({
     { name: 'description', content: 'Soluciones naturales...' },
   ],
   link: [
-    { rel: 'icon', type: 'image/png', href: '/logo-nideport.svg' }
+    { rel: 'icon', type: 'image/svg', href: '/images/logo-nideport.svg' }
   ],
 })
 </script>

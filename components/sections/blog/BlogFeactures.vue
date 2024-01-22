@@ -25,13 +25,16 @@
       </div>
     </div>
   </template>
-  <script setup lang="ts">
+  <script setup >
   const { locale } = useI18n()
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
   const defaultCategory = language === 'ES' ? 'Destacadas' : 'highlights-en';
   const selectedCategory = ref(defaultCategory);
-  const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
+
+  let data, error, pending;
+try {
+  ({ data, error, pending } = await useFetch(config.public.wordpressUrl, {
   lazy: true,
   method: 'post',
   body: {
@@ -71,12 +74,20 @@
       category: selectedCategory.value
     }
   },
-  transform(data: any) {
-    return data?.data?.posts?.edges?.map((edge: any) => transformPost(edge?.node)) || [];
+  transform(data) {
+    return data?.data?.posts?.edges?.map((edge) => transformPost(edge?.node)) || [];
   }
-});
+}));
 
-function transformPost(node: any) {
+} catch (e) {
+    console.error('Error fetching data:', e);
+    // Handle the error as needed
+    error = true;
+    pending = false;
+    data = null;
+  }
+
+function transformPost(node) {
   return {
     id: node?.id || '',
     excerpt: node?.excerpt || '',
@@ -86,7 +97,7 @@ function transformPost(node: any) {
     slug: node?.slug || '',
     sourceUrl: node?.featuredImage?.node?.sourceUrl || '/images/imgdemo.jpg',
     language: node?.language || '',
-    categories: node?.categories?.nodes?.map((category: any) => category?.name).join(', ') || '',
+    categories: node?.categories?.nodes?.map((category) => category?.name).join(', ') || '',
   };
 }
 </script>

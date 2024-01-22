@@ -10,58 +10,7 @@
       </NuxtLink>
     </div>
   </template>
-  <!--     
- <script setup lang="ts">
-  import { ref, computed } from 'vue';
-  import { useI18n } from 'vue-i18n';
 
-  const { t, locale, setLocale } = useI18n();
-  const localePath = useLocalePath();
-  const config = useRuntimeConfig();
-  const language = locale.value.toUpperCase();
-
-  const pathcategory = locale.value === 'en' ? `/${locale.value}/categories/` : '/categories/';
-
-  const { data: categoriesData } = await useFetch(config.public.wordpressUrl, {
-    lazy: true,
-    method: 'post',
-    body: {
-      query: `
-        query categories($language: LanguageCodeFilterEnum!) {
-          categories(where: { language: $language }) {
-            edges {
-              node {
-                id
-                name
-                slug
-                posts {
-                  nodes {
-                    id
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
-      variables: {
-        language: language,
-      },
-    },
-    transform(data: any) {
-      return data.data.categories.edges.map((edge: any) => edge.node);
-    },
-  });
-  
-  const categories = ref(categoriesData || []);
-
-  const filteredCategoriesWithPosts = computed(() => {
-      return (categories.value || []).filter((category: any) => {
-      return category.posts?.nodes?.length > 0 && category.name !== 'Uncategorized';
-    });
-  });
-  </script>
-   -->
    <script setup lang="ts">
   import { ref, computed, onErrorCaptured } from 'vue';
   import { useI18n } from 'vue-i18n';
@@ -77,7 +26,7 @@
   // Wrap your asynchronous logic in a try-catch block
   let categoriesData;
   try {
-    console.log("try");
+    //console.log("try");
     const response = await useFetch(config.public.wordpressUrl, {
       lazy: true,
       method: 'post',
@@ -111,7 +60,7 @@
 
     categoriesData = response.data;
   } catch (error) {
-    console.error('Error fetching categories:', error);
+    //console.error('Error fetching categories:', error);
     // Handle the error as needed, e.g., show a user-friendly message
   }
 

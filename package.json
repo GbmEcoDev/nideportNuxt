@@ -42,6 +42,7 @@
     "nuxt-mail": "^4.0.2",
     "nuxt-protected-mailto": "^0.0.12",
     "tailwindcss-gradients": "^3.0.0",
+    "three": "^0.160.0",
     "validator": "^13.11.0"
   }
 }

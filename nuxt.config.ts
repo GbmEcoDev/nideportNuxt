@@ -2,7 +2,25 @@
 
 
 export default defineNuxtConfig({
-
+  generate:{
+    exclude: [
+      /^\/tecnologias-financieras-para-un-planeta-mas-sostenible\/.*$/, 
+      /^\/tecnologia\/.*$/, 
+      /^\/plantacion\/.*$/,
+      /^\/en\/categories\/highlights-en\/.*$/,
+      /^\/en\/categories\/security\/.*$/,
+      /^\/en\/categories\/technology-en\/.*$/,
+      /^\/en\/categories\/sustainability-en\/.*$/,
+      /^\/categories\/destacadas\/.*$/,
+      /^\/en\/financial-technologies-for-a-more-sustainable-planet\/.*$/,
+      /^\/categories\/seguridad\/.*$/,
+      /^\/programa-de-carbono-participativo\/.*$/,
+      /^\/categories\/sustentabilidad\/.*$/,
+      /^\/categories\/tecnologia\/.*$/,
+      /^\/en\/stockholm50moray\/.*$/,
+      /^\/categories\/sustentabilidad\/.*$/,
+    ],
+  },
   css: [
     '@/assets/css/main.css',
   ],

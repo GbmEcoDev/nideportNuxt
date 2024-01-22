@@ -44,8 +44,8 @@
           <!-- <div v-for="image in postImages" :key="image.src" class="border-2">
            <img :src="image.src" :alt="image.alt" />
           </div> -->
-          <UBadge variant="outline"  v-if="hashtags" v-for="(tag, index) in hashtags" :key="index" class="m-2">{{tag}}</UBadge>
-          <GalleryPicture v-if="images" :images="images"/>
+          <UBadge variant="outline" v-if="hashtags" v-for="(tag, index) in hashtags" :key="index" class="m-2">{{tag}}</UBadge>
+          <GalleryPicture v-if="images.length > 0" :images="images"/>
           <SectionsBlogRelationPost :categoryRel="formatCategories(data.categories)"/>
         </main>
       </AtomsContainer>
@@ -157,7 +157,7 @@ const extractImages = (content) => {
 // Construye el array de objetos con la información de las imágenes
 //console.log(data.value.content,"content")
 const  { images, hashtags }  = extractImages(data.value.content);
-console.log(hashtags,"hashtags");
+//console.log(hashtags,"hashtags");
 
 </script>
   <style scoped>

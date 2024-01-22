@@ -19,7 +19,7 @@
       <div v-else>
           <h3 class="font-bold text-primary border-b mt-12 mb-16">Relacionados</h3>
           <!-- <div class="text-sm text-gray-700 dark:text-white">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
-          <div class="flex flex-wrap grid-row-2 w-full">
+          <div class="grid grid-cols-2 w-full">
             <SectionsBlogPostsRelationed 
             v-for="(post, index) in data" 
             :key="post.uri" 
@@ -42,8 +42,7 @@ const config = useRuntimeConfig();
 const language = locale.value.toUpperCase();
 
 const selectedCategory = ref(categoryRel);
-console.log(selectedCategory,"cat");
-const postsCount = ref(3);
+const postsCount = ref(4);
 
 const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
     lazy: true,

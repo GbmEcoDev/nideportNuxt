@@ -72,7 +72,7 @@ const form = ref({
   terminos: false,
   notificaciones: false,
 });
-const waiting = ref(false);
+/* const waiting = ref(false);
 const errors = ref(false);
 const success = ref(false);
 
@@ -91,7 +91,7 @@ async function submit() {
   } finally {
     waiting.value = false;
   }
-}
+} */
 </script>
   <style scoped>h2{
     text-align: left;
