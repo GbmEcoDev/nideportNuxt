@@ -16,7 +16,7 @@
                                     <path d="M36.9033 45.6565V19.8081L59.5925 32.7323L36.9033 45.6565Z" fill="white"/>
                                     </svg>
                                 </div>
-                                <img src="/images/bg-home-panoramic.webp" class="w-full rounded-lg"/>
+                                <NuxtImg :src="`${urlImg}/images/bg-home-panoramic.webp`" class="w-full rounded-lg"/>
                             </div>
                 </div>
             </div>
@@ -38,6 +38,8 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
+const config = useRuntimeConfig();
+const urlImg = config.public.url_base;
 const isModalOpen = ref(false);
 const videoSrc = ref('/video/GBM_Technology.mp4');
 const openModal = () => {

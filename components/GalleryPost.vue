@@ -8,7 +8,7 @@
         class="relative overflow-hidden aspect-ratio-square cursor-pointer"
       >
         <NuxtImg format="webp"
-          :src="`${urlImg}${image}`"
+          :src="`${image}`"
           alt="ImageGallery"
           class="object-cover w-full h-full transition-transform transform scale-100 hover:scale-110"
         />
@@ -32,7 +32,7 @@
               <IconsCloseIco />
             </button>
           </div>
-          <NuxtImg :src="`${urlImg}${selectedImage}`" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
+          <NuxtImg :src="`${selectedImage}`" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
         </div>
           <div class="absolute top-0 left-0 bottom-0 flex items-center justify-between">
             <button @click="prevImage" class="text-gray-500 hover:text-gray-700 ml-4 bg-white rounded-full p-3 z-60">
@@ -53,8 +53,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-const config = useRuntimeConfig();
-const urlImg = config.public.url_base;
 const props = defineProps<{
   images: string[];
 }>();
@@ -91,7 +89,7 @@ const openModal = (image: string) => {
 };
 
 const closeModal = () => {
-  console.log("cerrando modal");
+  //console.log("cerrando modal");
   isModalOpen.value = false;
 };
 

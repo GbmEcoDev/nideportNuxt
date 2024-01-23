@@ -100,7 +100,7 @@ try {
       date: node?.date || '',
       uri: node?.uri || '',
       slug: node?.slug || '',
-      sourceUrl: node?.featuredImage?.node?.sourceUrl || '/images/imgdemo.jpg',
+      sourceUrl: node?.featuredImage?.node?.sourceUrl,
       language: node?.language || '',
       categories: node?.categories?.nodes?.map((category) => category?.name).join(', ') || '',
     };

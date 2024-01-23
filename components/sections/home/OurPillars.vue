@@ -69,9 +69,7 @@ const modalActive = ref(false);
 const modalContent = ref(null);
 
 const toggleModal = (content: string | null) => {
-
-  console.log(modalActive.value);
-  modalContent.value = content ? modals.find((modal) => modal.key === content)?.content || null : null;
+    modalContent.value = content ? modals.find((modal) => modal.key === content)?.content || null : null;
   modalActive.value = !modalActive.value;
 };
 
@@ -124,8 +122,6 @@ onMounted(() => {
         initScroll()
     }
 });
-
-
 </script>
 <style>
 

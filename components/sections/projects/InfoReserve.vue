@@ -6,27 +6,27 @@
       <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'">
         <Slide key="1">
           <div class="carousel__item">
-            <div class="flex-col justify- items-center w-full m-4"><div class="h-20"><img src="/images/vcs.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_01')}}</p></div>
+            <div class="flex-col justify- items-center w-full m-4"><div class="h-20"><NuxtImg src="/images/vcs.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_01')}}</p></div>
           </div>
         </Slide>
         <Slide key="2">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/ccb.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_02')}}</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><NuxtImg src="/images/ccb.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_02')}}</p></div>
           </div>
         </Slide>
         <Slide key="3">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/ifm.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_03')}}</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><NuxtImg src="/images/ifm.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_03')}}</p></div>
           </div>
         </Slide>
         <Slide key="4">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/perpetuity.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_04')}}</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><NuxtImg src="/images/perpetuity.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_04')}}</p></div>
           </div>
         </Slide>
         <Slide key="5">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/surveillance.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_05')}}</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><NuxtImg src="/images/surveillance.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">{{$t('project_info_data_05')}}</p></div>
           </div>
         </Slide>  
       </Carousel>
@@ -108,7 +108,7 @@
   <style scoped>
   .carousel__item {
     display: flex;
-    justify-content: start;
+    /* justify-content: start; */
     align-items: center;
     gap: 1rem;
     width: 100%;

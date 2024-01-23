@@ -2,7 +2,7 @@
     <div>
       <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Otros Eventos</p>
       <div v-for="event in filteredEvents" :key="event.id" class="w-full mt-6 mb-6 flex border border-gray-300 rounded-lg p-3 bg-gradient-to-l from-slate-50 hover:shadow-lg duration-200 dark:from-gray-950">
-          <div class="w-20 h-20 mr-3"><nuxt-img :src="`${ event.acf.imagen }`" alt="Cover" class="w-20 rounded-full border aspect-ratio-square" /></div>
+          <div class="w-20 h-20 mr-3"><NuxtImg :src="`${ event.acf.imagen }`" alt="Cover" class="w-20 rounded-full border aspect-ratio-square" /></div>
           <div class="w-52">
             <h2 class="font-bold text-secondary text-lg leading-5 dark:text-gray-400">{{ event.title.rendered }}</h2>
             <span class="text-xs text-gray-600 border border-gray-300 rounded-full px-2 dark:text-gray-400">{{ formatDate(event.date) }}</span>
@@ -28,7 +28,6 @@
   const { locale } = useI18n();
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
-  
   const { data: events } = await axios.get(config.public.wpEventos);
 
   const eventos = ref(events || []);

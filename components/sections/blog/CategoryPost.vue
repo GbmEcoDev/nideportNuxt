@@ -18,7 +18,7 @@
       </div>
       <div v-else>
         
-          <div class="text-sm text-gray-700 dark:text-white">Se encontraron {{ dataSizeRef }} post relacionados</div>
+          <!-- <div class="text-sm text-gray-700 dark:text-white">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
           <div class="flex flex-wrap grid-row-2 w-full">
             <SectionsBlogPostsCategory 
             v-for="(post, index) in data" 
@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { categorySel } = defineProps(['categorySel']);
@@ -115,7 +115,7 @@ try {
       date: node?.date || '',
       uri: node?.uri || '',
       slug: node?.slug || '',
-      sourceUrl: node?.featuredImage?.node?.sourceUrl || '/images/imgdemo.jpg',
+      sourceUrl: node?.featuredImage?.node?.sourceUrl,
       language: node?.language || '',
       categories: node?.categories?.nodes?.map((category) => category?.name).join(', ') || '',
     };

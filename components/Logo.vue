@@ -1,10 +1,10 @@
 <template>
      <div>
          <p v-if="color ? color === 'light' : $colorMode.value === 'light'">
-            <img src="/images/logo-nideport.svg" alt="Nideport" class="py-0 w-[185px]">
+            <NuxtImg src="/images/logo-nideport.svg" alt="Nideport" class="py-0 w-[185px]"/>
              </p>
              <p v-if="color ? color === 'dark' : $colorMode.value === 'dark'">
-            <img src="/images/logo-nideport-dark.svg" alt="Nideport" class="w-[185px]">
+            <NuxtImg src="/images/logo-nideport-dark.svg" alt="Nideport" class="w-[185px]"/>
              </p>
      </div>
 </template>

@@ -17,16 +17,16 @@
             <div class="p-4 flex items-center justify-center">
                 <div class="flex items-center gap-x-3">
                     <NuxtLink target="_blank" to="#" class="transition hover:!scale-110 ">
-                        <img src="/images/icon/mail.svg" class="icons"/>
+                        <NuxtImg :src="`${urlImg}/images/icon/mail.svg`" class="icons"/>
                     </NuxtLink>
                     <NuxtLink target="_blank" to="#" class="transition hover:!scale-110">
-                        <img src="/images/icon/YT.svg" class="icons"/>
+                        <NuxtImg :src="`${urlImg}/images/icon/YT.svg`" class="icons"/>
                     </NuxtLink>
                     <NuxtLink target="_blank" to="#" class="transition hover:!scale-110">
-                        <img src="/images/icon/LN.svg" class="icons"/>
+                        <NuxtImg :src="`${urlImg}/images/icon/LN.svg`" class="icons"/>
                     </NuxtLink>
                     <NuxtLink target="_blank" to="#" class="transition hover:!scale-110">
-                        <img src="/images/icon/IG.svg" class="icons"/>
+                        <NuxtImg :src="`${urlImg}/images/icon/IG.svg`" class="icons"/>
                     </NuxtLink>
                 </div>
             </div>
@@ -36,6 +36,9 @@
 </template>
 
 <script lang="ts" setup>
+const config = useRuntimeConfig();
+const urlImg = config.public.url_base;
+
 </script>
 <style>
   .custom-hr {

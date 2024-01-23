@@ -3,12 +3,12 @@
         <div class="items-center dark:text-white text-secondary p-2 transition-all hover:-translate-y-1 hover:scale-105 pb-3">
             <div class="flex gap-3">
                 <div class="w-2/12 overflow-hidden">
-                  <nuxt-img :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />
+                  <NuxtImg v-if="post.sourceUrl" :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />
                 </div>
                 <div class="flex-col w-9/12 pl-1 max-sm:h-30">
                   <p class="text-primary text-xs dark:text-white">{{ new Date(post.date).toLocaleDateString() }} - {{ post.categories }}</p> 
                   <h2 class="font-bold text-lg  dark:text-white leading-5 mb-1">{{ post.title }}</h2>
-                  <p class="text-gray-700 text-sm dark:text-white leading-4">{{ cleanAndTruncate(post.excerpt) }}</p>
+                  <p class="text-gray-700 text-lg dark:text-white leading-5">{{ cleanAndTruncate(post.excerpt) }}</p>
                 </div>
             </div>
         </div>

@@ -32,8 +32,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import { ref, defineProps, computed } from 'vue';
+<script setup>
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { categoryRel } = defineProps(['categoryRel']);
@@ -44,7 +44,9 @@ const language = locale.value.toUpperCase();
 const selectedCategory = ref(categoryRel);
 const postsCount = ref(4);
 
-const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
+let data, error, pending;
+try {
+  ({ data, error, pending } = await useFetch(config.public.wordpressUrl, {
     lazy: true,
     method: 'post',
     body: {
@@ -91,14 +93,20 @@ const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
         count: postsCount.value
       }
     },
-    transform(data: any) {
-      //return data.data.posts.edges.map((edge: any) => edge.node);
-      return data?.data?.posts?.edges?.map((edge: any) => transformPost(edge?.node)) || [];
+    transform(data) {
+      return data?.data?.posts?.edges?.map((edge) => transformPost(edge?.node)) || [];
     }
-  });
+  }));
+
+  } catch (e) {
+    console.error('Error fetching data:', e);
+    // Handle the error as needed
+    error = true;
+    pending = false;
+    data = null;
+  }
   
-  
-  function transformPost(node: any) {
+  function transformPost(node) {
     return {
       id: node?.id || '',
       excerpt: node?.excerpt || '',
@@ -106,15 +114,15 @@ const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
       date: node?.date || '',
       uri: node?.uri || '',
       slug: node?.slug || '',
-      sourceUrl: node?.featuredImage?.node?.sourceUrl || '/images/imgdemo.jpg',
+      sourceUrl: node?.featuredImage?.node?.sourceUrl,
       language: node?.language || '',
-      categories: node?.categories?.nodes?.map((category: any) => category?.name).join(', ') || '',
+      categories: node?.categories?.nodes?.map((category) => category?.name).join(', ') || '',
     };
   }
   
   //const dataSize = ref(data.value.length);
   const dataSizeRef = computed(() => data.value.length);
-/* function refetch(pageNumber:any){
+ /*function refetch(pageNumber:any){
   dataSize.value = dataSizeRef.value;
   page.value = pageNumber;
   refresh();

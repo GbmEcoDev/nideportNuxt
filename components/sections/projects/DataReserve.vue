@@ -12,7 +12,7 @@
                   max-lg:w-full 
                   max-lg:h-[28,75rem]">
                       <div class="w-full max-sm:mt-10">
-                          <img src="/images/objetive-1.svg" alt="" class="pb-5 mx-auto">
+                          <NuxtImg src="/images/objetive-1.svg" alt="" class="pb-5 mx-auto"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c1_title')" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
                       <p class="text-md text-center py-8 text-gray-500 dark:text-white">{{$t('project_data_c1_parag')}}</p>
@@ -29,7 +29,7 @@
                   max-lg:w-full 
                   max-lg:h-[28,75rem]">
                       <div class="w-full max-sm:mt-10">
-                          <img src="/images/objetive-2.svg" alt="" class="pb-5 mx-auto">
+                          <NuxtImg src="/images/objetive-2.svg" alt="" class="pb-5 mx-auto"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c2_title')" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
                       <p class="text-md text-center py-8 text-gray-500 dark:text-white">{{$t('project_data_c2_parag')}}</p>
@@ -46,7 +46,7 @@
                   max-lg:w-full 
                   max-lg:h-[28,75rem]">
                       <div class="w-full max-sm:mt-10">
-                          <img src="/images/objetive-3.svg" alt="" class="pb-5 mx-auto">
+                          <NuxtImg src="/images/objetive-3.svg" alt="" class="pb-5 mx-auto"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c3_title')" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
                       <p class="text-md text-center py-8 text-gray-500 dark:text-white">{{$t('project_data_c3_parag')}}</p>

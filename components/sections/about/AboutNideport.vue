@@ -3,7 +3,7 @@
         <AtomsContainer>
             <div class="relative flex justify-center max-sm:flex-col max-md:flex-col max-lg:flex-col gap-4 xl:gap-8 max-sm:gap-0 rounded-[14px] bg-primary bg-opacity-10 p-1">
                 <div class="flex w-5/12 max-md:w-11/12 md:h-full max-sm:w-full max-lg:w-full mx-auto">
-                    <div class="w-full md:h-full p-3 mt-4">
+                    <div class="w-full md:h-full p-3 mt-8">
                        <AtomsTitleH2 sizeTxt="text-[28px]" alignTxt="left" colorTxt="fivety" weightTxt="bold" class="tracking-tighter leading-9" :texte="$t('about_phrase1')" />
                     </div>
                 </div>
@@ -45,7 +45,7 @@
         <AtomsContainer>
             <div class="flex flex-wrap items-center justify-center pt-24 pb-12">
                 <AtomsTitleH2 sizeTxt="text-[1.875rem]" alignTxt="center" colorTxt="fivety" weightTxt="normal" class="pb-5 px-24 max-sm:px-1 max-lg:px-1 font-normal" :texte="$t('about_phrase2')" />
-                <AtomsLinkBtn href="#" variant="primary">{{$t('about_btn')}} </AtomsLinkBtn>
+                <!-- <AtomsLinkBtn href="#" variant="primary">{{$t('about_btn')}} </AtomsLinkBtn> -->
             </div>
         </AtomsContainer>
     </section>

@@ -3,7 +3,7 @@
         <!-- <p class="font-bold text-primary mb-2 border-b border-gray-200 dark:text-white">Discovering</p> -->
         <div class=" h-80 overflow-auto">
           <div v-for="disco in discover" :key="disco.ID" class="w-full mt-2 mb-2 flex p-3">
-               <div class="w-full mr-3"><nuxt-img :src="`/images/rgs1_nov_23/${ disco.foto }`" alt="Cover" class="w-full rounded-lg aspect-square" /></div>
+               <div class="w-full mr-3"><img :src="`/images/rgs1_nov_23/${ disco.foto }`" alt="Cover" class="w-full rounded-lg aspect-square" /></div>
               <span v-if="disco.ID" class="text-xs text-gray-100 dark:text-gray-100 px-2"> {{ disco.Date }}</span>
                
               <div class="h-4">

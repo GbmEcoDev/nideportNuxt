@@ -7,14 +7,14 @@
             <div class="flex flex-wrap pt-8 md:pt-8 pb-2 md:pb-2 items-center justify-center">
                 <template v-for="partner in partners" :key="partner.alt">
                     <div class="w-full md:w-1/2 lg:w-1/6 xl:w-1/6 flex justify-center max-sm:items-center " data-aos="fade-up">
-                      <img :src="partner.logo" :alt="partner.alt" width="185px" class="max-sm:mx-4" />
+                      <NuxtImg :src="`${urlImg}${partner.logo}`" :alt="partner.alt" width="185px" class="max-sm:mx-4" />
                     </div>
                 </template>
             </div>
             <div class="flex flex-wrap pt-2 md:pt-2 pb-14 md:pb-14 items-center justify-center">
                 <template v-for="partner in partners2" :key="partner.alt">
-                    <div class="w-full md:w-1/2 lg:w-1/6 xl:w-1/6 flex justify-center max-sm:items-center " data-aos="fade-up">
-                      <img :src="partner.logo" :alt="partner.alt" width="185px" class="max-sm:mx-4" />
+                    <div class="w-full md:w-1/2 lg:w-1/6 xl:w-1/6 flex justify-center max-sm:items-center" data-aos="fade-up">
+                      <NuxtImg :src="`${urlImg}${partner.logo}`" :alt="partner.alt" width="185" class="max-sm:mx-4" />
                     </div>
                 </template>
             </div>
@@ -26,7 +26,8 @@
   
   <script setup lang="ts">
   import { ref } from 'vue';
-  
+  const config = useRuntimeConfig();
+  const urlImg = config.public.url_base;
   const partners = ref([
     { logo: '/images/partners/logo-embarca.png', alt: 'Embarca' },
     { logo: '/images/partners/logo-alma.png', alt: 'Alma' },

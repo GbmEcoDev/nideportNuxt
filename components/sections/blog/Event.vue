@@ -1,6 +1,6 @@
 <template>
     <div class="w-full relative rounded-2xl overflow-hidden h-64 mt-6 mb-6 max-lg:h-96 max-sm:h-60 max-sm:overflow-visible max-lg:overflow-visible">
-        <nuxt-img src="./images/event-img.jpeg" alt="Cover image" width="1060" class="w-full object-cover rounded-2 h-full" />
+        <NuxtImg  :src="`${urlImg}/images/event-img.jpeg`" alt="Cover image" width="1060" class="w-full object-cover rounded-2 h-full" />
         <div
             class="absolute py-4 px-3 md:py-3 md:px-4 top-0 h-full justify-between inset-x-0 bg-gradient-to-r from-[#007A77] bg-opacity-90 ">
             <div class="flex-col w-full h-full border-2 p-1">
@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 const config = useRuntimeConfig();
+const urlImg = config.public.url_base;
 </script>
 
 <style scoped>

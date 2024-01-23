@@ -20,7 +20,9 @@
           <AtomsContainer>
             <div class="flex h-full items-center justify-center mt-40">
               <div class="flex max-sm:flex-col w-full gap-4">
-                  <div class="flex justify-end max-sm:justify-center max-sm:mx-auto w-[18.75rem]"><img src="/images/logo-imago.svg" class="max-w-none w-[18.75rem] h-auto max-sm:w-[150px] max-sm:h-[150px]" data-aos="fade-up"></div>
+                  <div class="flex justify-end max-sm:justify-center max-sm:mx-auto w-[18.75rem]">
+                    <NuxtImg src="/images/logo-imago.svg" width="236" class="max-w-none w-[14.75rem] h-auto max-sm:w-[150px] max-sm:h-[150px]" data-aos="fade-up" />
+                  </div>
                   <div class="text-left text-white md:px-10 col-span-2">
                     <h1 class="mt-20  mb-2 text-4xl font-bold md:text-4xl xl:text-5x1 max-sm:text-center max-sm:mt-2" data-aos="fade-left">
                       {{$t('home_title')}}

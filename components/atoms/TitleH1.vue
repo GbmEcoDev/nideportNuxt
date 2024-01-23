@@ -1,7 +1,7 @@
 <template>
-    <H1 class="text-base text-left md:text-6xl max-sm:text-5xl max-sm:text-center dark:text-white font-bold">
+    <h1 class="text-base text-left md:text-6xl max-sm:text-5xl max-sm:text-center dark:text-white font-bold">
         {{ texte }}
-    </H1>
+    </h1>
 </template>
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';

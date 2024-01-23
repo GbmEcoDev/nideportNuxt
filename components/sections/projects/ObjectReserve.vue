@@ -7,16 +7,16 @@
             </p></div> 
             <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'" :navigation="true">
                 <Slide  key="1" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-01.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-01.jpg')" /> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-01.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-01.jpg')" /> 
                 </Slide>
                 <Slide key="2" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-02.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-02.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-02.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-02.jpg')"/> 
                 </Slide>
                 <Slide key="3"  class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-03.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-03.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-03.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-03.jpg')"/> 
                 </Slide>
                 <Slide key="4" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-04.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-04.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-04.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-04.jpg')"/> 
                 </Slide>
             </Carousel>
         </AtomsContainer>
@@ -26,16 +26,16 @@
               {{$t('project_object_phrase2')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow2" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slid key="5"  class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-05.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-05.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-05.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-05.jpg')"/> 
                 </Slid>
                 <Slide key="6" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-06.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-06.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-06.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-06.jpg')"/> 
                 </Slide>
                 <Slide key="7" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-07.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-07.jpg')" /> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-07.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-07.jpg')" /> 
                 </Slide>
                 <Slide key="8" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-08.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-08.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-08.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-08.jpg')"/> 
                 </Slide>
             </Carousel>
         </AtomsContainer>
@@ -45,16 +45,16 @@
               {{$t('project_object_phrase3')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow3" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slide key="9" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-09.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-09.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-09.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-09.jpg')"/> 
                 </Slide>
                 <Slide key="10" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-10.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-10.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-10.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-10.jpg')"/> 
                 </Slide>
                 <Slide key="11" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-11.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-11.jpg')" /> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-11.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-11.jpg')" /> 
                 </Slide>
                 <Slide key="12" class="p-2 overflow-hidden">
-                    <nuxt-img src="/images/obj-img-12.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-12.jpg')"/> 
+                    <NuxtImg :src="`${urlImg}/images/obj-img-12.jpg`" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-12.jpg')"/> 
                 </Slide>
             </Carousel>
         </AtomsContainer>  
@@ -67,7 +67,7 @@
               <IconsCloseIco />
             </button>
           </div>
-          <img :src="selectedImage" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
+          <NuxtImg :src="`${urlImg}${selectedImage}`" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
         </div>
       </div>
     </div>              
@@ -79,6 +79,8 @@
 import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+const config = useRuntimeConfig();
+const urlImg = config.public.url_base;
 const selectedImage = ref('');
 const isModalOpen = ref(false);
 const name = 'WrapAround';

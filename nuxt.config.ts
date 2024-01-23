@@ -2,6 +2,7 @@
 
 
 export default defineNuxtConfig({
+  nitro:{prerender:{failOnError:false,}},
   generate:{
     exclude: [
       /^\/tecnologias-financieras-para-un-planeta-mas-sostenible\/.*$/, 
@@ -24,18 +25,9 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/main.css',
   ],
-  modules:[
-    '@nuxt/image',
-    '@nuxt/devtools',
-    //'@nuxtjs/tailwindcss',
-    '@nuxtjs/i18n',
-    '@nuxt/content',
-    //'@nuxtjs/color-mode',
-    'vue3-carousel-nuxt',
-    'nuxt-swiper',
-    'nuxt3-leaflet',
-    '@nuxt/ui',
-  ],
+  modules:['@nuxt/image', //'@nuxtjs/tailwindcss',
+  '@nuxt/devtools', '@nuxtjs/i18n', //'@nuxtjs/color-mode',
+  '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui'],
   
   carousel: {
     prefix: 'MyPrefix'
@@ -52,7 +44,7 @@ export default defineNuxtConfig({
     classSuffix: '',
     storageKey: 'nuxt-color-mode'
   },
-  //buildModules: ['@nuxt/postcss8'],
+  //buildModules: ['@nuxt/image'],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -118,7 +110,7 @@ export default defineNuxtConfig({
     
     /* fallbackLocale: "es", */
   },
-/* */  
+/* */ 
   runtimeConfig: {
       public: {
           wpEventos : process.env.WP_EVENT,

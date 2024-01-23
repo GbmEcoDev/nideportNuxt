@@ -127,7 +127,7 @@ const optionsFotos = {
   onEachFeature: (feature, layer) => {
     if (feature.properties.foto) {
       layer.bindPopup(
-        '<img src="/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
+        '<NuxtImg src="/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
         { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
       );
     }

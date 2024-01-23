@@ -1,7 +1,7 @@
 <template>
     <div class="relative bg-cover bg-no-repeat h-[44rem] z-1" 
         style="background-position: top center;"
-        :style="{ backgroundImage: `url('${data.featuredImage?.node?.sourceUrl || '/images/imgdemo.jpg'}')` }" 
+        :style="{ backgroundImage: `url('${data.featuredImage?.node?.sourceUrl}')` }" 
         :class="{
                 'transition opacity-20': scrollY > 0,
                 'transition opacity-100 ': scrollY === 0
@@ -21,7 +21,7 @@
         <span class=" text-gray-600 dark:text-slate-300">{{ data.title }}</span>
       </div>
         <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
-          <h1 class="text-6xl font-bold text-gray-600 dark:text-slate-300">{{ data.title }}</h1>
+          <AtomsTitleH2 colorTxt="secondary" sizeTxt="md:text-6xl max-sm:text-5xl" alignTxt="left" weightTxt="bold" :texte="`${data.title}`" ></AtomsTitleH2>
           <div class="flex items-center justify-between text-xs mt-4 pt-3 pb-3 border-t text-gray-600 border-b border-b-gray-200 dark:text-slate-300 border-t-gray-500">
             <div class="w-1/2">
               <span>{{ new Date(data.date).toLocaleDateString() }}</span>
@@ -41,11 +41,8 @@
           </div>
           
           <article class="mt-4 space-y-2 text-gray-600 dark:text-slate-300 border-b border-b-gray-200 mb-3" v-html="data.content"></article>
-          <!-- <div v-for="image in postImages" :key="image.src" class="border-2">
-           <img :src="image.src" :alt="image.alt" />
-          </div> -->
           <UBadge variant="outline" v-if="hashtags" v-for="(tag, index) in hashtags" :key="index" class="m-2">{{tag}}</UBadge>
-          <GalleryPicture v-if="images.length > 0" :images="images"/>
+          <GalleryPost v-if="images.length > 0" :images="images"/>
           <SectionsBlogRelationPost :categoryRel="formatCategories(data.categories)"/>
         </main>
       </AtomsContainer>
@@ -54,7 +51,7 @@
   </template>
   
   <script setup>
-  import GalleryPicture from '@/components/GalleryPicture.vue';
+  import GalleryPost from '@/components/GalleryPost.vue';
   import {ref} from 'vue';
   import { useRoute } from 'vue-router';
   const route = useRoute();
@@ -157,16 +154,19 @@ const extractImages = (content) => {
 // Construye el array de objetos con la información de las imágenes
 //console.log(data.value.content,"content")
 const  { images, hashtags }  = extractImages(data.value.content);
-//console.log(hashtags,"hashtags");
+//console.log(images,"imgs");
 
 </script>
   <style scoped>
-  article >>> .wp-block-image, article >>> pre {
-    /*float: left;
-    margin: 0 20px 20px 0; */
+ 
+  article:deep(.wp-block-image) {
     display:none;
   }
-  
+
+  article:deep( pre ){
+    display:none;
+  }
+
   article::after {
     content: '';
     display: table;
