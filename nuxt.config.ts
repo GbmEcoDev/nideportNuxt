@@ -1,6 +1,3 @@
-//import { defineNuxtModule } from 'nuxt'
-
-
 export default defineNuxtConfig({
   nitro:{prerender:{failOnError:false,}},
   generate:{

@@ -16,16 +16,16 @@
             <br/> info@nideport.com</div>
             <div class="p-4 flex items-center justify-center">
                 <div class="flex items-center gap-x-3">
-                    <NuxtLink target="_blank" to="#" class="transition hover:!scale-110 ">
+                    <NuxtLink rel="help" :to="`mailto:info@nideport.com`" class="transition hover:!scale-110 ">
                         <NuxtImg :src="`${urlImg}/images/icon/mail.svg`" class="icons"/>
-                    </NuxtLink>
-                    <NuxtLink target="_blank" to="#" class="transition hover:!scale-110">
+                    </NuxtLink> 
+                    <NuxtLink target="_blank" rel="noopener" to="https://www.youtube.com/@Nideport" class="transition hover:!scale-110">
                         <NuxtImg :src="`${urlImg}/images/icon/YT.svg`" class="icons"/>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="#" class="transition hover:!scale-110">
+                    <NuxtLink target="_blank" rel="noopener" to="https://www.linkedin.com/company/nideport" class="transition hover:!scale-110">
                         <NuxtImg :src="`${urlImg}/images/icon/LN.svg`" class="icons"/>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="#" class="transition hover:!scale-110">
+                    <NuxtLink target="_blank" rel="noopener" to="https://www.instagram.com/nideport_eco/" class="transition hover:!scale-110">
                         <NuxtImg :src="`${urlImg}/images/icon/IG.svg`" class="icons"/>
                     </NuxtLink>
                 </div>

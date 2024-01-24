@@ -1,7 +1,7 @@
 <template>
     <div class="w-full">
       <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Categorías</p>
-      <NuxtLink
+      <NuxtLink rel="prerender"
         v-for="category in filteredCategoriesWithPosts"
         :key="category.id"
         :to="`${pathcategory}${category.slug}`"
@@ -62,6 +62,10 @@
   } catch (error) {
     //console.error('Error fetching categories:', error);
     // Handle the error as needed, e.g., show a user-friendly message
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Page Not Found'
+    })
   }
 
   // Initialize categories based on the result or an empty array if there was an error

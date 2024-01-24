@@ -26,11 +26,11 @@
                        '!visible !opacity-100 !translate-y-0': navIsOpen
                        }">
                   <ul class="text-white max-sm:text-secondary max-md:text-secondary max-lg:text-secondary dark:text-gray-100 w-full flex lg:items-center gap-y-4 lg:gap-x-8 flex-col lg:flex-row lg:h-20">
-                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg " :to="localePath({ name: 'index' })">{{ $t('nav_home') }}</NuxtLink></li> 
-                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'about' })">{{ $t('nav_about') }}</NuxtLink></li>
-                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'projects' })">{{ $t('nav_projects') }}</NuxtLink></li>
-                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'blog' })">{{ $t('nav_blog') }}</NuxtLink></li>
-                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'contact' })">{{ $t('nav_contact') }}</NuxtLink></li>
+                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'index' })">{{ $t('nav_home') }}</NuxtLink></li> 
+                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'about' })">{{ $t('nav_about') }}</NuxtLink></li>
+                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'projects' })">{{ $t('nav_projects') }}</NuxtLink></li>
+                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'blog' })">{{ $t('nav_blog') }}</NuxtLink></li>
+                    <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'contact' })">{{ $t('nav_contact') }}</NuxtLink></li>
                   </ul>
               </div>
 
@@ -38,9 +38,9 @@
                 'scrollUp': scrollY > 0,
                 'scrollDown': scrollY === 0
                 }">
-                      <AtomsLinkBtn href="#" variant="primary" class="max-[640px]:hidden">
+<!--                       <AtomsLinkBtn href="/contact" variant="primary" class="max-[640px]:hidden">
                         {{$t('home_hero_btn_join')}}
-                      </AtomsLinkBtn>
+                      </AtomsLinkBtn> -->
                   <ElementsLangSwitcher />
                   <ElementsThemeSwitcher />
                   <div class="flex lg:hidden border-l border-box-border pl-2">

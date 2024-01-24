@@ -1,11 +1,10 @@
 <template>
  
   <div class="relative z-50 h-screen w-screen">
-    <p>Id desde otro componente: {{ fotoId }}</p> 
 
     <l-map ref="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.91]" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
-      <UBadge>alert</UBadge>
+      
       <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites"  />
       <l-geo-json :geojson="cuadriculas" :options="options" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoLimites />
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" />
@@ -14,26 +13,72 @@
       <l-geo-json :geojson="alertas" :options="optionsAlertasAlta" layer-type="overlay" name="Alertas probabilidad alta" />
       <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" />
       <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" />
-      <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" />
+      <!-- <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" /> -->
+      <l-geo-json ref="fotosLayer" :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" />
     </l-map>
-
+    <UNotification class="absolute w-40 right-0 top-0 z-1001 m-4" :id="idToShow" :title="showLastSixDigits(idToShow)" 
+    icon="i-heroicons-command-line"
+    v-show="idToShow !== null && isNotificationVisible"
+    color="primary"
+    variant="solid"
+    :timeout="5000"
+    :close-button="{ icon: 'i-heroicons-archive-box-x-mark', color: 'primary', variant: 'outline', padded: true, size: '2xs', ui: { rounded: 'rounded-full' },onClick: closeNotification }"
+    />
   </div>
 </template>
 <script setup>
 import "leaflet/dist/leaflet.css";
 import { ref, onMounted,watch } from 'vue';
 import { LMap, LTileLayer, LGeoJson, LControlLayers, LIcon } from "@vue-leaflet/vue-leaflet";
+const config = useRuntimeConfig();
+const urlImg = config.public.url_base;
+const isNotificationVisible = ref(false);
 
-// Definir la prop para recibir el ID
+// Definir la props para recibir el ID
 const props = defineProps(['fotoId', 'estadoLimites', 'featureByName']);
-
 // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
+// Ref de capa fotos para comparar
+const fotosLayer = ref(null);
 
+ // Arreglo para acortar string
+ function showLastSixDigits(id) {
+  const idString = id.toString();
+  const lastSixDigits = idString.slice(-6);
+  return `...${lastSixDigits}`;
+}
 // Acciones a realizar cuando cambia el ID
-watch(() => {
-  idToShow.value = props.fotoId;
+watch(() => props.fotoId, (newValue, oldValue) => {
+  //tomo valor, activo Unotification y apago en 6 seg.
+  idToShow.value = newValue;
+  isNotificationVisible.value = true;
+ 
+  if ( isNotificationVisible) {
+      setTimeout(() => {
+      closeNotification();
+    }, 6000);
+  }
+
+  // Verifico datos de capa fotos
+    if(fotosLayer != null){
+      
+      console.log("layerf", fotosLayer);
+      // Iterar sobre cada capa y activa el popup si coincide con idToShow
+      /*fotosLayer.value.eachLayer((layer) => {
+      const feature = layer.feature;
+
+      if (feature.properties.ID === idToShow.value) {
+        layer.fire("click"); // Simula un clic para activar el popup
+      }
+    });*/
+
+  }
 }, { immediate: true });
+
+// Cerrar UNotification
+const closeNotification = () => {
+  isNotificationVisible.value = false;
+};
 
 const zoom = ref(11);
 const limites = ref(null);
@@ -126,11 +171,12 @@ const optionsFotos = {
   },
   onEachFeature: (feature, layer) => {
     if (feature.properties.foto) {
-      layer.bindPopup(
-        '<NuxtImg src="/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
-        { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
-      );
+        layer.bindPopup(
+          '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
+          { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
+        );
     }
+
   }
 };
 
@@ -228,6 +274,8 @@ const fetchData = async () => {
 
 onMounted(() => {
   fetchData();
+ // fotosLayer.value = this.$refs.fotosLayer;
+
 });
 </script>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="relative w-screen h-screen z-0">
       <div class="absolute z-0 w-screen h-screen"><MapTech :fotoId="idSeleccionado" :estadoLimites="selected"/></div>
-      <div class="absolute top-0 left-8 h-18 w-48">
+      <div class="absolute top-0 left-0 h-18 w-48">
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
       <div class="absolute z-55 bottom-4 right-8">
@@ -15,7 +15,7 @@
                 <UCard>
                   <div v-if="item.key === 'discover'" class="space-y-3">
                    <SectionsMapappListDiscovery  @go-map-id="recibirId"/>
-                   <UVerticalNavigation :links="links" />
+                   <!-- <UVerticalNavigation :links="links" /> -->
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-3">
                     <div class="w-full">
