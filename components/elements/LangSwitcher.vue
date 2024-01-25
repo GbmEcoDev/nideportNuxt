@@ -19,7 +19,7 @@ const changeLanguage = (locale:any) => {
 <template>
     <div class="relative py-2">
         <button
-            class="outline-none bg-transparent p-2.5 rounded-full text-gray-200 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            class="outline-none bg-transparent p-2.5 rounded-full text-gray-200 hover:text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
             @click="toggleDropdown">
             <span v-if="locale === 'es'">
                 ES

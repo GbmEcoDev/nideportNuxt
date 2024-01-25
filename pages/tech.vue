@@ -7,7 +7,7 @@
       <div class="absolute z-55 bottom-4 right-8">
         <UButton label="DESCUBRIR" @click="isOpen = true" color="primary" size="xl" icon="i-heroicons-cursor-arrow-rays-20-solid"/>
 
-        <USlideover v-model="isOpen" :transition="true" side="left" :overlay="false">
+        <USlideover v-model="isOpen" :transition="true" side="left" :overlay="false" class="overflow-auto">
             <Logo/>
             <div class="p-4 flex-1">
               <UTabs :items="items">
@@ -15,13 +15,12 @@
                 <UCard>
                   <div v-if="item.key === 'discover'" class="space-y-3">
                    <SectionsMapappListDiscovery  @go-map-id="recibirId"/>
-                   <!-- <UVerticalNavigation :links="links" /> -->
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-3">
-                    <div class="w-full">
-                      <h3>Nuestro plan de restauracion esta conformado por 3 etapas</h3>
-                    </div>
-                    <ListEvento />
+                    <p>Area en proceso de restauracion</p>
+                    <SectionsMapappListAreaWorked />
+                    <p>Areas proximas a restaurar</p>
+                    <SectionsMapappListAreaToRestore />
                   </div>
                 </UCard>
               </template>
@@ -31,13 +30,13 @@
               <UCard>
                 <UCheckbox color="black" v-model="selected" name="limites" label="Límites" @change="layerVisibility(selected , 'limites' )"/>
                 <UCheckbox color="gray" v-model="selected" name="cuadriculas" label="Cuadrículas" @change="layerVisibility(selectedCuadricula, 'cuadriculas')"/>
-                <UCheckbox color="green" v-model="selected" name="fajas" label="Área reforestada" @change="layerVisibility(selected)"/>
-                <UCheckbox color="red" v-model="selected" name="areasDegradadas" label="Áreas a refosrestar" @change="layerVisibility(selected)"/>
-                <UCheckbox color="blue" v-model="selected" name="rayos" label="Alertas por rayos" @change="layerVisibility(selected)"/>
-                <UCheckbox color="yellow" v-model="selected" name="alertasBajas" label="Alertas con probabilidad baja" @change="layerVisibility(selected)"/>
-                <UCheckbox color="orange" v-model="selected" name="alertasMedia" label="Alertas con probabilidad media" @change="layerVisibility(selected)"/>
-                <UCheckbox color="red" v-model="selected" name="alertasAlta" label="Alertas con probabilidad alta" @change="layerVisibility(selected)"/>
-                <UCheckbox color="black" v-model="selected" name="fotos" label="Registros de trabajo en campo" @change="layerVisibility(selected)"/>
+                <UCheckbox color="green" v-model="selected" name="fajas" label="Área reforestada" @change="layerVisibility(selected,'')"/>
+                <UCheckbox color="red" v-model="selected" name="areasDegradadas" label="Áreas a refosrestar" @change="layerVisibility(selected,'')"/>
+                <UCheckbox color="blue" v-model="selected" name="rayos" label="Alertas por rayos" @change="layerVisibility(selected,'')"/>
+                <UCheckbox color="yellow" v-model="selected" name="alertasBajas" label="Alertas con probabilidad baja" @change="layerVisibility(selected,'')"/>
+                <UCheckbox color="orange" v-model="selected" name="alertasMedia" label="Alertas con probabilidad media" @change="layerVisibility(selected,'')"/>
+                <UCheckbox color="red" v-model="selected" name="alertasAlta" label="Alertas con probabilidad alta" @change="layerVisibility(selected,'')"/>
+                <UCheckbox color="black" v-model="selected" name="fotos" label="Registros de trabajo en campo" @change="layerVisibility(selected,'')"/>
               </UCard>
             </div>
         </USlideover>
@@ -63,27 +62,6 @@ const recibirId = (idFotoSelect: string) => {
   idSeleccionado.value = idFotoSelect;
 };
 
-
-  const links = [{
-  label: 'Restauracion',
-  avatar: {
-    src: 'https://avatars.githubusercontent.com/u/739984?v=4'
-  },
-  badge: 100
-}, {
-  label: 'Biodiversidad',
-  icon: 'i-heroicons-home',
-  to: '/getting-started/installation'
-}, {
-  label: 'Seguridad',
-  icon: 'i-heroicons-chart-bar',
-  to: '/navigation/vertical-navigation'
-}, {
-  label: 'Comunidad',
-  icon: 'i-heroicons-command-line',
-  to: '/navigation/command-palette'
-}]
-
 const items = [{
   key: 'discover',
   label: 'DESCUBRIR',
@@ -100,14 +78,11 @@ onMounted(() => {
     ///console.log('Modo de color de la página:', colorMode.value);
   })
 
-useHead({
-    title: 'Nideport - Tech',
+  useHead({
+    title: 'Nideport - Tecnologia',
     meta: [
-      { name: 'description', content: 'Tecnologias...' },
-    ],
-    link: [
-      { rel: 'icon', type: 'image/svg', href: '/images/logo-nideport.svg' }
-    ],
+      { name: 'description', content: 'Utilizamos los últimos avances tecnologicos para aplicar en el proyecto.' },
+    ]
   })
   
   definePageMeta({
@@ -115,7 +90,7 @@ useHead({
   })
 
   const emit = defineEmits(['layer-vis']);
-  const layerVisibility = (estado: Boolean, capa: string) => {
+  const layerVisibility = (estado: Boolean, capa: string  ) => {
     emit('layer-vis', estado, capa);
   };
 

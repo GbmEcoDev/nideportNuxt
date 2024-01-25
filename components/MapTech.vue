@@ -4,7 +4,6 @@
 
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.91]" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
-      <UBadge>alert</UBadge>
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
       <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas />
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
@@ -272,7 +271,7 @@ const optionsPois = {
       },
   onEachFeature: (feature, layer) => {
       layer.bindPopup(
-        '<div class="widget popupDetailsVideo"><h3>'+feature.properties.Name+'</h3><div class="video"><iframe width="100%" heigth="100%" src="/videos/'+feature.properties.video+'.mp4?autoplay=1" frameborder="0" allowfullscreen></iframe></div></div>',
+        '<div class="widget popupDetailsVideo"><h3>'+feature.properties.Name+'</h3><div class="video"><iframe width="100%" heigth="100%" src="/video/'+feature.properties.video+'.mp4?autoplay=1" frameborder="0" allowfullscreen></iframe></div></div>',
         { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
       );
   }
@@ -323,7 +322,7 @@ watch( () => props.fotoId, (newValue, oldValue) =>  {
   if ( isNotificationVisible) {
       setTimeout(() => {
       closeNotification();
-    }, 6000);
+    }, 1000);
   }
 
   navigateTo(props.fotoId) 
