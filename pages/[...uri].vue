@@ -69,6 +69,7 @@
             ... on Post {
               id
               title
+              excerpt
               date
               content
               categories {
@@ -103,7 +104,14 @@
 
   useHead({
     title: data.value.title,
+    meta: [
+      {
+        name: 'description',
+        content: data.value.excerpt,  
+      },
+    ],
   });
+
 
   function shareOnTwitter() {
     const tweetText = encodeURIComponent(`${data.title} - ${window.location.href}`);

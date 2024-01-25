@@ -31,12 +31,12 @@
 <script setup lang="ts">
 const route = useRoute();
 useHead({
-  title: 'Nideport - Noticias',
-  meta: [
-    { name: 'description', content: 'Soluciones naturales...' },
-  ],
-  link: [
-    { rel: 'icon', type: 'image/svg', href: '/images/logo-nideport.svg' }
-  ],
-})
+    title: 'Mantente al Día con las Últimas Novedades sobre Créditos de Carbono',
+    meta: [
+      {
+        name: 'description',
+        content: 'Lee nuestras noticias sobre compensación de carbono y cómo estamos generando un triple impacto en el medio ambiente, la sociedad y la economía.' 
+      },
+    ],
+  });
 </script>

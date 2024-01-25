@@ -42,7 +42,7 @@
   .scroll-to-top-btn {
     position: fixed;
     bottom: 28px;
-    right: 20px;
+    right: 6px;
     padding: 10px;
     border-radius: 50%;
     background-color: rgb(0, 122, 119);

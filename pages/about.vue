@@ -34,12 +34,12 @@ const imageList = ref([
 ]);
 
 useHead({
-  title: 'Nideport - Nosotros',
-  meta: [
-    { name: 'description', content: 'Soluciones naturales...' },
-  ],
-  link: [
-    { rel: 'icon', type: 'image/svg', href: '/images/logo-nideport.svg' }
-  ],
-})
+    title: 'Nuestra Misión: Desarrollar Proyectos de Créditos de Carbono Sostenibles',
+    meta: [
+      {
+        name: 'description',
+        content: 'Somos una desarrolladora de proyectos comprometida con la reforestación nativa y biodiversa a gran escala y el desarrollo socioeconómico de comunidades locales.' 
+      },
+    ],
+  });
 </script>

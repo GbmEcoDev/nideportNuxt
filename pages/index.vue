@@ -4,14 +4,14 @@ const { locales, locale, setLocale } = useI18n()
 
 
 useHead({
-  title: 'Nideport - Home',
-  meta: [
-    { name: 'description', content: 'Soluciones naturales...' },
-  ],
-  link: [
-    { rel: 'icon', type: 'image/svg', href: '/images/logo-nideport.svg' }
-  ],
-})
+    title: 'Compensación de Carbono: Protegiendo el Futuro del Medio Ambiente',
+    meta: [
+      {
+        name: 'description',
+        content: 'Somos expertos en soluciones basadas en la naturaleza y proyectos de créditos de carbono. Descubre cómo eliminamos carbono para un mundo más sostenible.' 
+      },
+    ],
+  });
 </script>
 
 <template>

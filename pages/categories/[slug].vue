@@ -32,4 +32,14 @@ import { useI18n } from 'vue-i18n';
   const currentRoute = router.currentRoute.value.path
   const routeParts = currentRoute.split('/')
   const categoryName = language === "ES" ? routeParts[2] : routeParts[3]
+
+  useHead({
+    title: categoryName,
+    meta: [
+      {
+        name: 'description',
+        content: 'Enterate de las últimas novedades en materia de ' + categoryName,  
+      },
+    ],
+  });
 </script>

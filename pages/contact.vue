@@ -9,12 +9,12 @@
 const route = useRoute()
 
 useHead({
-  title: 'Nideport - Contacto',
-  meta: [
-    { name: 'description', content: 'Soluciones naturales...' },
-  ],
-  link: [
-    { rel: 'icon', type: 'image/svg', href: '/images/logo-nideport.svg' }
-  ],
-})
+    title: '¡Hablemos de Sostenibilidad! Contacta con Nuestro Equipo',
+    meta: [
+      {
+        name: 'description',
+        content: '¿Interesado en nuestras soluciones de compensación de carbono? Contáctanos hoy para colaborar en la protección del medio ambiente.' 
+      },
+    ],
+  });
 </script>

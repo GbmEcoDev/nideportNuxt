@@ -19,13 +19,13 @@ const changeLanguage = (locale:any) => {
 <template>
     <div class="relative py-2">
         <button
-            class="outline-none bg-transparent p-2.5 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            class="outline-none bg-transparent p-2.5 rounded-full text-gray-200 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
             @click="toggleDropdown">
             <span v-if="locale === 'es'">
-                <ElementsIconsSpain />
+                ES
             </span>
             <span v-if="locale === 'en'">
-                <ElementsIconsEngland />
+                EN
             </span>
         </button>
         <div v-if="isOpen" class="fixed inset-0 " @click="isOpen = false"></div>
@@ -44,10 +44,10 @@ const changeLanguage = (locale:any) => {
                         class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover-bg-gray-800 text-gray-600 dark:text-gray-200"
                         @click="changeLanguage(typeof item === 'object' ? item.code : item)">
                         <span v-if="item === 'es'">
-                            <ElementsIconsSpain />
+                            ES
                         </span>
                         <span v-else-if="item === 'en'">
-                            <ElementsIconsEngland />
+                           EN
                         </span>
                         {{ typeof item === 'object' ? item.name : item }}
                     </li>

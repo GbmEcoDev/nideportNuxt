@@ -4,14 +4,14 @@ const route = useRoute();
 
 
 useHead({
-  title: 'Nideport - Proyectos',
-  meta: [
-    { name: 'description', content: 'Soluciones naturales...' },
-  ],
-  link: [
-    { rel: 'icon', type: 'image/svg', href: '/images/logo-nideport.svg' }
-  ],
-})
+    title: 'Explora Nuestros Proyectos de Créditos de Carbono en Acción',
+    meta: [
+      {
+        name: 'description',
+        content: 'Descubre cómo contribuimos al mercado de carbono y combatimos el cambio climático a través de la tecnología de captura de carbono y soluciones basadas en la naturaleza.' 
+      },
+    ],
+  });
 </script>
 
 <template>

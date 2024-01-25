@@ -45,14 +45,13 @@
         </div>
   
         <div class="flex items-center justify-center">
-          <button type="submit" :disabled="waiting" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          <template v-if="waiting">{{$t('contact_form_button_act')}}</template>
-          <template v-else>{{$t('contact_form_button')}}</template>
-        </button>
-          <p v-if="errors"> error.</p>
-      
-		      <p v-if="succsess"> ok!</p>
-        </div>
+      <button type="submit" :disabled="waiting" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <template v-if="waiting">{{$t('contact_form_button_act')}}</template>
+        <template v-else>{{$t('contact_form_button')}}</template>
+      </button>
+      <p v-if="errors">error</p>
+      <p v-if="success">ok</p>
+    </div>
       </form>
     </div>
 
@@ -62,7 +61,13 @@
 
 <script setup>
 import { ref } from 'vue';
-//import { send } from './composables/email.js';
+const mail = useMail()
+
+mail.send({
+  from: 'WebNideport',
+  subject: 'Test Envio Incredible',
+  text: 'Increible saliio.',
+});
 
 const form = ref({
   nombre: '',
@@ -72,26 +77,11 @@ const form = ref({
   terminos: false,
   notificaciones: false,
 });
-/* const waiting = ref(false);
+const waiting = ref(false);
 const errors = ref(false);
 const success = ref(false);
 
-async function submit() {
-  try {
-    waiting.value = true;
-    await send({
-      from: form.value.email,
-      subject: 'Mensaje desde formulario de contacto',
-      text: `Nombre: ${form.value.nombre}\nEmpresa: ${form.value.empresa}\nTeléfono: ${form.value.telefono}\nEmail: ${form.value.email}`,
-    });
-    success.value = true;
-  } catch (error) {
-    console.error('Error al enviar el formulario:', error);
-    errors.value = true;
-  } finally {
-    waiting.value = false;
-  }
-} */
+
 </script>
   <style scoped>h2{
     text-align: left;

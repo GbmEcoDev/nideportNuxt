@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   nitro:{prerender:{failOnError:false,}},
-  generate:{
+
+  /* generate:{
     exclude: [
       /^\/tecnologias-financieras-para-un-planeta-mas-sostenible\/.*$/, 
       /^\/tecnologia\/.*$/, 
@@ -18,14 +19,25 @@ export default defineNuxtConfig({
       /^\/en\/stockholm50moray\/.*$/,
       /^\/categories\/sustentabilidad\/.*$/,
     ],
-  },
+  }, */
   css: [
     '@/assets/css/main.css',
   ],
   modules:['@nuxt/image', //'@nuxtjs/tailwindcss',
-  '@nuxt/devtools', '@nuxtjs/i18n', //'@nuxtjs/color-mode',
-  '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui'],
-  
+  '@nuxt/devtools', '@nuxtjs/i18n', '@nuxtjs/sitemap', //'@nuxtjs/color-mode',
+  '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui',['nuxt-mail', {
+    message: {
+      to: 'arielrobles@outlook.com',
+    },
+    smtp: {
+      service: 'gmail',
+      auth: {
+        user: process.env.MAILUSER,
+        pass: process.env.MAILPASSWORD,
+      },
+    },
+  }]],
+
   carousel: {
     prefix: 'MyPrefix'
   },
@@ -121,5 +133,17 @@ export default defineNuxtConfig({
           MAILPASSWORD: process.env.MAILPASSWORD,
           CONTACTMAIL: process.env.CONTACTMAIL
       }
-  }
+  },
+  /* mail: {
+    message: {
+      to: 'info@nideport.com',
+    },
+    smtp: {
+      service: 'gmail',
+      auth: {
+        user: process.env.MAILUSER,
+        pass: process.env.MAILPASSWORD,
+      },
+    },
+  }, */
 })

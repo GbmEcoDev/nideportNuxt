@@ -17,10 +17,14 @@
 </style>
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Nideport',
-  ogTitle: 'Nideport',
-  description: 'Soluciones basadas en la naturaleza para proteger y restaurar ecosistemas.',
-  ogDescription: 'Soluciones basadas en la naturaleza para proteger y restaurar ecosistemas.',
-  ogImage: 'https://demo.nideport.com/images/image.png'
-})
+  ogTitle: 'Compensación de Carbono: Protegiendo el Futuro del Medio Ambiente',
+  ogDescription: 'Somos expertos en soluciones basadas en la naturaleza y proyectos de créditos de carbono. Descubre cómo eliminamos carbono para un mundo más sostenible.',
+  ogImage: 'https://demo.nideport.com/images/bg-contact.webp'
+});
+useHead({
+    link: [
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+    ],
+  });
 </script>

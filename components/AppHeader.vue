@@ -38,9 +38,9 @@
                 'scrollUp': scrollY > 0,
                 'scrollDown': scrollY === 0
                 }">
-<!--                       <AtomsLinkBtn href="/contact" variant="primary" class="max-[640px]:hidden">
+                       <AtomsLinkBtn :href="localePath({ name: 'projects' })" variant="primary" class="max-[640px]:hidden">
                         {{$t('home_hero_btn_join')}}
-                      </AtomsLinkBtn> -->
+                      </AtomsLinkBtn> <!---->
                   <ElementsLangSwitcher />
                   <ElementsThemeSwitcher />
                   <div class="flex lg:hidden border-l border-box-border pl-2">

@@ -30,7 +30,7 @@ if (widthBtn != "")
 </script>
 
 <template>
-    <NuxtLink :to="href" class="px-6 md:px-5 py-3 max-lg:px-2 rounded relative group" :class="`${wClass}`">
+    <NuxtLink :to="href" rel="next" class="px-6 md:px-5 py-3 max-lg:px-2 rounded relative group" :class="`${wClass}`">
         <span v-if="variant !== 'custom'" class="absolute inset-0 rounded-xl group-hover:scale-105 origin-center transition-all ease-in-out" :class="`${spanClass} ${borderColor}`"></span>
         <span class="relative text-[#02A327] flex items-center justify-center" :class="borderColor">
             <slot/>
