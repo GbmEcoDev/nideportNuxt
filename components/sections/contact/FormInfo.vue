@@ -45,7 +45,7 @@
         </div>
   
         <div class="flex items-center justify-center">
-      <button type="submit" :disabled="waiting" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      <button aria-label="Send" type="submit" :disabled="waiting" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         <template v-if="waiting">{{$t('contact_form_button_act')}}</template>
         <template v-else>{{$t('contact_form_button')}}</template>
       </button>

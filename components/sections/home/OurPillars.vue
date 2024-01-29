@@ -36,19 +36,19 @@
                     <div data-slide-recent @scroll="initScroll()" class="flex items-stretch gap-5 overflow-hidden overflow-x-auto invisible-scroll h-full max-sm:w-full max-sm:snap-x">
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarOne')" >
-                              <CardsNidePillar :title="$t('home_pillar_c1_title')" cover-image="/images/pilar-restauracion.webp" />
+                              <CardsNidePillar :title="$t('home_pillar_c1_title')" cover-image="/images/pilar-restauracion.jpg" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarTwo')">
-                             <CardsNidePillar :title="$t('home_pillar_c2_title')" cover-image="/images/pilar-biodiversidad.webp" />
+                             <CardsNidePillar :title="$t('home_pillar_c2_title')" cover-image="/images/pilar-biodiversidad.jpg" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarTree')">
-                                <CardsNidePillar :title="$t('home_pillar_c3_title')" cover-image="/images/pilar-comunidad.webp" />
+                                <CardsNidePillar :title="$t('home_pillar_c3_title')" cover-image="/images/pilar-comunidad.jpg" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarFour')">
-                                <CardsNidePillar :title="$t('home_pillar_c4_title')" cover-image="/images/pilar-tecnologia.webp" />
+                                <CardsNidePillar :title="$t('home_pillar_c4_title')" cover-image="/images/pilar-tecnologia.jpg" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarFive')">
@@ -130,7 +130,7 @@ let tiempo : any;
 const iniciarContador = () => {
 tiempo = setInterval(() => {
     cantidad.value += 454321;
-    colorHeight.value = `${(cantidad.value / 45000000) * 100}%`;
+    colorHeight.value = `${(cantidad.value / 45000000) * 95}%`;
 
         if (cantidad.value >= 45000000) {
         cantidad.value = 45000000;

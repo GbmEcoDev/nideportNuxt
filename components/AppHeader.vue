@@ -44,7 +44,7 @@
                   <ElementsLangSwitcher />
                   <ElementsThemeSwitcher />
                   <div class="flex lg:hidden border-l border-box-border pl-2">
-                      <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative" alt="toogle menu">
+                      <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative" alt="toogle menu" aria-label="toogle menu">
                           <span
                               class="w-6 h-0.5 rounded-full bg-gray-500 dark:bg-gray-200 transition-all duration-300 ease-linear"
                               :class="navIsOpen ? 'translate-y-1.5 rotate-[40deg] scale-x-100 ' : ' scale-x-50 origin-left'"></span>

@@ -3,13 +3,13 @@
 @import 'tailwindcss/utilities';
 
 /* main.css */
-@font-face {
+/* @font-face {
     font-family: 'Nunito';
     font-style: normal;
-    font-weight: 400; /* Regular */
+    font-weight: 400;
     src: local('Nunito Regular'), local('Nunito-Regular'), url('/fonts/Nunito-Regular.woff2') format('woff2'), url('/fonts/Nunito-Regular.ttf') format('ttf');
   }
-  
+   */
   /* @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -17,12 +17,12 @@
     src: local('Inter Regular'), local('Inter-Regular'), url('/fonts/Inter-Regular.woff2') format('woff2'), url('/fonts/Inter-Regular.ttf') format('ttf');}
     */
 
-  @font-face {
+/*   @font-face {
     font-family: 'NunitoBold';
     font-style: normal;
-    font-weight: 700; /* Bold */
+    font-weight: 700;
     src: local('Nunito Bold'), local('Nunito-Bold'), url('/fonts/Nunito-Bold.woff2') format('woff2'), url('/fonts/Nunito-Bold.ttf') format('ttf');
-  }
+  } */
 :root {
     --color-primary: 0 122 119;
     --color-secondary: 0 122 119;

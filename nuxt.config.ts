@@ -26,8 +26,6 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/main.css',
   ],
-
-  
   modules:['@nuxt/image', //'@nuxtjs/tailwindcss',
   '@nuxt/devtools', '@nuxtjs/i18n', 
   '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui',['nuxt-mail', {

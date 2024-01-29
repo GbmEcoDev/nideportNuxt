@@ -14,7 +14,7 @@
     />
     Your browser does not support the video tag.
   </video>
-  <NuxtImg preload :src="`${urlImg}/images/hero-home.webp`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/>  
+  <NuxtImg preload format="webp" :src="`${urlImg}/images/hero-home.jpg`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/>  
     <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
           <AtomsContainer>
             <div class="flex h-full items-center justify-center">

@@ -7,7 +7,7 @@
                 <h2 class="font-bold text-secondary text-lg leading-5 dark:text-gray-400">{{ find.post_title }}</h2><!-- -->
             <span class="text-xs text-gray-600 border border-gray-300 rounded-full px-2 dark:text-gray-400">{{ find.acf.fecha }}</span>     
             <span v-if="find.acf.denominacion" class="text-xs text-gray-600 dark:text-gray-400 px-2">Presenta: {{ find.acf.denominacion }}</span>
-            <button >go map</button><!-- @click="setSelectedEvent(find)" -->
+            <button aria-label="Go map">go map</button><!-- @click="setSelectedEvent(find)" -->
             </div>
         </div>
     </div>

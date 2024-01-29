@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-if="showButton" @click="scrollToTop" class="scroll-to-top-btn" alt="go top">
+        <button v-if="showButton" @click="scrollToTop" class="scroll-to-top-btn" alt="go top" aria-label="go top">
             <svg height="20" viewBox="0 0 48 48" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
                 <path d="M24 16l-12 12 2.83 2.83 9.17-9.17 9.17 9.17 2.83-2.83z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
         </button>

@@ -28,20 +28,20 @@
       <div class=" p-4 h-full overflow-hidden relative flex items-center justify-center">
         <div class="relative max-h-full"> 
           <div class="absolute top-0 right-0 z-1060 flex justify-center">
-            <button @click="closeModal" class="text-gray-500 hover:text-gray-700 bg-white rounded-full p-3">
+            <button @click="closeModal" class="text-gray-500 hover:text-gray-700 bg-white rounded-full p-3" aria-label="Cerrar Modal">
               <IconsCloseIco />
             </button>
           </div>
           <NuxtImg :src="`${selectedImage}`" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
         </div>
           <div class="absolute top-0 left-0 bottom-0 flex items-center justify-between">
-            <button @click="prevImage" class="text-gray-500 hover:text-gray-700 ml-4 bg-white rounded-full p-3 z-60">
+            <button @click="prevImage" class="text-gray-500 hover:text-gray-700 ml-4 bg-white rounded-full p-3 z-60" aria-label="Imagen anterior">
               <IconsPrevIco />
             </button>
           </div>
 
           <div class="absolute top-50 right-0 bottom-50 z-1040 flex items-center justify-between">
-            <button @click="nextImage" class="text-gray-500 hover:text-gray-700 mr-4 bg-white rounded-full p-3 z-60">
+            <button @click="nextImage" class="text-gray-500 hover:text-gray-700 mr-4 bg-white rounded-full p-3 z-60" aria-label="Imagen posterior">
               <IconsNextIco />
             </button>
           </div>

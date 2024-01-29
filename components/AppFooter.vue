@@ -12,7 +12,7 @@
                     <Logo/>
                 </NuxtLink>
             </div>
-            <div class="p-4 flex items-center text-left text-slate-400 text-xs leading-22 w-3/4 " >Copyright Nideport Uruguay &copy; {{ new Date().getFullYear() }} All rights Reserved.
+            <div class="p-4 flex items-center text-left text-slate-500 text-xs leading-22 w-3/4 " >Copyright Nideport Uruguay &copy; {{ new Date().getFullYear() }} All rights Reserved.
             <br/> info@nideport.com</div>
             <div class="p-4 flex items-center justify-center">
                 <div class="flex items-center gap-x-3">

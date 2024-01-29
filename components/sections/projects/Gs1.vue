@@ -26,7 +26,7 @@
         <div class=" p-4 h-full overflow-hidden relative flex items-center justify-center">
             <div class="relative max-h-full"> 
             <div class="absolute top-0 right-0 z-60 flex justify-center">
-                <button @click="closeModal" class="text-gray-500 hover:text-gray-700 bg-white rounded-full p-3">
+                <button @click="closeModal" class="text-gray-500 hover:text-gray-700 bg-white rounded-full p-3" aria-label="Close modal">
                 <IconsCloseIco />
                 </button>
             </div>

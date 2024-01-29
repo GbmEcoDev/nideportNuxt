@@ -22,9 +22,13 @@ useSeoMeta({
   ogImage: 'https://demo.nideport.com/images/bg-contact.webp'
 });
 useHead({
+    htmlAttrs: {
+          lang: 'es',
+        },
     link: [
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito:wght@400;700&display=swap'},
     ],
   });
 </script>
