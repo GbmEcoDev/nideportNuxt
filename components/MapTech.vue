@@ -2,8 +2,9 @@
  
   <div class="relative z-50 h-screen w-screen">
 
-    <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.91]" :options="mapoptions" >
+    <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
+      <!-- <UBadge>alert</UBadge> -->
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
       <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas />
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
@@ -34,10 +35,10 @@ const urlImg = config.public.url_base;
 const isNotificationVisible = ref(false);
 
 // Definir la prop para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoCuadriculas' , 'cuadriculas' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoMedia' , 'estadoBaja' , 'estadoFotos' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoCuadriculas' , 'cuadriculas' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoMedia' , 'estadoBaja' , 'estadoFotos' , 'estadoPois' ]);
 
 const featureByName = ref([])
-const map = ref()
+const map = ref(null)
 
 // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
@@ -84,6 +85,7 @@ const closeNotification = () => {
 };
 
 const zoom = ref(11);
+const center = ref([-26.52536, -53.91])
 const limites = ref(null);
 const cuadriculas = ref(null);
 const fajas = ref(null);
@@ -264,9 +266,9 @@ const optionsAlertasAlta = {
 // Puntos destacados con videos
 const optionsPois = {
   pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: L.icon({
-          iconUrl: "/images/icon/location-forest.svg",
-          iconSize: [30, 85],
+          return L.marker(latlng, {icon: new L.Icon({
+            'iconUrl': "/images/icon/location-forest.svg",
+            'iconSize': [30, 85]
         })} )
       },
   onEachFeature: (feature, layer) => {
@@ -296,22 +298,15 @@ const fetchData = async () => {
 
 onMounted(() => {
   fetchData();
- // fotosLayer.value = this.$refs.fotosLayer;
+  // fotosLayer.value = this.$refs.fotosLayer;
 
 });
 
 const navigateTo = async (idFoto) => {
 
-  if (featureByName) {
-
-    console.log( featureByName[idFoto]);
-    console.log( map )
-    map.flyTo(featureByName[idFoto].getLatLng() , 20 , { maxZoom: 21 });
-
-    } else {
-    console.log(idFoto)
-  }
-
+  center.value = featureByName[idFoto].getLatLng();
+  zoom.value = 21;
+  
 }
 
 // Acciones a realizar cuando cambia el ID
