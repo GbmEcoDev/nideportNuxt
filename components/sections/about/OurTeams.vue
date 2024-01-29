@@ -6,102 +6,165 @@
         <AtomsContainer>
             <div class="grid grid-cols-2 items-stretch sm:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-10 sm:gap-x-5 sm:gap-y-8">
 
-                <CardsTeam name="Juan" 
+                <!-- <CardsTeam name="Juan" 
                     href="#" 
                     linkedin="#"
                     cover-image="/images/personal.png" 
                     position="Fundador" 
                     created-at=""
                     jobs="Emprendedor, Inversionista, deportista Olimpico y Autor" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO y Co-fundadora" 
-                    created-at=""
-                    jobs="Ejecutiva Global en tecnología y finanzas. Inversionista, conferencista y autora." 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="VP Tecnología y Producto" 
-                    created-at=""
-                    jobs="Ejecutivo de tecnología construyendo plataformas en las empresas más exitosas en América Latina." 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-                <CardsTeam name="Juan" 
-                    href="#" 
-                    linkedin="#"
-                    cover-image="/images/personal.png" 
-                    position="CEO" 
-                    created-at=""
-                    jobs="Lorem ipsum dolor sit amet,  voluptates" 
-                />
-
+                /> -->
+                <CardsTeam v-for="teamMember in teamData" :key="teamMember.name" v-bind="teamMember" />
+      
             </div>
         </AtomsContainer>
        </section> 
 </template>
 
 <script setup lang="ts">
-
+const teamData = ref([
+  {
+    name: 'Juan Nuñez',
+    position: 'CEO',
+    coverImage: '/images/team/JuanNunez.png'
+  },
+  {
+    name: 'Andres Persico',
+    position: 'COO',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Tomas Gutierrez',
+    position: 'CFO',
+    coverImage: '/images/team/TRV.png'
+  },
+  {
+    name: 'Alejandro Biagini',
+    position: 'Administrador de Fideicomiso',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Carlos Cabanes',
+    position: 'Seguridad Física y Patrimonial',
+    coverImage: '/images/team/CarlosCabanes.png'
+  },
+  {
+    name: 'Cesar Kleiner',
+    position: 'Responsable de Legales',
+    coverImage: '/images/team/CesarKleiner.png'
+  },
+  {
+    name: 'Christian Costantini',
+    position: 'Asesor',
+    coverImage: '/images/team/ChristianCostantini.png'
+  },
+  {
+    name: 'Claudio Esteban',
+    position: 'Líder de Seguridad Física y Patrimonial',
+    coverImage: '/images/team/ClaudioEsteban.png'
+  },
+  {
+    name: 'Fabiana Tarzian',
+    position: 'Asesora de Expansión',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Fernando Colombini',
+    position: 'Gestión de Tierras',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Gerardo Barreto',
+    position: 'Capataz de GS1',
+    coverImage: '/images/team/GerardoBarreto.png'
+  },
+  {
+    name: 'Guillermo Colella',
+    position: 'Gestión y Analisis de Monitoreo de Impacto Social',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Guillermo Videla',
+    position: 'Lider de Logística',
+    coverImage: '/images/team/GuillermoVidela.png'
+  },
+  {
+    name: 'Hernan Alonso',
+    position: 'Líder de Estructura de Expansión',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Hernán Aycaguer',
+    position: 'Asesor',
+    coverImage: '/images/team/HernanAycaguer.png'
+  },
+  {
+    name: 'Javier Ureta',
+    position: 'Responsable de Expansión',
+    coverImage: '/images/team/JavierUreta.png'
+  },
+  {
+    name: 'Lorena Mielnichuk',
+    position: 'Gestión de Campo',
+    coverImage: '/images/team/LorenaMielnichuk.png'
+  },
+  {
+    name: 'Maicon Villalba',
+    position: 'Gestión de Relaciones Comunitarias',
+    coverImage: '/images/team/MaiconVillalba.png'
+  },
+  {
+    name: 'Marcelo Taboada',
+    position: 'Presidente / Responsable de Certificación y Sustentabilidad',
+    coverImage: '/images/team/MarceloTaboada.png'
+  },
+  {
+    name: 'Martín Figueredo',
+    position: 'Líder de Compras y Administración',
+    coverImage: '/images/team/MartinFigueredo.png'
+  },
+  {
+    name: 'Maxima Perez Quesada',
+    position: 'Responsable Comercial',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Natacha Peralta',
+    position: 'Gestión de Salvaguardas de Género',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Pablo Gallardo',
+    position: 'Líder de Relación con las Comunidades',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Pepe Verdejos',
+    position: 'Tesorería y Logística Global',
+    coverImage: '/images/team/personal.png'
+  },
+  {
+    name: 'Tomas Arata',
+    position: 'Responsable de Campo',
+    coverImage: '/images/team/TomasArata.png'
+  },
+  {
+    name: 'Victoria Gardella',
+    position: 'Responsable de Marketing',
+    coverImage: '/images/team/VictoriaGardella.png'
+  },
+  {
+    name: 'Lucia Larrea',
+    position: 'Líder de Back Office',
+    coverImage: '/images/team/LuciaLarrea.png'
+  }
+/*   ,
+  {
+    name: 'Tomas Raul Vicente',
+    position: 'CFO',
+    coverImage: '/images/team/TVR.png'
+  } */
+]);
 </script>
 
 <style scoped>

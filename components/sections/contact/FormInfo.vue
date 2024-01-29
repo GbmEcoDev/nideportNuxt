@@ -61,13 +61,13 @@
 
 <script setup>
 import { ref } from 'vue';
-const mail = useMail()
+/* const mail = useMail()
 
 mail.send({
   from: 'WebNideport',
   subject: 'Test Envio Incredible',
   text: 'Increible saliio.',
-});
+}); */
 
 const form = ref({
   nombre: '',

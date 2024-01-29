@@ -32,7 +32,7 @@
               <IconsCloseIco />
             </button>
           </div>
-          <NuxtImg :src="`${urlImg}${selectedImage}`" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
+          <NuxtImg format="webp" :src="`${urlImg}${selectedImage}`" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
         </div>
           <div class="absolute top-0 left-0 bottom-0 flex items-center justify-between">
             <button @click="prevImage" class="text-gray-500 hover:text-gray-700 ml-4 bg-white rounded-full p-3 z-60">

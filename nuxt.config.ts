@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   nitro:{prerender:{failOnError:false,},compressPublicAssets: true },
 
-  /* generate:{
+  /**/ generate:{
     exclude: [
       /^\/tecnologias-financieras-para-un-planeta-mas-sostenible\/.*$/, 
       /^\/tecnologia\/.*$/, 
@@ -17,28 +17,19 @@ export default defineNuxtConfig({
       /^\/categories\/sustentabilidad\/.*$/,
       /^\/categories\/tecnologia\/.*$/,
       /^\/en\/stockholm50moray\/.*$/,
-      /^\/categories\/sustentabilidad\/.*$/,
+      /^\/en\/tags\/.*$/,
+      /^\/tags\/.*$/,
     ],
-  }, */
+  }, 
+
+
   css: [
     '@/assets/css/main.css',
   ],
+
+  
   modules:['@nuxt/image', //'@nuxtjs/tailwindcss',
-  '@nuxt/devtools', '@nuxtjs/i18n', ['@nuxtjs/sitemap', { sitemap: {
-    hostname: 'https://demo.nideport.com',
-    lastmod: '2017-06-30',
-    /* sitemaps: [
-      {
-        path: '/sitemap-foo.xml',
-        routes: ['foo/1', 'foo/2'],
-        gzip: true
-      }, {
-        path: '/folder/sitemap-bar.xml',
-        routes: ['bar/1', 'bar/2'],
-        exclude: ['/**']
-      }
-    ] */
-  }}], //'@nuxtjs/color-mode',
+  '@nuxt/devtools', '@nuxtjs/i18n', 
   '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui',['nuxt-mail', {
     message: {
       to: 'arielrobles@outlook.com',

@@ -17,8 +17,8 @@
 </style>
 <script setup lang="ts">
 useSeoMeta({
-  ogTitle: 'Compensación de Carbono: Protegiendo el Futuro del Medio Ambiente',
-  ogDescription: 'Somos expertos en soluciones basadas en la naturaleza y proyectos de créditos de carbono. Descubre cómo eliminamos carbono para un mundo más sostenible.',
+  ogTitle: 'Nideport - Soluciones basadas en la naturaleza',
+  ogDescription: 'Somos una empresa desarrolladora de proyectos de créditos de carbono, dedicada a la restauración ecológica y conservación de la biodiversidad con un enfoque social.',
   ogImage: 'https://demo.nideport.com/images/bg-contact.webp'
 });
 useHead({

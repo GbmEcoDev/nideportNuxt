@@ -2,6 +2,27 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* main.css */
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400; /* Regular */
+    src: local('Nunito Regular'), local('Nunito-Regular'), url('/fonts/Nunito-Regular.woff2') format('woff2'), url('/fonts/Nunito-Regular.ttf') format('ttf');
+  }
+  
+  /* @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400; 
+    src: local('Inter Regular'), local('Inter-Regular'), url('/fonts/Inter-Regular.woff2') format('woff2'), url('/fonts/Inter-Regular.ttf') format('ttf');}
+    */
+
+  @font-face {
+    font-family: 'NunitoBold';
+    font-style: normal;
+    font-weight: 700; /* Bold */
+    src: local('Nunito Bold'), local('Nunito-Bold'), url('/fonts/Nunito-Bold.woff2') format('woff2'), url('/fonts/Nunito-Bold.ttf') format('ttf');
+  }
 :root {
     --color-primary: 0 122 119;
     --color-secondary: 0 122 119;
@@ -22,38 +43,19 @@
 
 
 
-/* main.css */
-@font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400; /* Regular */
-    src: local('Nunito Regular'), local('Nunito-Regular'), url('/fonts/Nunito-Regular.woff2') format('woff2'), url('/fonts/Nunito-Regular.ttf') format('ttf');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400; /* Regular */
-    src: local('Inter Regular'), local('Inter-Regular'), url('/fonts/Inter-Regular.woff2') format('woff2'), url('/fonts/Inter-Regular.ttf') format('ttf');
-  }
 
-  @font-face {
-    font-family: 'NunitoBold';
-    font-style: normal;
-    font-weight: 700; /* Bold */
-    src: local('Nunito Bold'), local('Nunito-Bold'), url('/fonts/Nunito-Bold.woff2') format('woff2'), url('/fonts/Nunito-Bold.ttf') format('ttf');
-  }
 
 html{
-    @apply scroll-smooth;
-    /* scroll-behavior: smooth;
+    /*@apply scroll-smooth;*/
+     scroll-behavior: smooth;
     scroll-snap-type: y proximity;
-    scroll-snap-stop: always; */
+    scroll-snap-stop: always; 
 }
 
 body{
     font-family: 'Nunito', sans-serif;
-    @apply bg-body transition overflow-x-hidden;
+    /* @apply bg-body transition overflow-x-hidden; */
+    overflow-x: hidden;
 
 }
 /* .scroll-snap-y-soft {
