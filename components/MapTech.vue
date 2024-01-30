@@ -3,7 +3,7 @@
   <div class="relative z-50 h-screen w-screen">
 
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :options="mapoptions" >
-      <l-tile-layer url="https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
+      <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <!-- <UBadge>alert</UBadge> -->
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
       <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas />
@@ -15,6 +15,7 @@
       <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" :visible=estadoBaja />
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
+      <l-geo-json :geojson="caminos" :options="optionsCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
     </l-map>
     <UNotification class="absolute w-40 right-0 top-0 z-1001 m-4" :id="idToShow" :title="showLastSixDigits(idToShow)" 
     icon="i-heroicons-command-line"
@@ -35,7 +36,7 @@ const urlImg = config.public.url_base;
 const isNotificationVisible = ref(false);
 
 // Definir la prop para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoCuadriculas' , 'cuadriculas' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoMedia' , 'estadoBaja' , 'estadoFotos' , 'estadoPois' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoCuadriculas' , 'cuadriculas' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoMedia' , 'estadoBaja' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' ]);
 
 const featureByName = ref([])
 const map = ref(null)
@@ -93,6 +94,7 @@ const alertas = ref(null);
 const fotos = ref(null);
 const areasDegradadas = ref(null);
 const pois = ref(null)
+const caminos = ref(null)
 
 const mapoptions = {
   zoomControl: false
@@ -279,6 +281,22 @@ const optionsPois = {
   }
 }
 
+// Caminos principales
+const optionsCaminos = {
+  pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: new L.Icon({
+            'iconUrl': "/images/icon/location-forest.svg",
+            'iconSize': [30, 85]
+        })} )
+      },
+  onEachFeature: (feature, layer) => {
+      layer.bindPopup(
+        feature.properties.Name,
+        { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
+      );
+  }
+}
+
 const fetchData = async () => {
   const config = useRuntimeConfig();
   const fetchGeoJson = async (url) => {
@@ -294,6 +312,7 @@ const fetchData = async () => {
   alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
   areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
   pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
+  caminos.value = await fetchGeoJson(config.public.url_base + '/capas/caminos.geojson');
 };
 
 onMounted(() => {
@@ -306,6 +325,11 @@ const navigateTo = async (idFoto) => {
 
   center.value = featureByName[idFoto].getLatLng();
   zoom.value = 21;
+
+  /* 
+    '<img src="' + urlImg + '/images/rgs1_nov_23/' + featureByName[idFoto].properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + featureByName[idFoto].properties.Name + '<br/>Fecha: ' + featureByName[idFoto].properties.Date + '',
+    { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"} 
+  */
   
 }
 
