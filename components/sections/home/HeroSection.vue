@@ -7,14 +7,15 @@
     muted
     preload
     class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
+    poster="/images/hero_nideport_poster.webp"
     >
     <source
-      src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4"
+      :src="`${urlImg}/video/hero_nideport_min.mp4`"
       type="video/mp4"
     />
     Your browser does not support the video tag.
   </video>
-  <NuxtImg preload format="webp" :src="`${urlImg}/images/hero-home.jpg`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/>  
+  <!-- <NuxtImg preload format="webp" :src="`${urlImg}/images/hero-home-min.webp`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/> -->  
     <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
           <AtomsContainer>
             <div class="flex h-full items-center justify-center">

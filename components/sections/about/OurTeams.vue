@@ -39,6 +39,11 @@ const teamData = ref([
     coverImage: '/images/team/TRV.png'
   },
   {
+    name: 'Marcelo Taboada',
+    position: 'Presidente / Responsable de Certificación y Sustentabilidad',
+    coverImage: '/images/team/MarceloTaboada.png'
+  },
+  {
     name: 'Alejandro Biagini',
     position: 'Administrador de Fideicomiso',
     coverImage: '/images/team/personal.png'
@@ -113,11 +118,7 @@ const teamData = ref([
     position: 'Gestión de Relaciones Comunitarias',
     coverImage: '/images/team/MaiconVillalba.png'
   },
-  {
-    name: 'Marcelo Taboada',
-    position: 'Presidente / Responsable de Certificación y Sustentabilidad',
-    coverImage: '/images/team/MarceloTaboada.png'
-  },
+
   {
     name: 'Martín Figueredo',
     position: 'Líder de Compras y Administración',

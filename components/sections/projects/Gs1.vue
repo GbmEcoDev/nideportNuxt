@@ -16,7 +16,7 @@
                                     <path d="M36.9033 45.6565V19.8081L59.5925 32.7323L36.9033 45.6565Z" fill="white"/>
                                     </svg>
                                 </div>
-                                <NuxtImg :src="`${urlImg}/images/bg-home-panoramic.webp`" class="w-full rounded-lg"/>
+                                <NuxtImg :src="`${urlImg}/images/cover-video.jpg`" class="w-full rounded-lg"/>
                             </div>
                 </div>
             </div>
@@ -30,18 +30,30 @@
                 <IconsCloseIco />
                 </button>
             </div>
-            <video :src="videoSrc" autoplay class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
+            <video 
+                autoplay
+                preload
+                class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" >
+                <source
+                    :src="`${urlImg}${videoSrc}`"
+                    type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+            </video>
             </div>
         </div>
         </div>
     </section>
 </template>
-<script setup lang="ts">
+<script setup>
+import { useI18n } from 'vue-i18n';
 import { ref } from 'vue';
 const config = useRuntimeConfig();
+const { t, locale } = useI18n();
+const language = locale.value.toUpperCase();
 const urlImg = config.public.url_base;
 const isModalOpen = ref(false);
-const videoSrc = ref('/video/GBM_Technology.mp4');
+const videoSrc = ref(`/video/nideport-${language}.mp4`);
 const openModal = () => {
   isModalOpen.value = true;
 };

@@ -2,7 +2,7 @@
     <div 
      class="relative overflow-hidden bg-cover bg-no-repeat h-screen scroll-snap-align-start" style="
         background-position: 50%;
-        background-image: url('./images/mapreserve.png');
+        background-image: url('./images/mapreserve.webp');
         background-size: cover;
       ">
     <div

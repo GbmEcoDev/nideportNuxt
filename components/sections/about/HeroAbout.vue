@@ -1,9 +1,19 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat h-[41.5rem]" style="
-        background-position: 50%;
-        background-image: url('/images/hero-about.webp');
-        background-size: cover;
-      ">
+    <div class="relative overflow-hidden bg-cover bg-no-repeat h-[41.5rem] z-0">
+      <video
+        autoplay
+        loop
+        muted
+        preload
+        class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
+        poster="/images/hero_about.jpg"
+        >
+        <source
+          :src="`${urlImg}/video/hero_about.mp4`"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
     <div
       class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
         <div class="flex h-full items-center justify-center ">
@@ -19,6 +29,8 @@
   </div>
 </template>
 <script setup>
+const config = useRuntimeConfig();
+const urlImg = config.public.url_base;
 const { locale } = useI18n()
 const localePath = useLocalePath()
 </script>
