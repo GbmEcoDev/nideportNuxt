@@ -16,7 +16,7 @@
                                     <path d="M36.9033 45.6565V19.8081L59.5925 32.7323L36.9033 45.6565Z" fill="white"/>
                                     </svg>
                                 </div>
-                                <NuxtImg :src="`${urlImg}/images/cover-video.jpg`" class="w-full rounded-lg"/>
+                                <NuxtImg :src="`${urlImg}/images/cover-video.JPG`" class="w-full rounded-lg"/>
                             </div>
                 </div>
             </div>
@@ -30,12 +30,13 @@
                 <IconsCloseIco />
                 </button>
             </div>
-            <video 
+            <!--<iframe class="w-full h-full" :src="videoSrc"></iframe> -->
+             <video 
                 autoplay
                 preload
                 class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" >
                 <source
-                    :src="`${urlImg}${videoSrc}`"
+                    :src="videoSrc"
                     type="video/mp4"
                     />
                     Your browser does not support the video tag.
@@ -53,8 +54,12 @@ const { t, locale } = useI18n();
 const language = locale.value.toUpperCase();
 const urlImg = config.public.url_base;
 const isModalOpen = ref(false);
-const videoSrc = ref(`/video/nideport-${language}.mp4`);
+const videoYT = language==="ES" ?  "/video/nideport-ES.mp4" : "/video/nideport-EN.mp4";
+//console.log(videoYT);
+const videoSrc = ref('');
 const openModal = () => {
+    //const videoSrc = ref(`/video/nideport-${language}.mp4`);
+    videoSrc.value = videoYT;
   isModalOpen.value = true;
 };
 

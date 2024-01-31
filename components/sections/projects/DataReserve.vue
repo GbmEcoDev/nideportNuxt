@@ -4,7 +4,7 @@
           <Carousel :items-to-show="carouselItemsToShow" :wrap-around="true" :starting-from="1" :snap-align="'start'">
             <Slide key="1">
               <div class="carousel__item ">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex-col items-center w-[24.5rem] h-[28,15rem] mx-2 
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex-col items-center w-[22.5rem] h-[30,15rem] mx-2 
                   max-sm:p-4 
                   max-sm:w-full 
                   max-sm:h-[28,5rem]
@@ -21,7 +21,7 @@
             </Slide>
             <Slide key="2">
               <div class="carousel__item">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[24.5rem] h-[27,5rem] mx-2
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[22.5rem] h-[30,5rem] mx-2
                   max-sm:p-4 
                   max-sm:w-full 
                   max-sm:h-[28rem]
@@ -38,7 +38,7 @@
             </Slide>
             <Slide key="3">
               <div class="carousel__item">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[24.5rem] h-[28,15rem] mx-2
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[22.5rem] h-[30,15rem] mx-2
                   max-sm:p-4 
                   max-sm:w-full 
                   max-sm:h-[28,5rem]

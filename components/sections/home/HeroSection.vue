@@ -1,20 +1,19 @@
 <template>
     <div class="relative overflow-hidden bg-cover bg-no-repeat h-[44rem] z-0">
-       
-    <video
-    autoplay
-    loop
-    muted
-    preload
-    class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
-    poster="/images/hero_nideport_poster.webp"
-    >
-    <source
-      :src="`${urlImg}/video/hero_nideport_min.mp4`"
-      type="video/mp4"
-    />
-    Your browser does not support the video tag.
-  </video>
+      <video
+      autoplay
+      loop
+      muted
+      preload="none"
+      class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
+      poster="/images/hero_nideport_poster.webp"
+      >
+      <source
+        :src="`${urlImg}/video/hero_nideport_min.mp4`"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
   <!-- <NuxtImg preload format="webp" :src="`${urlImg}/images/hero-home-min.webp`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/> -->  
     <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
           <AtomsContainer>

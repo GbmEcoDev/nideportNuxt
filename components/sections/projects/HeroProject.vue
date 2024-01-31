@@ -4,7 +4,7 @@
         autoplay
         loop
         muted
-        preload
+        preload="none"
         class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
         poster="/images/hero-projects.jpg"
         >
