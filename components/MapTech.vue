@@ -6,16 +6,17 @@
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <!-- <UBadge>alert</UBadge> -->
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
-      <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas />
+    <!--  <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas /> -->
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
       <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" :visible=estadoAreasDeg />
       <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" :visible=estadoRayos />
       <l-geo-json :geojson="alertas" :options="optionsAlertasAlta" layer-type="overlay" name="Alertas probabilidad alta" :visible=estadoAlta />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" :visible=estadoMedia />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" :visible=estadoBaja />
+      <!-- <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" :visible=estadoMedia />
+      <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" :visible=estadoBaja /> -->
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
-      <l-geo-json :geojson="caminos" :options="optionsCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
+      <l-geo-json :geojson="caminos" :options="optionsCaminos" :options-style="styleFunctionCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
+      <l-geo-json :geojson="hidrografia" :options="optionsHidro" :options-style="styleFunctionHidro" layer-type="overlay" name="Hidrografía" :visible=estadoHidro />
     </l-map>
     <UNotification class="absolute w-40 right-0 top-0 z-1001 m-4" :id="idToShow" :title="showLastSixDigits(idToShow)" 
     icon="i-heroicons-command-line"
@@ -30,21 +31,19 @@
 <script setup>
 import "leaflet/dist/leaflet.css";
 import { ref, onMounted , watch } from 'vue';
-import { LMap, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer, LGeoJson , LPopup } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
 const isNotificationVisible = ref(false);
 
 // Definir la prop para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoCuadriculas' , 'cuadriculas' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoMedia' , 'estadoBaja' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' , 'estadoHidro' ]);
 
 const featureByName = ref([])
 const map = ref(null)
 
 // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
-// Ref de capa fotos para comparar
-const fotosLayer = ref(null);
 
  // Arreglo para acortar string
  function showLastSixDigits(id) {
@@ -52,33 +51,6 @@ const fotosLayer = ref(null);
   const lastSixDigits = idString.slice(-6);
   return `...${lastSixDigits}`;
 }
-// Acciones a realizar cuando cambia el ID
-/* watch(() => props.fotoId, (newValue, oldValue) => {
-  //tomo valor, activo Unotification y apago en 6 seg.
-  idToShow.value = newValue;
-  isNotificationVisible.value = true;
- 
-  if ( isNotificationVisible) {
-      setTimeout(() => {
-      closeNotification();
-    }, 6000);
-  }
-
-  // Verifico datos de capa fotos
-    if(fotosLayer != null){
-      
-      console.log("layerf", fotosLayer);
-      // Iterar sobre cada capa y activa el popup si coincide con idToShow
-      fotosLayer.value.eachLayer((layer) => {
-      const feature = layer.feature;
-
-      if (feature.properties.ID === idToShow.value) {
-        layer.fire("click"); // Simula un clic para activar el popup
-      }
-    });
-
-  }
-}, { immediate: true }); */
 
 // Cerrar UNotification
 const closeNotification = () => {
@@ -88,13 +60,14 @@ const closeNotification = () => {
 const zoom = ref(11);
 const center = ref([-26.52536, -53.91])
 const limites = ref(null);
-const cuadriculas = ref(null);
+// const cuadriculas = ref(null);
 const fajas = ref(null);
 const alertas = ref(null);
 const fotos = ref(null);
 const areasDegradadas = ref(null);
 const pois = ref(null)
 const caminos = ref(null)
+const hidrografia = ref(null)
 
 const mapoptions = {
   zoomControl: false
@@ -110,13 +83,13 @@ const styleFunctionLimites = {
 };
 
 // Cuadrículas------------------------------------
-const styleFunctionCuadriculas = {
+/* const styleFunctionCuadriculas = {
   color: 'gray',
   weight: 1.5,
   opacity: 0.6,
   fillOpacity: 0.0,
   interactive: true
-};
+}; */
 
 // Áreas donde se refoesta mediante método de Faja
 const styleFunctionFajas = {
@@ -201,8 +174,8 @@ const onEachFeatureFunction = (feature, layer) => {
 const optionsAlertasRayos = {
   filter: function(feature, layer) {
       if((feature.properties.tipo == 'Rayo')
-      && (feature.properties.acq_date >= '2023-11-15')
-      && (feature.properties.acq_date <= '2023-12-15')
+      && (feature.properties.acq_date >= '2023-12-15')
+      && (feature.properties.acq_date <= '2024-01-15')
     ) 
     return true;
   },
@@ -218,7 +191,7 @@ const optionsAlertasRayos = {
 }
 
 // Alertas Baja probailidad  ----------------------
-const optionsAlertasBajas = {
+/* const optionsAlertasBajas = {
   filter: function(feature, layer) {
     if(feature.properties.tipo == 'Con probabilidad baja') return true;
   },
@@ -247,7 +220,7 @@ const optionsAlertasMedia = {
           })});
       },
   onEachFeature: onEachFeatureFunction
-}
+} */
 
 // Alertas probailidad alta ----------------------
 const optionsAlertasAlta = {
@@ -282,16 +255,55 @@ const optionsPois = {
 }
 
 // Caminos principales
+const styleFunctionCaminos ={
+  color: 'rgba( 255, 175, 51, 0.5)',
+  weight: 4,
+  opacity: 0.5,
+//  fillOpacity: 0.0,
+  interactive: true
+};
+
 const optionsCaminos = {
-  pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: new L.Icon({
-            'iconUrl': "/images/icon/location-forest.svg",
-            'iconSize': [30, 85]
-        })} )
-      },
   onEachFeature: (feature, layer) => {
       layer.bindPopup(
         feature.properties.Name,
+        { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
+      );
+  }
+}
+
+// Hifrografía
+ const styleFunctionHidro = (feature)=> 
+    { 
+      if (feature.properties.tipo == 'Río') { 
+        return {
+          color:'rgba(0,0,255,0.6)',
+          weight: 2,
+          opacity: 0.7,
+          interactive: true
+        }
+      } else if (feature.properties.tipo == 'Arroyo') {
+        return {
+          color:'rgba(0,135,255,0.6)',
+          weight: 2,
+          opacity: 0.7,
+          interactive: true
+        }
+      } else {
+        return {
+          color:'rgba(0,197,255,0.6)',
+          weight: 2,
+          opacity: 0.7,
+          interactive: true
+        }
+      }
+
+};
+ 
+const optionsHidro = {
+  onEachFeature: (feature, layer) => {
+      layer.bindPopup(
+        feature.properties.KEY,
         { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
       );
   }
@@ -306,18 +318,18 @@ const fetchData = async () => {
   };
 
   limites.value = await fetchGeoJson(config.public.url_base + '/capas/limites.geojson');
-  cuadriculas.value = await fetchGeoJson(config.public.url_base + '/capas/cuadriculas.geojson');
+//  cuadriculas.value = await fetchGeoJson(config.public.url_base + '/capas/cuadriculas.geojson');
   fajas.value = await fetchGeoJson(config.public.url_base + '/capas/reforestacion_fajas.geojson');
   fotos.value = await fetchGeoJson(config.public.url_base + '/capas/fotos.geojson');
   alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
   areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
   pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
   caminos.value = await fetchGeoJson(config.public.url_base + '/capas/caminos.geojson');
+  hidrografia.value = await fetchGeoJson(config.public.url_base + '/capas/hidrografia.geojson');
 };
 
 onMounted(() => {
   fetchData();
-  // fotosLayer.value = this.$refs.fotosLayer;
 
 });
 
@@ -364,14 +376,14 @@ defineExpose( { map , featureByName , navigateTo } )
   .fotosClass {
     border-color: rgb(255, 255, 255);
     border-width: 1px;
-    animation: pulse-animation 2s infinite;
+    animation: pulse-animation 1s infinite;
   }
   @keyframes pulse-animation {
     0% {
-      box-shadow: 0 0 0 0px rgb(255, 255, 255, 0.5);
+      box-shadow: 0 0 0 10px rgb(255, 255, 255, 0.6);
     }
     100% {
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+      box-shadow: 0 0 0 30px rgba(255, 255, 255, 0);
     }
   }
   .leaflet-popup-content-wrapper, .leaflet-popup-tip{
