@@ -16,6 +16,7 @@
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
       <l-geo-json :geojson="caminos" :options="optionsCaminos" :options-style="styleFunctionCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
+      <l-geo-json :geojson="hidrografia" :options="optionsHidro" :options-style="styleFunctionHidro" layer-type="overlay" name="Hidrografía" :visible=estadoHidro />
     </l-map>
     <UNotification class="absolute w-40 right-0 top-0 z-1001 m-4" :id="idToShow" :title="showLastSixDigits(idToShow)" 
     icon="i-heroicons-command-line"
@@ -36,7 +37,7 @@ const urlImg = config.public.url_base;
 const isNotificationVisible = ref(false);
 
 // Definir la prop para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' , 'estadoHidro' ]);
 
 const featureByName = ref([])
 const map = ref(null)
@@ -66,6 +67,7 @@ const fotos = ref(null);
 const areasDegradadas = ref(null);
 const pois = ref(null)
 const caminos = ref(null)
+const hidrografia = ref(null)
 
 const mapoptions = {
   zoomControl: false
@@ -270,6 +272,43 @@ const optionsCaminos = {
   }
 }
 
+// Hifrografía
+ const styleFunctionHidro = (feature)=> 
+    { 
+      if (feature.properties.tipo == 'Río') { 
+        return {
+          color:'rgba(0,0,255,0.6)',
+          weight: 2,
+          opacity: 0.7,
+          interactive: true
+        }
+      } else if (feature.properties.tipo == 'Arroyo') {
+        return {
+          color:'rgba(0,135,255,0.6)',
+          weight: 2,
+          opacity: 0.7,
+          interactive: true
+        }
+      } else {
+        return {
+          color:'rgba(0,197,255,0.6)',
+          weight: 2,
+          opacity: 0.7,
+          interactive: true
+        }
+      }
+
+};
+ 
+const optionsHidro = {
+  onEachFeature: (feature, layer) => {
+      layer.bindPopup(
+        feature.properties.KEY,
+        { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
+      );
+  }
+}
+
 const fetchData = async () => {
   const config = useRuntimeConfig();
   const fetchGeoJson = async (url) => {
@@ -286,6 +325,7 @@ const fetchData = async () => {
   areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
   pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
   caminos.value = await fetchGeoJson(config.public.url_base + '/capas/caminos.geojson');
+  hidrografia.value = await fetchGeoJson(config.public.url_base + '/capas/hidrografia.geojson');
 };
 
 onMounted(() => {

@@ -9,6 +9,7 @@
         :estadoAlta="selectedAlta"
         :estadoFotos="selectedFotos"
         :estadoCaminos="selectedCaminos"
+        :estadoHidro="selectedHidro"
         :estadoPois="selectedPois" />
       </div>
       <div class="absolute top-0 left-0 h-18 w-48">
@@ -46,6 +47,7 @@
                 <UCheckbox color="black" v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
                 <UCheckbox color="black" v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" />
                 <UCheckbox v-model="selectedCaminos" name="caminos" label="Caminos" :update:model-value="caminosVisibility(selectedCaminos )" />
+                <UCheckbox v-model="selectedHidro" name="hidrografia" label="Hidrografía" :update:model-value="hidrografiaVisibility(selectedHidro )" />
               </UCard>
             </div>
         </USlideover>
@@ -63,6 +65,7 @@
   const selectedFotos = ref(true)
   const selectedCaminos = ref(true)
   const selectedPois = ref(true)
+  const selectedHidro = ref(false)
 
   //const route = useRoute();
   const { t, locale, setLocale } = useI18n()
@@ -104,7 +107,7 @@ onMounted(() => {
     layout: 'application'
   })
 
-  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasDeg-vis' , 'areasDeg-vis' , 'alta-vis' , 'fotos-vis' , 'pois-vis' , 'caminos-vis' ] );
+  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasDeg-vis' , 'areasDeg-vis' , 'alta-vis' , 'fotos-vis' , 'pois-vis' , 'caminos-vis' , 'hidrografia-vis' ] );
 
   const layerVisibility = ( estado: Boolean ) => {
     emit( 'layer-vis' , estado );
@@ -136,6 +139,10 @@ onMounted(() => {
 
   const caminosVisibility = (estado: Boolean) => {
     emit( 'caminos-vis' , estado );
+  };
+
+  const hidrografiaVisibility = (estado: Boolean) => {
+    emit( 'hidrografia-vis' , estado );
   };
 
 </script>
