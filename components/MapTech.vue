@@ -6,7 +6,7 @@
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <!-- <UBadge>alert</UBadge> -->
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
-    >!<!--  <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas /> -->
+    <!--  <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas /> -->
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
       <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" :visible=estadoAreasDeg />
       <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" :visible=estadoRayos />
@@ -15,8 +15,7 @@
       <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" :visible=estadoBaja /> -->
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
-      <l-geo-json :geojson="caminos" :options="optionsCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
-      <l-popup :lat-lng="ltlng" :content="tempContent" :name="tempMarker" />
+      <l-geo-json :geojson="caminos" :options="optionsCaminos" :options-style="styleFunctionCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
     </l-map>
     <UNotification class="absolute w-40 right-0 top-0 z-1001 m-4" :id="idToShow" :title="showLastSixDigits(idToShow)" 
     icon="i-heroicons-command-line"
@@ -67,9 +66,6 @@ const fotos = ref(null);
 const areasDegradadas = ref(null);
 const pois = ref(null)
 const caminos = ref(null)
-const ltlng = ref(null)
-const tempContent = ref(null)
-const tempMarker =ref(null)
 
 const mapoptions = {
   zoomControl: false
@@ -176,8 +172,8 @@ const onEachFeatureFunction = (feature, layer) => {
 const optionsAlertasRayos = {
   filter: function(feature, layer) {
       if((feature.properties.tipo == 'Rayo')
-      && (feature.properties.acq_date >= '2023-11-15')
-      && (feature.properties.acq_date <= '2023-12-15')
+      && (feature.properties.acq_date >= '2023-12-15')
+      && (feature.properties.acq_date <= '2024-01-15')
     ) 
     return true;
   },
@@ -257,13 +253,15 @@ const optionsPois = {
 }
 
 // Caminos principales
+const styleFunctionCaminos ={
+  color: 'rgba( 255, 175, 51, 0.5)',
+  weight: 4,
+  opacity: 0.5,
+//  fillOpacity: 0.0,
+  interactive: true
+};
+
 const optionsCaminos = {
-  pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: new L.Icon({
-            'iconUrl': "/images/icon/location-forest.svg",
-            'iconSize': [30, 85]
-        })} )
-      },
   onEachFeature: (feature, layer) => {
       layer.bindPopup(
         feature.properties.Name,
@@ -299,9 +297,6 @@ const navigateTo = async (idFoto) => {
 
   center.value = featureByName[idFoto].getLatLng();
   zoom.value = 21;
-
-  ltlng.value = featureByName[idFoto].getLatLng()
-  tempContent.value = 'Contenido a mostrar'
 
   /* 
     '<img src="' + urlImg + '/images/rgs1_nov_23/' + featureByName[idFoto].properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + featureByName[idFoto].properties.Name + '<br/>Fecha: ' + featureByName[idFoto].properties.Date + '',
@@ -341,14 +336,14 @@ defineExpose( { map , featureByName , navigateTo } )
   .fotosClass {
     border-color: rgb(255, 255, 255);
     border-width: 1px;
-    animation: pulse-animation 2s infinite;
+    animation: pulse-animation 1s infinite;
   }
   @keyframes pulse-animation {
     0% {
-      box-shadow: 0 0 0 0px rgb(255, 255, 255, 0.5);
+      box-shadow: 0 0 0 10px rgb(255, 255, 255, 0.6);
     }
     100% {
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+      box-shadow: 0 0 0 30px rgba(255, 255, 255, 0);
     }
   }
   .leaflet-popup-content-wrapper, .leaflet-popup-tip{
