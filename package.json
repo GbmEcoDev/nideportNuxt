@@ -42,6 +42,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "axios": "^1.6.0",
     "element-plus": "^2.4.3",
+    "leaflet-gesture-handling": "^1.2.2",
     "nodemailer": "^6.9.7",
     "nuxt-mail": "^4.0.2",
     "nuxt-protected-mailto": "^0.0.12",

@@ -5,13 +5,13 @@
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <!-- <UBadge>alert</UBadge> -->
-      <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
-    <!--  <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas /> -->
+      <l-geo-json :geojson="limites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
+      <!--  <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas /> -->
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
-      <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" :visible=estadoAreasDeg />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" :visible=estadoRayos />
+      <l-geo-json :geojson="areasArestaurar" :options="optionsArestaurar" :options-style="styleFunctionAreasRest" layer-type="overlay" name="Áreas a restaurar" :visible=estadoAreasArest />
+      <!--  <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" :visible=estadoRayos />
       <l-geo-json :geojson="alertas" :options="optionsAlertasAlta" layer-type="overlay" name="Alertas probabilidad alta" :visible=estadoAlta />
-      <!-- <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" :visible=estadoMedia />
+      <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" :visible=estadoMedia />
       <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" :visible=estadoBaja /> -->
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
@@ -31,13 +31,13 @@
 <script setup>
 import "leaflet/dist/leaflet.css";
 import { ref, onMounted , watch } from 'vue';
-import { LMap, LTileLayer, LGeoJson , LPopup } from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
 const isNotificationVisible = ref(false);
 
 // Definir la prop para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' , 'estadoHidro' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoRayos' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' , 'estadoHidro' ]);
 
 const featureByName = ref([])
 const map = ref(null)
@@ -62,21 +62,22 @@ const center = ref([-26.52536, -53.91])
 const limites = ref(null);
 // const cuadriculas = ref(null);
 const fajas = ref(null);
-const alertas = ref(null);
+//const alertas = ref(null);
 const fotos = ref(null);
-const areasDegradadas = ref(null);
+const areasArestaurar = ref(null);
 const pois = ref(null)
 const caminos = ref(null)
 const hidrografia = ref(null)
 
 const mapoptions = {
-  zoomControl: false
+  zoomControl: false,
+  zoomDelta: 0.5
 }
 
 // Límites----------------------------------------
 const styleFunctionLimites = {
-  color: 'blue',
-  weight: 4,
+  color: 'white',
+  weight: 2,
   opacity: 0.7,
   fillOpacity: 0.0,
   interactive: false
@@ -108,15 +109,15 @@ const optionsFajas = {
 }
 };
 
-// Areas degradadas ------------------------------
-const styleFunctionAreasDeg = {
+// Areas a restaurar ------------------------------
+const styleFunctionAreasRest = {
   color: 'red',
   weight: 2,
   opacity: 0.5,
   fillOpacity: 0.0,
   interactive: true
 };
-const optionsAreasDeg = {
+const optionsArestaurar = {
   onEachFeature: (feature, layer) => {
     layer.bindPopup(
       'Nombre: ' + feature.properties.Name,
@@ -155,14 +156,14 @@ const optionsFotos = {
     if (feature.properties.foto) {
         layer.bindPopup(
           '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
-          { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
+          { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass" }
         );
     }
 
   }
 };
 
-
+/*
 // OnEach para Alertas
 const onEachFeatureFunction = (feature, layer) => {
         let opciones = { year: 'numeric', month: 'short', day: 'numeric' }
@@ -191,7 +192,7 @@ const optionsAlertasRayos = {
 }
 
 // Alertas Baja probailidad  ----------------------
-/* const optionsAlertasBajas = {
+ const optionsAlertasBajas = {
   filter: function(feature, layer) {
     if(feature.properties.tipo == 'Con probabilidad baja') return true;
   },
@@ -220,7 +221,7 @@ const optionsAlertasMedia = {
           })});
       },
   onEachFeature: onEachFeatureFunction
-} */
+} 
 
 // Alertas probailidad alta ----------------------
 const optionsAlertasAlta = {
@@ -237,7 +238,7 @@ const optionsAlertasAlta = {
       },
   onEachFeature: onEachFeatureFunction
 }
-
+*/
 // Puntos destacados con videos
 const optionsPois = {
   pointToLayer: function(feature, latlng) {
@@ -294,7 +295,8 @@ const optionsCaminos = {
           color:'rgba(0,197,255,0.6)',
           weight: 2,
           opacity: 0.7,
-          interactive: true
+          interactive: true,
+          dashArray: [5, 5]
         }
       }
 
@@ -321,8 +323,8 @@ const fetchData = async () => {
 //  cuadriculas.value = await fetchGeoJson(config.public.url_base + '/capas/cuadriculas.geojson');
   fajas.value = await fetchGeoJson(config.public.url_base + '/capas/reforestacion_fajas.geojson');
   fotos.value = await fetchGeoJson(config.public.url_base + '/capas/fotos.geojson');
-  alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
-  areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
+//  alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
+  areasArestaurar.value = await fetchGeoJson(config.public.url_base + '/capas/areas_arestaurar24_32.geojson');
   pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
   caminos.value = await fetchGeoJson(config.public.url_base + '/capas/caminos.geojson');
   hidrografia.value = await fetchGeoJson(config.public.url_base + '/capas/hidrografia.geojson');
@@ -338,10 +340,6 @@ const navigateTo = async (idFoto) => {
   center.value = featureByName[idFoto].getLatLng();
   zoom.value = 21;
 
-  /* 
-    '<img src="' + urlImg + '/images/rgs1_nov_23/' + featureByName[idFoto].properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + featureByName[idFoto].properties.Name + '<br/>Fecha: ' + featureByName[idFoto].properties.Date + '',
-    { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"} 
-  */
   
 }
 

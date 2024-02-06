@@ -4,9 +4,7 @@
         <MapTech :fotoId="idSeleccionado" 
         :estadoLimites="selected" 
         :estadoFajas="selectedFajas" 
-        :estadoAreasDeg="selectedAreasDeg" 
-        :estadoRayos="selectedRayos"
-        :estadoAlta="selectedAlta"
+        :estadoAreasArest="selectedAreasArest" 
         :estadoFotos="selectedFotos"
         :estadoCaminos="selectedCaminos"
         :estadoHidro="selectedHidro"
@@ -21,10 +19,10 @@
         <USlideover v-model="isOpen" :transition="true" side="left" :overlay="false" class="overflow-auto">
             <Logo/>
             <div class="p-4 flex-1">
-              <UTabs :items="items">
+              <UTabs :items="items"  @change="onChange">
               <template #item="{ item }">
                 <UCard>
-                  <div v-if="item.key === 'discover'" class="space-y-3">
+                  <div v-if="item.key === 'discover'" class="space-y-3" >
                    <SectionsMapappListDiscovery  @go-map-id="recibirId"/>
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-3">
@@ -39,19 +37,17 @@
             </div>
             <div class="p-4 flex-1">
               <UCard>
-                <UCheckbox color="black" v-model="selected" name="limites" label="Límites" :update:model-value="layerVisibility(selected )" />
-                <UCheckbox color="green" v-model="selectedFajas" name="fajas" label="Área reforestada" :update:model-value="fajasVisibility(selectedFajas )" />
-                <UCheckbox color="red" v-model="selectedAreasDeg" name="areasDegradadas" label="Áreas a refosrestar" :update:model-value="areasDegVisibility(selectedAreasDeg )" />
-                <UCheckbox color="blue" v-model="selectedRayos" name="rayos" label="Alertas por rayos" :update:model-value="rayosVisibility(selectedRayos )" />
-                <UCheckbox color="red" v-model="selectedAlta" name="alertasAlta" label="Alertas con probabilidad alta" :update:model-value="altaVisibility(selectedAlta )" />
-                <UCheckbox color="black" v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
-                <UCheckbox color="black" v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" />
+                <UCheckbox v-model="selected" name="limites" label="Límites" :update:model-value="layerVisibility(selected )" />
+                <UCheckbox v-model="selectedFajas" name="fajas" label="Área reforestada" :update:model-value="fajasVisibility(selectedFajas )" />
+                <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" label="Áreas a refosrestar" :update:model-value="areasArestisibility(selectedAreasArest )" />
+                <UCheckbox v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
+                <UCheckbox v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" />
                 <UCheckbox v-model="selectedCaminos" name="caminos" label="Caminos" :update:model-value="caminosVisibility(selectedCaminos )" />
                 <UCheckbox v-model="selectedHidro" name="hidrografia" label="Hidrografía" :update:model-value="hidrografiaVisibility(selectedHidro )" />
               </UCard>
             </div>
         </USlideover>
-        </div>
+      </div>
    </div>
   </template>
 
@@ -59,9 +55,7 @@
   import { ref, onMounted } from 'vue';
   const selected = ref(true)
   const selectedFajas = ref(true)
-  const selectedAreasDeg = ref(true)
-  const selectedRayos = ref(true)
-  const selectedAlta = ref(true)
+  const selectedAreasArest = ref(true)
   const selectedFotos = ref(true)
   const selectedCaminos = ref(true)
   const selectedPois = ref(true)
@@ -107,7 +101,7 @@ onMounted(() => {
     layout: 'application'
   })
 
-  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasDeg-vis' , 'areasDeg-vis' , 'alta-vis' , 'fotos-vis' , 'pois-vis' , 'caminos-vis' , 'hidrografia-vis' ] );
+  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasArest-vis' , 'fotos-vis' , 'pois-vis' , 'caminos-vis' , 'hidrografia-vis' ] );
 
   const layerVisibility = ( estado: Boolean ) => {
     emit( 'layer-vis' , estado );
@@ -117,16 +111,8 @@ onMounted(() => {
     emit( 'fajas-vis' , estado );
   };
 
-  const areasDegVisibility = (estado: Boolean) => {
-    emit( 'areasDeg-vis' , estado );
-  };
-
-  const rayosVisibility = (estado: Boolean) => {
-    emit( 'areasDeg-vis' , estado );
-  };
-
-  const altaVisibility = (estado: Boolean) => {
-    emit( 'alta-vis' , estado );
+  const areasArestisibility = (estado: Boolean) => {
+    emit( 'areasArest-vis' , estado );
   };
 
   const fotosVisibility = (estado: Boolean) => {
@@ -145,4 +131,25 @@ onMounted(() => {
     emit( 'hidrografia-vis' , estado );
   };
 
+  function onChange (index:any) {
+  const item = items[index]
+    if(item.label=='DESCUBRIR'){
+      //  alert(${item.label} was clicked!);
+        selected.value=true;
+        selectedFajas.value=false;
+        selectedAreasArest.value=false;
+        selectedFotos.value=false;
+        selectedPois.value=true;
+        selectedCaminos.value=true;
+        selectedHidro.value=false;
+    } else{
+      selectedHidro.value=true;
+      selectedFajas.value=true;
+      selectedAreasArest.value=true;
+      selectedFotos.value=true;
+      selectedPois.value=false;
+      selectedCaminos.value=false;
+      selectedHidro.value=false;
+    }
+  }
 </script>
