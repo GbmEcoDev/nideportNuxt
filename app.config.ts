@@ -59,9 +59,9 @@ export default defineAppConfig({
           accordion: {
             "wrapper": "w-full flex flex-col",
             "item": {
-              "base": "",
+              "base": " ",
               "size": "text-sm",
-              "color": "text-gray-500 dark:text-gray-400",
+              "color": "",
               "padding": "pt-1.5 pb-3",
               "icon": "ms-auto transform transition-transform duration-200"
             },
@@ -73,7 +73,7 @@ export default defineAppConfig({
               "openIcon": "i-heroicons-chevron-down-20-solid",
               "closeIcon": "",
               "class": "mb-1.5 w-full",
-              "variant": "soft"
+              "variant": ""
             }
           }
           

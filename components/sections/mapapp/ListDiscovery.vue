@@ -1,6 +1,6 @@
 <template>
     <div class="mb-2">
-        <div class=" h-96 overflow-auto grid grid-cols-4 grid-rows-4 gap-1">
+        <div class=" h-48 overflow-auto grid grid-cols-4 grid-rows-3 gap-1">
           <div v-for="disco in discover" :key="disco.ID" class="aspect-ratio-square">
               <div class="w-full h-full relative aspect-ratio-square">
                 <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ disco.foto }`" alt="Area" class="w-full h-full object-cover aspect-ratio-square rounded-lg" format="webp" />

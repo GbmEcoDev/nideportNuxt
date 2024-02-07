@@ -28,33 +28,19 @@ const map = ref(null)
  // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
 
-/* // Arreglo para acortar string
- function showLastSixDigits(id) {
-  const idString = id.toString();
-  const lastSixDigits = idString.slice(-6);
-  return `...${lastSixDigits}`;
-}
-
-// Cerrar UNotification
-const closeNotification = () => {
-  isNotificationVisible.value = false;
-};
- */
 const zoom = ref(11);
 const center = ref([-26.52536, -53.91])
 const limites = ref(null);
-// const cuadriculas = ref(null);
 const fajas = ref(null);
 const alertas = ref(null);
 const fotos = ref(null);
-//const areasDegradadas = ref(null);
 const areasArestaurar = ref(null);
 const pois = ref(null)
 const caminos = ref(null)
 const hidrografia = ref(null)
 const openPanel = ref(false)
 const mapoptions = {
-  zoomControl: false
+zoomControl: false
 }
 
 // Límites----------------------------------------
@@ -376,12 +362,11 @@ const navigateTo = async (idFoto) => {
   
 }
 
-// Acciones a realizar cuando cambia el ID
+ // Acciones a realizar cuando cambia el ID
 watch( () => props.fotoId, (newValue, oldValue) =>  {
   idToShow.value = newValue;
-
-  navigateTo(props.fotoId) 
-}, { immediate: true });
+  navigateTo(props.fotoId);
+}, { immediate: true }); /**/
 
 defineExpose( { map , featureByName , navigateTo } )
 
@@ -390,7 +375,7 @@ defineExpose( { map , featureByName , navigateTo } )
   const selectItem = (openPanel, ID) => {
     emit('propsDetalle', ID);
     emit('open-panel',openPanel.value=true);
-    console.log(ID, 'idelegido',openPanel.value)
+    //console.log(ID, 'idelegido',openPanel.value)
   };
 
 
