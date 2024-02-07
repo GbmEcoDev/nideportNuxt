@@ -1,31 +1,16 @@
 <template>
  
-  <div class="relative z-50 h-screen w-screen">
-
+  <div class="relative z-50 h-screen w-screen overflow-hidden">
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
-      <!-- <UBadge>alert</UBadge> -->
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
-    <!--  <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas /> -->
-      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
-      <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" :visible=estadoAreasDeg />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" :visible=estadoRayos />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasAlta" layer-type="overlay" name="Alertas probabilidad alta" :visible=estadoAlta />
-      <!-- <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" :visible=estadoMedia />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" :visible=estadoBaja /> -->
+     <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
+      <l-geo-json :geojson="areasArestaurar" :options="optionsArestaurar" :options-style="styleFunctionAreasRest" layer-type="overlay" name="Áreas a restaurar" :visible=estadoAreasArest />>
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
       <l-geo-json :geojson="caminos" :options="optionsCaminos" :options-style="styleFunctionCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
       <l-geo-json :geojson="hidrografia" :options="optionsHidro" :options-style="styleFunctionHidro" layer-type="overlay" name="Hidrografía" :visible=estadoHidro />
     </l-map>
-    <UNotification class="absolute w-40 right-0 top-0 z-1001 m-4" :id="idToShow" :title="showLastSixDigits(idToShow)" 
-    icon="i-heroicons-command-line"
-    v-show="idToShow !== null && isNotificationVisible"
-    color="primary"
-    variant="solid"
-    :timeout="5000"
-    :close-button="{ icon: 'i-heroicons-archive-box-x-mark', color: 'primary', variant: 'outline', padded: true, size: '2xs', ui: { rounded: 'rounded-full' },onClick: closeNotification }"
-    />
   </div>
 </template>
 <script setup>
@@ -34,18 +19,16 @@ import { ref, onMounted , watch } from 'vue';
 import { LMap, LTileLayer, LGeoJson , LPopup } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
-const isNotificationVisible = ref(false);
 
-// Definir la prop para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' , 'estadoHidro' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' , 'estadoHidro' ]);
 
 const featureByName = ref([])
 const map = ref(null)
 
-// Usar ref para almacenar el ID recibido
+ // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
 
- // Arreglo para acortar string
+/* // Arreglo para acortar string
  function showLastSixDigits(id) {
   const idString = id.toString();
   const lastSixDigits = idString.slice(-6);
@@ -56,7 +39,7 @@ const idToShow = ref(props.fotoId);
 const closeNotification = () => {
   isNotificationVisible.value = false;
 };
-
+ */
 const zoom = ref(11);
 const center = ref([-26.52536, -53.91])
 const limites = ref(null);
@@ -64,19 +47,20 @@ const limites = ref(null);
 const fajas = ref(null);
 const alertas = ref(null);
 const fotos = ref(null);
-const areasDegradadas = ref(null);
+//const areasDegradadas = ref(null);
+const areasArestaurar = ref(null);
 const pois = ref(null)
 const caminos = ref(null)
 const hidrografia = ref(null)
-
+const openPanel = ref(false)
 const mapoptions = {
   zoomControl: false
 }
 
 // Límites----------------------------------------
 const styleFunctionLimites = {
-  color: 'blue',
-  weight: 4,
+  color: 'white',
+  weight: 2,
   opacity: 0.7,
   fillOpacity: 0.0,
   interactive: false
@@ -109,7 +93,7 @@ const optionsFajas = {
 };
 
 // Areas degradadas ------------------------------
-const styleFunctionAreasDeg = {
+/* const styleFunctionAreasDeg = {
   color: 'red',
   weight: 2,
   opacity: 0.5,
@@ -120,6 +104,48 @@ const optionsAreasDeg = {
   onEachFeature: (feature, layer) => {
     layer.bindPopup(
       'Nombre: ' + feature.properties.Name,
+      { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+    )
+  }
+}; */
+// Areas a restaurar ------------------------------
+const styleFunctionAreasRest  = (feature)=> 
+    { 
+      if (feature.properties.etapa == 'Etapa 2') { 
+        return {
+          color:'rgba(255,195,0,0.6)',
+          fillColor: 'rgba(255,195,0)' ,
+          fillOpacity: 0.4,
+          weight: 3,
+          opacity: 0.7,
+          interactive: true
+        }
+      } else if (feature.properties.etapa == 'Etapa 3') {
+        return {
+          color:'rgba(28,124,152,0.6)',
+          fillColor: 'rgba(28,124,152)' ,
+          fillOpacity: 0.4,
+          weight: 3,
+          opacity: 0.7,
+          interactive: true
+        }
+      } else if (feature.properties.etapa == 'Etapa 4') {
+        return {
+          color:'rgba(128,60,13,0.7)',
+          fillColor: 'rgba(128,60,13)' ,
+          fillOpacity: 0.4,
+          weight: 3,
+          opacity: 0.7,
+          interactive: true,
+          dashArray: [5, 5]
+        }
+      }
+
+};
+      const optionsArestaurar = {
+  onEachFeature: (feature, layer) => {
+    layer.bindPopup(
+      'Nombre: ' + feature.properties.Name + '<br> Etapa: ' + feature.properties.etapa,
       { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
     )
   }
@@ -151,16 +177,20 @@ const optionsFotos = {
   }
   },
   onEachFeature: (feature, layer) => {
+    
     featureByName[feature.properties.ID] = layer;
     if (feature.properties.foto) {
-        layer.bindPopup(
+        
+        /* layer.bindPopup(
           '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
           { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
-        );
+        ); */
+        layer.on('click', () => selectItem(openPanel, feature.properties.ID)); 
     }
-
+    
   }
 };
+
 
 
 // OnEach para Alertas
@@ -322,7 +352,8 @@ const fetchData = async () => {
   fajas.value = await fetchGeoJson(config.public.url_base + '/capas/reforestacion_fajas.geojson');
   fotos.value = await fetchGeoJson(config.public.url_base + '/capas/fotos.geojson');
   alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
-  areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
+  //areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
+  areasArestaurar.value = await fetchGeoJson(config.public.url_base + '/capas/areas_arestaurar24_32.geojson');
   pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
   caminos.value = await fetchGeoJson(config.public.url_base + '/capas/caminos.geojson');
   hidrografia.value = await fetchGeoJson(config.public.url_base + '/capas/hidrografia.geojson');
@@ -348,18 +379,21 @@ const navigateTo = async (idFoto) => {
 // Acciones a realizar cuando cambia el ID
 watch( () => props.fotoId, (newValue, oldValue) =>  {
   idToShow.value = newValue;
-  isNotificationVisible.value = true;
- 
-  if ( isNotificationVisible) {
-      setTimeout(() => {
-      closeNotification();
-    }, 1000);
-  }
 
   navigateTo(props.fotoId) 
 }, { immediate: true });
 
 defineExpose( { map , featureByName , navigateTo } )
+
+  //get data item    
+  const emit = defineEmits(['open-panel', 'propsDetalle']);
+  const selectItem = (openPanel, ID) => {
+    emit('propsDetalle', ID);
+    emit('open-panel',openPanel.value=true);
+    console.log(ID, 'idelegido',openPanel.value)
+  };
+
+
 </script>
 
 <style>

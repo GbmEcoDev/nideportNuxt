@@ -44,15 +44,15 @@
                   <ElementsLangSwitcher />
                   <ElementsThemeSwitcher />
                   <div class="flex lg:hidden border-l border-box-border pl-2">
-                      <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative" alt="toogle menu" aria-label="toogle menu">
+                      <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative  text-gray-200 hover:text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" alt="toogle menu" aria-label="toogle menu">
                           <span
-                              class="w-6 h-0.5 rounded-full bg-gray-500 dark:bg-gray-200 transition-all duration-300 ease-linear"
+                              class="w-6 h-0.5 rounded-full bg-gray-200 dark:bg-gray-200 transition-all duration-300 ease-linear"
                               :class="navIsOpen ? 'translate-y-1.5 rotate-[40deg] scale-x-100 ' : ' scale-x-50 origin-left'"></span>
                           <span
-                              class="w-6 origin-center  mt-1 h-0.5 rounded-full bg-gray-500 dark:bg-gray-200 transition-all duration-300 ease-linear"
+                              class="w-6 origin-center  mt-1 h-0.5 rounded-full bg-gray-200 dark:bg-gray-200 transition-all duration-300 ease-linear"
                               :class="navIsOpen ? 'scale-x-0 opacity-0' : ''"></span>
                           <span
-                              class="w-6 mt-1 h-0.5 rounded-full bg-gray-500 dark:bg-gray-200 transition-all duration-300 ease-linear"
+                              class="w-6 mt-1 h-0.5 rounded-full bg-gray-200 dark:bg-gray-200 transition-all duration-300 ease-linear"
                               :class="navIsOpen ? '-translate-y-1.5 -rotate-[40deg] scale-x-100 ' : ' scale-x-75 origin-left'"></span>
                       </button>
                   </div>

@@ -129,7 +129,8 @@ export default defineNuxtConfig({
           MAILPORT: process.env.MAILPORT,
           MAILUSER: process.env.MAILUSER,
           MAILPASSWORD: process.env.MAILPASSWORD,
-          CONTACTMAIL: process.env.CONTACTMAIL
+          CONTACTMAIL: process.env.CONTACTMAIL,
+          SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
       }
   },
   /* mail: {

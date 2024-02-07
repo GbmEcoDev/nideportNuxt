@@ -18,6 +18,7 @@ useHead({
   <SectionsHomeHeroSection />
   <SectionsHomeOurPillars />
   <SectionsHomeMapReserve />
+  <!-- <PageTech/> -->
   <SectionsHomePartnerNideport />
   <SectionsHomeMoreInfo />
   <ScrollTop />

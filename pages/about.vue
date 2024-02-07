@@ -1,7 +1,7 @@
 <template>
   <SectionsAboutHeroAbout />
   <SectionsAboutNideport  class="pb-50 pt-50"/>
-  <SectionsAboutOurTeams />
+ <!--  <SectionsAboutOurTeams /> -->
   <GalleryPicture :images="imageList"/>
   <ScrollTop />
 </template>

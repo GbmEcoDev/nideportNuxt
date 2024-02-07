@@ -2,27 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* main.css */
-/* @font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Nunito Regular'), local('Nunito-Regular'), url('/fonts/Nunito-Regular.woff2') format('woff2'), url('/fonts/Nunito-Regular.ttf') format('ttf');
-  }
-   */
-  /* @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400; 
-    src: local('Inter Regular'), local('Inter-Regular'), url('/fonts/Inter-Regular.woff2') format('woff2'), url('/fonts/Inter-Regular.ttf') format('ttf');}
-    */
-
-/*   @font-face {
-    font-family: 'NunitoBold';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Nunito Bold'), local('Nunito-Bold'), url('/fonts/Nunito-Bold.woff2') format('woff2'), url('/fonts/Nunito-Bold.ttf') format('ttf');
-  } */
 :root {
     --color-primary: 0 122 119;
     --color-secondary: 0 122 119;
@@ -40,10 +19,6 @@
     --box-border: 243 244 246/0.1;
     --box-sd: transparent;
 }
-
-
-
-
 
 html{
     /*@apply scroll-smooth;*/
@@ -122,3 +97,40 @@ article figure.alignright.size-full.is-resized img{
 article p {
     text-align: justify;
 }
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #007A77 #393B3C;
+  }
+  
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #393B3C;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #525556;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #525556;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #007A77;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #0FAEA9;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #0FAEA9;
+  }
+  

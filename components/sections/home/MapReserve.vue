@@ -1,12 +1,22 @@
 <template>
     <div 
-     class="relative overflow-hidden bg-cover bg-no-repeat h-screen scroll-snap-align-start" style="
-        background-position: 50%;
-        background-image: url('./images/mapreserve.webp');
-        background-size: cover;
-      ">
-    <div
-      class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.10)] bg-fixed">
+     class="relative overflow-hidden bg-cover bg-no-repeat h-screen scroll-snap-align-start">
+      <video v-if="isDesktop"
+      autoplay
+      loop
+      muted
+      preload="none"
+      class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
+      poster="/images/hero_nideport_poster.webp"
+      loading="lazy"
+      >
+      <source
+        :src="`${urlImg}/video/map-fly.mp4`"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden parcialover bg-[hsla(0,0%,0%,0.10)] bg-fixed">
       <div class="flex h-full items-center justify-center">
         <AtomsContainer>
           <div class="flex flex-col items-center justify-center px-24 text-center text-white md:px-32 max-sm:px-2">
@@ -23,7 +33,14 @@
       </div>
     </div>
   </div>
+  
 </template>
 <script setup>
 const localePath = useLocalePath()
+const { isDesktop } = useDevice();
 </script>
+<style scoped>
+.parcialover{
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 30%, rgba(0, 0, 0, 0.00) 100%);
+}
+</style>

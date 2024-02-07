@@ -1,14 +1,11 @@
 <template>
-    <div class="border-b border-gray-200 mb-6">
-        <!-- <p class="font-bold text-primary mb-2 border-b border-gray-200 dark:text-white">Discovering</p> -->
-        <div class=" h-80 overflow-auto">
-          <div v-for="disco in discover" :key="disco.ID" class="w-full mt-2 mb-2 flex p-3">
-               <div class="w-full mr-3"><img :src="`/images/rgs1_nov_23/${ disco.foto }`" alt="Cover" class="w-full rounded-lg aspect-square" /></div>
-              <span v-if="disco.ID" class="text-xs text-gray-100 dark:text-gray-100 px-2"> {{ disco.Date }}</span>
-               
-              <div class="h-4">
-                <UButton @click="goMapId(disco.ID)" label="view" color="primary" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid"/>
-              </div> 
+    <div class="mb-2">
+        <div class=" h-96 overflow-auto grid grid-cols-4 grid-rows-4 gap-1">
+          <div v-for="disco in discover" :key="disco.ID" class="aspect-ratio-square">
+              <div class="w-full h-full relative aspect-ratio-square">
+                <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ disco.foto }`" alt="Area" class="w-full h-full object-cover aspect-ratio-square rounded-lg" format="webp" />
+                <UButton @click="goMapId(disco.ID)" activeClass="bg-yellow-500" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid" class="absolute bottom-1 right-1"/>
+              </div>
           </div>
         </div>
     </div>
@@ -22,15 +19,8 @@
   const { locale } = useI18n();
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
-  /* const discover = ref([]);
-
-  onMounted(async () => {
-    const { data: discoveries } = await axios.get(config.public.url_base + '/capas/fotos.geojson');
-    discover.value = discoveries && discoveries.features ? discoveries.features.map((feature: any) => feature.properties) : [];
-  }); */
-
   const discover = ref<Array<{ ID: string; foto: string; Date: string }>>([]);
-
+    const openPanelDet = ref(false)
 onMounted(async () => {
   try {
     const { data } = await axios.get(`${config.public.url_base}/capas/fotos.geojson`);
@@ -42,8 +32,15 @@ onMounted(async () => {
   }
 });
   //get data item    
-  const emit = defineEmits(['go-map-id']);
+  const emit = defineEmits(['go-map-id','open-panel-det']);
   const goMapId = (id: string) => {
     emit('go-map-id', id);
+    emit('open-panel-det',openPanelDet.value=true);
   };
 </script>
+<style scoped>
+.aspect-ratio-square {
+  aspect-ratio: 1 / 1; /* Establece la relación de aspecto cuadrada */
+}
+
+</style>
