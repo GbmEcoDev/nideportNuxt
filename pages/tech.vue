@@ -31,6 +31,7 @@
               <template #item="{ item }">
                 <UCard>
                   <div v-if="item.key === 'discover'" class="space-y-1">
+                    {{ item.content }}
                    <UAccordion :items="itemscat" 
                     color="black" 
                     variant="soft"
@@ -57,6 +58,7 @@
                     </UAccordion>
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-1" id="acco-area">
+                    {{ item.content }}
                      <UAccordion
                         :items="itemsa"
                       >
@@ -210,7 +212,7 @@ const items = [{
   content: 'Actividades en la reserva'
 }, {
   key:'planner',
-  label: 'PLAN DE RESTAURACIÓN',
+  label: 'RESTAURACIÓN',
   disabled: false,
   content: 'Etapas de restauración'
 }]
@@ -299,17 +301,17 @@ const handleOpenDetPanel = (value:any) => {
   color: rgba(112,176,85,1);
 }
 
-#acco-area ::v-deep(button:nth-child(2)) {
+#acco-area ::v-deep(button:nth-child(3)) {
   color: rgba(192,209,53,1);
 }
 
-#acco-area ::v-deep(button:nth-child(3)) {
+#acco-area ::v-deep(button:nth-child(5)) {
   color: rgba(217,177,42,1);
 }
-#acco-area ::v-deep(button:nth-child(4)) {
+#acco-area ::v-deep(button:nth-child(7)) {
   color: rgba(233,118,24,1);
 }
-#acco-area ::v-deep(button:nth-child(5)) {
+#acco-area ::v-deep(button:nth-child(9)) {
   color: rgba(241,46,25,1);
 }
 </style>

@@ -7,7 +7,7 @@
      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
       <l-geo-json :geojson="areasArestaurar" :options="optionsArestaurar" :options-style="styleFunctionAreasRest" layer-type="overlay" name="Áreas a restaurar" :visible=estadoAreasArest />>
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
-      <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
+      <!-- <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois /> -->
       <l-geo-json :geojson="caminos" :options="optionsCaminos" :options-style="styleFunctionCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
       <l-geo-json :geojson="hidrografia" :options="optionsHidro" :options-style="styleFunctionHidro" layer-type="overlay" name="Hidrografía" :visible=estadoHidro />
     </l-map>
@@ -20,7 +20,7 @@ import { LMap, LTileLayer, LGeoJson , LPopup } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
 
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoPois' , 'estadoCaminos' , 'estadoHidro' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoCaminos' , 'estadoHidro' ]);
 
 const featureByName = ref([])
 const map = ref(null)
@@ -32,10 +32,10 @@ const zoom = ref(11);
 const center = ref([-26.52536, -53.91])
 const limites = ref(null);
 const fajas = ref(null);
-const alertas = ref(null);
+//const alertas = ref(null);
 const fotos = ref(null);
 const areasArestaurar = ref(null);
-const pois = ref(null)
+//const pois = ref(null)
 const caminos = ref(null)
 const hidrografia = ref(null)
 const openPanel = ref(false)
@@ -180,14 +180,14 @@ const optionsFotos = {
 
 
 // OnEach para Alertas
-const onEachFeatureFunction = (feature, layer) => {
+/* const onEachFeatureFunction = (feature, layer) => {
         let opciones = { year: 'numeric', month: 'short', day: 'numeric' }
         let fecha = new Date(feature.properties.acq_date).toLocaleDateString('es-AR', opciones)
         layer.bindTooltip('Fecha: '+ fecha, { permanent: false, sticky: true });
-      };
+      }; */
 
 // Alertas por rayos -----------------------------
-const optionsAlertasRayos = {
+/* const optionsAlertasRayos = {
   filter: function(feature, layer) {
       if((feature.properties.tipo == 'Rayo')
       && (feature.properties.acq_date >= '2023-12-15')
@@ -204,7 +204,7 @@ const optionsAlertasRayos = {
           })});
       },
   onEachFeature: onEachFeatureFunction
-}
+} */
 
 // Alertas Baja probailidad  ----------------------
 /* const optionsAlertasBajas = {
@@ -239,7 +239,7 @@ const optionsAlertasMedia = {
 } */
 
 // Alertas probailidad alta ----------------------
-const optionsAlertasAlta = {
+/* const optionsAlertasAlta = {
   filter: function(feature, layer) {
     if(feature.properties.tipo == 'Con probabilidad alta') return true;
   },
@@ -252,10 +252,10 @@ const optionsAlertasAlta = {
           })});
       },
   onEachFeature: onEachFeatureFunction
-}
+} */
 
 // Puntos destacados con videos
-const optionsPois = {
+/* const optionsPois = {
   pointToLayer: function(feature, latlng) {
           return L.marker(latlng, {icon: new L.Icon({
             'iconUrl': "/images/icon/location-forest.svg",
@@ -268,7 +268,7 @@ const optionsPois = {
         { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
       );
   }
-}
+} */
 
 // Caminos principales
 const styleFunctionCaminos ={
@@ -337,10 +337,10 @@ const fetchData = async () => {
 //  cuadriculas.value = await fetchGeoJson(config.public.url_base + '/capas/cuadriculas.geojson');
   fajas.value = await fetchGeoJson(config.public.url_base + '/capas/reforestacion_fajas.geojson');
   fotos.value = await fetchGeoJson(config.public.url_base + '/capas/fotos.geojson');
-  alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
+  //alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
   //areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
   areasArestaurar.value = await fetchGeoJson(config.public.url_base + '/capas/areas_arestaurar24_32.geojson');
-  pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
+  //pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
   caminos.value = await fetchGeoJson(config.public.url_base + '/capas/caminos.geojson');
   hidrografia.value = await fetchGeoJson(config.public.url_base + '/capas/hidrografia.geojson');
 };
