@@ -4,30 +4,32 @@
           <Carousel :items-to-show="carouselItemsToShow" :wrap-around="true" :starting-from="1" :snap-align="'start'">
             <Slide key="1">
               <div class="carousel__item ">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex-col items-center w-[22.5rem] h-[30,15rem] mx-2 
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex-col items-center w-[22.5rem] h-[31rem] mx-2 
                   max-sm:p-4 
                   max-sm:w-full 
                   max-sm:h-[28,5rem]
                   max-lg:p-4 
                   max-lg:w-full 
-                  max-lg:h-[28,75rem]">
+                  max-lg:h-[28,75rem]
+                  hover:bg-opacity-30 text-gray-500 dark:text-white">
                       <div class="w-full max-sm:mt-10">
                           <NuxtImg src="/images/objetive-1.svg" alt="" class="pb-5 mx-auto"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c1_title')" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-8 text-gray-500 dark:text-white">{{$t('project_data_c1_parag')}}</p>
+                      <p class="text-md text-center py-8">{{$t('project_data_c1_parag')}}</p>
                   </div>
               </div>
             </Slide>
             <Slide key="2">
               <div class="carousel__item">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[22.5rem] h-[30,5rem] mx-2
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[22.5rem] h-[31rem] mx-2
                   max-sm:p-4 
                   max-sm:w-full 
                   max-sm:h-[28rem]
                   max-lg:p-4 
                   max-lg:w-full 
-                  max-lg:h-[28,75rem]">
+                  max-lg:h-[28,75rem]
+                  hover:bg-opacity-30 text-gray-500 dark:text-white">
                       <div class="w-full max-sm:mt-10">
                           <NuxtImg src="/images/objetive-2.svg" alt="" class="pb-5 mx-auto"/>
                       </div>
@@ -38,13 +40,14 @@
             </Slide>
             <Slide key="3">
               <div class="carousel__item">
-                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[22.5rem] h-[30,15rem] mx-2
+                  <div class="rounded-[32px] bg-primary bg-opacity-10 p-8 flex flex-col justify-items-center w-[22.5rem] h-[31rem] mx-2
                   max-sm:p-4 
                   max-sm:w-full 
                   max-sm:h-[28,5rem]
                   max-lg:p-4 
                   max-lg:w-full 
-                  max-lg:h-[28,75rem]">
+                  max-lg:h-[28,75rem]
+                  hover:bg-opacity-30 text-gray-500 dark:text-white">
                       <div class="w-full max-sm:mt-10">
                           <NuxtImg src="/images/objetive-3.svg" alt="" class="pb-5 mx-auto"/>
                       </div>

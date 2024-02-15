@@ -1,5 +1,6 @@
 <template>
   <NuxtLayout>
+    <Loading v-if="loading" />
     <NuxtPage />
   </NuxtLayout>
 </template>
@@ -16,6 +17,14 @@
 }
 </style>
 <script setup lang="ts">
+import Loading from './components/Loading.vue';
+//import { ref } from 'vue';
+const loading = ref(true);
+
+setTimeout(() => {
+  loading.value = false;
+}, 1000); 
+ 
 useSeoMeta({
   ogTitle: 'Nideport - Soluciones basadas en la naturaleza',
   ogDescription: 'Somos una empresa desarrolladora de proyectos de créditos de carbono, dedicada a la restauración ecológica y conservación de la biodiversidad con un enfoque social.',
@@ -28,7 +37,7 @@ useHead({
     link: [
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito:wght@400;700&display=swap'},
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito:wght@400;700&display=swap',crossorigin: ''},
     ],
   });
 </script>

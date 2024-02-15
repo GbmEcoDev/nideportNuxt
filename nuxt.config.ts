@@ -1,4 +1,6 @@
 export default defineNuxtConfig({
+  /* */ ssr: false,
+  spaLoadingTemplate: true,
   nitro:{
     compressPublicAssets: true,
     prerender:{failOnError:false}

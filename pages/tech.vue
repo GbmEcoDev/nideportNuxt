@@ -16,16 +16,36 @@
       <div class="absolute top-0 left-0 h-14 w-48">
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
-      <div class="absolute z-55 bottom-2 left-8" :class="{ 'left-[-250px]': isOpen }">
-        <UButton ref="btnActivePanel" label="Explorá nuestro proceso de restauración" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
-      </div>
-      
-      
-      <SectionsMapappUCardDetalle class=" w-[350px] h-screen absolute top-0 right-0 bg-slate-900/10 dark:bg-slate-900/10" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
+      <div class="absolute pb-8 z-55 bottom-2 left-2 xs:px-9 " :class="{ 'left-[-350px]': isOpen }">
+        <!-- <p class="text-4xl mb-9 text-primary lg:hidden" :class="{ 'xs:block': isOpen }">Conocé nuestras acciones en restauración</p> -->
+        <UButton v-if="isDesktop" ref="btnActivePanel" label="Descubrí nuestras acciones" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
+        <div v-else class=" w-full relative flex h-full flex-col justify-center overflow-hidden rounded-xl" :class="{ 'hidden': isOpen }">
+          <div class="absolute inset-0 bg-center rounded-xl dark:bg-black w-full"></div>
+          <div class="group relative m-0 flex h-full w-full rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
+            <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
+              <img src="/images/pilar-tecnologia.webp" class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110" alt="" />
+            </div>
+            <div class="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
+              <p class="text-3xl px-3 mb-9 text-white text-center font-bold shadow-lg" >Conocé nuestras acciones en restauración</p>
+              <UButton block ref="btnActivePanel" label="Descubrí" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
+            </div>
+          </div>
+        </div>
 
-        <div v-if="isOpen" class="absolute top-0 left-0 w-1/4 h-screen bg-slate-900/90 dark:bg-slate-900/90" >
-          <div class="relative flex items-center justify-between w-full">
-            <Logo color="dark"/>
+
+        </div>
+        
+      <SectionsMapappUCardDetalle class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
+      xs:top-[33%]
+      xs:w-full
+      " :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
+
+        <div v-if="isOpen" class="absolute lg:bottom-0 lg:left-0 lg:w-1/4 lg:h-screen bg-slate-900/90 dark:bg-slate-900/90
+        xs:w-full
+        xs:h-1/3
+        xs:bottom-0" >
+          <div class="relative flex items-center justify-evenly w-full xs:pt-2">
+            <Logo color="dark" class="lg:block" :class="{ 'xs:hidden': isOpen }"/>
             <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="outline" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink>
             <UPopover :popper="{ placement: 'bottom-start' }" class="border rounded-md">
               <UButton color="white" label="Capas" icon="i-heroicons-square-3-stack-3d-20-solid" />
@@ -114,11 +134,12 @@
 
   <script setup lang="ts">
   import { ref, onMounted } from 'vue';
+  const { isDesktop } = useDevice();
   const selected = ref(true)
   const selectedFajas = ref(true)
-  const selectedAreasArest = ref(true)
-  const selectedDegradadas = ref(true)
-  const selectedFueraProy = ref(true)
+  const selectedAreasArest = ref(false)
+  const selectedDegradadas = ref(false)
+  const selectedFueraProy = ref(false)
 /*   const selectedRayos = ref(true)
   const selectedAlta = ref(true) */
   const selectedFotos = ref(true)
@@ -222,8 +243,8 @@ const itemscat = [{
 
 const items = [{
   key: 'discover',
-  label: 'DESCUBRIR',
-  content: 'Actividades en la reserva'
+  label: 'ACCIONES',
+  content: 'Nuestras acciones'
 }, {
   key:'planner',
   label: 'RESTAURACIÓN',

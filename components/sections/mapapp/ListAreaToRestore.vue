@@ -2,12 +2,12 @@
     <div class="border-b border-gray-200 mb-6">
         <!-- <p class="font-bold text-primary mb-2 border-b border-gray-200 dark:text-white">Discovering</p> -->
         <div class="h-56 overflow-auto">
-          <div v-for="disco in discover" :key="disco.id" class="w-full mt-1 mb-1 flex p-1 border-b border-gray-700">
-              <span class="w-8 h-8 mr-3 rounded-full aspect-square border-2 border-red-600"></span>
+          <div v-for="disco in discover" :key="disco.id" class="w-full mt-1 mb-1 flex justify-evenly p-1 border-b border-gray-700">
+              <!-- <span class="w-8 h-8 mr-3 rounded-full aspect-square border-2 border-red-600"></span> -->
               <span v-if="disco.Name" class="text-xs text-gray-100 dark:text-gray-100 px-2"> {{ disco.Name }}</span>
-              <!-- <div class="h-4">
-                <UButton @click="goMapId(disco.id)" label="view" color="primary" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid"/>
-              </div>  -->
+              <!--  --> <div class="h-4">
+                <UButton @click="goMapId(disco.id)" activeClass="bg-yellow-500" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid" class="absolute bottom-1 right-1 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300"/>
+              </div>
           </div>
         </div>
     </div>

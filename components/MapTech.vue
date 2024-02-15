@@ -1,6 +1,6 @@
 <template>
  
-  <div class="relative z-50 h-screen w-screen overflow-hidden">
+  <div class="relative z-50 lg:w-screen lg:h-full xs:h-2/3 overflow-hidden">
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
@@ -29,7 +29,7 @@ const map = ref(null)
 
  // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
-
+const { isMobile } = useDevice();
 const zoom = ref(11);
 const center = ref([-26.52536, -53.91])
 const limites = ref(null);
@@ -46,7 +46,7 @@ const openPanel = ref(false)
 const mapoptions = {
 zoomControl: false
 }
-
+console.log(zoom.value, 'valor de zoom');
 // Límites----------------------------------------
 const styleFunctionLimites = {
   color: 'white',
@@ -205,13 +205,15 @@ const optionsFotos = {
     
     featureByName[feature.properties.ID] = layer;
     if (feature.properties.foto) {
-        
-        /* layer.bindPopup(
+        if(isMobile){
+         layer.bindPopup(
           '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
           { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
-        ); */
+        )
+        }else{
         layer.on('click', () => selectItem(openPanel, feature.properties.ID)); 
     }
+  }
     
   }
 };
@@ -389,7 +391,7 @@ onMounted(() => {
 
 });
 
-const navigateTo = async (idFoto) => {
+const flyTo = async (idFoto) => {
 
   center.value = featureByName[idFoto].getLatLng();
   zoom.value = 21;
@@ -402,11 +404,49 @@ const navigateTo = async (idFoto) => {
 }
 
  // Acciones a realizar cuando cambia el ID
-watch( () => props.fotoId, (newValue, oldValue) =>  {
+/*watch( () => props.fotoId, (newValue, oldValue) =>  {
   idToShow.value = newValue;
-  navigateTo(props.fotoId);
-}, { immediate: true }); /**/
+  flyTo(props.fotoId);
+  console.log("accion popup");
 
+
+}, { immediate: true }); */
+watch(
+  () => props.fotoId,
+  (newValue, old) => {
+    idToShow.value = newValue;
+    flyTo(props.fotoId);
+ console.log("acc popup");
+    if (newValue && featureByName[newValue]) {
+      const feature = featureByName[newValue].feature;
+      if (feature.properties.foto) {
+        if (isMobile) {
+          featureByName[newValue]
+            .bindPopup(
+              `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/>Nombre: ${feature.properties.Name}<br/>Fecha: ${feature.properties.Date}`,
+              {
+                permanent: false,
+                sticky: true,
+                maxWidth: "auto",
+                closeButton: false,
+                className: "popUpClass",
+              }
+            )
+            .openPopup();
+        } else {
+          featureByName[newValue].on("click", () =>
+            selectItem(openPanel, feature.properties.ID)
+          );
+        }
+      }
+    }
+  },
+  { immediate: true }
+);
+
+
+
+/**/
 defineExpose( { map , featureByName , navigateTo } )
 
   //get data item    
@@ -417,7 +457,11 @@ defineExpose( { map , featureByName , navigateTo } )
     //console.log(ID, 'idelegido',openPanel.value)
   };
 
-
+  watch(isMobile, (newValue) => {
+  if (newValue) {
+    zoom.value = 16
+  }
+})
 </script>
 
 <style>
@@ -438,10 +482,10 @@ defineExpose( { map , featureByName , navigateTo } )
   }
   @keyframes pulse-animation {
     0% {
-      box-shadow: 0 0 0 10px rgb(255, 255, 255, 0.6);
+      box-shadow: 0 0 0 5px rgb(255, 255, 255, 0.6);
     }
     100% {
-      box-shadow: 0 0 0 30px rgba(255, 255, 255, 0);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
     }
   }
   .leaflet-popup-content-wrapper, .leaflet-popup-tip{

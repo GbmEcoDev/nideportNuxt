@@ -63,7 +63,7 @@
     <AtomsContainer class="mt-16">
         <AtomsTitleH2 :texte="$t('project_info_title2')" alignTxt="center" colorTxt="primary" weightTxt="normal"/>
         <div class="w-full flex justify-center">
-            <div class="flex justify-between  gap-10 py-10 px-60 sm:px-10 w-11/12 max-sm:w-full max-sm:flex-col max-sm:px-2">
+            <div class="flex justify-center  gap-10 py-10 px-60 sm:px-10 w-11/12 max-sm:w-full max-sm:flex-col max-sm:px-2">
                 <!-- <AtomsLinkBtn href="#" variant="primary">{{$t('project_info_btn_01')}}</AtomsLinkBtn> -->
                 <AtomsLinkBtn href="https://registry.verra.org/app/projectDetail/VCS/3630" variant="primary">{{$t('project_info_btn_02')}}</AtomsLinkBtn>
                <!--  <AtomsLinkBtn href="#" variant="primary">{{$t('project_info_btn_03')}}</AtomsLinkBtn> -->

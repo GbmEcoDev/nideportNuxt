@@ -4,7 +4,7 @@
           <div v-for="disco in discover" :key="disco.ID" class="aspect-ratio-square">
               <div class="w-full h-full relative aspect-ratio-square">
                 <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ disco.foto }`" alt="Area" class="w-full h-full object-cover aspect-ratio-square rounded-lg" format="webp" />
-                <UButton @click="goMapId(disco.ID)" activeClass="bg-yellow-500" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid" class="absolute bottom-1 right-1"/>
+                <UButton @click="goMapId(disco.ID)" activeClass="bg-yellow-500" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid" class="absolute bottom-1 right-1 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300"/>
               </div>
           </div>
         </div>

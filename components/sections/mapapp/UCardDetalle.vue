@@ -1,6 +1,6 @@
 <template>
     <div v-if="photoDetails" class="h-full">
-        <UCard class="w-[350px] h-full">
+        <UCard class="lg:w-[350px] lg:h-full xs:w-full xs:h-1/3">
             <template #header class="relative">
                 {{ id }}
                 <UButton @click="closeDetalle"
@@ -10,11 +10,11 @@
                     class="absolute top-1 right-1"
                     />
             </template>
-            <div class="flex-col gap-2">
-                <div >
+            <div class="flex gap-2">
+                <div class="lg:w-full xs:w-2/6 border">
                     <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ photoDetails.foto }`" class="w-full aspect-ratio-square object-cover" />
                 </div>
-                <div class="w-4/6"><!--<h2>{{ photoDetails.titulo }}</h2> --><p>{{ photoDetails.Date }}</p></div>
+                <div class="lg:w-full xs:w-4/6"><!--<h2>{{ photoDetails.titulo }}</h2> --><p>{{ photoDetails.Date }}</p></div>
             </div>
 
             <template #footer>
