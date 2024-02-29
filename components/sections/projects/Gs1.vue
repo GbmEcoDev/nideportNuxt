@@ -2,10 +2,10 @@
     <section class="pt-20 pb-25 md:pt-24 scroll-snap-align-start">
         <AtomsContainer>
             <div class="flex-col items-center justify-center  w-full">  
-                <div class="w-full md:h-full bg-white dark:bg-body py-10">
+                <div class="w-full md:h-full bg-white dark:bg-body py-10 lg:px-36">
                   <AtomsTitleH2 sizeTxt="text-[32px]" alignTxt="center" colorTxt="secondary" weightTxt="bold" class="tracking-tighter px-36 xs:px-0 sm:px-0" :texte="$t('project_gs1_phrase')" />
                 </div>
-                <div class="w-full md:py-2 lg:py-4 px-36 xs:px-0 sm:px-0">
+                <div class="w-full md:py-2 lg:py-4 lg:px-36 xs:px-0 sm:px-0">
                   <LiteYouTubeEmbed class="w-full rounded-lg" :id="videoYT" title="Nideport" ref="iframe"/>
                 </div>
             </div>

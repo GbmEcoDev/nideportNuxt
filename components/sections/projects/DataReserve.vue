@@ -3,6 +3,7 @@
         <div class="flex justify-center items-center gap-8 h-72 mt-[-160px]
         xs:flex-col sm:flex-col lg:flex-row
         xs:h-auto sm:h-auto
+        xs:px-4 sm:px-8
         ">
           
               <div class="">
@@ -13,13 +14,13 @@
                   max-lg:p-4 
                   max-lg:w-full 
                   max-lg:h-[28,75rem]
-                  xs:px-1 sm:px-1
+                  xs:px-3 sm:px-3
                   hover:text-gray-500 dark:text-white hover:shadow-lg ">
-                      <div class="w-full max-sm:mt-10">
-                          <NuxtImg :src="`${urlImg}/images/objetive-1.svg`" :alt="$t('project_data_c1_title')" class="w-24 pb-5 mx-auto"/>
+                      <div class="w-full max-sm:mt-0">
+                          <NuxtImg :src="`${urlImg}/images/objetive-1.svg`" :alt="$t('project_data_c1_title')" class="w-24 pb-5 mx-auto xs:pb-1 sm:pb-1"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c1_title')" alignTxt="center" sizeTxt="text-[20px]" colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-3">{{$t('project_data_c1_parag')}}</p>
+                      <p class="text-md text-center py-3 text-gray-500 dark:text-white xs:mx-3 sm:mx-3">{{$t('project_data_c1_parag')}}</p>
                   </div>
               </div>
 
@@ -31,13 +32,13 @@
                   max-lg:p-4 
                   max-lg:w-full 
                   max-lg:h-[28,75rem]
-                  xs:px-1 sm:px-1
+                  xs:px-3 sm:px-3
                   hover: text-gray-500 dark:text-white hover:shadow-lg ">
-                      <div class="w-full max-sm:mt-10">
-                          <NuxtImg :src="`${urlImg}/images/objetive-2.svg`" :alt="$t('project_data_c2_title')" class="w-24 pb-5 mx-auto"/>
+                      <div class="w-full max-sm:mt-0">
+                          <NuxtImg :src="`${urlImg}/images/objetive-2.svg`" :alt="$t('project_data_c2_title')" class="w-24 pb-5 mx-auto xs:pb-1 sm:pb-1"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c2_title')" alignTxt="center" sizeTxt="text-[20px]"  colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-3 text-gray-500 dark:text-white">{{$t('project_data_c2_parag')}}</p>
+                      <p class="text-md text-center py-3 text-gray-500 dark:text-white xs:mx-3 sm:mx-3">{{$t('project_data_c2_parag')}}</p>
                   </div>
               </div>
 
@@ -49,10 +50,10 @@
                   max-lg:p-4 
                   max-lg:w-full 
                   max-lg:h-[28,75rem]
-                  xs:px-1 sm:px-1
+                  xs:px-3 sm:px-3
                   hover: text-gray-500 dark:text-white hover:shadow-lg ">
-                      <div class="w-full max-sm:mt-10">
-                          <NuxtImg :src="`${urlImg}/images/objetive-3.svg`" :alt="$t('project_data_c3_title')" class="w-24 pb-5 mx-auto"/>
+                      <div class="w-full max-sm:mt-0">
+                          <NuxtImg :src="`${urlImg}/images/objetive-3.svg`" :alt="$t('project_data_c3_title')" class="w-24 pb-5 mx-auto xs:pb-1 sm:pb-1"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c3_title')" alignTxt="center" sizeTxt="text-[20px]"  colorTxt="secondary" weightTxt="bold" />
                       <p class="text-md text-center py-3 text-gray-500 dark:text-white">{{$t('project_data_c3_parag')}}</p>

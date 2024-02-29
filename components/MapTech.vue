@@ -404,7 +404,7 @@ onMounted(() => {
 });
 
 // Acciones a realizar cuando se desea resetear el centro y zoom del map
- const needsRepositioning = computed(() => {
+/*  const needsRepositioning = computed(() => {
   return props.resetMap || resetedMap.value;
 });
 
@@ -420,7 +420,17 @@ const resetMapTo = async () => {
 watch(() => {
   // Se agrega resetedMap.value a la dependencia
   return props.resetMap || resetedMap.value;
-}, resetMapTo);
+}, resetMapTo); */
+
+watch(() => props.resetMap, (newValue) => {
+  if (newValue) {
+    center.value = [-26.52536, -53.91];
+    zoom.value = 11;
+    resetedMap.value = false;
+    props.resetMap = false;
+    emit('falsear-reset', false);
+  }
+});
 
 
 // Acciones a realizar cuando cambia el ID de area

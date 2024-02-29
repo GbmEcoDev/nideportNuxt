@@ -41,6 +41,5 @@ onMounted(async () => {
     emit('go-map-faja-id', id);
     emit('open-panel-det-faja',openPanelDetFaja.value=true);
     emit('close-panel-det-area',isOpenDetArea.value=false);
-    console.log('emito faja',id);
   };
 </script>

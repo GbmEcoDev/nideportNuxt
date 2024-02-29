@@ -20,6 +20,7 @@
         @open-panel="handleOpenPanel" 
         @open-panel-area="handleOpenPanelArea" 
         @open-panel-faja="handleOpenPanelFaja"
+        @falsear-reset="handleFalseReset"
          />
       </div>
       <div class="absolute top-2 left-2 h-14 w-48" :class="{ 'lg:hidden': isOpen }">
@@ -322,7 +323,9 @@ const recibirId = (ID: any) => {
 /*const resetMapa = () => {
     if(zoom.value != 11) { zoom.value=11; } else{ }
 };*/
-
+const handleFalseReset = () =>{
+  resetedMap.value = false;
+}
 
 const recibirAreaId = (ID: any) => {
   selectedAreaID.value = ID;
