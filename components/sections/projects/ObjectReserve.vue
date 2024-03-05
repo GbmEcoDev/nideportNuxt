@@ -2,7 +2,7 @@
     <section class="bg-gradient-to-b from-[#4AADA2] to-[#007454] p-24 max-sm:px-1 scroll-snap-align-start dark:from-[rgba(1,106,129,0.16)]">
         <AtomsContainer>
             <AtomsTitleH2 :texte="$t('project_object_title1')" alignTxt="left" colorTxt="white" weightTxt="normal"/>
-             <div class="mb-6 w-4/6 xs:w-full sm:w-full"><p class="text-white text-base pt-3 text-left xs:text-center sm:text-center">
+             <div class="mb-6 lg:w-4/6 xs:w-full sm:w-full"><p class="text-white text-base pt-3 lg:text-left xs:text-center sm:text-center">
               {{$t('project_object_phrase1')}}
             </p></div> 
             <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'" :navigation="true">
@@ -22,7 +22,7 @@
         </AtomsContainer>
         <AtomsContainer class="mt-16">
             <AtomsTitleH2 :texte="$t('project_object_title2')" alignTxt="left" colorTxt="white" weightTxt="normal"/>
-            <div class="mb-6 w-4/6 xs:w-full sm:w-full"><p class="text-white text-base pt-3 text-left  xs:text-center sm:text-center">
+            <div class="mb-6 lg:w-4/6 xs:w-full sm:w-full"><p class="text-white text-base pt-3 lg:text-left  xs:text-center sm:text-center">
               {{$t('project_object_phrase2')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow2" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slid key="5"  class="p-2 overflow-hidden">
@@ -41,7 +41,7 @@
         </AtomsContainer>
         <AtomsContainer class="mt-16">
             <AtomsTitleH2 :texte="$t('project_object_title3')" alignTxt="left" colorTxt="white" weightTxt="normal"/>
-            <div class="mb-6 w-4/6 xs:w-full sm:w-full"><p class="text-white text-base pt-3 text-left  xs:text-center sm:text-center">
+            <div class="mb-6 lg:w-4/6 xs:w-full sm:w-full"><p class="text-white text-base pt-3 lg:text-left  xs:text-center sm:text-center">
               {{$t('project_object_phrase3')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow3" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slide key="9" class="p-2 overflow-hidden">

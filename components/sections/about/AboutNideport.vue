@@ -70,7 +70,7 @@
             </div>
         </AtomsContainer>
         <AtomsContainer>
-            <div class="flex flex-wrap items-center justify-center pt-24 pb-12">
+            <div class="flex flex-wrap items-center justify-center pt-36 pb-36">
                 <AtomsTitleH2 sizeTxt="text-[1.875rem]" alignTxt="center" colorTxt="fivety" weightTxt="normal" class="pb-5 px-24 max-sm:px-1 max-lg:px-1 font-normal" :texte="$t('about_phrase2')" />
                 <!-- <AtomsLinkBtn href="#" variant="primary">{{$t('about_btn')}} </AtomsLinkBtn> -->
             </div>

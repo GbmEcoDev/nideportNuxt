@@ -24,7 +24,7 @@
               {{$t('home_map_title')}}
             </h1>
             <div class="flex items-center min-w-max relative">
-                <AtomsLinkBtn :href="localePath({ name: 'tech' })" variant="primary">
+                <AtomsLinkBtn :href="localePath({ name: 'tech' })" variant="cta">
                   {{$t('home_map_button')}}
                 </AtomsLinkBtn>
             </div>

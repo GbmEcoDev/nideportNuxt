@@ -22,8 +22,8 @@ else if(variant === "secondary"){
     textCl = "text-primary"
 }
 else if(variant === "cta"){
-    spanClass=costumSpanClass
-    textCl = costumTextColor
+    spanClass="bg-cta"
+    textCl = "text-white"
 }
 else if(variant === "costum"){
     spanClass=costumSpanClass
