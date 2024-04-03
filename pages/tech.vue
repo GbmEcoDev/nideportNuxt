@@ -310,12 +310,12 @@ const items = [{
   label: t('map_app_tab_item2'),
   disabled: false,
   content: t('map_app_tab_title2')
-}, {
+}/*, {
   key:'commu',
   label: t('map_app_tab_item3'),
   disabled: false,
   content: t('map_app_tab_title3')
-}
+}*/
 
 ]
 

@@ -4,7 +4,7 @@
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :bounds="bounds" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
-     <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
+      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
       <l-geo-json :geojson="areasArestaurar" :options="optionsArestaurar" :options-style="styleFunctionAreasRest" layer-type="overlay" name="Áreas a restaurar" :visible=estadoAreasArest />>
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="degradadas" :options="optionsDegradadas" :options-style="styleFunctionDegradadas" layer-type="overlay" name="Áreas degradadas" :visible=estadoDegradadas />
@@ -394,7 +394,7 @@ const fetchData = async () => {
   limites.value = await fetchGeoJson(config.public.url_base + '/capas/limites.geojson');
   fajas.value = await fetchGeoJson(config.public.url_base + '/capas/reforestacion_fajas.geojson');
   fotos.value = await fetchGeoJson(config.public.url_base + '/capas/fotos.geojson');
-  alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
+  //alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
   //areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
   areasArestaurar.value = await fetchGeoJson(config.public.url_base + '/capas/areas_arestaurar24_32.geojson');
   //pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
