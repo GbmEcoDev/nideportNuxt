@@ -122,6 +122,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
       public: {
           wpEventos : process.env.WP_EVENT,
+          wpPosteos : process.env.WP_POSTS,
           wpFindings : process.env.WP_FIND,
           wpRestora: process.env.WP_RESTO,
           wordpressUrl: process.env.WP_POST,

@@ -1,18 +1,14 @@
 <template>
   <div class="relative w-full">
     <SectionsBlogHeroBlog/>
-    <div class="absolute w-full bottom-[-3em] max-sm:bottom-0 h-48 max-sm:h-[640px] max-sm:relative"><SectionsBlogFeactures/></div>
+    <div class="absolute w-full bottom-[-3em] max-sm:bottom-0 h-48 max-sm:h-[640px] max-sm:relative"><!-- <SectionsBlogFeactures/> --></div>
   </div>
   <section class="xl:p-36 lg:p-24 md:p-24 sm:p-3 flex max-sm:flex-col gap-8 mt-11">
         <div class="w-8/12  max-sm:w-full flex-col">
           <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">{{$t('blog_lasted')}}</p>
-          <SectionsBlogLastetPost class="p-2" />
-            <!-- <div class="w-full max-sm:w-full">
-              <SectionsBlogPostBiodiversity class="border border-gray-200 shadow-md rounded-md p-2" />
-            </div> -->
+          <SectionsBlogListLastetPost class="p-2" />
           </div>
           <div class="w-4/12 max-sm:w-full">
-            <SectionsBlogCategories class="hidden"/>
             <SectionsBlogEvent/>
           </div>
      
