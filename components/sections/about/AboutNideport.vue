@@ -4,7 +4,7 @@
             <div class="relative flex justify-center max-sm:flex-col max-md:flex-col max-lg:flex-col gap-4 xl:gap-8 max-sm:gap-0 rounded-[14px] bg-primary bg-opacity-10 p-3">
                     <div class="flex w-5/12 max-md:w-11/12 md:h-full max-sm:w-full max-lg:w-full mx-auto">
                         <div class="w-full md:h-full p-0 mt-8">
-                        <AtomsTitleH2 sizeTxt="text-[22px]" alignTxt="left" colorTxt="fivety" weightTxt="normal" class="tracking-tighter leading-6" :texte="$t('about_phrase1')" />
+                        <AtomsTitleH2 sizeTxt="text-[22px] lg:text-[28px]" alignTxt="left" colorTxt="fivety" weightTxt="normal" class="tracking-tighter leading-6 lg:leading-8" :texte="$t('about_phrase1')" />
                         </div>
                     </div>
                     <div class="tips relative w-4/6 h-72 pt-8 max-sm:w-full max-lg:w-full mx-auto">
