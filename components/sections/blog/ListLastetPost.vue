@@ -1,129 +1,169 @@
 <template>
-    <div>
-      <div v-if="error || !data">Error</div>
-      <div v-else>
-        <ul>
-          <li v-for="item in paginatedData" :key="item.id" >
-            <NuxtLink :to='item.slug'>
-              <div class="flex gap-3">
-                <div class="w-2/12 overflow-hidden">
-                  <NuxtImg v-if="item.yoast_head_json.og_image[0].url" :src="item.yoast_head_json.og_image[0].url" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />
-                </div>
-                <div class="flex-col w-9/12 pl-1 max-sm:h-30">
-                  <p class="text-primary text-xs dark:text-white">{{ item.id }}<!--- {{ getCategoryNames(item) }} --> - <span class="text-gray-600">{{ getDatePost(item) }}</span></p> 
-                  <h2 class="font-bold text-lg  dark:text-white leading-5 mb-1">{{ item.title.rendered }}</h2>
-                  <p class="text-gray-700 text-sm dark:text-white leading-5">{{ cleanAndTruncate(item.excerpt.rendered) }}</p>
-                 <h2> - {{ getSlug(item) }} </h2>
-                </div>
-              </div>
-            </NuxtLink> 
-          </li>
-        </ul>
-        <hr>
-        <button @click="prevPage" :disabled="page === 1">Previous</button>
-        <button @click="nextPage" :disabled="page === totalPages">Next</button>
+  <div class="w-full">
+    <div v-if="pending" class="flex items-start justify-center">
+      <!-- Loader -->
+    </div>
+    <div v-else-if="error || !data">
+      <h2>Error</h2>
+    </div>
+    <div v-else class="flex-grid w-full">
+      <SectionsBlogPostGral v-for="post in paginatedPosts" :key="post.uri" :post="post" ></SectionsBlogPostGral>
+      <div class="flex justify-center mt-4">
+        <button @click="previousPage" :disabled="page === 1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" :class="{ 'opacity-50 cursor-not-allowed': page === 1 }">
+          Página anterior
+        </button>
+        <button @click="nextPage" :disabled="page * 4 >= totalPosts" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" :class="{ 'opacity-50 cursor-not-allowed': page * 4 >= totalPosts }">
+          Página siguiente
+        </button>
       </div>
     </div>
-  </template>
-  
-  <script setup lang="ts">
-  import { ref, watch, computed } from 'vue';
-  import axios from 'axios';
-  import { useI18n } from 'vue-i18n';
-  
-  const colorMode = useColorMode();
-  const { locale } = useI18n();
-  const config = useRuntimeConfig();
-  const { isMobile } = useDevice();
-  const language = locale.value.toLowerCase();
+  </div>
+</template>
 
-  interface Posteos {
-    id: number;
-    title: string;
-    content: string;
-    date: string;
-    categories: number[];
-    featured_media:number;
-    acf?: {
-      lang?: {
-        slug?: string;
-      };
-    };
-    yoast_head_json?: {
-      og_image?: {
-          url?:string;
-      };
-    };
-  }
+<script setup>
+import axios from 'axios';
+import { ref, onMounted, watch } from 'vue';
 
-  const filteredData = computed(() => {
-    return data.value?.filter(item => item.acf && item.acf.lang && item.acf.lang.slug === language);
-  });
+const { locale } = useI18n()
+const config = useRuntimeConfig();
+const language = locale.value.toUpperCase();
 
- const { data, error } = await useFetch<Posteos[]>(config.public.wpPosteos + '/', {
-  params: {
-    per_page: 100
-  }}); 
+let data = [];
+let error = false;
+let pending = true;
+let page = ref(1);
+let totalPosts = 0;
 
-
-  const itemsPerPage = 15;
-  const page = ref(1);
-  
-  const paginatedData = computed(() => {
-    const start = (page.value - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    return filteredData.value?.slice(start, end);
-  });
-  
-  const totalPages = computed(() => Math.ceil(filteredData.value?.length / itemsPerPage));
-  
-  const nextPage = () => {
-    if (page.value < totalPages.value) {
-      page.value++;
-    }
-  };
-  
-  const prevPage = () => {
-    if (page.value > 1) {
-      page.value--;
-    }
-  };
-
-  const getSlug = (item: Posteos) => {
-  return item.acf?.lang?.slug || '';
-  };
-
-  const getDatePost = (item: Posteos) => {
-    const date = new Date(item.date);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
-  const getCategoryNames = async (item: Posteos) => {
-    const names = await fetchCategoryNames(item.categories);
-    return names.join(', ');
-  };
-
-  const fetchCategoryNames = async (categoryIds: number[]) => {
-    const response = await axios.get('https://blog.nideport.com/wp-json/wp/v2/categories', {
-      params: {
-        include: categoryIds.join(','),
-      },
+onMounted(async () => {
+  try {
+    const response = await axios.post(config.public.wordpressUrl, {
+      query: `
+        query posts($language: LanguageCodeFilterEnum!, $first: Int!, $skip: Int!) {
+          posts(where: { language: $language }, first: $first, skip: $skip) {
+            edges {
+              node {
+                id
+                excerpt
+                title
+                date
+                uri
+                slug
+                featuredImage {
+                  node {
+                    id
+                    sourceUrl
+                  }
+                }
+                language {
+                  code
+                  locale
+                }
+                categories(first:100) {
+                  nodes {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        language: language,
+        first: 4, // Mostrar 4 posteos por página
+        skip: 0 // Empezar desde el primer post
+      }
     });
-    return response.data.map((category: any) => category.name);
-  };
 
-  function cleanAndTruncate(text: string) {
-    // Limpiar HTML y recortar a 200 caracteres
-    const cleanText = text.replace(/<[^>]+>/g, ''); // Elimina todas las etiquetas HTML
-    const truncatedText = cleanText.length > 100 ? `${cleanText.substring(0, 200)}...` : cleanText;
-    return truncatedText;
+    data = response.data?.data?.posts?.edges?.map((edge) => transformPost(edge?.node)) || [];
+    totalPosts = response.data?.data?.posts?.edges?.length || 0;
+    pending = false;
+  } catch (e) {
+    console.error('Error fetching data:', e);
+    error = true;
+    pending = false;
   }
-</script>
-<style scoped>
-.aspect-ratio-square {
-  aspect-ratio: 1 / 1; /* Establece la relación de aspecto cuadrada */
+});
+
+function transformPost(node) {
+  return {
+    id: node?.id || '',
+    excerpt: node?.excerpt || '',
+    title: node?.title || '',
+    date: node?.date || '',
+    uri: node?.uri || '',
+    slug: node?.slug || '',
+    sourceUrl: node?.featuredImage?.node?.sourceUrl,
+    language: node?.language || '',
+    categories: node?.categories?.nodes?.map((category) => category?.name).join(', ') || '',
+  };
 }
-</style>
+
+function nextPage() {
+  if (page.value * 4 < totalPosts) {
+    page.value++;
+    fetchData();
+  }
+}
+
+function previousPage() {
+  if (page.value > 1) {
+    page.value--;
+    fetchData();
+  }
+}
+
+function fetchData() {
+  pending = true;
+  axios.post(config.public.wordpressUrl, {
+    query: `
+      query posts($language: LanguageCodeFilterEnum!, $first: Int!, $skip: Int!) {
+        posts(where: { language: $language }, first: $first, skip: $skip) {
+          edges {
+            node {
+              id
+              excerpt
+              title
+              date
+              uri
+              slug
+              featuredImage {
+                node {
+                  id
+                  sourceUrl
+                }
+              }
+              language {
+                code
+                locale
+              }
+              categories(first:100) {
+                nodes {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      language: language,
+      first: 4, // Mostrar 4 posteos por página
+      skip: (page.value - 1) * 4 // Calcular cuántos posteos omitir
+    }
+  }).then(response => {
+    data = response.data?.data?.posts?.edges?.map((edge) => transformPost(edge?.node)) || [];
+    pending = false;
+  }).catch(e => {
+    console.error('Error fetching data:', e);
+    error = true;
+    pending = false;
+  });
+}
+
+const paginatedPosts = computed(() => {
+  const start = (page.value - 1) * 4;
+  return data.slice(start, start + 4);
+});
+</script>

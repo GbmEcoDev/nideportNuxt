@@ -1,13 +1,15 @@
 <template>
-    <section class="pt-20 md:pt-24 scroll-snap-align-start">
-        <AtomsContainer>
-            <div class="relative flex justify-center max-sm:flex-col max-md:flex-col max-lg:flex-col gap-4 xl:gap-8 max-sm:gap-0 rounded-[14px] bg-primary bg-opacity-10 p-3">
+    <section class="pt-0 lg:pt-20 scroll-snap-align-start lg:px-16">
+        
+            <div class="relative flex justify-center max-sm:flex-col max-md:flex-col max-lg:flex-col gap-4 xl:gap-8 max-sm:gap-0  lg:rounded-[14px] bg-primary bg-opacity-10 px-3 py-16">
                     <div class="flex w-5/12 max-md:w-11/12 md:h-full max-sm:w-full max-lg:w-full mx-auto">
-                        <div class="w-full md:h-full p-0 mt-8">
-                        <AtomsTitleH2 sizeTxt="text-[22px] lg:text-[28px]" alignTxt="left" colorTxt="fivety" weightTxt="normal" class="tracking-tighter leading-6 lg:leading-8" :texte="$t('about_phrase1')" />
+                        <div class="w-full md:h-full p-0 mt-4 xs:px-4">
+                            <h2 class="font-semibold xs:text-[24px] md:text-[28px] lg:text-[24px] text-center sm:text-center md:text-center lg:text-left xs:leading-6 sm:leading-6 md:leading-8 lg:leading-8 text-[rgb(1,106,129)] dark:text-white mb-2">
+                                {{ $t('about_phrase1') }}
+                            </h2>
                         </div>
                     </div>
-                    <div class="tips relative w-4/6 h-72 pt-8 max-sm:w-full max-lg:w-full mx-auto">
+                    <div class="tips relative w-7/12 h-72 pt-4 max-sm:w-full max-lg:w-full mx-auto">
                         <div
                             class="flex absolute top-1/2 -left-5 -translate-y-1/2 z-10 transition duration-300 ease-linear"
                             :class="prevIsVisible?'visible opacity-100':'invisible opacity-0'">
@@ -68,10 +70,10 @@
                         </div>
                     </div>
             </div>
-        </AtomsContainer>
+        
         <AtomsContainer>
             <div class="flex flex-wrap items-center justify-center pt-36 pb-36">
-                <AtomsTitleH2 sizeTxt="text-[1.375rem]" alignTxt="center" colorTxt="fivety" weightTxt="normal" class="pb-5 px-32 max-sm:px-1 max-lg:px-1 font-normal" :texte="$t('about_phrase2')" />
+                <AtomsTitleH2 sizeTxt="text-[18px] lg:text-[30px] md:text-[28px]" alignTxt="center" colorTxt="fivety" weightTxt="normal" class="pb-5 px-32 max-sm:px-1 max-lg:px-1 font-normal" :texte="$t('about_phrase2')" />
                 <!-- <AtomsLinkBtn href="#" variant="primary">{{$t('about_btn')}} </AtomsLinkBtn> -->
             </div>
         </AtomsContainer>

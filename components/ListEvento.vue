@@ -2,16 +2,19 @@
     <div >
       <p  class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">{{$t('blog_title_more_event')}}</p>
       
-      <div v-for="(event, index) in filteredEvents" :key="event.id" @click="isMobile ? viewContent(index) : null" :class="{ 'border-gray-400': onViewContent[index] }" class="card h-auto transition-height ease-in-out w-full mt-6 mb-6 flex-col border border-gray-300 rounded-lg p-3 bg-gradient-to-l from-slate-50 hover:shadow-lg duration-200 dark:from-gray-950">
+      <div v-for="(event, index) in filteredEvents" :key="event.id" @click="isMobile ? viewContent(index) : null" :class="{ 'border-gray-400': onViewContent[index] }" class="card h-auto transition-height ease-in-out w-full mt-6 mb-6 flex-col rounded-lg p-3 bg-gradient-to-l from-slate-50 hover:shadow-lg duration-200 dark:from-gray-950">
           <div class="w-full header">
             <div class="containerImg mr-3" :class="{ 'w-full': onViewContent[index] }"><NuxtImg :src="`${ event.acf.imagen }`" alt="Cover" class="w-full rounded-full border aspect-ratio-square" /></div>
             <div class="containerHead"  :class="{ 'w-full': onViewContent[index] }">
-              <p class="text-xs text-gray-600 border-b border-gray-300 w-full mb-2 dark:text-gray-400">{{ event.acf.start_time }}</p>
-              <h2 class="font-bold text-secondary text-lg leading-5 dark:text-gray-400">{{ event.title.rendered }}</h2>
-              <p class="text-xs text-gray-600 dark:text-gray-400">{{ event.acf.speaker }}</p>
+               <div class="flex flex-row justify-between">
+                  <p class="text-xs text-gray-600 border-b border-gray-300 w-full mb-2">{{ event.acf.start_time }}</p>
+                  <span class="mt-1 w-[24px] h-[24px] border border-[#0F5F60e9] text-[#0f5f60e9] rounded-full text-center flex justify-center items-center"><i class="i-heroicons-chevron-down-20-solid"></i></span>
+                </div>
+                <h2 class="font-bold text-secondary text-md leading-5">{{ event.title.rendered }} </h2> 
+                <p class="text-xs text-gray-600">{{ event.acf.speaker }}</p> 
             </div>
           </div>
-          <div class="content w-full p-1 text-md text-gray-800 dark:text-gray-400 px-2"  :class="{ 'block opacity-100': onViewContent[index] }" v-html="event.content.rendered"></div>
+          <div class="content w-full p-1 text-sm text-gray-800 px-2"  :class="{ 'block opacity-100': onViewContent[index] }" v-html="event.content.rendered"></div>
       </div>
     </div>
     <p v-if="filteredEvents"></p>
@@ -68,7 +71,7 @@ const viewContent  = (index: number) => {
     opacity: 0;
   }
   .containerImg{
-    width:20%;
+    width:25%;
     height:auto;
   }
   .containerHead{
@@ -80,10 +83,13 @@ const viewContent  = (index: number) => {
     opacity: 1;
   }
   .card:hover :deep(.containerImg) {
-    width: 100%;
+    width: 25%;
   }
   .card:hover :deep(.containerHead) {
     width: 100%;
+  }
+  .card:hover :deep(span) {
+    transform: rotate(180deg);
   }
   .content :deep(a) {
     margin-top:12px;

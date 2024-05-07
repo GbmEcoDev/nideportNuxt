@@ -33,8 +33,8 @@
    <NuxtImg :src="`${urlImg}/images/hero-home-min.webp`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/>  <!-- -->
     <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
           <AtomsContainer>
-            <div class="flex h-full items-center justify-center">
-              <div class="flex max-sm:flex-col w-11/12 gap-4 mt-60">
+            <div class="flex h-full items-center justify-center ">
+              <div class="flex max-sm:flex-col w-11/12 gap-4 mt-40 md:mt-60 lg:mt-60">
                   <div class="flex justify-end max-sm:justify-center max-sm:mx-auto w-[18.75rem]">
                     <NuxtImg :src="`${urlImg}/images/imagonideport.svg`" width="236" class="max-w-none w-[14.75rem] h-auto max-sm:w-[150px] max-sm:h-[150px]" alt="Logo Nideport"/>
                     <!--  <ElementsImagoLogo width="236" class="max-w-none w-[14.75rem] h-auto max-sm:w-[150px] max-sm:h-[150px]" />-->

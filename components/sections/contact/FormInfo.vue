@@ -2,30 +2,30 @@
   <AtomsContainer class="scroll-snap-align-start">
     <div class="mx-32 max-sm:mx-1">
       <AtomsTitleH4 :texte="$t('contact_form_title')"></AtomsTitleH4>
-      <p class="text-left text-base font-bold text-secondary my-4  dark:text-white">{{$t('contact_form_legend')}}</p>
+      <p class="text-left text-base font-bold text-secondary my-4 ">{{$t('contact_form_legend')}}</p>
     </div>
     <div class="mx-32 mt-8 max-sm:mx-1">
    
         <div class="mb-8">
-          <label for="nombre" class="block text-secondary text-sm dark:text-white">{{$t('contact_form_label1')}}</label>
-          <input type="text" id="nombre" v-model="nombre" class="border-b border-secondary text-xl w-full px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
+          <label for="nombre" class="block text-secondary text-sm">{{$t('contact_form_label1')}}</label>
+          <input type="text" id="nombre" v-model="nombre" class="border-b border-secondary text-xl w-full px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline " required>
 
         </div>
   
         <div class="mb-8">
-          <label for="empresa" class="block text-secondary text-sm dark:text-white">{{$t('contact_form_label2')}}</label>
+          <label for="empresa" class="block text-secondary text-sm">{{$t('contact_form_label2')}}</label>
           <input type="text" id="empresa" v-model="empresa" class="border-b border-secondary text-xl w-full px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
 
         </div>
   
         <div class="mb-8">
-          <label for="telefono" class="block text-secondary text-sm dark:text-white">{{$t('contact_form_label3')}}</label>
+          <label for="telefono" class="block text-secondary text-sm">{{$t('contact_form_label3')}}</label>
           <input type="tel" id="telefono" v-model="telefono" class="border-b border-secondary text-xl w-full px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
   
         </div>
   
         <div class="mb-8">
-          <label for="email" class="block text-secondary text-sm dark:text-white">{{$t('contact_form_label4')}}</label>
+          <label for="email" class="block text-secondary text-sm">{{$t('contact_form_label4')}}</label>
           <input type="email" id="email" v-model="email" class="border-b border-secondary text-xl w-full px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
          
         </div>
@@ -33,7 +33,7 @@
         <div class="mb-6">
           <label class="flex items-center">
             <input type="checkbox" v-model="terminos" class="mr-2 leading-tight">
-            <span class="text-secondary text-sm  dark:text-white">
+            <span class="text-secondary text-sm ">
               {{$t('contact_form_label5')}}
             </span>
           </label>
@@ -42,7 +42,7 @@
         <div class="mb-6">
           <label class="flex items-center">
             <input type="checkbox" v-model="notificaciones" class="mr-2 leading-tight">
-            <span class="text-secondary text-sm  dark:text-white">
+            <span class="text-secondary text-sm ">
               {{$t('contact_form_label6')}}
             </span>
           </label>

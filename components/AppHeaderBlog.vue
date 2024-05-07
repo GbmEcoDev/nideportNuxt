@@ -1,5 +1,5 @@
 <template>
-  <header class="inset-x-0 top-0 py-0 dark:bg-body sticky bg-black-10 " :class="{
+  <header class="inset-x-0 top-0 py-2 dark:bg-body sticky bg-black-10 " :class="{
                 'scrollUp translate-y-[-100px] !visible': scrollY > 0,
                 'scrollDown translate-y-0 ': scrollY === 0
                 }">
@@ -42,7 +42,7 @@
                         {{$t('home_hero_btn_join')}}
                       </AtomsLinkBtn> <!---->
                   <ElementsLangSwitcher color="secondary"/>
-                  <ElementsThemeSwitcher color="secondary"/>
+                 <!--  <ElementsThemeSwitcher color="secondary"/> -->
                   <div class="flex lg:hidden border-l border-box-border pl-2">
                       <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative  text-gray-200 hover:text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" alt="toogle menu" aria-label="toogle menu">
                           <span

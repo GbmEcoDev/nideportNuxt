@@ -1,5 +1,5 @@
 <template>
-  <header class="inset-x-0 top-0 py-0 dark:bg-body sticky bg-black-10 " :class="{
+  <header class="inset-x-0 top-0 py-2 dark:bg-body sticky bg-black-10 " :class="{
                 'scrollUp translate-y-[-100px] !visible': scrollY > 0,
                 'scrollDown translate-y-0 ': scrollY === 0
                 }">
@@ -10,12 +10,12 @@
                 'scrollUp': scrollY > 0,
                 'scrollDown  translate-y-0': scrollY === 0
                 }">
-                <NuxtLink :to="localePath({ name: 'index' })" class=" flex items-center gap-0 py-0 " >
+                <NuxtLink :to="localePath({ name: 'index' })" class=" flex items-center gap-0 py-0" >
                     <Logo />
                 </NuxtLink> 
               </div>
               <div 
-                  class="menu absolute top-full px-5 sm:px-8 md:px-12 lg:px-0 z-50 right-1
+                  class="menu absolute top-full px-5 sm:px-4 md:px-12 lg:px-0 z-50 right-1
                   lg:pt-0 lg:top-0 invisible opacity-40 lg:opacity-100 bg-body rounded-xl border border-box-border shadow-lg shadow-box-shadow 
                   lg:border-none lg:shadow-none lg:rounded-none
                   lg:bg-transparent w-full lg:w-max py-3 lg:py-0 lg:visible lg:relative flex 
@@ -42,7 +42,7 @@
                         {{$t('home_hero_btn_join')}}
                       </AtomsLinkBtn> <!---->
                   <ElementsLangSwitcher />
-                  <ElementsThemeSwitcher />
+                 <!--  <ElementsThemeSwitcher /> -->
                   <div class="flex lg:hidden border-l border-box-border pl-2">
                       <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative  text-gray-200 hover:text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" alt="toogle menu" aria-label="toogle menu">
                           <span

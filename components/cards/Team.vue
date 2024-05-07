@@ -10,16 +10,14 @@
             </NuxtLink>
         </span> -->
       </div>
-      <div class="lg:px-2 pt-2 lg:pb-4 xl:px-4 md:pt-4  h-full flex flex-col justify-between">
-        <div class="h-full px-2">
-          <h2 class="font-bold text-base md:text-lg lg:text-xl line-clamp-2 md:line-clamp-3 text-center text-white dark:text-white">
+      <div class="lg:px-1 pt-2 xl:px-2 md:pt-4  h-full flex flex-col justify-between">
+        <div class="h-full px-1">
+          <h2 class="font-semibold text-[12px] md:text-[16px] lg:text-[16px] text-center xs:leading-2 sm:leading-2 leading-5 text-white dark:text-white mb-2">
             {{ name }}
           </h2>
-        </div>
-        <div class="h-full pt-1 mb-6 px-2">
-          <h4 class="font-normal xs:text-xs md:text-sm lg:text-sm sm:line-clamp-2 md:line-clamp-3 text-center text-white dark:text-white">
+          <p class="font-normal text-[10px] md:text-[12px] lg:text-[12px] mb-2 text-center lg:leading-5 text-white dark:text-white">
             {{ position }}
-          </h4>
+          </p>
         </div>
 <!--         <div class="h-full">
           <p class="font-normal text-xs md:text-xs lg:text-xs line-clamp-2 md:line-clamp-3 text-center text-white dark:text-white">

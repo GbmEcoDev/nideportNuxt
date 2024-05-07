@@ -4,7 +4,7 @@
             <AtomsTitleH2 alignTxt="center" colorTxt="white" weightTxt="normal" :texte="$t('about_team_title')" class="pb-12" />
         </AtomsContainer>
         <AtomsContainer>
-            <div class="grid grid-cols-2 items-stretch sm:grid-cols-4 lg:grid-cols-5 gap-x-3 gap-y-10 sm:gap-x-5 sm:gap-y-8">
+            <div class="grid grid-cols-2 items-stretch sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-x-2 gap-y-8 sm:gap-x-5 sm:gap-y-8">
 
                 <!-- <CardsTeam name="Juan" 
                     href="#" 
@@ -26,29 +26,41 @@ const { locale } = useI18n();
 const teamData = ref([
   {
     name: 'Juan Nuñez',
-    position: locale.value === 'es' ? 'CEO' : 'CEO',
+    position: locale.value === 'es' ? 'CEO - Director ejecutivo' : 'CEO - Chief Executive Officer',
     coverImage: '/images/team/Juan_Nunez.png'
   },
   {
-    name: 'Andres Persico',
-    position: locale.value === 'es' ? 'COO' : 'COO',
-    coverImage: '/images/team/Andres_Persico.png'
-  },
-  {
-    name: 'Tomas Gutierrez',
-    position: locale.value === 'es' ? 'CFO' : 'CFO',
+    name: 'Tomas Raul Vicente',
+    position: locale.value === 'es' ? 'CFO - Director de finanzas' : 'CFO - Chief Financial Officer',
     coverImage: '/images/team/TRV.png'
   },
   {
-    name: 'Maxima Perez Quesada',
-    position: locale.value === 'es' ? 'Responsable Comercial' : 'Head of the commercial area',
-    coverImage: '/images/team/Maxima.png'
+    name: 'Andres Persico',
+    position: locale.value === 'es' ? ' COO - Director de operaciones' : ' COO - Chief Operating Officer',
+    coverImage: '/images/team/Andres_Persico.png'
+  },
+
+  {
+    name: 'Juan Durañona y Vedia',
+    position: locale.value === 'es' ? 'Idea Creator' : 'Idea Creator',
+    coverImage: '/images/team/Juan_Duranona_y_Vedia.png'
+  },
+  {
+    name: 'Alejandro Carrano',
+    position: locale.value === 'es' ? 'Relaciones con los inversores y promotor de proyectos' : 'Investor relations and project developer',
+    coverImage: '/images/team/Alejandro_Carrano.png'
   },
   {
     name: 'Marcelo Taboada',
     position: locale.value === 'es' ? 'Presidente Nideport/ Responsable de Certificación' : 'Nideport\'s President / Responsible for Certification',
     coverImage: '/images/team/Marcelo_Taboada.png'
   },
+  {
+    name: 'Maxima Perez Quesada',
+    position: locale.value === 'es' ? 'Responsable Comercial' : 'Head of the commercial area',
+    coverImage: '/images/team/Maxima.png'
+  },
+
 
   {
     name: 'Tomas Arata',
@@ -86,11 +98,7 @@ const teamData = ref([
     coverImage: '/images/team/Eugenia_Strobbe_Pellegrini.png'
   },
 
-  {
-    name: 'Juan Durañona y Vedia',
-    position: locale.value === 'es' ? 'Idea Creator' : 'Idea Creator',
-    coverImage: '/images/team/Juan_Duranona_y_Vedia.png'
-  },
+ 
 
   {
     name: 'Fernando Colombini',
@@ -131,6 +139,11 @@ const teamData = ref([
     name: 'Natacha Peralta',
     position: locale.value === 'es' ? 'Gestión de Salvaguardas de Género' : 'Responsible for Gender Safeguards Management',
     coverImage: '/images/team/Natacha_peralta.png'
+  }, 
+   {
+    name: 'Pablo Gallardo',
+    position: locale.value === 'es' ? 'Líder de Relación con las Comunidades' : 'Community Relations Leader',
+    coverImage: '/images/team/Pablo_Gallardo.png'
   },
 
   {
@@ -140,16 +153,12 @@ const teamData = ref([
   },
 
   {
-    name: 'Maicon_Villalba',
+    name: 'Maicon Villalba',
     position: locale.value === 'es' ? 'Gestión de relaciones Comunitarias' : 'Responsible for Community Relations management',
     coverImage: '/images/team/Maicon_Villalba.png'
   },
 
-  {
-    name: 'Pablo Gallardo',
-    position: locale.value === 'es' ? 'Líder de Relación con las Comunidades' : 'Community Relations Leader',
-    coverImage: '/images/team/Pablo_Gallardo.png'
-  },
+
 
   {
     name: 'Lucia Larrea',

@@ -11,7 +11,7 @@
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
   ],
-  darkMode: 'class',
+ /*  darkMode: 'class', */
   theme: {
     extend: {
       colors: {

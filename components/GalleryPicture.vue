@@ -1,6 +1,6 @@
 <template>
   <div class="scroll-snap-align-start">
-    <div class="grid grid-cols-4 mb-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 mb-4">
       <div
         v-for="(image, index) in displayedImages"
         :key="index"
@@ -24,8 +24,8 @@
     </div>
 
     <!-- Modal -->
-    <div v-if="isModalOpen" class="fixed top-0 bottom-0 left-0 right-0 inset-0 z-1070 bg-black bg-opacity-80 flex items-center justify-center" >
-      <div class=" p-4 h-full overflow-hidden relative flex items-center justify-center">
+    <div v-if="isModalOpen" class="fixed top-0 bottom-0 left-0 right-0 inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center" @click="closeModal">
+      <div class=" p-4 h-full overflow-hidden relative flex items-center justify-center" @click.stop>
         <div class="relative max-h-full"> 
           <div class="absolute top-0 right-0 z-1060 flex justify-center">
             <button @click="closeModal" class="text-gray-500 hover:text-gray-700 bg-white rounded-full p-3" aria-label="Cerrar modal">

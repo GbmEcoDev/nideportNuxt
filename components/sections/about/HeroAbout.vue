@@ -1,11 +1,11 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat lg:h-[41.5rem] xs:h-[24rem] sm:h-[24rem] h-[12rem] z-0">
+    <div class="relative overflow-hidden bg-cover bg-no-repeat lg:h-[41.5rem] md:h-[28rem] h-[12rem] z-0">
       <video
         autoplay
         loop
         muted
         preload="none"
-        class="absolute z-0 lg:w-full lg:h-auto xs:h-full sm:h-full xs:w-auto sm:w-auto"
+        class="absolute z-0 lg:w-full lg:h-auto xs:w-auto sm:w-auto"
         poster="/images/hero_about.jpg"
         >
         <source
@@ -15,11 +15,11 @@
         Your browser does not support the video tag.
       </video>
     <div
-      class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
+      class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed ">
         <div class="flex h-full items-center justify-center ">
           <AtomsContainer>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="text-left text-white md:px-12 col-span-2" data-aos="fade-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+                <div class="text-left text-white md:px-12 col-span-2 ">
                   <AtomsTitleH1 :texte="$t('about_title')"></AtomsTitleH1>
                 </div>
             </div>
@@ -28,12 +28,14 @@
     </div>
   </div>
 </template>
+
 <script setup>
-const config = useRuntimeConfig();
-const urlImg = config.public.url_base;
-const { locale } = useI18n()
-const localePath = useLocalePath()
+  const config = useRuntimeConfig();
+  const urlImg = config.public.url_base;
+  const { locale } = useI18n()
+  const localePath = useLocalePath()
 </script>
+
 <style scoped>
 .hero{
     /*background: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 30%, rgba(0, 0, 0, 0.00) 100%);*/

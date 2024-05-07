@@ -3,7 +3,7 @@
         <AtomsContainer>
             <div class="flex-col items-center justify-center  w-full">  
                 <div class="w-full md:h-full bg-white dark:bg-body py-10 lg:px-36">
-                  <AtomsTitleH2 sizeTxt="text-[32px]" alignTxt="center" colorTxt="secondary" weightTxt="bold" class="tracking-tighter px-36 xs:px-0 sm:px-0" :texte="$t('project_gs1_phrase')" />
+                  <h2 class="font-semibold w-full text-[18px] mt-8 md:mt-4 lg:mt-4 md:text-[32px] lg:text-[32px] text-center sm:text-center md:text-center  leading-5 sm:leading-6 md:leading-8 lg:leading-10 text-secondary  mb-2">{{ $t('project_gs1_phrase') }}</h2>
                 </div>
                 <div class="w-full md:py-2 lg:py-4 lg:px-36 xs:px-0 sm:px-0">
                   <LiteYouTubeEmbed class="w-full rounded-lg" :id="videoYT" title="Nideport" ref="iframe"/>

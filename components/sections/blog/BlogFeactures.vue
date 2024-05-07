@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-16 max-sm:mx-1">
+    <div class="">
       <div class="mt-5 w-full flex items-center justify-center ">
         <div v-if="pending" class="flex items-start justify-center w-full">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 200 200">
@@ -18,7 +18,7 @@
           <h2>Error </h2>
         </div>
         <div v-else class="w-full">
-          <div class="flex items-start justify-center w-full max-sm:flex-col max-sm:mx-0 max-sm:px-0" data-aos="fade-up">
+          <div class="flex items-start justify-center w-full max-sm:flex-col px-3 md:px-0 lg:px-0" data-aos="fade-up">
             <SectionsBlogPost v-for="post in data" :key="post.uri" :post="post"></SectionsBlogPost>
           </div>
         </div>

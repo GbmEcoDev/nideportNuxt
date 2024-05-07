@@ -1,6 +1,6 @@
 <template>
  
-  <div class="relative z-50 lg:w-screen lg:h-full xs:h-2/3 overflow-hidden">
+  <div class="relative z-50 lg:w-screen lg:h-full md:h-full h-[95%] overflow-hidden">
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :bounds="bounds" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
@@ -497,7 +497,7 @@ watch(
 const resetearSeleccionFaja = async () => {
   
   for (const f in featureByFaja) {
-    console.log("resetfaja",f);
+    //console.log("resetfaja",f);
     // Quitamos el estilo 
     if (featureByFaja[f] && featureByFaja[f].setStyle) {
     featureByFaja[f].setStyle({
@@ -675,5 +675,9 @@ defineExpose( { map , featureByName, featureByArea, featureByFaja , navigateTo, 
   }
   .focused {
   border: 2px solid red;
+}
+
+.leaflet-control-attribution .leaflet-control {
+  visibility: hidden;
 }
 </style>

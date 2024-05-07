@@ -65,8 +65,8 @@
         <div class="w-full flex justify-center">
             <div class="flex justify-center items-center px-60 sm:px-10 w-11/12 max-sm:w-full max-sm:flex-col max-sm:px-2">
                 <!-- <AtomsLinkBtn href="#" variant="primary">{{$t('project_info_btn_01')}}</AtomsLinkBtn> -->
-                <p class="text-lg font-bold text-gray-600 mr-2 xs:text-center sm:text-center">{{ $t('project_info_title2') }} </p>
-                <a href="https://registry.verra.org/app/projectDetail/VCS/3630" target="_blank" class=" xs:text-center sm:text-center text-lg font-bold text-primary hover:text-secondary hover:underline">{{$t('project_info_btn_02')}}</a>
+                <p class="text-lg font-bold text-gray-600 mr-2 text-center">{{ $t('project_info_title2') }} </p>
+                <a href="https://registry.verra.org/app/projectDetail/VCS/3630" target="_blank" class=" text-center text-lg font-bold text-primary hover:text-secondary hover:underline">{{$t('project_info_btn_02')}}</a>
                <!--  <AtomsLinkBtn href="#" variant="primary">{{$t('project_info_btn_03')}}</AtomsLinkBtn> -->
             </div>
         </div>

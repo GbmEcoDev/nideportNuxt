@@ -1,5 +1,5 @@
 <template>
-    <h2 :class="`${spanClassTxt} ${sClass} ${cClass} ${wClass}`" class=" dark:text-white">
+    <h2 :class="`${spanClassTxt} ${sClass} ${cClass} ${wClass}`" >
         {{ texte }}
     </h2>
 </template>
@@ -23,7 +23,7 @@ let wClass: string = "";
 let sClass: string = "text-2xl  md:text-3xl";
 
 if (alignTxt === "left") {
-    spanClassTxt = "lg:text-left  xs:text-center sm:text-center";
+    spanClassTxt = "lg:text-left md:text-left text-center";
 } else if (alignTxt === "center") {
     spanClassTxt = "text-center";
 } else if (alignTxt === "right") {

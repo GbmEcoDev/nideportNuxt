@@ -23,55 +23,58 @@
         @falsear-reset="handleFalseReset"
          />
       </div>
-      <div class="absolute top-2 left-2 h-14 w-48" :class="{ 'lg:hidden': isOpen }">
+      <div class="absolute top-2 left-2 h-14 w-48" ><!-- :class="{ 'lg:hidden': isOpen }" -->
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
-      <div class="absolute pb-8 z-55 bottom-2 left-2 xs:px-9 " :class="{ 'left-[-350px]': isOpen }">
-        
-            <UButton v-if="isDesktop" ref="btnActivePanel" :label="$t('map_app_btn_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-auto text-bold" />
+      <div class="absolute pb-3 z-55 bottom-2 left-16 md:left-2 lg:left-2" :class="{ 'left-[-350px]': isOpen }">
+        <!-- v-if="isDesktop" -->
+            <UButton  ref="btnActivePanel" :label="$t('map_app_btn_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-full md:w-auto lg:w-auto text-bold" />
           
-            <div v-else class=" w-full relative flex h-full flex-col justify-center overflow-hidden rounded-xl" :class="{ 'hidden': isOpen }">
+          <!--             <div v-else class=" relative flex  w-full flex-col justify-center overflow-hidden rounded-xl" :class="{ 'hidden': isOpen }">
+
               <div class="absolute inset-0 bg-center rounded-xl dark:bg-black w-full"></div>
+
               <div class="group relative m-0 flex h-full w-full rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
                 <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                   <img src="/images/pilar-tecnologia.webp" class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110" alt="" />
                 </div>
+                
                 <div class="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
-                  <p class="text-3xl px-3 mb-9 text-white text-center font-bold shadow-lg" >{{$t('map_app_btn_xs_discovery')}}</p>
-                  <UButton block ref="btnActivePanel" :label="$t('map_app_btn_xs_lb_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
+                  <p class="text-lg px-3 mb-9 text-white text-center font-bold shadow-lg" >{{$t('map_app_btn_xs_discovery')}}</p>
+                  <UButton block ref="btnActivePanel" :label="$t('map_app_btn_xs_lb_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-11/12 text-bold"/>
                 </div>
               </div>
-            </div>
-        </div>
+            </div> -->
+
+      </div>
         
         <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
-      xs:top-[33%]
-      xs:w-full
+      top-[33%]
+      w-full
       " :id="selectedFajaID" v-model="isOpenDetFaja" v-if="isOpenDetFaja && isDesktop" @close-det-panel-faja="handleCloseDetPanelFaja" :fajaId="selectedFajaID" />
 
         <SectionsMapappUCardDetalleArea class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
-      xs:top-[33%]
-      xs:w-full
+      top-[33%]
+      w-full
       " :id="selectedAreaID" v-model="isOpenDetArea" v-if="isOpenDetArea && isDesktop" @close-det-panel-area="handleCloseDetPanelArea" :areaId="selectedAreaID" />
 
       <SectionsMapappUCardDetalle class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
-      xs:top-[33%]
-            xs:w-full" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
+      top-[33%]
+      w-full" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
 
-        <div v-if="isOpen" class="absolute lg:bottom-0 lg:left-0 lg:w-1/4 lg:h-screen bg-slate-900/90 dark:bg-slate-900/90
-        xs:w-full
-        xs:h-1/3
-        xs:bottom-0" >
-          <div class="relative flex items-center justify-between w-full xs:pt-2">
-            <div class="mr-4  flex justify-start"><Logo color="dark" class="lg:block w-36 mb-2" :class="{ 'xs:hidden': isOpen }"/></div>
-            <div class="ml-2 flex justify-end"> 
-            <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="solid" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink>
+        <div v-if="isOpen" class="absolute lg:top-20 lg:bottom-0 lg:left-0 lg:w-1/4 lg:h-screen bg-slate-900/90 dark:bg-slate-900/90
+        w-full
+        h-[15%]
+        bottom-0" >
+          <!-- <div class="relative flex items-center justify-between w-full xs:pt-2">
+            <div class="mr-4  flex justify-start" v-if="isDesktop"><Logo  color="dark" class="lg:block w-36 mb-2" :class="{ 'xs:hidden': isOpen }"/></div>
+            <div class="ml-2 flex justify-end" v-else> 
             
-            <UButton color="white" variant="solid" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false, isOpenDetArea = false, isOpenDetFaja = false"  ref="btnActivePanel" />
             </div>
-          </div>
-            <div class="p-1 flex-1">
-              <UTabs :items="items" @change="onChange" >
+          </div> -->
+            <div class="p-1 flex-1 relative">
+              <!-- <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="solid" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink> -->
+              <UTabs :items="items" @change="onChange" class="z-3000" >
               <template #item="{ item }">
                 <UCard>
                   <div v-if="item.key === 'discover'" class="space-y-1 text-sm">
@@ -131,6 +134,9 @@
                 </UCard>
               </template>
             </UTabs>
+            <div class="absolute top-[-15px] right-[-15px] z-5000" :class="{ 'hidden': !isDesktop }">
+              <UButton color="white" variant="solid" icon="i-heroicons-x-mark-20-solid" class="mx-1 rounded-full" @click="isOpen = false, isOpenDet = false, isOpenDetArea = false, isOpenDetFaja = false"  ref="btnActivePanel" />
+            </div>
           </div>
           <div class="relative mx-1">
             <!-- <UPopover :popper="{ placement: 'top-start' }" v-model:open="open" class="rounded-md">

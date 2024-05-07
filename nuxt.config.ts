@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         /^\/en\/tags\/.*$/,
         /^\/tags\/.*$/,
         /^\/categories\/.*$/,
-        '/robots.txt',
+        'robots.txt',
         'sitemap.xml'
       ],
     },
@@ -41,9 +41,6 @@ export default defineNuxtConfig({
     }
   }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', '@nuxtjs/device','@pinia/nuxt'],
 
-
-
-  //buildModules: ['@nuxt/image'],
   postcss: {
     plugins: {
       tailwindcss: {},

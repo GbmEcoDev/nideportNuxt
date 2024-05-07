@@ -11,8 +11,15 @@
         'h-full bg-gradient-to-t from-[#0F5F60e9] to-[#0f5f60e9]': isHovered
             }"
             class="absolute bottom-0 py-2 px-3 md:py-3 md:px-4 flex flex-col justify-end items-end inset-x-0 transition-all duration-150">
-            <h2 class="text-white w-full font-bold text-center text-2xl line-clamp-2 p-4 px-auto">
-                {{ title }}
+             
+            <h2 class="text-white w-full font-bold text-center text-2xl p-4 px-auto">
+             <span class="w-[32px] h-[32px] bg-gradient-to-t from-[#0F5F60e9] to-[#0f5f60e9] rounded-full text-center"><i :class="{
+                    'i-heroicons-chevron-up-20-solid': !isHovered,
+                    'i-heroicons-chevron-up-20-solid transform rotate-180': isHovered
+                }" class=""></i></span><br>
+                 {{ title }}
+                
+            
             </h2>
             <p :class="{
                     'hidden': !isHovered,
