@@ -1,6 +1,6 @@
 <template>
  
-  <div class="relative z-50 lg:w-screen lg:h-full md:h-full h-[95%] overflow-hidden">
+  <div class="relative z-50 lg:w-screen lg:h-full md:h-full h-[80%] overflow-hidden">
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :bounds="bounds" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />

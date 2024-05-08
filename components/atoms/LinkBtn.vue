@@ -35,8 +35,8 @@ if (widthBtn != "")
 }
 </script>
 <template>
-    <NuxtLink :to="href" rel="next" class="px-3 md:px-7 max-lg:px-2 py-3 rounded relative group" :class="`${wClass}`">
-        <span v-if="variant!=='costum'" class="absolute inset-0 rounded-xl group-hover:scale-105 origin-center transition-all ease-in-out" :class="`${spanClass}`"></span>
+    <NuxtLink :to="href" rel="next" class="px-3 md:px-7 max-lg:px-2 py-3 rounded relative group  " :class="`${wClass}`">
+        <span v-if="variant!=='costum'" class="absolute inset-0 rounded-xl origin-center transition-all ease-in-out hover:bg-primary" :class="`${spanClass}`"></span>
         <span class="relative flex items-center justify-center text-center" :class="`${textCl}`">
             <slot/>
         </span>

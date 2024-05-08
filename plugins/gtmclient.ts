@@ -2,7 +2,7 @@
 export default defineNuxtPlugin(nuxtApp => {
 	nuxtApp.hooks.hook('vue:setup', () => {
 		const {
-			public: { gtmContainerId, adsContainerId },
+			public: { gtmContainerId, adsContainerId, gaTrackingId },
 		} = useRuntimeConfig()
 			//tag analiti
 		if (gtmContainerId) {
@@ -37,6 +37,21 @@ export default defineNuxtPlugin(nuxtApp => {
 						},
 					],
 				})
+			}
+			/* GA*/
+			if (gaTrackingId) {
+				useHead({
+					script: [
+						{
+							src: `https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`,
+							async: true,
+						},
+						{
+							children: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaTrackingId}');`,
+							tagPriority: 'high',
+						},
+					],
+				});
 			}
 	})
 })

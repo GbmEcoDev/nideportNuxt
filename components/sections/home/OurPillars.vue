@@ -2,11 +2,11 @@
     <section class="relative scroll-snap-align-start ">
        
             <div class="flex-col items-center justify-center p-24 bg-[#e7f8f6] dark:bg-teal-950/80 max-sm:px-10" data-aos="flip-up">
-                <AtomsTitleH2 alignTxt="center" sizeTxt="text-2xl md:text-3xl" colorTxt="secondary" weightTxt="bold" :texte="$t('home_pillar_phrase')" />
+                <AtomsTitleH2 alignTxt="center" sizeTxt="text-2xl md:text-3xl" colorTxt="secondary" weightTxt="bold"  class="mb-4" :texte="$t('home_pillar_phrase')" />
                 <SectionsHomeRestorationHa />
-                <AtomsTitleH2 alignTxt="center" colorTxt="secondary" weightTxt="bold" :texte="$t('home_pillar_phrases')" />
+                <AtomsTitleH2 alignTxt="center" colorTxt="secondary" weightTxt="bold"  class="mt-4" :texte="$t('home_pillar_phrases')" />
             </div>
-            <div class="flex justify-center items-center mt-24 pb-16 h-[454px] max-sm:flex-col">
+            <div class="flex justify-center items-center mt-8 md:mt-24 lg:mt-24 pb-16 h-[454px] max-sm:flex-col">
 
                     <div class="flex items-center justify-center px-20 w-2/6 h-full max-sm:w-full max-sm:px-2 max-sm:my-8 " data-aos="fade-right">
                     <AtomsTitleH3 :texte="$t('home_pillar_title')"/>

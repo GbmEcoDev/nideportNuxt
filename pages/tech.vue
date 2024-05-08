@@ -26,7 +26,7 @@
       <div class="absolute top-2 left-2 h-14 w-48" ><!-- :class="{ 'lg:hidden': isOpen }" -->
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
-      <div class="absolute pb-3 z-55 bottom-2 left-16 md:left-2 lg:left-2" :class="{ 'left-[-350px]': isOpen }">
+      <div class="absolute pb-3 z-55 bottom-10 md:bottom-2 lg:bottom-2 left-16 md:left-2 lg:left-2" :class="{ 'left-[-350px]': isOpen }">
         <!-- v-if="isDesktop" -->
             <UButton  ref="btnActivePanel" :label="$t('map_app_btn_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-full md:w-auto lg:w-auto text-bold" />
           
@@ -64,7 +64,7 @@
 
         <div v-if="isOpen" class="absolute lg:top-20 lg:bottom-0 lg:left-0 lg:w-1/4 lg:h-screen bg-slate-900/90 dark:bg-slate-900/90
         w-full
-        h-[15%]
+        h-[20%]
         bottom-0" >
           <!-- <div class="relative flex items-center justify-between w-full xs:pt-2">
             <div class="mr-4  flex justify-start" v-if="isDesktop"><Logo  color="dark" class="lg:block w-36 mb-2" :class="{ 'xs:hidden': isOpen }"/></div>

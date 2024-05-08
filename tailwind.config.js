@@ -25,6 +25,7 @@
         fourty: "#02A327",
         fivety: "#016A81",
         sixty: "#0F5F60",
+        hovery: "#058849",
         cta: "#08C168",
         "body-color": "#462C64",
         "gray-color": "",

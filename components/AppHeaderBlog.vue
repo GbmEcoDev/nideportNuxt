@@ -1,5 +1,5 @@
 <template>
-  <header class="inset-x-0 top-0 py-2 dark:bg-body sticky bg-black-10 " :class="{
+  <header class="inset-x-0 top-0 py-4 dark:bg-body sticky bg-black-10 " :class="{
                 'scrollUp translate-y-[-100px] !visible': scrollY > 0,
                 'scrollDown translate-y-0 ': scrollY === 0
                 }">
@@ -18,7 +18,7 @@
                   class="menu absolute top-full px-5 sm:px-8 md:px-12 lg:px-0 z-50 right-1
                   lg:pt-0 lg:top-0 invisible opacity-40 lg:opacity-100 bg-body rounded-xl border border-box-border shadow-lg shadow-box-shadow 
                   lg:border-none lg:shadow-none lg:rounded-none
-                  lg:bg-transparent w-full lg:w-max py-3 lg:py-0 lg:visible lg:relative flex 
+                  lg:bg-transparent w-full lg:w-max py-1 lg:py-0 lg:visible lg:relative flex 
                   transition-all duration-300 ease-linear origin-top translate-y-6 lg:translate-y-0 max-lg:w-1/3 max-sm:w-1/2 " 
                   :class="{
                       'scrollUp ': scrollY > 0,

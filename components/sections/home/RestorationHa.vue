@@ -1,5 +1,5 @@
 <template>
-    <div class="contador">
+    <div class="contador my-8">
         <div class="color_fondo" :style="{ height: colorHeight }"></div>
         <div class="numero text-4xl xs:leading-9 sm:text-3xl sm:leading-9 md:text-[64px] lg:text-[64px]">{{ cantidad.toLocaleString() }} {{$t('home_pillar_ha')}} </div>
     </div>

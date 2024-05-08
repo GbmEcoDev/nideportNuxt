@@ -12,19 +12,21 @@
             }"
             class="absolute bottom-0 py-2 px-3 md:py-3 md:px-4 flex flex-col justify-end items-end inset-x-0 transition-all duration-150">
              
-            <h2 class="text-white w-full font-bold text-center text-2xl p-4 px-auto">
-             <span class="w-[32px] h-[32px] bg-gradient-to-t from-[#0F5F60e9] to-[#0f5f60e9] rounded-full text-center"><i :class="{
+            <div class="flex flex-row justify-beetwen items-center w-full">
+            <h2 class="text-white w-11/12 font-bold text-left text-2xl p-4">{{ title }}</h2>          
+            <span class="w-[36px] h-[24px] rounded-full text-center font-bold text-4xl text-white lg:hidden" >
+                <i class="mr-2 " :class="{
                     'i-heroicons-chevron-up-20-solid': !isHovered,
                     'i-heroicons-chevron-up-20-solid transform rotate-180': isHovered
-                }" class=""></i></span><br>
-                 {{ title }}
+                }"
                 
-            
-            </h2>
+                ></i>
+            </span>
+            </div>            
             <p :class="{
                     'hidden': !isHovered,
                     'block': isHovered
-                }" class="text-white text-center px-3 mb-8"> {{ description }}</p>
+                }" class="text-white text-left px-3 mb-8"> {{ description }}</p>
         </div>
     </div>
 </template>
