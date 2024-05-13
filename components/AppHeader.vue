@@ -10,7 +10,7 @@
                 'scrollUp': scrollY > 0,
                 'scrollDown  translate-y-0': scrollY === 0
                 }">
-                <NuxtLink :to="localePath({ name: 'index' })" class=" flex items-center gap-0 py-0" >
+                <NuxtLink :to="localePath({ name: 'index' })" class=" flex items-center gap-0 py-0" activeClass="router-link-active" >
                     <Logo />
                 </NuxtLink> 
               </div>

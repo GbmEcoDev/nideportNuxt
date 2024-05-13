@@ -21,16 +21,16 @@
   const language = locale.value.toUpperCase();
   const discover = ref<Array<{ ID: string; foto: string; Date: string }>>([]);
   const openPanelDet = ref(false);
-
-  const scrollTop = () => {
+  const closeCpanel = ref(false);
+   /*const scrollTop = () => {
     window.scrollTo(0,0);
     
-    /* window.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: 'smooth'
-    }); */
+    }); 
     console.log("toTop3");
-  };
+  };*/
 
   onMounted(async () => {
     try {
@@ -44,11 +44,11 @@
   });
 
   //get data item    
-  const emit = defineEmits(['go-map-id','open-panel-det']);
+  const emit = defineEmits(['go-map-id','open-panel-det','close-cpanel']);
   const goMapId = (id: string) => {
     emit('go-map-id', id);
     emit('open-panel-det',openPanelDet.value=true);
-    scrollTop();
+    emit('close-cpanel', closeCpanel.value=false);
   };
 </script>
 <style scoped>

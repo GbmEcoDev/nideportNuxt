@@ -1,6 +1,6 @@
 <template>
-    <div class="relative w-screen h-screen z-0  overflow-x-hidden">
-      <div class="absolute z-0 w-screen h-screen">
+    <div class="relative w-screen h-[100vh] md:h-screen lg:h-screen z-0  overflow-x-hidden">
+      <div class="absolute z-0 w-screen h-[100vh] md:h-screen lg:h-screen">
         <MapTech 
         :fotoId="selectedDetID"
         :areaId="selectedAreaID"
@@ -23,30 +23,17 @@
         @falsear-reset="handleFalseReset"
          />
       </div>
-      <div class="absolute top-2 left-2 h-14 w-48" ><!-- :class="{ 'lg:hidden': isOpen }" -->
+      <div class="absolute top-2 left-2 h-14 w-48 transition-all duration-100 ease-in-out delay-350" :class="{ ' top-[-310px]': isOpen }">
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
-      <div class="absolute pb-3 z-55 bottom-10 md:bottom-2 lg:bottom-2 left-16 md:left-2 lg:left-2" :class="{ 'left-[-350px]': isOpen }">
-        <!-- v-if="isDesktop" -->
-            <UButton  ref="btnActivePanel" :label="$t('map_app_btn_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-full md:w-auto lg:w-auto text-bold" />
-          
-          <!--             <div v-else class=" relative flex  w-full flex-col justify-center overflow-hidden rounded-xl" :class="{ 'hidden': isOpen }">
-
-              <div class="absolute inset-0 bg-center rounded-xl dark:bg-black w-full"></div>
-
-              <div class="group relative m-0 flex h-full w-full rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
-                <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
-                  <img src="/images/pilar-tecnologia.webp" class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110" alt="" />
-                </div>
-                
-                <div class="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
-                  <p class="text-lg px-3 mb-9 text-white text-center font-bold shadow-lg" >{{$t('map_app_btn_xs_discovery')}}</p>
-                  <UButton block ref="btnActivePanel" :label="$t('map_app_btn_xs_lb_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-11/12 text-bold"/>
-                </div>
-              </div>
-            </div> -->
-
+      <!--abrir panel-->
+      <div class="absolute z-55 top-1/2 left-[-2px]" :class="{ 'left-[-310px]': isOpen }">
+            <button @click="isOpen = true" class="bg-gray-900 w-8 h-10 flex justify-end items-center p-2 text-xl font-bold"><i class="i-heroicons-chevron-right-20-solid"></i></button>
       </div>
+      <!--cerrar panel-->
+      <div class="absolute z-55 top-1/2 left-[-310px] transition-all duration-100 ease-in-out delay-350" :class="{ 'left-[310px]': isOpen }">
+            <UButton color="white" variant="solid" icon="i-heroicons-chevron-left-20-solid" size="xl" @click="isOpen=false, isOpenDet=false, isOpenDetArea=false, isOpenDetFaja=false" ref="btnActivePanel" />
+     </div>
         
         <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
       top-[33%]
@@ -62,18 +49,9 @@
       top-[33%]
       w-full" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
 
-        <div v-if="isOpen" class="absolute lg:top-20 lg:bottom-0 lg:left-0 lg:w-1/4 lg:h-screen bg-slate-900/90 dark:bg-slate-900/90
-        w-full
-        h-[20%]
-        bottom-0" >
-          <!-- <div class="relative flex items-center justify-between w-full xs:pt-2">
-            <div class="mr-4  flex justify-start" v-if="isDesktop"><Logo  color="dark" class="lg:block w-36 mb-2" :class="{ 'xs:hidden': isOpen }"/></div>
-            <div class="ml-2 flex justify-end" v-else> 
-            
-            </div>
-          </div> -->
+        <div class="absolute top-0 transition-all duration-100 ease-in-out delay-350 left-[-320px] w-[315px] bg-slate-900/90 h-full" :class="{ 'left-[0px]': isOpen }" >
+
             <div class="p-1 flex-1 relative">
-              <!-- <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="solid" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink> -->
               <UTabs :items="items" @change="onChange" class="z-3000" >
               <template #item="{ item }">
                 <UCard>
@@ -85,7 +63,7 @@
                     size="sm">
                     <template #jobs-featured >
                       <div>
-                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" />
+                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" @closeCpanel="autoCloseCpanel" />
                       </div>
                     </template>
                     <!--<template #jobs-security >
@@ -108,20 +86,22 @@
                     <p class="text-sm border-b mb-2"> {{ item.content }}</p>
                      <UAccordion
                         :items="itemsa"
+                        color="black" 
+                        variant="soft"
                       >
                     <template #zone-restore >
                       <div>
-                        <SectionsMapappListAreaWorked @go-map-faja-id="recibirFajaId" @open-panel-det-faja="handleOpenDetPanelFaja" @close-panel-det-area="handleCloseDetPanelArea" />
+                        <SectionsMapappListAreaWorked @go-map-faja-id="recibirFajaId" @open-panel-det-faja="handleOpenDetPanelFaja" @close-panel-det-area="handleCloseDetPanelArea" @closeCpanel="autoCloseCpanel" />
                       </div>
                     </template> 
                     <template #zone-from-restorate-e1 >
-                      <SectionsMapappListAreaToRestore namefilter="Etapa 2" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja"/>
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 2" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja" @closeCpanel="autoCloseCpanel" />
                     </template>
                     <template #zone-from-restorate-e2 >
-                      <SectionsMapappListAreaToRestore namefilter="Etapa 3" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja"/>
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 3" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja" @closeCpanel="autoCloseCpanel" />
                     </template>
                     <template #zone-from-restorate-e3 >
-                      <SectionsMapappListAreaToRestore namefilter="Etapa 4" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja"/>
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 4" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja" @closeCpanel="autoCloseCpanel" />
                     </template>
                     <template #zone-from-restorate-e4 >
                       <p class="text-sm text-gray-600">{{$t('map_app_acc2_content1')}}</p>
@@ -134,27 +114,14 @@
                 </UCard>
               </template>
             </UTabs>
-            <div class="absolute top-[-15px] right-[-15px] z-5000" :class="{ 'hidden': !isDesktop }">
-              <UButton color="white" variant="solid" icon="i-heroicons-x-mark-20-solid" class="mx-1 rounded-full" @click="isOpen = false, isOpenDet = false, isOpenDetArea = false, isOpenDetFaja = false"  ref="btnActivePanel" />
-            </div>
+
           </div>
           <div class="relative mx-1">
-            <!-- <UPopover :popper="{ placement: 'top-start' }" v-model:open="open" class="rounded-md">
-              <UButton color="white" label="" icon="i-heroicons-square-3-stack-3d-20-solid" />
-              <template #panel>
-                <div class="p-4">
-                  <UCheckbox v-model="selected" name="limites" :label="$t('map_app_upop_item1')" :update:model-value="layerVisibility(selected )" />
-                  <UCheckbox v-model="selectedFajas" name="fajas" :label="$t('map_app_upop_item2')" :update:model-value="fajasVisibility(selectedFajas )" />
-                  <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" :label="$t('map_app_upop_item3')" :update:model-value="areasArestisibility(selectedAreasArest )" />
-                  <UCheckbox v-model="selectedDegradadas" name="areasDegradadas" :label="$t('map_app_upop_item4')" :update:model-value="degradadasVisibility(selectedDegradadas )" />
-                  <UCheckbox v-model="selectedFotos" name="fotos" :label="$t('map_app_upop_item5')" :update:model-value="fotosVisibility(selectedFotos )" />
-                  <UCheckbox v-model="selectedCaminos" name="caminos" :label="$t('map_app_upop_item6')" :update:model-value="caminosVisibility(selectedCaminos )" />
-                  <UCheckbox v-model="selectedHidro" name="hidrografia" :label="$t('map_app_upop_item7')" :update:model-value="hidrografiaVisibility(selectedHidro )" />
-                  <UCheckbox v-model="selectedFueraProy" name="hidrografia" :label="$t('map_app_upop_item8')" :update:model-value="fueraProyVisibility(selectedFueraProy )" /></div>
-              </template>
-            </UPopover> -->
             <div class="border border-gray-700 w-full rounded-md p-2">
-              <UAccordion :items="itemsLayers" >
+              <UAccordion :items="itemsLayers" 
+                color="black" 
+                variant="soft"
+                >
                   <template #layer-featured >
                     <UCheckbox class="mx-4" v-model="selected" name="limites" :label="$t('map_app_upop_item1')" :update:model-value="layerVisibility(selected )" />
                     <UCheckbox class="mx-4" v-model="selectedFajas" name="fajas" :label="$t('map_app_upop_item2')" :update:model-value="fajasVisibility(selectedFajas )" />
@@ -180,13 +147,9 @@
   const selectedAreasArest = ref(false)
   const selectedDegradadas = ref(false)
   const selectedFueraProy = ref(false)
-/*   const selectedRayos = ref(true)
-  const selectedAlta = ref(true) */
   const selectedFotos = ref(true)
   const selectedCaminos = ref(true)
-  //const selectedPois = ref(false)
   const selectedHidro = ref(false)
-
 
   const { t, locale, setLocale } = useI18n()
   const localePath = useLocalePath()
@@ -399,6 +362,15 @@ const handleCloseDetPanelFaja = (value:any) => {
   isOpenDetFaja.value = value;
   selectedFajaID.value = '';
   idSeleccionado.value= '';
+};
+const autoCloseCpanel = (value:any) => {
+  
+  if(!isDesktop){
+    isOpen.value=value;
+    
+  }else{
+    
+  }
 };
 
 const handleOpenDetPanel = (value:any) => {

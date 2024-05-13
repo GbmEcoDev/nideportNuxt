@@ -19,7 +19,7 @@
       <div v-else>
           <h3 class="font-bold text-primary border-b mt-12 mb-16">Relacionados</h3>
           <!-- <div class="text-sm text-gray-700 dark:text-white">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
-          <div class="grid grid-cols-2 w-full">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-full">
             <SectionsBlogPostsRelationed 
             v-for="(post, index) in data" 
             :key="post.uri" 

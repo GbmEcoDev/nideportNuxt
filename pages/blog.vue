@@ -1,13 +1,15 @@
 <template>
   <div class="mb-8 w-full">
     <SectionsBlogHeroBlog/>
-    <SectionsBlogFeactures/>
+    <AtomsContainer>
+       <SectionsBlogFeactures/>
+    </AtomsContainer>
   </div>
   <AtomsContainer>
-        <div class="flex flex-col lg:flex-row md:flex-row gap-3">
+        <div class="flex flex-col lg:flex-row md:flex-row gap-y-3">
           <div class="md:w-8/12 lg:w-8/12  w-full">
-            <p class="font-bold text-primary mb-4 border-b border-gray-200 ">{{$t('blog_lasted')}}</p>
-             <SectionsBlogLastetPost class="p-2" />
+            <p class="font-bold text-secondary text-lg mb-4">{{$t('blog_lasted')}}</p>
+             <SectionsBlogLastetPost class="pt-2 pb-2" />
            <!-- <SectionsBlogListLastetPost class="p-2" />-->
           </div>
           <div class="md:w-4/12 lg:w-4/12 w-full">

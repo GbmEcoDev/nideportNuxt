@@ -20,7 +20,7 @@
       <div class="flex h-full items-center justify-center">
         <AtomsContainer>
           <div class="flex flex-col items-center justify-center px-24 text-center text-white md:px-32 max-sm:px-2">
-            <h1 class="mt-2 mb-16  font-bold text-[2rem] md:text-4xl lg:text-5xl xl:text-5xl">
+            <h1 class="mt-2 mb-16  font-bold text-[2rem] md:text-4xl lg:text-5xl xl:text-5xl  leading-8 md:leading-9 lg:leading-10">
               {{$t('home_map_title')}}
             </h1>
             <div class="flex items-center min-w-max relative">

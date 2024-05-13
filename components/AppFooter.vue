@@ -8,7 +8,7 @@
         <!-- Tres columnas -->
         <div class="flex flex-col items-center sm:flex-row sm:justify-between sm:items-center gap-4">
             <div class="p-4 flex items-center ">
-                <NuxtLink to="/" class=" flex items-center gap-2">
+                <NuxtLink to="/" class=" flex items-center gap-2" activeClass='router-link-active'>
                     <LogoFooter/>
                 </NuxtLink>
             </div>

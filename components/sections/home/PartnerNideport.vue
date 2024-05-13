@@ -4,7 +4,7 @@
           <div class="flex-col items-center justify-center mt-8 mb-24">
             <div class="flex flex-wrap pt-8 md:pt-8 pb-2 md:pb-2 items-center justify-center lg:px-36 xl:px-36 md:px-24">
                 <template v-for="partner in partners" :key="partner.alt">
-                    <div class="flex justify-center max-sm:items-center mx-2" data-aos="fade-up">
+                    <div class="flex justify-center max-sm:items-center mx-2">
                       <NuxtLink :to="partner.url" target="_blank" rel="noopener">
                         <NuxtImg :src="`${urlImg}${partner.logo}`" :alt="partner.alt" width="185px" class="mt-8 max-sm:mx-3 grayscale-50 hover:scale-110 hover:grayscale-0 " />
                       </NuxtLink>

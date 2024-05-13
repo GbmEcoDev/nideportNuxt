@@ -6,7 +6,7 @@
               <p v-if="areafiltrada.Name" class="text-md text-gray-100 dark:text-gray-100 px-2"> {{ areafiltrada.Name }}</p>
               <UButton @click="goMapAreaId(areafiltrada.ID)" label="" activeClass="bg-yellow-500" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid" class=" active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300"/> 
               <div v-if="!areafiltered.length" class="text-xs text-gray-500 px-2">
-                No "Etapa 2" areas found.
+                No areas found.
               </div>
           </div>
         </div>
@@ -28,6 +28,7 @@
   const areafiltered = computed(() => areas.value.filter((item) => item.etapa === namefilter));
   const openPanelDetArea = ref(false)
   const isOpenDetFaja = ref(false);
+  const closeCpanel = ref(false);
 onMounted(async () => {
   try {
     const { data } = await axios.get(`${config.public.url_base}/capas/areas_arestaurar24_32.geojson`);
@@ -39,10 +40,11 @@ onMounted(async () => {
   }
 });
   //get data item    
-  const emit = defineEmits(['go-map-area-id','open-panel-det-area', 'close-panel-det-faja']);
+  const emit = defineEmits(['go-map-area-id','open-panel-det-area', 'close-panel-det-faja','close-cpanel']);
   const goMapAreaId = (ID: string) => {
     emit('go-map-area-id', ID);
     emit('open-panel-det-area',openPanelDetArea.value=true);
     emit('close-panel-det-faja',isOpenDetFaja.value=false);
+    emit('close-cpanel', closeCpanel.value=false);
   };
 </script>

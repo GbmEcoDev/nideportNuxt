@@ -1,14 +1,13 @@
 <template>
  
-  <div class="relative z-50 lg:w-screen lg:h-full md:h-full h-[80%] overflow-hidden">
+  <div class="relative z-50 lg:w-screen lg:h-full md:h-full h-full overflow-hidden">
     <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :bounds="bounds" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
-      <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
+      <l-geo-json :geojson="limites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
       <l-geo-json :geojson="areasArestaurar" :options="optionsArestaurar" :options-style="styleFunctionAreasRest" layer-type="overlay" name="Áreas a restaurar" :visible=estadoAreasArest />>
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
       <l-geo-json :geojson="degradadas" :options="optionsDegradadas" :options-style="styleFunctionDegradadas" layer-type="overlay" name="Áreas degradadas" :visible=estadoDegradadas />
-      <!-- <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois /> -->
       <l-geo-json :geojson="caminos" :options="optionsCaminos" :options-style="styleFunctionCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
       <l-geo-json :geojson="hidrografia" :options="optionsHidro" :options-style="styleFunctionHidro" layer-type="overlay" name="Hidrografía" :visible=estadoHidro />
       <l-geo-json :geojson="fueraProyecto" :options-style="styleFunctionFuera" layer-type="overlay" name="Fuera de proyecto" :visible=estadoFueraProy />
@@ -67,15 +66,6 @@ const styleFunctionLimites = {
   interactive: false
 };
 
-// Cuadrículas------------------------------------
-/* const styleFunctionCuadriculas = {
-  color: 'gray',
-  weight: 1.5,
-  opacity: 0.6,
-  fillOpacity: 0.0,
-  interactive: true
-}; */
-
 // Áreas donde se refoesta mediante método de Faja
 const styleFunctionFajas = {
   color: 'rgb(112, 176, 85)',
@@ -95,22 +85,6 @@ const optionsFajas = {
 }
 };
 
-// Areas degradadas ------------------------------
-/* const styleFunctionAreasDeg = {
-  color: 'red',
-  weight: 2,
-  opacity: 0.5,
-  fillOpacity: 0.0,
-  interactive: true
-};
-const optionsAreasDeg = {
-  onEachFeature: (feature, layer) => {
-    layer.bindPopup(
-      'Nombre: ' + feature.properties.Name,
-      { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
-    )
-  }
-}; */
 // Areas a restaurar ------------------------------
 const styleFunctionAreasRest  = (feature)=> 
     { 
@@ -230,97 +204,6 @@ const optionsFotos = {
     
   }
 };
-
-// OnEach para Alertas
-/* const onEachFeatureFunction = (feature, layer) => {
-        let opciones = { year: 'numeric', month: 'short', day: 'numeric' }
-        let fecha = new Date(feature.properties.acq_date).toLocaleDateString('es-AR', opciones)
-        layer.bindTooltip('Fecha: '+ fecha, { permanent: false, sticky: true });
-      }; */
-
-// Alertas por rayos -----------------------------
-/* const optionsAlertasRayos = {
-  filter: function(feature, layer) {
-      if((feature.properties.tipo == 'Rayo')
-      && (feature.properties.acq_date >= '2023-12-15')
-      && (feature.properties.acq_date <= '2024-01-15')
-    ) 
-    return true;
-  },
-  pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: new L.Icon({
-            'iconUrl': '/images/icon/alertas-thunder.svg',
-            'iconSize': [20, 20],
-            'iconAnchor': [0, 0],
-            'popupAnchor':  [1, -24]
-          })});
-      },
-  onEachFeature: onEachFeatureFunction
-} */
-
-// Alertas Baja probailidad  ----------------------
-/* const optionsAlertasBajas = {
-  filter: function(feature, layer) {
-    if(feature.properties.tipo == 'Con probabilidad baja') return true;
-  },
-  pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: new L.Icon({
-            'iconUrl': '/images/icon/alertas-fire-baja.svg',
-            'iconSize': [20, 20],
-            'iconAnchor': [0, 0],
-            'popupAnchor':  [1, -24]
-          })});
-      },
-  onEachFeature: onEachFeatureFunction
-}
-
-// Alertas probailidad media ----------------------
-const optionsAlertasMedia = {
-  filter: function(feature, layer) {
-    if(feature.properties.tipo == 'Con probabilidad media') return true;
-  },
-  pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: new L.Icon({
-            'iconUrl': '/images/icon/alertas-fire-media.svg',
-            'iconSize': [20, 20],
-            'iconAnchor': [0, 0],
-            'popupAnchor':  [1, -24]
-          })});
-      },
-  onEachFeature: onEachFeatureFunction
-} */
-
-// Alertas probailidad alta ----------------------
-/* const optionsAlertasAlta = {
-  filter: function(feature, layer) {
-    if(feature.properties.tipo == 'Con probabilidad alta') return true;
-  },
-  pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: new L.Icon({
-            'iconUrl': '/images/icon/alertas-fire-alta.svg',
-            'iconSize': [20, 20],
-            'iconAnchor': [0, 0],
-            'popupAnchor':  [1, -24]
-          })});
-      },
-  onEachFeature: onEachFeatureFunction
-} */
-
-// Puntos destacados con videos
-/* const optionsPois = {
-  pointToLayer: function(feature, latlng) {
-          return L.marker(latlng, {icon: new L.Icon({
-            'iconUrl': "/images/icon/location-forest.svg",
-            'iconSize': [30, 85]
-        })} )
-      },
-  onEachFeature: (feature, layer) => {
-      layer.bindPopup(
-        '<div class="widget popupDetailsVideo"><h3>'+feature.properties.Name+'</h3><div class="video"><iframe width="100%" heigth="100%" src="/video/'+feature.properties.video+'.mp4?autoplay=1" frameborder="0" allowfullscreen></iframe></div></div>',
-        { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
-      );
-  }
-} */
 
 // Caminos principales
 const styleFunctionCaminos ={
@@ -452,9 +335,24 @@ const resetearSeleccion = async () => {
 };
 // Acciones a realizar cuando cambia el ID de area
 const navigateTo = async (idArea) => {
+  if(featureByArea[idArea]){
+    const feature = featureByArea[idArea];
+    if (feature && feature.getBounds) {
+      bounds.value = feature.getBounds().pad(1);
+      zoom.value = 21;
+      feature.setStyle({
+        stroke: true,
+        color: '#50CBBF',
+        weight: 5,
+        opacity: .9
+      });
+    }
+  }
+}
+/* const navigateTo = async (idArea) => {
   
-  bounds.value = featureByArea[idArea].getBounds().pad(.5);
-  zoom.value=18;
+  bounds.value = featureByArea[idArea].getBounds().pad(1);
+  zoom.value=14;
   
       featureByArea[idArea].setStyle({
         stroke: true,
@@ -463,7 +361,7 @@ const navigateTo = async (idArea) => {
         opacity: .9
       });
     };
-
+ */
 watch( 
   () => props.areaId, 
   (newValue, oldValue) =>  {
@@ -510,19 +408,36 @@ const resetearSeleccionFaja = async () => {
   }
 };
  // Acciones a realizar cuando cambia el ID de area
+
  const navigateFajaTo = async (idFaja) => {
- 
   if(featureByFaja[idFaja]){
-  bounds.value = featureByFaja[idFaja].getBounds().pad(.5);
-  zoom.value=18;
-  featureByFaja[idFaja].setStyle({
+    const feature = featureByFaja[idFaja];
+    if (feature && feature.getBounds) {
+      bounds.value = feature.getBounds().pad(1);
+      zoom.value = 21;
+      feature.setStyle({
         stroke: true,
         color: '#50CBBF',
         weight: 5,
         opacity: .9
       });
+    }
   }
+}
+/*    const navigateFajaTo = async (idFaja) => {
+ 
+  if(featureByFaja[idFaja]){
+    bounds.value = featureByFaja[idFaja].getBounds().pad(1);
+    zoom.value=21;
+    featureByFaja[idFaja].setStyle({
+          stroke: true,
+          color: '#50CBBF',
+          weight: 5,
+          opacity: .9
+        });
   }
+  } */
+
   
 watch( 
   () => props.fajaId, 
@@ -537,7 +452,7 @@ watch(
           featureByFaja[newValue]
             .bindPopup(
               'Nombre: ' + feature.properties.nombre + '<br> descripcion: ' + feature.properties.descripcion,
-              { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+              { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClassFaja", }
             )
             .openPopup();
         } else {
@@ -563,7 +478,8 @@ const flyTo = async (idFoto) => {
       center.value = featureByName[idFoto].getLatLng();
     }
   }
-}
+};
+
 
 watch(
   () => props.fotoId,
@@ -575,10 +491,10 @@ watch(
       const feature = featureByName[newValue].feature;
       if (feature.properties.foto) {
         if (isMobile) {
-
+            /* `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/>Nombre: ${feature.properties.Name}<br/>Fecha: ${feature.properties.Date}`,*/
           featureByName[newValue]
             .bindPopup(
-              `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/>Nombre: ${feature.properties.Name}<br/>Fecha: ${feature.properties.Date}`,
+              `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/>Fecha: ${feature.properties.Date}`,
               {
                 permanent: false,
                 sticky: true,
@@ -679,5 +595,14 @@ defineExpose( { map , featureByName, featureByArea, featureByFaja , navigateTo, 
 
 .leaflet-control-attribution .leaflet-control {
   visibility: hidden;
+}
+.popUpClassFaja > .leaflet-popup-content-wrapper {
+  height:25vh;
+  overflow:auto;
+}
+.popUpClassFaja > .leaflet-popup-content{
+  height: 25vh;
+  
+  padding: 6px;
 }
 </style>

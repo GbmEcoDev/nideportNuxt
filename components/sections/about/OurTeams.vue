@@ -1,10 +1,10 @@
 <template>
-    <section class="bg-gradient-to-b from-[rgb(74,173,162)] to-[rgb(0,116,84)] p-24 max-sm:px-6 scroll-snap-align-start">
+    <section class="bg-gradient-to-b from-[rgb(74,173,162)] to-[rgb(0,116,84)] pt-24 pb-24 px-3 scroll-snap-align-start">
         <AtomsContainer>
             <AtomsTitleH2 alignTxt="center" colorTxt="white" weightTxt="normal" :texte="$t('about_team_title')" class="pb-12" />
         </AtomsContainer>
         <AtomsContainer>
-            <div class="grid grid-cols-2 items-stretch sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-x-2 gap-y-8 sm:gap-x-5 sm:gap-y-8">
+            <div class="grid grid-cols-2 items-stretch sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-8 lg:gap-x-8 lg:gap-y-8">
 
                 <!-- <CardsTeam name="Juan" 
                     href="#" 
