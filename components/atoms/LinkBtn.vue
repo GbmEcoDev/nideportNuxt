@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-const { href, variant, costumSpanClass="", costumTextColor="", widthBtn = ""  } = defineProps<{
+const { href, variant, costumSpanClass="", costumTextColor="", widthBtn = "", rel="", target=""  } = defineProps<{
     href:string,
     variant:"primary"|"primary-outlined"|"secondary"|"costum"|"cta"|"secondary-outlined",
     costumSpanClass?:string,
     costumTextColor?:string,
     widthBtn?: string;
+    rel?: string;
+    target?: string;
 }>()
 
 let spanClass:string = "";
@@ -35,7 +37,7 @@ if (widthBtn != "")
 }
 </script>
 <template>
-    <NuxtLink :to="href" rel="next" class="px-3 md:px-7 max-lg:px-2 py-3 rounded relative group  " :class="`${wClass}`">
+    <NuxtLink :to="href" :rel="rel" :target="target" class="px-3 md:px-7 max-lg:px-2 py-3 rounded relative group  " :class="`${wClass}`">
         <span v-if="variant!=='costum'" class="absolute inset-0 rounded-xl origin-center transition-all ease-in-out hover:bg-primary" :class="`${spanClass}`"></span>
         <span class="relative flex items-center justify-center text-center" :class="`${textCl}`">
             <slot/>

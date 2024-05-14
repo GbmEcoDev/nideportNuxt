@@ -9,7 +9,7 @@
         <div class="flex h-full items-center justify-center">
           <AtomsContainer>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-                <div class="text-left text-white md:px-12 col-span-2" data-aos="fade-left">
+                <div class="text-left text-white md:px-12 col-span-2">
                   <p class="text-left max-sm:text-center">Conoce nuestras actividades en</p>
                   <AtomsTitleH1 :texte="`${ categorySel }`"></AtomsTitleH1>
                 </div>
