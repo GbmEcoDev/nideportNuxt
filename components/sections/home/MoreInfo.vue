@@ -17,15 +17,15 @@
                     </div>
                     <div class="p-0 md:p-3 lg:p-3 w-full md:w-6/12 lg:w-6/12 flex flex-col justify-center items-center">
                         <div class="h-48 m-2 rounded-[24px] bg-sixty p-4 w-11/12 max-sm:px-1  max-lg:px-0 ">
-                            <AtomsTitleH4 :texte="$t('home_info_c1_title')" :color="'text-white'" :size="'text-[18px] md:text-[20px] lg:text-[20px] leading-[18px]'"></AtomsTitleH4>
-                            <div class="h-40 mt-2">
+                            <AtomsTitleH4 :texte="$t('home_info_c1_title')" :color="'text-white'" :size="'text-[18px] md:text-[20px] lg:text-[20px] leading-[18px]'" class="mt-5"></AtomsTitleH4>
+                            <div class="h-36 mt-2">
                                 <p class="text-center text-white text-sm md:text-md lg:text-md px-0 mb-4  max-lg:mb-1  h-48 xs:px-2 max-sm:px-2 xs:h-auto ">
                                     {{$t('home_info_c1_phrase')}}</p>
                             </div>
                         </div>
                         <div class="h-48 m-2 rounded-[24px] bg-sixty p-4 w-11/12 max-sm:px-1  max-lg:px-0 ">
-                            <AtomsTitleH4 :texte="$t('home_info_c2_title')" :color="'text-white'" :size="'text-[18px] md:text-[20px] lg:text-[20px] leading-[18px]'"></AtomsTitleH4>
-                            <div class="h-40 mt-2">
+                            <AtomsTitleH4 :texte="$t('home_info_c2_title')" :color="'text-white'" :size="'text-[18px] md:text-[20px] lg:text-[20px] leading-[18px]'" class="mt-5"></AtomsTitleH4>
+                            <div class="h-36 mt-2">
                                 <p class="text-center text-white text-sm md:text-md lg:text-md px-0 mb-4 max-lg:mb-1 h-48 xs:px-2 max-sm:px-2 xs:h-auto">
                                     {{$t('home_info_c2_phrase')}}
                                 </p>

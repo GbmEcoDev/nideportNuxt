@@ -85,12 +85,23 @@ const email = ref('');
 const terminos = ref(false);
 const notificaciones = ref(false);
 
-const checkOneChecked = computed(() => terminos.value || notificaciones.value)
+const checkOneChecked = computed(() => terminos.value || notificaciones.value);
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 
 const sendEmail = () => {
+  
+  const validateEmail = (email) => {
+    return emailRegex.test(email);
+  };
+  if (!nombre.value) { alert('Debe ingresar un nombre');return; }
+  if (!empresa.value) { alert('Debe ingresar una empresa');return; }
+  if (!telefono.value) { alert('Debe ingresar un telefono');return; }
+  if (!email.value) { alert('Debe ingresar un email');return; }
+  if (!validateEmail(email.value)) { alert('El email no es válido'); return; }
   if (!checkOneChecked.value) { alert('Debe seleccionar una opción');return; }
-
+  
   Email.send({
     SecureToken: config.public.SMTPTOKEN,
     To: config.public.CONTACTMAILTO,

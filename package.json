@@ -24,7 +24,6 @@
     "autoprefixer": "^10.4.16",
     "leaflet": "^1.9.4",
     "nuxt": "^3.7.4",
-    "nuxt-aos": "^1.2.1",
     "nuxt-swiper": "^1.2.2",
     "nuxt3-leaflet": "^1.0.12",
     "postcss": "^8.4.31",

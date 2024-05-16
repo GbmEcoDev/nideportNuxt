@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to='post.uri'>
+    <NuxtLink :to='post.slug'>
       <div class="items-center text-secondary transition-all hover:-translate-y-1 hover:scale-105 pb-8">
           <div class="flex flex-col lg:flex-row md:flex-row">
               <div class="lg:w-2/12 md:w-2/12 w-full overflow-hidden">
@@ -19,19 +19,6 @@
       post: Record<string, any>;
   }>();
 
- /* function formatCategories(categories: { nodes: { name: string }[] }) {
-    if (categories && categories.nodes && categories.nodes.length > 0) {
-      return categories.nodes.map(category => category.name).join(', ');
-    }
-    return '';
-  }
-
-   function cleanAndTruncate(text: string) {
-    // Limpiar HTML y recortar a 200 caracteres
-    const cleanText = text.replace(/<[^>]+?>/g, ''); // Elimina todas las etiquetas HTML
-    const truncatedText = cleanText.length > 100 ? `${cleanText.substring(0, 200)}...` : cleanText;
-    return truncatedText;
-  } */
   function cleanAndTruncate(text: string): string {
     // Limpiar HTML y recortar a 200 caracteres
     const cleanText = text.replace(/<[^>]+?>/g, ''); 

@@ -13,7 +13,7 @@
             <div class="containerHead"  :class="{ 'w-full': onViewContent[index] }">
                <div class="flex flex-row items-end">
                   <p class="text-xs text-gray-600 w-full">{{ event.acf.start_time }}</p>
-                  <span class="p-1 border border-[#0F5F60e9] text-[#0f5f60e9] rounded-full text-center flex justify-center items-center"><i class="i-heroicons-chevron-down-20-solid"></i></span>
+                  <span class="p-1 text-[#0f5f60e9] text-center flex justify-center items-center"><i class="i-heroicons-chevron-down-20-solid"></i></span>
                 </div>
                 <h2 class="font-bold text-secondary text-md leading-5">{{ event.title.rendered }} </h2> 
                 <p class="text-xs text-gray-600">{{ event.acf.speaker }}</p> 
@@ -100,6 +100,8 @@ const viewContent  = (index: number) => {
     margin-top:12px;
     color: #3182ce;
     text-decoration: underline;
+    padding: 5px;
+    border-radius:12px;
   }
   .content :deep(a::before) {
     content:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-1 h-1 mt-2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg> ');
@@ -107,7 +109,6 @@ const viewContent  = (index: number) => {
     width: 1rem; /* Ancho deseado */
     height: 1rem; /* Alto deseado */
     margin-right: 0.25rem;
-    color: #3182ce;
     margin-top:12px;
   }
   .content :deep(a:hover) {

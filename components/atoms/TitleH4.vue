@@ -1,5 +1,5 @@
 <template>
-    <h2 class="text-base text-center md:text-3xl max-sm:text-2xl dark:text-white font-bold text-secondary" :class="`${onColor} ${onSize}`">
+    <h2 class=" text-center  dark:text-white font-bold text-secondary" :class="`${onColor} ${onSize}`">
         {{ texte }}
     </h2>
 </template>

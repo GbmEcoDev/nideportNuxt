@@ -13,19 +13,19 @@
                 <div class="relative w-4/6 max-sm:w-11/12 h-full">
                     <div 
                         class="flex absolute top-1/2 -left-5 -translate-y-1/2 z-10 transition-all duration-300 ease-linear" 
-                        :class="prevIsVisible?'visible opacity-100':'invisible opacity-0'">
-                        <AtomsSwiperNavButton @click="scrollToLeft()">
+                        :class="prevIsVisible?'visible opacity-100':'invisible opacity-0'" >
+                        <AtomsSwiperNavButton @click="scrollToLeft()" :class="{'hidden': isMobile }">
                             <IconsPrevIco />
                         </AtomsSwiperNavButton>
                     </div>
                     <div  
                         class="flex absolute top-1/2 -right-5 -translate-y-1/2 z-10 transition-all duration-300 ease-linear" 
                         :class="nextIsVisible?'visible opacity-100':'invisible opacity-0'">
-                        <AtomsSwiperNavButton @click="scrollToRight()">
+                        <AtomsSwiperNavButton @click="scrollToRight()" :class="{'hidden': isMobile }">
                             <IconsNextIco />
                         </AtomsSwiperNavButton>
                     </div>
-                    <div data-slide-recent @scroll="initScroll()" class="flex items-stretch gap-5 overflow-hidden overflow-x-auto invisible-scroll h-[350px] md:h-full lg:h-full max-sm:w-full max-sm:snap-x">
+                    <div data-slide-recent @scroll="initScroll()" class="flex items-stretch gap-3 overflow-hidden overflow-x-auto invisible-scroll h-[350px] md:h-full lg:h-full max-sm:w-full max-sm:snap-x">
                             <div 
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full max-sm:snap-center"  >
                               <CardsNidePillar :title="$t('home_pillar_c1_title')" cover-image="/images/pilar-restauracion-min.webp"
@@ -62,29 +62,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-/*import Modal from '@/components/Modal.vue';
-import ModalsPillarOne from '@/components/modals/PillarOne.vue';
-import ModalsPillarTwo from '@/components/modals/PillarTwo.vue';
-import ModalsPillarTree from '@/components/modals/PillarTree.vue';
-import ModalsPillarFour from '@/components/modals/PillarFour.vue';
-import ModalsPillarFive from '@/components/modals/PillarFive.vue';
-
-const modalActive = ref(false);
-const modalContent = ref();
-
-const toggleModal = (content: string | null) => {
-  modalContent.value = content ? modals.find((modal) => modal.key === content)?.content : {};
-  modalActive.value = !modalActive.value;
-};
-
-const modals = [
-  { key: 'PillarOne', content: ModalsPillarOne },
-  { key: 'PillarTwo', content: ModalsPillarTwo },
-  { key: 'PillarTree', content: ModalsPillarTree },
-  { key: 'PillarFour', content: ModalsPillarFour },
-  { key: 'PillarFive', content: ModalsPillarFive },
-];
-*/
+const { isMobile } = useDevice();
 const nextIsVisible = ref(false);
 const prevIsVisible = ref(false);
 let element: HTMLDivElement | null = null;

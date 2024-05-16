@@ -11,7 +11,7 @@
             <div class="">
                 <div class="text-left text-white md:px-12 ">
                   <div class="flex items-end sm:justify-center xs:justify-center lg:justify-start w-9/12 mt-4 max-sm:w-full">
-                    <p class="text-[1.2rem] md:text-[2.25rem] lg:text-[2.25rem] font-bold lg:text-left xs:text-center sm:text-center mb-5">{{ $t('contact_subtitle') }}</p>
+                    <p class="text-[1.2rem] md:text-[2.25rem] lg:text-[2.25rem] font-bold lg:text-left xs:text-center sm:text-center ml-5 mb-5">{{ $t('contact_subtitle') }}</p>
                   </div>
                 </div>
             </div>

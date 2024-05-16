@@ -1,169 +1,70 @@
 <template>
-  <div class="w-full">
-    <div v-if="pending" class="flex items-start justify-center">
-      <!-- Loader -->
-    </div>
-    <div v-else-if="error || !data">
-      <h2>Error</h2>
-    </div>
-    <div v-else class="flex-grid w-full">
-      <SectionsBlogPostGral v-for="post in paginatedPosts" :key="post.uri" :post="post" ></SectionsBlogPostGral>
-      <div class="flex justify-center mt-4">
-        <button @click="previousPage" :disabled="page === 1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" :class="{ 'opacity-50 cursor-not-allowed': page === 1 }">
-          Página anterior
-        </button>
-        <button @click="nextPage" :disabled="page * 4 >= totalPosts" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" :class="{ 'opacity-50 cursor-not-allowed': page * 4 >= totalPosts }">
-          Página siguiente
-        </button>
-      </div>
-    </div>
+  <div v-if="error">{{ error }}</div>
+  <div v-else>
+    <ul v-if="posts.length">
+      <li v-for="post in filteredPosts" :key="post.id">
+        <h2>{{ post.title.rendered }}</h2>
+      </li>
+    </ul>
+    <p v-else>No posts found.</p>
+    <button v-if="hasMorePages" @click="fetchData">Load more</button>
   </div>
 </template>
 
 <script setup>
-import axios from 'axios';
-import { ref, onMounted, watch } from 'vue';
-
-const { locale } = useI18n()
+import { ref, watch } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'nuxt/app'
 const config = useRuntimeConfig();
-const language = locale.value.toUpperCase();
+const router = useRouter()
+const posts = ref([])
+const error = ref(null)
+const { locale } = useI18n()
+const language = locale.value
+const perPage = 10;
+let currentPage = 1;
 
-let data = [];
-let error = false;
-let pending = true;
-let page = ref(1);
-let totalPosts = 0;
-
-onMounted(async () => {
+const fetchData = async () => {
   try {
-    const response = await axios.post(config.public.wordpressUrl, {
-      query: `
-        query posts($language: LanguageCodeFilterEnum!, $first: Int!, $skip: Int!) {
-          posts(where: { language: $language }, first: $first, skip: $skip) {
-            edges {
-              node {
-                id
-                excerpt
-                title
-                date
-                uri
-                slug
-                featuredImage {
-                  node {
-                    id
-                    sourceUrl
-                  }
-                }
-                language {
-                  code
-                  locale
-                }
-                categories(first:100) {
-                  nodes {
-                    name
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
-      variables: {
-        language: language,
-        first: 4, // Mostrar 4 posteos por página
-        skip: 0 // Empezar desde el primer post
+    const response = await axios.get(config.public.wpPosteos, {
+      params: {
+        'per_page': perPage,
+        'acf.lang.slug': language, // Filtrar por idioma del usuario
+        'page': currentPage
       }
-    });
-
-    data = response.data?.data?.posts?.edges?.map((edge) => transformPost(edge?.node)) || [];
-    totalPosts = response.data?.data?.posts?.edges?.length || 0;
-    pending = false;
-  } catch (e) {
-    console.error('Error fetching data:', e);
-    error = true;
-    pending = false;
-  }
-});
-
-function transformPost(node) {
-  return {
-    id: node?.id || '',
-    excerpt: node?.excerpt || '',
-    title: node?.title || '',
-    date: node?.date || '',
-    uri: node?.uri || '',
-    slug: node?.slug || '',
-    sourceUrl: node?.featuredImage?.node?.sourceUrl,
-    language: node?.language || '',
-    categories: node?.categories?.nodes?.map((category) => category?.name).join(', ') || '',
-  };
-}
-
-function nextPage() {
-  if (page.value * 4 < totalPosts) {
-    page.value++;
-    fetchData();
-  }
-}
-
-function previousPage() {
-  if (page.value > 1) {
-    page.value--;
-    fetchData();
-  }
-}
-
-function fetchData() {
-  pending = true;
-  axios.post(config.public.wordpressUrl, {
-    query: `
-      query posts($language: LanguageCodeFilterEnum!, $first: Int!, $skip: Int!) {
-        posts(where: { language: $language }, first: $first, skip: $skip) {
-          edges {
-            node {
-              id
-              excerpt
-              title
-              date
-              uri
-              slug
-              featuredImage {
-                node {
-                  id
-                  sourceUrl
-                }
-              }
-              language {
-                code
-                locale
-              }
-              categories(first:100) {
-                nodes {
-                  name
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-    variables: {
-      language: language,
-      first: 4, // Mostrar 4 posteos por página
-      skip: (page.value - 1) * 4 // Calcular cuántos posteos omitir
+    })
+    if (response.status === 200) {
+      posts.value = [...posts.value, ...response.data]; // Agregar nuevos posts a la lista existente
+      currentPage++; // Incrementar la página para la próxima carga
+    } else {
+      error.value = 'Error al obtener los posts: ' + response.statusText
     }
-  }).then(response => {
-    data = response.data?.data?.posts?.edges?.map((edge) => transformPost(edge?.node)) || [];
-    pending = false;
-  }).catch(e => {
-    console.error('Error fetching data:', e);
-    error = true;
-    pending = false;
-  });
+  } catch (error) {
+    error.value = 'Error general: ' + error.message
+  }
 }
 
-const paginatedPosts = computed(() => {
-  const start = (page.value - 1) * 4;
-  return data.slice(start, start + 4);
-});
+const filteredPosts = ref([])
+
+// Filtrar los posts cuando se actualice la lista completa
+watch(posts, () => {
+  filteredPosts.value = posts.value.filter(post => post.acf.lang && post.acf.lang.slug === language)
+})
+
+// Fetch data on component creation and route changes
+watch(
+  () => router.currentRoute.value.path,
+  () => {
+    currentPage = 1; // Reiniciar la página cuando se cambia la ruta
+    fetchData();
+  }
+)
+
+// Comprobar si hay más páginas disponibles
+const hasMorePages = ref(true);
+watch(posts, () => {
+  hasMorePages.value = posts.value.length % perPage === 0;
+})
+
+fetchData() // Fetch data initially
 </script>
