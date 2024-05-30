@@ -1,14 +1,11 @@
  <template>
   <div v-if="error">{{ error }}</div>
-  <div v-else class="flex flex-col items-center">
+  <div v-else class="flex flex-col items-center w-full pr-4">
     <div v-if="filteredPosts.length">
-      <!-- <li v-for="post in filteredPosts" :key="post.id">
-        <h2>{{ post.title.rendered }}</h2>
-      </li> -->
-      <SectionsBlogPostGralSlug v-for="post in filteredPosts" :key="post.slug" :post="post"></SectionsBlogPostGralSlug>
+      <SectionsBlogPostGralSlug v-for="post in filteredPosts" :key="post.slug" :post="post"  @click="navigateToPost(post.slug)"></SectionsBlogPostGralSlug>
     </div>
-    <p v-else></p>
-    <button v-if="hasMorePages" @click="fetchData" class="bg-cta w-36 hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-8">{{ btnmore }}</button>
+    <div v-else></div>
+    <button v-if="hasMorePages" @click="fetchData" class="bg-cta w-36 hover:bg-primary text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline mt-8">{{ btnmore }}</button>
   </div>
 </template>
 
@@ -64,13 +61,18 @@ watch(
   () => router.currentRoute.value.path,
   () => {
     currentPage = 1; // Reiniciar la página cuando se cambia la ruta
-    posts.value = []; // Vaciar los posts
+    //posts.value = []; // Vaciar los posts
     fetchData();
   }
 )
 
 // Comprobar si hay más páginas disponibles
 const hasMorePages = ref(true);
+
+const navigateToPost = (slug) => {
+  console.log("slug",slug);
+  router.push(`/${slug}`); // Assuming your post route pattern is `/post/:slug`
+}
 
 fetchData() // Fetch data initially
 </script>

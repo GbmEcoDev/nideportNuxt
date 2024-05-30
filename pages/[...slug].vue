@@ -1,10 +1,9 @@
 <template>
-    <div class="relative bg-cover bg-no-repeat h-[30rem] md:h-[36rem] lg:h-[36rem] z-1" 
+    <div class="relative bg-cover bg-no-repeat  h-[30rem] md:h-[36rem] lg:h-[36rem] z-1" 
         style="background-position: center center;"
         :style="{ backgroundImage: `url('${data.featuredImage?.node?.sourceUrl}')` }" 
         >
       <div class="absolute top-0 w-full h-full bg-slate-900/[.4]" ></div>
-      <!-- <div class="absolute bottom-0 w-full h-[24em] " :class="bglinear"></div> -->
     </div>
    <div class="relative mt-[2em] z-2 flex justify-center" >
     
@@ -37,7 +36,6 @@
           </div>
           
           <article class="mt-4 space-y-2 text-gray-600 dark:text-slate-300 border-b border-b-gray-200 mb-3" v-html="data.content"></article>
-          <!-- <UBadge variant="outline" v-if="hashtags" v-for="(tag, index) in hashtags" :key="index" class="m-2">{{tag}}</UBadge> -->
           <UBadge variant="outline" v-for="tag in data.tags?.nodes" :key="tag.id" class="m-2">{{tag.name}}</UBadge>
           <GalleryPost v-if="images.length > 0" :images="images"/>
           <SectionsBlogRelationPost :categoryRel="formatCategories(data.categories)"/>
@@ -52,10 +50,9 @@
   import {ref} from 'vue';
   import { useRoute } from 'vue-router';
   const route = useRoute();
-  const uri = route.params.uri.join('/');
+  const slug = route.params.slug.join('/');
   const config = useRuntimeConfig();
   const color = useColorMode();
-  const bglinear = color.value === 'light' ? 'bg-gradient-to-t from-white via-white' : 'bg-gradient-to-t from-gray-900 ';
 
   const { data, pending, error } = await useFetch(config.public.wordpressUrl, {
     method: 'get',
@@ -89,7 +86,7 @@
         }
       `,
       variables: {
-        uri: uri,
+        uri: slug,
       },
     },
     transform(data) {

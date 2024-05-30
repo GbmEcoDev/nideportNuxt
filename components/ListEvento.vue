@@ -87,12 +87,12 @@ const viewContent  = (index: number) => {
     display: block;
     opacity: 1;
   }
-  .card:hover :deep(.containerImg) {
+/*   .card:hover :deep(.containerImg) {
     width: 25%;
   }
   .card:hover :deep(.containerHead) {
     width: 100%;
-  }
+  } */
   .card:hover :deep(span) {
     transform: rotate(180deg);
   }

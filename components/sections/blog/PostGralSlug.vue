@@ -1,11 +1,11 @@
 <template>
-  <NuxtLink :to="`post/${post.slug}`">
-    <div class="items-center text-secondary transition-all border border-white hover:border hover:border-[#0FAFAA] rounded-[10px] m-2 p-1 ">
+  <NuxtLink :to=post.slug>
+    <div class="items-center text-secondary transition-all border border-white hover:border hover:border-[#0FAFAA] rounded-[10px] p-1">
         <div class="flex flex-col lg:flex-row md:flex-row md:items-center lg:items-center">
             <div class="lg:w-3/12 md:w-3/12 w-full overflow-hidden">
              <NuxtImg v-if="post.yoast_head_json && post.yoast_head_json.og_image && post.yoast_head_json.og_image[0].url" :src="post.yoast_head_json.og_image[0].url" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />
             </div>
-            <div class="flex-col lg:w-8/12 md:8/12 w-full pl-1 max-sm:h-30 lg:ml-3 border-b md:border-none lg:border-none">
+            <div class="flex-col lg:w-8/12 md:8/12 w-full pl-1 max-sm:h-30 lg:ml-3 border-b md:border-none lg:border-none mt-3">
               <p class="text-primary text-xs ">{{ categoryNames }} - <span class="text-gray-600">{{ formatDate(post.date) }}</span></p> 
               <h2 class="font-bold text-lg  leading-5 my-1">{{ post.title.rendered }}</h2>
               <p class="text-gray-700 text-md leading-5 text-left md:text-left lg:text-left pb-2">{{ cleanAndTruncate(post.excerpt.rendered) }}</p>

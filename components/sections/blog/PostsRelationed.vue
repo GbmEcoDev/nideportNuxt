@@ -1,15 +1,4 @@
 <template>
-<!--     <NuxtLink :to='post.uri' class="w-full md:w-1/2 lg:w-4/12 "  :class="{ 'is-first-post': isFirstPost }">
-        <div class=" items-center dark:text-white text-secondary p-2 transition-all hover:-translate-y-1 hover:scale-105 pb-3">
-            <div class="flex gap-3">
-                <div class="flex-col w-full pl-1 max-sm:h-30"><NuxtImg :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full object-cover rounded-md mb-2" />
-                  <p class="text-primary text-xs dark:text-white mb-2">{{ new Date(post.date).toLocaleDateString() }} - {{ post.categories }}</p> 
-                  <h2 class="font-bold text-lg  dark:text-white leading-5 mb-1">{{ post.title }}</h2>
-                  <p class="text-gray-700 text-sm dark:text-white leading-4">{{ cleanAndTruncate(post.excerpt) }}</p>
-                </div>
-            </div>
-        </div>
-    </NuxtLink> -->
     <NuxtLink :to='post.uri'>
         <div class="items-center dark:text-white text-secondary transition-all border border-white hover:border hover:border-[#0FAFAA] rounded-[10px] m-2 p-1">
             <div class="flex gap-3">
@@ -17,7 +6,7 @@
                   <NuxtImg  v-if="post.sourceUrl" :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />
                 </div>
                 <div class="flex-col w-9/12 pl-1 max-sm:h-30">
-                  <p class="text-primary text-xs dark:text-white">{{ new Date(post.date).toLocaleDateString() }} - {{ post.categories }}</p> 
+                  <p class="text-primary text-xs dark:text-white">{{ formatDate(post.date) }} - {{ post.categories }}</p> 
                   <h2 class="font-bold text-lg  dark:text-white leading-5 mb-1">{{ post.title }}</h2>
                   <p class="text-gray-700 text-sm dark:text-white leading-4">{{ cleanAndTruncate(post.excerpt) }}</p>
                 </div>
@@ -26,7 +15,9 @@
     </NuxtLink>
  </template>
  <script setup lang="ts">
-
+const { locale } = useI18n();
+const language = locale.value;
+const zone = language === "es" ? "es-ES" : "en-EN";
 const props = defineProps<{
     post: Record<string, any>;
       isFirstPost: Boolean;
@@ -43,6 +34,15 @@ function cleanAndTruncate(text: string) {
   const cleanText = text.replace(/<[^>]+>/g, ''); // Elimina todas las etiquetas HTML
   const truncatedText = cleanText.length > 100 ? `${cleanText.substring(0, 80)}...` : cleanText;
   return truncatedText;
+}
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString(zone, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
 }
  </script>
  <style scoped>

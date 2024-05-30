@@ -9,8 +9,7 @@
         <div class="flex flex-col lg:flex-row md:flex-row gap-y-3">
           <div class="md:w-8/12 lg:w-8/12  w-full">
             <p class="font-bold text-secondary text-[20px] mb-4">{{$t('blog_lasted')}}</p>
-            <!-- <SectionsBlogLastetPost class="pt-2 pb-2" /> -->
-          <SectionsBlogListLastetPost class="p-2" />  <!-- -->
+          <SectionsBlogListLastetPost />  <!-- -->
           </div>
           <div class="md:w-4/12 lg:w-4/12 w-full">
               <SectionsBlogEvent/>
