@@ -38,7 +38,7 @@
                 'scrollUp': scrollY > 0,
                 'scrollDown': scrollY === 0
                 }">
-                       <AtomsLinkBtn :href="localePath({ name: 'projects' })" variant="cta" class="max-[640px]:hidden">
+                       <AtomsLinkBtn :href="localePath({ name: 'contact' })" variant="cta" class="max-[640px]:hidden">
                         {{$t('home_hero_btn_join')}}
                       </AtomsLinkBtn> <!---->
                   <ElementsLangSwitcher color="secondary"/>

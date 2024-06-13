@@ -2,7 +2,7 @@
   <div>
     <NuxtLoadingIndicator />
     <AppHeader/>
-        <slot/>
+      <NuxtPage />
     <AppFooter/>
   </div>  
 </template>

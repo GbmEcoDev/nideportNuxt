@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to=post.slug>
+  <NuxtLink :to="`${post.slug}`">
     <div class="items-center text-secondary transition-all border border-white hover:border hover:border-[#0FAFAA] rounded-[10px] p-1">
         <div class="flex flex-col lg:flex-row md:flex-row md:items-center lg:items-center">
             <div class="lg:w-3/12 md:w-3/12 w-full overflow-hidden">

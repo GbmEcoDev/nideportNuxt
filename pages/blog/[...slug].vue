@@ -1,5 +1,5 @@
 <template>
-  <div v-if="post && !isLoading">
+  <div v-if="post">
     <div class="relative bg-cover bg-no-repeat h-[30rem] md:h-[36rem] lg:h-[36rem] z-1"
       style="background-position: center center;"
       :style="{ backgroundImage: `url('${post.yoast_head_json?.og_image?.[0]?.url}')` }">
@@ -45,10 +45,7 @@
     </div>
     <ScrollTop />
   </div>
-  <div v-else-if="isLoading"><Loading /></div>
-  <div v-else>
-    <p>Error: Could not load post data.</p>
-  </div>
+  <div v-else><Loading /></div>
 </template>
 
 <script setup>
@@ -57,7 +54,7 @@ import axios from 'axios';
 import { useRoute } from 'vue-router';
 import { useRuntimeConfig } from '#app';
 import { useI18n } from 'vue-i18n';
-const isLoading = ref(true);
+
 const route = useRoute();
 const config = useRuntimeConfig();
 const { locale } = useI18n();
@@ -65,13 +62,14 @@ const language = locale.value;
 const localePrefixPath = language === 'en' ? '/en' : '';
 
 const zone = language === "es" ? "es-ES" : "en-EN";
-const slug = ref(route.params.slug.join('/'));
+const slug = route.params.slug;
+
 const post = ref(null);
 const images = ref([]);
 const categoryNames = ref('');
 
 
-watch(() => route.params.slug.join('/'), async (newSlug) => {
+watch(() => route.params.slug, async (newSlug) => {
   slug.value = newSlug;
   await fetchPostData();
 });
@@ -80,18 +78,16 @@ onMounted(async () => {
   await fetchPostData();
 });
 
+
 async function fetchPostData() {
   try {
-    const response = await axios.get(`${config.public.wpPosteos}?slug=${slug.value}`);
+    const response = await axios.get(`config.public.wpPosteos?slug=${route.params.slug}`);
     post.value = response.data[0] || {};
     images.value = extractImages(post.value.content?.rendered || '');
     await fetchCategoryNames(post.value.categories || []);
     updateHead();
   } catch (error) {
     console.error('Error fetching post data:', error);
-    post.value = {}; // Asignar un objeto vacío para evitar errores en las propiedades
-  } finally {
-    isLoading.value = false;
   }
 }
 
@@ -144,19 +140,19 @@ function formatDate(dateString) {
 
 function updateHead() {
   useHead({
-    title: post.value.title?.rendered || 'Blog Post',
+    title: post.value.title.rendered,
     meta: [
       {
         name: 'description',
-        content: post.value.excerpt?.rendered.replace(/(<([^>]+)>)/gi, '') || 'Blog post description'
+        content: post.value.excerpt.rendered.replace(/(<([^>]+)>)/gi, '')
       },
     ],
   });
 }
+
 </script>
 
 <style scoped>
-
 article :deep(.wp-block-image) {
   display: none;
 }

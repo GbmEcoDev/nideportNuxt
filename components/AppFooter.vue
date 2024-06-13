@@ -19,7 +19,7 @@
                     <NuxtLink rel="help"  :to="`mailto:info@nideport.com`" class="transition hover:!scale-110 ">
                         <NuxtImg :src="`${urlImg}/images/icon/mail.svg`" class="icons" alt="Send Mail"/>
                     </NuxtLink> 
-                    <NuxtLink target="_blank" alt="" rel="noopener" to="https://www.youtube.com/@Nideport" class="transition hover:!scale-110">
+                    <NuxtLink target="_blank" alt="" rel="noopener" to="https://www.youtube.com/@Nideport_eco" class="transition hover:!scale-110">
                         <NuxtImg :src="`${urlImg}/images/icon/YT.svg`" class="icons" alt="View Channel Youtube"/>
                     </NuxtLink>
                     <NuxtLink target="_blank" rel="noopener" to="https://www.linkedin.com/company/nideport" class="transition hover:!scale-110">

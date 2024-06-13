@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppHeaderBlog/>
-        <slot/>
+      <NuxtPage />
     <AppFooter/>
   </div>  
 </template>

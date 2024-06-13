@@ -139,4 +139,6 @@ article p {
   *::-webkit-scrollbar-thumb:active {
     background-color: #0FAEA9;
   }
-  
+  .container{
+    @apply mx-auto max-w-5xl px-10 sm:px-0;
+}

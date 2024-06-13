@@ -17,10 +17,10 @@ useSeoMeta({
   ogUrl: 'https://www.nideport.com',
   ogTitle: 'Nideport - Soluciones basadas en la naturaleza',
   ogDescription: 'Somos una empresa desarrolladora de proyectos de créditos de carbono, dedicada a la restauración ecológica y conservación de la biodiversidad con un enfoque social.',
-  ogImage: 'https://demo.nideport.com/images/bg-contact.webp',
+  ogImage: 'https://www.nideport.com/images/bg-contact.webp',
   twitterTitle: 'Nideport - Soluciones basadas en la naturaleza',
   twitterDescription: 'Somos una empresa desarrolladora de proyectos de créditos de carbono, dedicada a la restauración ecológica y conservación de la biodiversidad con un enfoque social.',
-  twitterImage: 'https://demo.nideport.com/images/bg-contact.webp',
+  twitterImage: 'https://www.nideport.com/images/bg-contact.webp',
   twitterCard: 'summary'
 });
 useHead({

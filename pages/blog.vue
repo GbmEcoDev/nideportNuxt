@@ -20,6 +20,7 @@
   <ScrollTop />
 </template>
 <script setup lang="ts">
+
 const { t, locale } = useI18n();
 const route = useRoute();
 useHead({

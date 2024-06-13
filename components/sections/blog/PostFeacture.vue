@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to=post.slug class="w-[22rem] md:w-1/3 lg:w-1/3 max-sm:w-full relative rounded-2xl overflow-hidden max-sm:mb-4 h-[12em] lg:h-[18em]">
+    <NuxtLink :to="`${post.slug}`" class="w-[22rem] md:w-1/3 lg:w-1/3 max-sm:w-full relative rounded-2xl overflow-hidden max-sm:mb-4 h-[12em] lg:h-[18em]">
         <div class="rounded-lg transition-all hover:-translate-y-1 hover:scale-105">
             <NuxtImg  v-if="post.yoast_head_json && post.yoast_head_json.og_image && post.yoast_head_json.og_image[0].url" :src="post.yoast_head_json.og_image[0].url" :alt="post.title.rendered" width="1060" class="w-full aspect-square object-cover rounded-2xl h-[12em] lg:h-[18em]" />
             <div class="absolute w-full rounded-lg bottom-0 h-full inset-x-0 bg-gradient-to-t from-gray-900/[.9]  to-gray-900/[.1] grid content-end ">
