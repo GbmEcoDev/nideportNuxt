@@ -1,5 +1,5 @@
 <template>
-    <footer class="pt-10 dark:bg-body scroll-snap-align-start">
+    <footer class="pt-10 scroll-snap-align-start">
         
         <AtomsContainer>
         <!-- Div que ocupa el ancho completo -->

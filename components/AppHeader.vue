@@ -1,5 +1,5 @@
 <template>
-  <header class="inset-x-0 top-0 py-4 dark:bg-body sticky bg-black-10 " :class="{
+  <header class="inset-x-0 top-0 py-4 sticky bg-black-10 " :class="{
                 'scrollUp translate-y-[-100px] !visible': scrollY > 0,
                 'scrollDown translate-y-0 ': scrollY === 0
                 }">
@@ -25,7 +25,7 @@
                        'scrollDown': scrollY === 0,
                        '!visible !opacity-100 !translate-y-0': navIsOpen
                        }">
-                  <ul class="text-white max-sm:text-secondary max-md:text-secondary max-lg:text-secondary dark:text-gray-100 w-full flex lg:items-center gap-y-4 lg:gap-x-8 flex-col lg:flex-row lg:h-20">
+                  <ul class="text-white max-sm:text-secondary max-md:text-secondary max-lg:text-secondary w-full flex lg:items-center gap-y-4 lg:gap-x-8 flex-col lg:flex-row lg:h-20">
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'index' })">{{ $t('nav_home') }}</NuxtLink></li> 
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'about' })">{{ $t('nav_about') }}</NuxtLink></li>
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink rel="next" class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'projects' })">{{ $t('nav_projects') }}</NuxtLink></li>
@@ -44,15 +44,15 @@
                   <ElementsLangSwitcher />
                  <!--  <ElementsThemeSwitcher /> -->
                   <div class="flex lg:hidden border-l border-box-border pl-2">
-                      <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative  text-gray-200 hover:text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" alt="toogle menu" aria-label="toogle menu">
+                      <button @click="toggleNav" class="outline-none w-7 h-auto flex flex-col relative  text-gray-200 hover:text-gray-800 hover:bg-gray-100" alt="toogle menu" aria-label="toogle menu">
                           <span
-                              class="w-6 h-0.5 rounded-full bg-gray-200 dark:bg-gray-200 transition-all duration-300 ease-linear"
+                              class="w-6 h-0.5 rounded-full bg-gray-200 transition-all duration-300 ease-linear"
                               :class="navIsOpen ? 'translate-y-1.5 rotate-[40deg] scale-x-100 ' : ' scale-x-50 origin-left'"></span>
                           <span
-                              class="w-6 origin-center  mt-1 h-0.5 rounded-full bg-gray-200 dark:bg-gray-200 transition-all duration-300 ease-linear"
+                              class="w-6 origin-center  mt-1 h-0.5 rounded-full bg-gray-200 transition-all duration-300 ease-linear"
                               :class="navIsOpen ? 'scale-x-0 opacity-0' : ''"></span>
                           <span
-                              class="w-6 mt-1 h-0.5 rounded-full bg-gray-200 dark:bg-gray-200 transition-all duration-300 ease-linear"
+                              class="w-6 mt-1 h-0.5 rounded-full bg-gray-200 transition-all duration-300 ease-linear"
                               :class="navIsOpen ? '-translate-y-1.5 -rotate-[40deg] scale-x-100 ' : ' scale-x-75 origin-left'"></span>
                       </button>
                   </div>

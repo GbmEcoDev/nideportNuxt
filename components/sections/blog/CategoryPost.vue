@@ -18,7 +18,7 @@
       </div>
       <div v-else>
         
-          <!-- <div class="text-sm text-gray-700 dark:text-white">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
+          <!-- <div class="text-sm text-gray-700 ">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
           <div class="flex flex-wrap grid-row-2 w-full">
             <SectionsBlogPostsCategory 
             v-for="(post, index) in data" 

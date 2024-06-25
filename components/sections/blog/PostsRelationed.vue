@@ -1,14 +1,14 @@
 <template>
     <NuxtLink :to='post.uri'>
-        <div class="items-center dark:text-white text-secondary transition-all border border-white hover:border hover:border-[#0FAFAA] rounded-[10px] m-2 p-1">
+        <div class="items-center  text-secondary transition-all border border-white hover:border hover:border-[#0FAFAA] rounded-[10px] m-2 p-1">
             <div class="flex gap-3">
                 <div class="w-2/12 overflow-hidden">
                   <NuxtImg  v-if="post.sourceUrl" :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />
                 </div>
                 <div class="flex-col w-9/12 pl-1 max-sm:h-30">
-                  <p class="text-primary text-xs dark:text-white">{{ formatDate(post.date) }} - {{ post.categories }}</p> 
-                  <h2 class="font-bold text-lg  dark:text-white leading-5 mb-1">{{ post.title }}</h2>
-                  <p class="text-gray-700 text-sm dark:text-white leading-4">{{ cleanAndTruncate(post.excerpt) }}</p>
+                  <p class="text-primary text-xs ">{{ formatDate(post.date) }} - {{ post.categories }}</p> 
+                  <h2 class="font-bold text-lg   leading-5 mb-1">{{ post.title }}</h2>
+                  <p class="text-gray-700 text-sm  leading-4">{{ cleanAndTruncate(post.excerpt) }}</p>
                 </div>
             </div>
         </div>

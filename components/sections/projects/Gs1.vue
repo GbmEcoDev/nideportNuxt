@@ -2,7 +2,7 @@
     <section class="pt-20 pb-25 md:pt-24 scroll-snap-align-start">
         <AtomsContainer>
             <div class="flex-col items-center justify-center  w-full">  
-                <div class="w-full md:h-full bg-white dark:bg-body py-10 lg:px-36">
+                <div class="w-full md:h-full bg-white py-10 lg:px-36">
                   <h2 class="font-semibold w-full text-[18px] mt-8 md:mt-4 lg:mt-4 md:text-[32px] lg:text-[32px] text-center sm:text-center md:text-center  leading-5 sm:leading-6 md:leading-8 lg:leading-10 text-secondary  mb-2">{{ $t('project_gs1_phrase') }}</h2>
                 </div>
                 <div class="w-full md:py-2 lg:py-4 lg:px-36 xs:px-0 sm:px-0">

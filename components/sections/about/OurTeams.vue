@@ -111,11 +111,11 @@ const teamData = ref([
     position: locale.value === 'es' ? 'Gestión de Campo' : 'Responsible for field management',
     coverImage: '/images/team/Lorena_Mielnichuk.png'
   },
-  {
+/**/   {
     name: 'Guillermo Colella',
     position: locale.value === 'es' ? 'Gestión y Analisis de Monitoreo de Impacto Social' : 'Responsible for Management and Analysis of Social Impact Monitoring',
     coverImage: '/images/team/Guillermo_Colella.png'
-  },
+  }, 
 
   {
     name: 'Claudio Esteban',
@@ -135,16 +135,16 @@ const teamData = ref([
     coverImage: '/images/team/Martin_Figueredo.jpg'
   },
 
-  {
+/*  */   {
     name: 'Natacha Peralta',
     position: locale.value === 'es' ? 'Gestión de Salvaguardas de Género' : 'Responsible for Gender Safeguards Management',
     coverImage: '/images/team/Natacha_peralta.png'
-  }, 
-   {
+  },
+/* */   {
     name: 'Pablo Gallardo',
     position: locale.value === 'es' ? 'Líder de Relación con las Comunidades' : 'Community Relations Leader',
     coverImage: '/images/team/Pablo_Gallardo.png'
-  },
+  }, 
 
   {
     name: 'Guillermo Videla',

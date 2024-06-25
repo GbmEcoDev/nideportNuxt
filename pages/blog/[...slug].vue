@@ -9,20 +9,20 @@
       <div class="lg:w-[1024px] lg:mx-24 md:w-[1024px] md:mx-24 w-full mx-3">
         <div class="my-4 px-0 max-sm:px-2 text-left">
           <NuxtLink :to="`${localePrefixPath}/`" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_home')}}</NuxtLink>
-          <span class="mx-2 text-gray-600 dark:text-slate-300">/</span>
+          <span class="mx-2 text-gray-600 ">/</span>
           <NuxtLink :to="`${localePrefixPath}/blog`" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_blog')}}</NuxtLink>
-          <span class="mx-2 text-gray-600 dark:text-slate-300">/</span>
-          <span class="text-gray-600 dark:text-slate-300">{{ post.title?.rendered }}</span>
+          <span class="mx-2 text-gray-600 ">/</span>
+          <span class="text-gray-600 ">{{ post.title?.rendered }}</span>
         </div>
         <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
           <AtomsTitleH2b colorTxt="secondary" sizeTxt="text-[24px] md:text-[42px] lg:text-[42px]" alignTxt="left" weightTxt="bold" :texte="post.title?.rendered"></AtomsTitleH2b>
-          <div class="flex items-center justify-between text-xs mt-4 pt-3 pb-3 border-t text-gray-600 border-b border-b-gray-200 dark:text-slate-300 border-t-gray-500">
+          <div class="flex items-center justify-between text-xs mt-4 pt-3 pb-3 border-t text-gray-600 border-b border-b-gray-200  border-t-gray-500">
             <div class="w-1/2">
               <span>{{ formatDate(post.date) }}</span>
               <span class="mx-2">-</span>
               <span>{{ categoryNames }}</span>
             </div>
-            <div class="w-1/2 text-xs flex items-center justify-end text-gray-600 dark:text-slate-300">
+            <div class="w-1/2 text-xs flex items-center justify-end text-gray-600 ">
               <span class="mr-3">Compartir en:</span>
               <button aria-label="shared twitter" @click="shareOnTwitter" class="mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
@@ -36,7 +36,7 @@
               </button>
             </div>
           </div>
-          <article class="mt-4 space-y-2 text-gray-600 dark:text-slate-300 border-b border-b-gray-200 mb-3" v-html="post.content?.rendered"></article>
+          <article class="mt-4 space-y-2 text-gray-600  border-b border-b-gray-200 mb-3" v-html="post.content?.rendered"></article>
           <UBadge variant="outline" v-for="tag in post.tags" :key="tag.id" class="m-2">{{ tag.name }}</UBadge>
           <GalleryPost v-if="images.length > 0" :images="images" />
           <SectionsBlogRelationPost :categoryRel="categoryNames" />

@@ -1,6 +1,6 @@
 <template>
     <div class="w-full">
-      <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Categorías</p>
+      <p class="font-bold text-primary mb-4 border-b border-gray-200 ">Categorías</p>
       <NuxtLink rel="prerender"
         v-for="category in filteredCategoriesWithPosts"
         :key="category.id"

@@ -10,7 +10,7 @@
         <div class="my-4 px-6 max-sm:px-2">
           <NuxtLink to="/blog" class="text-blue-500 hover:underline">Noticias</NuxtLink>
           <span class="mx-2  text-gray-600">/</span>
-          <span class=" text-gray-600 dark:text-white">{{ categoryName }}</span>
+          <span class=" text-gray-600 ">{{ categoryName }}</span>
         </div>
           <div class="w-full max-sm:w-full">
             <main class="container mx-auto mt-6 px-6 rounded-lg max-sm:px-2">

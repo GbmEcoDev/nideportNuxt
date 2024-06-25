@@ -36,7 +36,7 @@ if (sizeTxt != "") {
 if (colorTxt === "primary") {
     cClass = "text-primary";
 } else if (colorTxt === "secondary") {
-    cClass = "text-secondary dark:text-white";
+    cClass = "text-secondary ";
 } else if (colorTxt === "fivety") {
     cClass = "text-[#016A81]";
 } else if (colorTxt === "white") {

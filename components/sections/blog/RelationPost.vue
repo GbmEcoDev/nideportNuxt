@@ -18,7 +18,7 @@
       </div>
       <div v-else>
           <h3 class="font-bold text-primary mt-12 mb-4">{{$t('blog_relations')}}</h3>
-          <!-- <div class="text-sm text-gray-700 dark:text-white">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
+          <!-- <div class="text-sm text-gray-700 ">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-full">
             <SectionsBlogPostsRelationed 
             v-for="(post, index) in data" 

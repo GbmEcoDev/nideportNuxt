@@ -17,7 +17,7 @@ const props = defineProps(['color']);
 <template>
     <div class="relative py-0">
         <button alt="select language" aria-label="select language"
-            class="outline-none bg-transparent px-2.5 py-2 rounded-full  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            class="outline-none bg-transparent px-2.5 py-2 rounded-full   hover:bg-gray-100 "
             :class="color === 'secondary' ? 'text-secondary hover:text-gray-800' : 'text-gray-200'"
 
             @click="toggleDropdown">
@@ -41,7 +41,7 @@ const props = defineProps(['color']);
                     <li
                         v-for="item in locales"
                         :key="typeof item === 'object' ? item.code : item"
-                        class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover-bg-gray-800 text-gray-600 dark:text-gray-200"
+                        class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 text-gray-600 "
                         @click="changeLanguage(typeof item === 'object' ? item.code : item)">
                         <span v-if="item === 'es'">
                             ES

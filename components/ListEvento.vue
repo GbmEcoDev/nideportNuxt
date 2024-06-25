@@ -1,8 +1,8 @@
 <template>
     <div>
-      <p  class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">{{$t('blog_title_more_event')}}</p>
+      <p  class="font-bold text-primary mb-4 border-b border-gray-200 ">{{$t('blog_title_more_event')}}</p>
       
-      <div v-for="(event, index) in filteredEvents" :key="event.id" @click="isMobile ? viewContent(index) : null" :class="{ 'border-gray-400': onViewContent[index] }" class="card h-auto transition-height ease-in-out w-full mt-6 mb-6 flex-col rounded-lg p-3 bg-gradient-to-l from-slate-50 hover:shadow-lg duration-200 dark:from-gray-950">
+      <div v-for="(event, index) in filteredEvents" :key="event.id" @click="isMobile ? viewContent(index) : null" :class="{ 'border-gray-400': onViewContent[index] }" class="card h-auto transition-height ease-in-out w-full mt-6 mb-6 flex-col rounded-lg p-3 bg-gradient-to-l from-slate-50 hover:shadow-lg duration-200 ">
           <div class="w-full header"
             @touchstart="onViewContent[index] = true"
             @touchend="onViewContent[index] = false"

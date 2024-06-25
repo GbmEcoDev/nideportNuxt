@@ -1,11 +1,11 @@
 <template>
     <NuxtLink :to='post.uri' class="w-full md:w-1/2 lg:w-4/12 "  :class="{ 'is-first-post': isFirstPost }">
-        <div class=" items-center dark:text-white text-secondary p-2 transition-all hover:-translate-y-1 hover:scale-105 pb-3">
+        <div class=" items-center  text-secondary p-2 transition-all hover:-translate-y-1 hover:scale-105 pb-3">
             <div class="flex gap-3">
                 <div class="flex-col w-full pl-1 max-sm:h-30"><NuxtImg  v-if="post.sourceUrl" :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full object-cover rounded-md mb-2" />
-                  <p class="text-primary text-xs dark:text-white mb-2">{{ new Date(post.date).toLocaleDateString() }} - {{ post.categories }}</p> 
-                  <h2 class="font-bold text-lg  dark:text-white leading-5 mb-1">{{ post.title }}</h2>
-                  <p class="text-gray-700 text-sm dark:text-white leading-4">{{ cleanAndTruncate(post.excerpt) }}</p>
+                  <p class="text-primary text-xs  mb-2">{{ new Date(post.date).toLocaleDateString() }} - {{ post.categories }}</p> 
+                  <h2 class="font-bold text-lg   leading-5 mb-1">{{ post.title }}</h2>
+                  <p class="text-gray-700 text-sm  leading-4">{{ cleanAndTruncate(post.excerpt) }}</p>
                 </div>
             </div>
         </div>

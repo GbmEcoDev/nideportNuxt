@@ -35,17 +35,17 @@
             <UButton color="white" variant="solid" icon="i-heroicons-chevron-left-20-solid" size="xl" @click="isOpen=false, isOpenDet=false, isOpenDetArea=false, isOpenDetFaja=false" ref="btnActivePanel" />
      </div>
         
-        <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
+        <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
       top-[33%]
       w-full
       " :id="selectedFajaID" v-model="isOpenDetFaja" v-if="isOpenDetFaja && isDesktop" @close-det-panel-faja="handleCloseDetPanelFaja" :fajaId="selectedFajaID" />
 
-        <SectionsMapappUCardDetalleArea class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
+        <SectionsMapappUCardDetalleArea class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
       top-[33%]
       w-full
       " :id="selectedAreaID" v-model="isOpenDetArea" v-if="isOpenDetArea && isDesktop" @close-det-panel-area="handleCloseDetPanelArea" :areaId="selectedAreaID" />
 
-      <SectionsMapappUCardDetalle class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
+      <SectionsMapappUCardDetalle class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
       top-[33%]
       w-full" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
 
@@ -388,7 +388,7 @@ const handleOpenDetPanelFaja = (value:any) => {
 
 //generales de page
   onMounted(() => {
-      colorMode.value = "dark";
+      colorMode.value = "light";
 
     })
 

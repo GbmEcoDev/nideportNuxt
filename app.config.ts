@@ -6,7 +6,7 @@ export default defineAppConfig({
           "wrapper": "fixed inset-0 w-1/2 flex z-50",
           "overlay": {
             "base": "fixed inset-0 transition-opacity",
-            "background": "bg-gray-200/75 dark:bg-gray-800/75",
+            "background": "bg-gray-200/75 ",
             "transition": {
               "enter": "ease-in-out duration-500",
               "enterFrom": "opacity-0",
@@ -17,7 +17,7 @@ export default defineAppConfig({
             }
           },
           "base": "relative flex-1 flex flex-col w-full focus:outline-none",
-          "background": "bg-white dark:bg-gray-900",
+          "background": "bg-white ",
           "ring": "",
           "rounded": "",
           "padding": "",
@@ -35,9 +35,9 @@ export default defineAppConfig({
         },
         card:{
             "base": "",
-            "background": "bg-white dark:bg-gray-900/75",
-            "divide": "divide-y divide-gray-200 dark:divide-gray-800",
-            "ring": "ring-1 ring-gray-200 dark:ring-gray-800",
+            "background": "bg-white d",
+            "divide": "divide-y divide-gray-200 ",
+            "ring": "ring-1 ring-gray-200 ",
             "rounded": "rounded-lg",
             "shadow": "shadow",
             "body": {

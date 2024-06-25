@@ -50,6 +50,7 @@
     "smtpjs": "^0.0.1",
     "tailwindcss-gradients": "^3.0.0",
     "validator": "^13.11.0",
-    "vue-lite-youtube-embed": "^1.2.1"
+    "vue-lite-youtube-embed": "^1.2.1",
+    "vue-responsive-video-background-player": "^2.3.1"
   }
 }

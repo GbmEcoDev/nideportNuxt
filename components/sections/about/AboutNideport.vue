@@ -4,7 +4,7 @@
             <div class="relative flex justify-center max-sm:flex-col max-md:flex-col max-lg:flex-col gap-4 xl:gap-8 max-sm:gap-0  lg:rounded-[14px] bg-primary bg-opacity-10 px-3 py-16">
                     <div class="flex w-5/12 max-md:w-11/12 md:h-full max-sm:w-full max-lg:w-full mx-auto">
                         <div class="w-full md:h-full p-0 mt-4 xs:px-4">
-                            <h2 class="font-semibold xs:text-[24px] md:text-[28px] lg:text-[24px] text-center sm:text-center md:text-center lg:text-left xs:leading-6 sm:leading-6 md:leading-8 lg:leading-8 text-[rgb(1,106,129)] dark:text-white mb-2">
+                            <h2 class="font-semibold xs:text-[24px] md:text-[28px] lg:text-[24px] text-center sm:text-center md:text-center lg:text-left xs:leading-6 sm:leading-6 md:leading-8 lg:leading-8 text-[rgb(1,106,129)]  mb-2">
                                 {{ $t('about_phrase1') }}
                             </h2>
                         </div>
@@ -27,44 +27,44 @@
                         <div data-slide-recent @scroll="initScroll()" class="flex gap-5 overflow-hidden overflow-x-auto invisible-scroll h-full max-sm:w-full max-sm:snap-x">
                             
                                 <div 
-                                    class="flex flex-col items-center w-44 h-60 bg-white dark:bg-transparent pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0  hover:border-emeralt-600">
+                                    class="flex flex-col items-center w-44 h-60 bg-white  pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0  hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Forest.svg`" widht="100" alt="Native Forest Restoration" class="h-24"/>
-                                    <p class="w-44 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c1')}}</p>
+                                    <p class="w-44 text-sm text-thirdy  text-center mb-14">{{$t('about_c1')}}</p>
                                 </div>
                                 <div
-                                    class="flex flex-col items-center  w-44 h-60 bg-white dark:bg-transparent pt-10 px-4 rounded-2xl  max-sm:px-0 max-lg:px-0  hover:border-emeralt-600">
+                                    class="flex flex-col items-center  w-44 h-60 bg-white  pt-10 px-4 rounded-2xl  max-sm:px-0 max-lg:px-0  hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Focus.svg`" widht="100" alt="Strong social Focus" class="h-24"/>
-                                    <p class="w-44 px-2 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c2')}}</p>
+                                    <p class="w-44 px-2 text-sm text-thirdy  text-center mb-14">{{$t('about_c2')}}</p>
                                 </div>
                                 <div
-                                    class="flex flex-col items-center  w-44 h-60 bg-white  dark:bg-transparent pt-10 px-4 rounded-2xl  max-sm:px-0 max-lg:px-0  hover:border-emeralt-600">
+                                    class="flex flex-col items-center  w-44 h-60 bg-white   pt-10 px-4 rounded-2xl  max-sm:px-0 max-lg:px-0  hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Bird.svg`" widht="100" alt="Biodiversity Conservation" class="h-24"/>
-                                    <p class="w-44 px-2 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c3')}}</p>
+                                    <p class="w-44 px-2 text-sm text-thirdy  text-center mb-14">{{$t('about_c3')}}</p>
                                 </div>
                                 <div
-                                    class="flex flex-col items-center  w-44 h-60 bg-white dark:bg-transparent  pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
+                                    class="flex flex-col items-center  w-44 h-60 bg-white   pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Seedling.svg`" widht="100" alt="Natural Capital Preservation" class="h-24"/>
-                                    <p class="w-44 px-2 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c4')}}</p>
+                                    <p class="w-44 px-2 text-sm text-thirdy  text-center mb-14">{{$t('about_c4')}}</p>
                                 </div>
                                 <div
-                                    class="flex flex-col items-center  w-44 h-60 bg-white dark:bg-transparent  pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
+                                    class="flex flex-col items-center  w-44 h-60 bg-white   pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Leaf.svg`" widht="100" alt="Estrategy" class="h-24"/>
-                                    <p class="w-44 px-2 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c5')}}</p>
+                                    <p class="w-44 px-2 text-sm text-thirdy  text-center mb-14">{{$t('about_c5')}}</p>
                                 </div>
                                 <div
-                                    class="flex flex-col items-center  w-44 h-60 bg-white dark:bg-transparent  pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
+                                    class="flex flex-col items-center  w-44 h-60 bg-white   pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Plug.svg`" widht="100" alt="Climate" class="h-24"/>
-                                    <p class="w-44 px-2 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c6')}}</p>
+                                    <p class="w-44 px-2 text-sm text-thirdy  text-center mb-14">{{$t('about_c6')}}</p>
                                 </div>
                                 <div
-                                    class="flex flex-col items-center  w-44 h-60 bg-white dark:bg-transparent  pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
+                                    class="flex flex-col items-center  w-44 h-60 bg-white   pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Lightbulb.svg`" widht="100" alt="Concientizacion" class="h-24"/>
-                                    <p class="w-44 px-2 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c7')}}</p>
+                                    <p class="w-44 px-2 text-sm text-thirdy  text-center mb-14">{{$t('about_c7')}}</p>
                                 </div>
                                 <div
-                                    class="flex flex-col items-center  w-44 h-60 bg-white dark:bg-transparent  pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
+                                    class="flex flex-col items-center  w-44 h-60 bg-white   pt-10 px-1 rounded-2xl  max-sm:px-0 max-lg:px-0 hover:border-emeralt-600">
                                     <NuxtImg :src="`${urlImg}/images/Security.svg`" widht="100" alt="Security" class="h-24"/>
-                                    <p class="w-44 px-2 text-sm text-thirdy dark:text-gray-300 text-center mb-14">{{$t('about_c8')}}</p>
+                                    <p class="w-44 px-2 text-sm text-thirdy  text-center mb-14">{{$t('about_c8')}}</p>
                                 </div>
                             
                         </div>

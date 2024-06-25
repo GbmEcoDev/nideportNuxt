@@ -1,7 +1,7 @@
 <template>
     <section class="relative scroll-snap-align-start ">
        
-            <div class="flex-col items-center justify-center p-24 bg-[#e7f8f6] dark:bg-teal-950/80 max-sm:px-10" >
+            <div class="flex-col items-center justify-center p-24 bg-[#e7f8f6]  max-sm:px-10" >
                 <AtomsTitleH2 alignTxt="center" sizeTxt="text-2xl md:text-3xl" colorTxt="secondary" weightTxt="bold"  class="mb-4" :texte="$t('home_pillar_phrase')" />
                 <SectionsHomeRestorationHa />
                 <AtomsTitleH2 alignTxt="center" colorTxt="secondary" weightTxt="bold"  class="mt-4" :texte="$t('home_pillar_phrases')" />
