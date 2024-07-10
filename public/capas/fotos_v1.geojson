@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "fotos_v2",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "ID": "dda79a70-d827-4e06-aa5c-fa4ee75f0f48", "Name": "IMG_0609.jpeg", "Date": "2023-11-23", "Time": "10:12:38", "Lon": -53.902886111111108, "Lat": -26.554472222222223, "Altitude": 590.91878980891715, "foto": "IMG_0609.jpg", "ubicacion": "interno" }, "geometry": { "type": "Point", "coordinates": [ -53.902886111111108, -26.554472222222223 ] } },
+{ "type": "Feature", "properties": { "ID": "6f803a1d-a850-4433-bfb8-4f9cd5d446f2", "Name": "IMG_0676.jpeg", "Date": "2023-11-23", "Time": "10:53:59", "Lon": -53.898022222222224, "Lat": -26.5624, "Altitude": 622.62181178540015, "foto": "IMG_0676.jpg", "ubicacion": "interno" }, "geometry": { "type": "Point", "coordinates": [ -53.898022222222224, -26.5624 ] } },
+{ "type": "Feature", "properties": { "ID": "cb86fef5-5d53-417c-9ee0-1f48316705d6", "Name": "IMG_0739.jpeg", "Date": "2023-11-23", "Time": "11:58:58", "Lon": -53.89317777777778, "Lat": -26.567152777777778, "Altitude": 590.65428276573789, "foto": "IMG_0739.jpg", "ubicacion": "interno" }, "geometry": { "type": "Point", "coordinates": [ -53.89317777777778, -26.567152777777778 ] } },
+{ "type": "Feature", "properties": { "ID": "af7c6916-07a6-40d7-8fb2-60d02f2ba9ab", "Name": "IMG_0744.jpeg", "Date": "2023-11-23", "Time": "12:09:46", "Lon": -53.89566388888889, "Lat": -26.575538888888889, "Altitude": 601.48891786179922, "foto": "IMG_0744.jpg", "ubicacion": "interno" }, "geometry": { "type": "Point", "coordinates": [ -53.89566388888889, -26.575538888888889 ] } },
+{ "type": "Feature", "properties": { "ID": "d7cde79a-df72-4d77-a2be-3d2a5a5f13fc", "Name": "IMG_0820.jpeg", "Date": "2023-11-23", "Time": "15:53:55", "Lon": -53.800072222222219, "Lat": -26.570258333333332, "Altitude": 406.21731123388582, "foto": "IMG_0820.jpg", "ubicacion": "interno" }, "geometry": { "type": "Point", "coordinates": [ -53.800072222222219, -26.570258333333332 ] } },
+{ "type": "Feature", "properties": { "ID": "58a683a8-cf06-4cd4-bcb3-b8d36b6ea8da", "Name": "IMG_0848.jpeg", "Date": "2023-11-24", "Time": "10:54:33", "Lon": -54.13635, "Lat": -26.482952777777776, "Altitude": 524.94741235392326, "foto": "IMG_0848.jpg", "ubicacion": "externo" }, "geometry": { "type": "Point", "coordinates": [ -54.13635, -26.482952777777776 ] } },
+{ "type": "Feature", "properties": { "ID": "d54024cf-27b0-43eb-84a4-f28c54263f5a", "Name": "IMG_0859.jpeg", "Date": "2023-11-24", "Time": "12:16:16", "Lon": -53.997013888888887, "Lat": -26.57363611111111, "Altitude": 612.89736842105265, "foto": "IMG_0859.jpg", "ubicacion": "externo" }, "geometry": { "type": "Point", "coordinates": [ -53.997013888888887, -26.57363611111111 ] } }
+]
+}
