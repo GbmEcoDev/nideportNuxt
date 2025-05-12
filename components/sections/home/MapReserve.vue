@@ -1,6 +1,16 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat h-screen scroll-snap-align-start">
-      <video 
+    <div class="relative overflow-hidden bg-cover bg-no-repeat h-screen z-0 scroll-snap-align-start" id="map" style="
+        background-position: 50%;
+        background-image: url('/images/hero-home-min.webp');
+        background-size: cover;
+      ">
+      <template v-if="showVideo">
+        <SectionsHomeVideoBackground
+          videoSrc='https://storage.googleapis.com/cdn-web-nideport/map-fly.mp4'
+        />
+      </template>
+
+<!--       <video 
       autoplay
       loop
       muted
@@ -14,8 +24,8 @@
         type="video/mp4"
       />
       Your browser does not support the video tag.
-    </video>
-     <!--  <NuxtImg :src="`${urlImg}/images/hero-home-min.webp`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/>  -->
+    </video> -->
+
     <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden parcialover bg-[hsla(0,0%,0%,0.10)] bg-fixed">
       <div class="flex h-full items-center justify-center">
         <AtomsContainer>
@@ -36,10 +46,16 @@
   
 </template>
 <script setup>
+import { ref, onMounted } from 'vue';
 const localePath = useLocalePath()
-const { isDesktop } = useDevice();
-const config = useRuntimeConfig();
-const urlImg = config.public.url_base;
+
+const showVideo = ref(false);
+
+onMounted(() => {
+  setTimeout(() => {
+    showVideo.value = true;
+  }, 500);
+});
 </script>
 <style scoped>
 .parcialover{

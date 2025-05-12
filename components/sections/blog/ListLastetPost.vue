@@ -18,18 +18,25 @@ const router = useRouter()
 const posts = ref([])
 const error = ref(null)
 const { locale } = useI18n()
-const language = locale.value
-const btnmore = language === "es" ? "Cargar más" : "Load More"
-const perPage = 5; // Cambio a 10 posts por página
+const language = ref(locale.value)
+const btnmore = language.value === "es" ? "Cargar más" : "Load More"
+const perPage = 10; // Cambio a 10 posts por página
 let currentPage = 1;
+
+const categoryIds = {
+    es: 20, //20 250 ID para "Destacadas" en español
+    en: 22  //22  403 ID para "Highlights" en inglés
+  };
 
 const fetchData = async () => {
   try {
+    const excludedCategoryId = categoryIds[language.value];
     const response = await axios.get(config.public.wpPosteos, {
       params: {
         'per_page': perPage,
-        'acf.lang.slug': language,
-        'page': currentPage
+        'acf.lang.slug': language.value,
+        'page': currentPage,
+        'categories_exclude': excludedCategoryId
       }
     })
     if (response.status === 200) {
@@ -53,7 +60,11 @@ const filteredPosts = ref([])
 
 // Filtrar los posts cuando se actualice la lista completa
 watch(posts, () => {
-  filteredPosts.value = posts.value.filter(post => post.acf.lang && post.acf.lang.slug === language)
+
+  filteredPosts.value = posts.value.filter(post => 
+  post.acf.lang && 
+  post.acf.lang.slug === language.value
+)
 })
 
 // Fetch data on component creation and route changes
@@ -71,7 +82,7 @@ const hasMorePages = ref(true);
 
 const navigateToPost = (slug) => {
  // router.push(`/${slug}`); 
-  const localePrefix = language === 'en' ? '/en' : '';
+  const localePrefix = language.value === 'en' ? '/en' : '';
   router.push(`${localePrefix}/${slug}`);
 }
 

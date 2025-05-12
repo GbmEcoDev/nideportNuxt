@@ -26,7 +26,7 @@
     <!-- Modal -->
     <div v-if="isModalOpen" class="fixed top-0 bottom-0 left-0 right-0 inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center" @click="closeModal">
 
-        <div class="relative w-full h-auto md:w-auto md:h-full lg:w-auto lg:h-full p-4" @click.stop> 
+        <div class="relative w-full h-auto md:w-auto md:h-full lg:w-auto lg:h-full p-4 flex items-center justify-center" @click.stop> 
           <NuxtImg format="webp" :src="`${urlImg}${selectedImage}`" alt="Selected Image" class=" h-full w-auto z-60" />
         </div>
         <div class="absolute z-[1100] top-[8px] right-[8px] flex justify-center">

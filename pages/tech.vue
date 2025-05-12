@@ -1,5 +1,5 @@
 <template>
-    <div class="relative w-screen h-[100vh] md:h-screen lg:h-screen z-0  overflow-x-hidden">
+    <div class="relative w-screen h-[100vh] md:h-screen lg:h-screen z-0  overflow-x-hidden bgbody">
       <div class="absolute z-0 w-screen h-[100vh] md:h-screen lg:h-screen">
         <MapTech 
         :fotoId="selectedDetID"
@@ -27,25 +27,25 @@
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
       <!--abrir panel-->
-      <div class="absolute z-1055 top-1/2 left-[-2px]" :class="{ 'left-[-310px]': isOpen }">
+      <div class="absolute z-3055 top-1/2 left-[-2px]" :class="{ 'left-[-310px]': isOpen }">
             <button @click="isOpen = true" class="bg-gray-900 w-8 h-10 text-white flex justify-end items-center p-2 text-xl font-bold"><i class="i-heroicons-chevron-right-20-solid"></i></button>
       </div>
       <!--cerrar panel-->
-      <div class="absolute z-1055 top-1/2 left-[-310px] transition-all duration-100 ease-in-out delay-350" :class="{ 'left-[310px]': isOpen }">
+      <div class="absolute z-3055 top-1/2 left-[-310px] transition-all duration-100 ease-in-out delay-350" :class="{ 'left-[310px]': isOpen }">
             <UButton color="black" variant="solid" icon="i-heroicons-chevron-left-20-solid" size="xl" @click="isOpen=false, isOpenDet=false, isOpenDetArea=false, isOpenDetFaja=false" ref="btnActivePanel" />
      </div>
         
-        <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
+        <SectionsMapappUCardDetalleFaja class="absolute lg:w-[360px] lg:h-screen lg:top-6 lg:right-6 lg:bottom-6 bg-slate-900/10
       top-[33%]
       w-full
       " :id="selectedFajaID" v-model="isOpenDetFaja" v-if="isOpenDetFaja && isDesktop" @close-det-panel-faja="handleCloseDetPanelFaja" :fajaId="selectedFajaID" />
 
-        <SectionsMapappUCardDetalleArea class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
+        <SectionsMapappUCardDetalleArea class="absolute lg:w-[450px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
       top-[33%]
       w-full
       " :id="selectedAreaID" v-model="isOpenDetArea" v-if="isOpenDetArea && isDesktop" @close-det-panel-area="handleCloseDetPanelArea" :areaId="selectedAreaID" />
 
-      <SectionsMapappUCardDetalle class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
+      <SectionsMapappUCardDetalle class="absolute lg:w-[530px] lg:h-screen lg:top-0 lg:right-4 bg-slate-900/10
       top-[33%]
       w-full" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
 
@@ -61,25 +61,25 @@
                     color="black" 
                     variant="soft"
                     size="sm">
-                    <template #jobs-featured >
+                    <!-- <template #jobs-featured >
                       <div>
-                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" @closeCpanel="autoCloseCpanel" />
+                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" @closeCpanel="autoCloseCpanel" filterType="Restauración"/>
                       </div>
-                    </template>
-                    <!--<template #jobs-security >
+                    </template> -->
+                    <template #jobs-security >
                       <div>
-                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel"/>
+                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" @closeCpanel="autoCloseCpanel" filterType="Seguridad"/>
                       </div>
                     </template> 
                     <template #jobs-restoration >
-                      fotos de restauracion
+                      <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" @closeCpanel="autoCloseCpanel" filterType="Restauración"/>
                     </template>
                     <template #jobs-community >
-                      fotos de comunidad
+                      <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" @closeCpanel="autoCloseCpanel" filterType="Comunidad"/>
                     </template>
                     <template #jobs-tech >
-                      fotos de tecnologia
-                    </template>-->
+                      <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" @closeCpanel="autoCloseCpanel" filterType="Biodiversidad"/>
+                    </template><!---->
                     </UAccordion>
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-1" id="acco-area">
@@ -117,7 +117,7 @@
 
           </div>
           <div class="relative mx-1">
-            <div class="border border-gray-700 w-full rounded-md p-2">
+            <div class="border border-gray-700 w-full rounded-md bg-slate-900/90 p-2">
               <UAccordion :items="itemsLayers" 
                 color="teal" 
                 variant="soft"
@@ -230,13 +230,13 @@
   slot: 'zone-from-restorate-e5'
 }
 ]
-const itemscat = [{
+const itemscat = [/* {
   label:  t('map_app_acc1_item1'),
   icon: 'i-heroicons-sparkles',
   defaultOpen:true,
   //content:"uno"
   slot: 'jobs-featured'
-}/*,
+}, */
   {
   label: t('map_app_acc1_item2'),
   icon: 'i-heroicons-shield-check',
@@ -254,12 +254,12 @@ const itemscat = [{
   //content:"dos"
   slot: 'jobs-community'
 }
-, {
-  label: t('map_app_acc1_item5'),
-  icon: 'i-heroicons-computer-desktop',
+/**/ , {
+  label: t('map_app_acc1_item6'),
+  icon: 'i-heroicons-star',
   //content:"dos"
   slot: 'jobs-tech'
-}*/
+} 
 ]
 
 const itemsLayers = [{
@@ -443,11 +443,15 @@ const handleOpenDetPanelFaja = (value:any) => {
 
 </script>
 <style scoped>
+.bgbody {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
 .btn-translate-x-full {
   transform: translateX(100%);
   transition: transform 0.3s ease-out;
 }
-#acco-dis ::v-deep(button:nth-child(1)) {
+#acco-dis ::v-deep(button) {
   color: rgba(255,255,255,1);
 }
 #acco-area ::v-deep(button:nth-child(1)) {

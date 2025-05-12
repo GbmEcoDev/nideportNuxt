@@ -11,27 +11,22 @@
 import GalleryPicture from '@/components/GalleryPicture.vue';
 const route = useRoute();
 const imageList = ref([
-'/images/gallery/gallery-01.jpg',
-'/images/gallery/gallery-02.jpg',
-'/images/gallery/gallery-03.png',
-'/images/gallery/gallery-04.jpg',
-'/images/gallery/gallery-05.jpg',
-'/images/gallery/gallery-06.jpg',
-'/images/gallery/gallery-07.png',
-'/images/gallery/gallery-08.jpg',
-'/images/gallery/gallery-01.jpg',
-'/images/gallery/gallery-02.jpg',
-'/images/gallery/gallery-03.png',
-'/images/gallery/gallery-05.jpg',
-'/images/gallery/gallery-04.jpg',
-'/images/gallery/gallery-06.jpg',
-'/images/gallery/gallery-07.png',
-'/images/gallery/gallery-08.jpg',
-'/images/gallery/gallery-01.jpg',
-'/images/gallery/gallery-02.jpg',
-'/images/gallery/gallery-03.png',
-'/images/gallery/gallery-04.jpg',
-
+'/images/gallery/gallery01.webp',
+'/images/gallery/gallery02.webp',
+'/images/gallery/gallery17.webp',
+'/images/gallery/gallery04.webp',
+'/images/gallery/gallery05.webp',
+'/images/gallery/gallery07.webp',
+'/images/gallery/gallery08.webp',
+'/images/gallery/gallery09.webp',
+'/images/gallery/gallery10.webp',
+'/images/gallery/gallery11.webp',
+'/images/gallery/gallery12.webp',
+'/images/gallery/gallery13.webp',
+'/images/gallery/gallery14.webp',
+'/images/gallery/gallery15.webp',
+'/images/gallery/gallery16.webp',
+'/images/gallery/gallery19.webp',
 ]);
 
 useHead({

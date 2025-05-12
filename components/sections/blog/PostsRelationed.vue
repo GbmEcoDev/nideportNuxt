@@ -23,6 +23,7 @@ const props = defineProps<{
       isFirstPost: Boolean;
  }>();
 
+
 function formatCategories(categories: { nodes: { name: string }[] }) {
   if (categories && categories.nodes && categories.nodes.length > 0) {
     return categories.nodes.map(category => category.name).join(', ');
@@ -49,17 +50,6 @@ function formatDate(dateString: string): string {
  .aspect-ratio-square {
    aspect-ratio: 1 / 1; /* Establece la relación de aspecto cuadrada */
  }
- /* 
-.is-first-post {
-  width:100%;
-  border-radius:.25em;
-  background-color: var(#007A77);
- margin-bottom: 20px;
-}
-.is-first-post h2 {
- font-family: Nunito, sans-serif;
- font-size:1.4em;
- line-height: 1.2em;
-} */
+
  </style>
  

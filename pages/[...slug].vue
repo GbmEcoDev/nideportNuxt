@@ -14,7 +14,7 @@
           <span class="mx-2 text-gray-600 ">/</span>
           <span class="text-gray-600 ">{{ post.title?.rendered }}</span>
         </div>
-        <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
+        <main class="container mx-auto mt-6 px-1 rounded-lg max-sm:px-2">
           <AtomsTitleH2b colorTxt="secondary" sizeTxt="text-[24px] md:text-[42px] lg:text-[42px]" alignTxt="left" weightTxt="bold" :texte="post.title?.rendered"></AtomsTitleH2b>
           <div class="flex items-center justify-between text-xs mt-4 pt-3 pb-3 border-t text-gray-600 border-b border-b-gray-200  border-t-gray-500">
             <div class="w-1/2">
@@ -64,7 +64,7 @@ const { locale } = useI18n();
 const language = locale.value;
 const localePrefixPath = language === 'en' ? '/en' : '';
 
-const zone = language === "es" ? "es-ES" : "en-EN";
+const zone = language === "es" ? "es-ES" : "en-US";
 const slug = ref(route.params.slug.join('/'));
 const post = ref(null);
 const images = ref([]);
@@ -73,16 +73,16 @@ const categoryNames = ref('');
 
 watch(() => route.params.slug.join('/'), async (newSlug) => {
   slug.value = newSlug;
-  await fetchPostData();
+  await fetchPostData(slug.value);
 });
 
 onMounted(async () => {
-  await fetchPostData();
+  await fetchPostData(slug.value);
 });
 
-async function fetchPostData() {
+async function fetchPostData(slug) {
   try {
-    const response = await axios.get(`${config.public.wpPosteos}?slug=${slug.value}`);
+    const response = await axios.get(`https://blog.nideport.com/wp-json/wp/v2/posts?slug=${slug}`);
     post.value = response.data[0] || {};
     images.value = extractImages(post.value.content?.rendered || '');
     await fetchCategoryNames(post.value.categories || []);
@@ -157,7 +157,7 @@ function updateHead() {
 
 <style scoped>
 
-article :deep(.wp-block-image) {
+article :deep(img) {
   display: none;
 }
 

@@ -1,6 +1,6 @@
 <template>
     <div v-if="areaDetails" class="h-full">
-        <UCard class="lg:w-[350px] lg:h-full xs:w-full xs:h-1/3">
+        <UCard class="lg:w-[380px] m-1 lg:h-full xs:w-full xs:h-1/3">
             <template #header class="relative">
             <h2 class="text-4xl">{{ areaDetails.Name }}</h2>
                 <UButton @click="closeDetalleArea"
@@ -11,7 +11,7 @@
                     />
             </template>
             <div class="flex gap-2">
-                <div class="lg:w-full xs:w-full"><p class="border-t border-b border-gray-300 text-gray-300 text-sm mb-8"><span>{{ areaDetails.etapa }} - {{ areaDetails.__rea_ha_ }} Hectareas</span></p> <p>{{ areaDetails.description }}</p></div>
+                <div class="lg:w-full xs:w-full"><p class="border-t border-b border-gray-300 text-gray-300 text-sm mb-8"><span>{{ areaDetails.etapa }} - {{ areaDetails.__rea_ha_ }} Hectareas</span></p> <p class=" text-gray-300 text-sm">{{ areaDetails.description }}</p></div>
             </div>
             <template #footer>
             </template>

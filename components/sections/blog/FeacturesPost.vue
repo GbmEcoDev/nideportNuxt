@@ -22,8 +22,8 @@
   let currentPage = 1;
   
   const categoryIds = {
-    es: 20, // ID para "Destacadas" en español
-    en: 22  // ID para "Highlights" en inglés
+    es: 20, //20 250 ID para "Destacadas" en español
+    en: 22  //22  403 ID para "Highlights" en inglés
   };
   
   const fetchData = async () => {

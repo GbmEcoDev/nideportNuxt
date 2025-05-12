@@ -1,6 +1,6 @@
 <template>
     <div v-if="areaDetails" class="h-full">
-        <UCard class="lg:w-[350px] lg:h-full xs:w-full xs:h-1/3">
+        <UCard class="lg:w-[380px] m-1 lg:h-full xs:w-full xs:h-1/3">
             <template #header class="relative">
             <h2 class="text-4xl">{{ areaDetails.nombre }}</h2>
                 <UButton @click="closeDetalleArea"

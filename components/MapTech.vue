@@ -194,14 +194,14 @@ const optionsFotos = {
     if (feature.properties.foto) {
         if(isMobile){
          layer.bindPopup(
-          '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
+          '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Descripci__n + '',
           { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
         )
         }else{
         layer.on('click', () => selectItem(openPanel, feature.properties.ID)); 
     }
-  }
-    
+  }/* 
+    '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '', */
   }
 };
 
@@ -494,7 +494,7 @@ watch(
             /* `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/>Nombre: ${feature.properties.Name}<br/>Fecha: ${feature.properties.Date}`,*/
           featureByName[newValue]
             .bindPopup(
-              `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/>Fecha: ${feature.properties.Date}`,
+              `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/> ${feature.properties.Descripci__n}`,
               {
                 permanent: false,
                 sticky: true,

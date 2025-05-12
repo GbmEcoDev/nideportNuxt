@@ -1,10 +1,42 @@
 import axios from 'axios';
-const getPostRoutes = async () => {
+/* const getPostRoutes = async () => {
   const response = await axios.get(
-    'https://blog.nideport.com/wp-json/wp/v2/posts'
+    'https://blog.nideport.xyz/wp-json/wp/v2/posts'
   );
   return response?.data?.map((post:any) => `/${post.slug}`);
+}; */
+
+const getPostRoutes = async () => {
+  let allPosts: { slug: string }[] = [];
+  let page = 1;
+  let hasMore = true;
+  const routes: string[] = [];
+  while (hasMore) {
+    try {
+      const response = await axios.get(
+        `https://blog.nideport.com/wp-json/wp/v2/posts?per_page=100&page=${page}`
+      );
+      allPosts = [...allPosts, ...response.data];
+      if (response.data.length < 100) hasMore = false;
+      page++;
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+      hasMore = false; // Detener la paginación en caso de error
+    }
+  }
+
+  allPosts.forEach((post) => {
+    if (post?.slug) { // Asegurarse de que el slug exista
+      routes.push(`/${post.slug}`); // Ruta para español
+      routes.push(`/en/${post.slug}`); // Ruta para inglés
+    } else {
+      console.warn("Post sin slug encontrado:", post);
+    }
+  });
+
+  return routes;
 };
+
 
 export default defineNuxtConfig({
   ssr: true,
@@ -31,7 +63,8 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/blog': { isr: 3600 },
-    '/blog/**': { isr: true }
+    '/blog/**': { isr: true },
+    '/en/**': { prerender: true },
   },
   css: [
     '@/assets/css/main.css',
@@ -42,7 +75,7 @@ export default defineNuxtConfig({
   modules: [
     ['@nuxt/image', {
       image: {
-        quality: 75,
+        quality: 70,
       }
     }], 
     '@nuxt/devtools', 
@@ -137,9 +170,9 @@ export default defineNuxtConfig({
     }
   },
   plugins: ['~/plugins/nuxt-helpers.js'], 
-  devtools: {
+   devtools: {
     timeline: {
       enabled: true
     }
-  }
+  } 
 });

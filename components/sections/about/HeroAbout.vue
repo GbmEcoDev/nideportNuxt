@@ -1,19 +1,28 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat lg:h-[41.5rem] md:h-[28rem] h-[12rem] z-0">
-      <video
+    <div class="relative overflow-hidden bg-cover bg-no-repeat lg:h-[41.5rem] md:h-[28rem] h-[12rem] z-0"style="
+        background-position: 50%;
+        background-image: url('https://storage.googleapis.com/cdn-web-nideport/hero-about.webp');
+        background-size: cover;
+      ">
+    <template v-if="showVideo">
+      <SectionsHomeVideoBackground
+        videoSrc='https://storage.googleapis.com/cdn-web-nideport/about.mp4'
+      />
+    </template>
+<!--       <video
         autoplay
         loop
         muted
         preload="none"
         class="absolute z-0 lg:w-full lg:h-auto xs:w-auto sm:w-auto"
-        poster="/images/hero_about.jpg"
+        poster="https://storage.googleapis.com/cdn-web-nideport/hero-about.webp"
         >
         <source
-          :src="`${urlImg}/video/hero_about.mp4`"
+          src="https://storage.googleapis.com/cdn-web-nideport/about.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
-      </video>
+      </video> -->
     <div
       class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed ">
         <div class="flex h-full items-center justify-center ">
@@ -30,10 +39,19 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
   const config = useRuntimeConfig();
   const urlImg = config.public.url_base;
   const { locale } = useI18n()
   const localePath = useLocalePath()
+
+  const showVideo = ref(false);
+
+onMounted(() => {
+  setTimeout(() => {
+    showVideo.value = true;
+  }, 500);
+});
 </script>
 
 <style scoped>

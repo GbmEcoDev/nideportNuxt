@@ -5,7 +5,7 @@
             <div class="absolute w-full rounded-lg bottom-0 h-full inset-x-0 bg-gradient-to-t from-gray-900/[.9]  to-gray-900/[.1] grid content-end ">
                 <div class="w-full text-white font-bold text-left line-clamp-3 p-4">
                     <div class="text-left pb-2">
-                        <h2 class="font-bold shadow text-[18px] lg:text-2xl lg:leading-6">{{ post.title.rendered }}</h2>
+                        <h2 class="font-bold shadow text-[14px] lg:text-[16px] lg:leading-5">{{ post.title.rendered }}</h2>
                     </div>
                     <div class="text-white text-[14px] lg:text-sm w-full pt-1">
                         <p>{{ formatDate(post.date) }} - {{ categoryNames }}</p>

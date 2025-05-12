@@ -18,7 +18,6 @@
       </div>
       <div v-else>
           <h3 class="font-bold text-primary mt-12 mb-4">{{$t('blog_relations')}}</h3>
-          <!-- <div class="text-sm text-gray-700 ">Se encontraron {{ dataSizeRef }} post relacionados</div> -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-full">
             <SectionsBlogPostsRelationed 
             v-for="(post, index) in data" 
@@ -26,8 +25,6 @@
             :post="post" 
             :isFirstPost="index === 0" ></SectionsBlogPostsRelationed>
           </div>
-          <!--<div>  <ElementsPagination @change="refetch" :totalPages="dataSizeRef/3" :currentPage="page" /> </div>-->
-          
       </div> 
     </div>
 </template>
@@ -43,6 +40,8 @@ const language = locale.value.toUpperCase();
 
 const selectedCategory = ref(categoryRel);
 const postsCount = ref(4);
+
+console.log("cat", selectedCategory.value);
 
 let data, error, pending;
 try {
@@ -100,7 +99,6 @@ try {
 
   } catch (e) {
     console.error('Error fetching data:', e);
-    // Handle the error as needed
     error = true;
     pending = false;
     data = null;
@@ -120,13 +118,8 @@ try {
     };
   }
   
-  //const dataSize = ref(data.value.length);
   const dataSizeRef = computed(() => data.value.length);
- /*function refetch(pageNumber:any){
-  dataSize.value = dataSizeRef.value;
-  page.value = pageNumber;
-  refresh();
-} */
+
 </script>
 <style scoped>
 .post {
@@ -138,7 +131,6 @@ try {
   margin-top: 20px;
 }
 .is-first-post {
-  font-size: 2.2em; /* Tamaño de fuente más grande */
-  /* Otros estilos que desees aplicar al primer post */
+  font-size: 2.2em;
 }
 </style>

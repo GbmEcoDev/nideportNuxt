@@ -1,6 +1,6 @@
 <template>
     <div v-if="photoDetails" class="h-full">
-        <UCard class="lg:w-[350px] lg:h-full xs:w-full xs:h-1/3">
+        <UCard class="lg:w-[520px] m-1 lg:h-auto xs:w-full xs:h-1/3">
             <template #header class="relative">
               <h2 class="text-4xl">{{ photoDetails.nombre }}</h2>
                 <UButton @click="closeDetalle"
@@ -12,15 +12,13 @@
             </template>
             <div class="flex gap-2">
                 <div class="lg:w-full xs:w-full">
-                    <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ photoDetails.foto }`" class="w-full aspect-ratio-square object-cover" />
-                    <p class="text-white">{{ photoDetails.Date }}</p>
-                    <p class="text-white">{{ photoDetails.descripcion }}</p>
+                    <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ photoDetails.foto }`" class="w-full" />
+                    <p class="text-white m-2 text-sm">{{ photoDetails.Descripci__n }}</p>
+                    <!-- <p class="text-white">{{ photoDetails.descripcion }}</p> -->
                 </div>
             </div>
 
             <template #footer>
-            
-                
             </template>
         </UCard>
      
@@ -41,8 +39,8 @@
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
   const props = defineProps(['id','fotoId']);
-  const discover = ref<Array<{ ID: string; foto: string; Date: string; nombre: string; descripcion: string }>>([]);
-  const photoDetails = ref<{ foto: string; Date: string; nombre: string; descripcion: string } | null>(null);
+  const discover = ref<Array<{ ID: string; foto: string; Date: string; nombre: string; Descripci__n: string }>>([]);
+  const photoDetails = ref<{ foto: string; Date: string; nombre: string; Descripci__n: string } | null>(null);
   const closePanel = ref(true);
 
   //const idToShow = ref(props.fotoId);
