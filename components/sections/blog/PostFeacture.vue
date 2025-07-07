@@ -7,9 +7,9 @@
                     <div class="text-left pb-2">
                         <h2 class="font-bold shadow text-[14px] lg:text-[16px] lg:leading-5">{{ post.title.rendered }}</h2>
                     </div>
-                    <div class="text-white text-[14px] lg:text-sm w-full pt-1">
+<!--                     <div class="text-white text-[14px] lg:text-sm w-full pt-1">
                         <p>{{ formatDate(post.date) }} - {{ categoryNames }}</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
