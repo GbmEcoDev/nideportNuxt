@@ -1,0 +1,20 @@
+---
+title: "Avances del proyecto “Mujeres Cultivadoras”"
+date: "2023-09-25"
+author: "Lucia Larrea"
+slug: "avances-proyecto-mujeres-cultivadoras"
+description: "Avances y resultados de la implementación del Programa de Fortalecimiento Institucional en la cooperativa agropecuaria Nueva Esperanza."
+category: ["Comunidades"]
+image: "/blogs-img/proyecto-mujeres-cultivadoras.jpeg"
+tags: ["Nideport", "Cooperativa Nueva Esperanza", "Mujeres Cultivadoras", "San Pedro", "Misiones"]
+---
+
+Avances y resultados de la implementación del Programa de Fortalecimiento Institucional en la cooperativa agropecuaria Nueva Esperanza.Durante el mes de agosto se llevó adelante el reporte final del monitoreo de producción de la Cooperativa Nueva Esperanza, a los fines de medir el impacto de la implementación del Programa de Fortalecimiento Institucional en el marco del Proyecto “Mujeres Cultivadoras”.  
+
+El día 31 de agosto se realizó la evaluación final para medir el impacto de la implementación del Programa de Fortalecimiento Institucional realizado por Nideport a los fines de contribuir en el crecimiento de la Cooperativa Nueva Esperanza. El Programa implementado entre agosto 2022 y agosto 2023 implicó transferencia de equipos para mejorar la línea de producción (envasadoras, freezer, impresora, ollas, multiprocesadora). Como también se realizó apoyo intangible, considerando que se realizaron variadas capacitaciones así como también se orientó al equipo de trabajo para la mejora en habilidades blandas, administrativas y de gestión.
+
+Considerando los 6 objetivos específicos planteados al inicio del Proyecto: 1. Aumento de la velocidad de la línea de producción; 2. Aumento de los productos producidos; 3. Abastecimiento adecuado de los mercados en lo que se actúa; 4. Apertura de nuevos mercados; 5. Aumento de las ganancias de la cooperativa en base a un plan de negocios sustentable y 6. Fortalecimiento de la perspectiva y salvaguardas de género en la producción agroforestal, nos gratifica comunicar que los resultados de la evaluación arrojan que hemos cumplido satisfactoriamente con las metas propuestas.En lo que respecta al aumento de la velocidad en la línea de producción, el monitoreo demostró que el tiempo de producción se triplicó, siendo de 4.344 H en la medición del año 2022, y aumentando hasta 15.204 hacia el año 2023. Del mismo modo, aumentó la cantidad de producción (medida en litros), siendo que durante el año 2022 se vendieron 1.080 litros de productos y hacia el año 2023 la venta se triplicó alcanzando los 3.670 litros vendidos. En este sentido, puede confirmarse que el abastecimiento de los mercados fue adecuado, así como también se duplicaron los mercados existentes, pasando de ser 9 a 18.   Sobre el aumento de las ganancias de la Cooperativa, si bien las ventas se triplicaron, ese aumento no se vio totalmente reflejado en los ingresos de las mujeres cultivadoras, debido al aumento en el precio de los insumos para la producción, principalmente en lo que respecta a los envases. La estrategia del equipo de trabajo fue ponderar la apertura de nuevos mercados por sobre el aumento de la ganancia, por lo que el aumento del precio de los productos se mantuvo por debajo de la línea de inflación.
+
+Por último, la evaluación de impacto demostró que el equipo de trabajo se fortaleció en el ámbito de las habilidades blandas, ya que ha mejorado la comunicación y participación activa de las trabajadoras y se han capacitado en el abordaje de las problemáticas de género en la producción agroforestal.Desde el equipo de Relaciones con la Comunidad de Nideport, nos satisface poder compartir los resultados de esta evaluación como un gran hito que nos fortalece para seguir acompañando el crecimiento y desarrollo sostenible de las comunidades locales.  
+Paraje Gentile, Misiones, agosto 2023.  
+#mujeres #comunidades #agroforestal

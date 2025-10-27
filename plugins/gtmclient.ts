@@ -2,7 +2,7 @@
 export default defineNuxtPlugin(nuxtApp => {
 	nuxtApp.hooks.hook('vue:setup', () => {
 		const {
-			public: { adsContainerId, gaTrackingId },
+			public: { adsContainerId, gaTrackingId, hotjarId },
 		} = useRuntimeConfig()
 			//tag analiti
 	/* 	if (gtmContainerId) {
@@ -21,6 +21,30 @@ export default defineNuxtPlugin(nuxtApp => {
 				],
 			})
 		} */
+			//tag hotjar
+/**/ 		if (hotjarId) {
+      useHead({
+        script: [
+          {
+            // Este es el fragmento de cÃ³digo de Hotjar adaptado
+            children: `
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:${hotjarId},hjsv:6}; // Usa tu hotjarId aquÃ­
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            `,
+            async: true, // No es estrictamente necesario con children, pero no hace daÃ±o
+            defer: true, // No es estrictamente necesario con children, pero no hace daÃ±o
+            tagPriority: 'high', // Puedes ajustar la prioridad si lo necesitas
+          },
+        ],
+      });
+    }
+ 
 			//tag ads
 			if (adsContainerId) {
 				useHead({

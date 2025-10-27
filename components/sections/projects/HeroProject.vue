@@ -1,12 +1,12 @@
 <template>
     <div class="relative overflow-hidden bg-cover bg-no-repeat lg:h-[41.5rem] md:h-[28rem] h-[12rem] z-0"style="
         background-position: 50%;
-        background-image: url('https://storage.googleapis.com/cdn-web-nideport/hero-project.webp');
+        background-image: url('/images/hero-project.webp');
         background-size: cover;
       ">
     <template v-if="showVideo">
       <SectionsHomeVideoBackground
-        videoSrc='https://storage.googleapis.com/cdn-web-nideport/proyecto.mp4'
+        videoSrc='/video/Proyecto.mp4'
       />
     </template>
      <!--  <video

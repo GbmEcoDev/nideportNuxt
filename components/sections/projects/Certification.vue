@@ -59,19 +59,7 @@
         </Slide>
       </Carousel>
     </AtomsContainer>
-    <AtomsContainer>
-        <div class="flex flex-col items-center w-full pt-16">
-            <AtomsTitleH2 :texte="$t('project_ods_title')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
-            <div class="flex flex-wrap justify-center max-sm:justify-center gap-6 mt-16 mb-50">
-                <div class="w-20 lg:w-40 mb-4 shadow-inner"><NuxtImg :src="`${urlImg}/images/project/ODS1-${language}.svg`" class="w-full shadow-inner border-6 border-[#007454] rounded-[8px]" alt="ODS1" /></div>
-                <div class="w-20 lg:w-40 mb-4 shadow-inner"><NuxtImg :src="`${urlImg}/images/project/ODS5-${language}.svg`" class="w-full shadow-inner border-6 border-[#007454] rounded-[8px]" alt="ODS5" /></div>
-                <div class="w-20 lg:w-40 mb-4 shadow-inner"><NuxtImg :src="`${urlImg}/images/project/ODS8-${language}.svg`" class="w-full shadow-inner border-6 border-[#007454] rounded-[8px]" alt="ODS8" /></div>
-                <div class="w-20 lg:w-40 mb-4 shadow-inner"><NuxtImg :src="`${urlImg}/images/project/ODS13-${language}.svg`" class="w-full shadow-inner border-6 border-[#007454] rounded-[8px]" alt="ODS13" /></div>
-                <div class="w-20 lg:w-40 mb-4 shadow-inner"><NuxtImg :src="`${urlImg}/images/project/ODS15-${language}.svg`" class="w-full shadow-inner border-6 border-[#007454] rounded-[8px]" alt="ODS15" /></div>
-                <div class="w-20 lg:w-40 mb-4 shadow-inner"><NuxtImg :src="`${urlImg}/images/project/ODS17-${language}.svg`" class="w-full shadow-inner border-6 border-[#007454] rounded-[8px]" alt="ODS17" /></div>
-            </div>
-        </div>
-    </AtomsContainer>
+    
 <!--     <div class="mt-16 w-screen bg-emerald-50 p-24">
       
         <div class="w-full flex justify-center">

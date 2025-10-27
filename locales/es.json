@@ -82,7 +82,7 @@
 
 
     "project_title" : "Proyecto Selva Paranaense Vida Nativa",
-    "project_gs1_phrase":"Durante los últimos 80 años, el Bosque Atlántico ha sufrido una intensiva tala de especies nativas, lo que ha llevado a una degradación severa y pérdidas significativas de biodiversidad y servicios ecosistémicos.",
+    "project_gs1_phrase":"En los últimos 120 años, el bosque atlántico ha sufrido una intensa extracción de especies nativas y pérdida de estructura, impulsadas primero por la industrialización y la urbanización y, desde fines del siglo XX, por la expansión agropecuaria mecanizada, que consolidó la deforestación y la fragmentación, provocando pérdidas en la biodiversidad y en los servicios ecosistémicos esenciales.",
     "project_data_c1_title":"Composición del bosque",
     "project_data_c1_parag":"22.878 hectáreas de bosque atlántico",
     "project_data_c2_title":"Biodiversidad",
@@ -113,18 +113,49 @@
     "project_mn_btn_05": "Tecnologías",
 
     "project_subtitle_gs1": "Restauración del bosque",
-    "project_data_gs1": "Utilizamos especies nativas para promover la biodiversidad en 22,878 de sus hectáreas y así restablecer la estructura original del ecosistema. Recorre nuestro mapa interactivo para encontrar las acciones que realizamos y las próximas etapas de nuestro proyecto.",
+    "project_data_gs1": "Implementamos un nuevo plan de manejo con prácticas de restauración adaptadas a las necesidades de cada sitio degradado del bosque. La reforestación y el enriquecimiento se llevan a cabo mediante un diseño de plantación que incluye una mezcla de hasta 15 especies nativas, seleccionadas según las condiciones locales. El objetivo es promover la biodiversidad, recuperar el potencial de las funciones y los servicios ecosistémicos, y restablecer la estructura original del bosque. Explora nuestro mapa interactivo para conocer las acciones en curso y las próximas etapas del proyecto.",
     "project_databtn01_gs1": "Mapa interactivo",
     "project_databtn02_gs1": "Overview de proyecto",
 
     "project_object_title1":"Conservación  de biodiversidad",
-    "project_object_phrase1":"Llevamos a cabo inventarios de fauna para identificar diversas especies y poblaciones, priorizando aquellas que contribuyen a formar un hábitat propicio para la prosperidad de la fauna nativa. Nuestra amplia gama de actividades nos permite obtener la certificación Clima, Comunidad y Biodiversidad (CCB) más alta, evidenciando nuestro compromiso con la sostenibilidad y la preservación.",
+    "project_object_phrase1":"Junto con profesionales especializados, realizamos relevamientos anuales de flora y fauna para estimar la riqueza de especies y la densidad o abundancia de sus poblaciones. Priorizamos el seguimiento de especies clave, cuya dinámica poblacional nos permite evaluar la salud del ecosistema y el impacto de nuestras intervenciones. Esta base de evidencia, que integra monitoreo de campo y tecnologías de detección, sustenta nuestro cumplimiento del estándar Climate, Community & Biodiversity (CCB) a nivel Gold, reflejando un compromiso verificable con la sostenibilidad y la conservación.",
     "project_object_title2":"Comunidades",
-    "project_object_phrase2":"El proyecto está situado cerca de la comunidad indígena de Tekoa Alecrin. Realizamos una investigación exhaustiva para comprender su cultura y estructura social, asegurándonos de respetar sus formas de interacción. Implementamos una Consulta Previa, Libre e Informada (CPLI) para establecer una relación colaborativa y explorar maneras de mejorar sus condiciones de vida.",
+    "project_object_phrase2":"Selva Paranaense Vida Nativa se ubica cerca de la comunidad Mbyá-Guaraní Tekoa Alecrín y de otras comunidades rurales. Junto con ellas desarrollamos actividades que fortalecen los vínculos y profundizan el entendimiento de su cultura y organización social, respetando sus protocolos de relación intercomunitaria y con el bosque. Implementamos una consulta pública con las comunidades rurales y una Consulta Previa, Libre e Informada (CPLI/FPIC) con la comunidad originaria, con el objetivo de establecer una colaboración consensuada y duradera, resguardar sus derechos y co-diseñar programas de acompañamiento para su adaptación al cambio climático y para mejorar sus condiciones de vida, en el marco de su propia cosmovisión y relación con la naturaleza.",
     "project_object_title3":"Tecnología para la conservación",
-    "project_object_phrase3":"Transformamos nuestra tierra en un entorno digital mediante tecnologías satelitales y drones. Desarrollamos un sistema de Security and Early Warning en colaboración con las autoridades regionales y locales, que nos permite prevenir incendios forestales, intrusiones, caza ilegal y tala descontrolada. ",  
+    "project_object_phrase3":"En Nideport ponemos la tecnología al servicio del bosque y de quienes lo cuidan. Satélites, drones, IoT, cámaras de monitoreo y biotecnología se integran en una plataforma con inteligencia artificial que detecta anomalías, genera alertas automáticas verificables y asegura la trazabilidad completa de cada intervención. Así tomamos decisiones con precisión, reducimos riesgos y simplificamos el MRV, acelerando la restauración de bosques nativos y respaldando créditos de carbono de ultra alta calidad.",  
 
     "project_ods_title":"Objetivos de Desarrollo Sostenible del proyecto",
+
+    "projects_credit_certifications_and_specs":"Certificaciones y especificaciones",
+    "projects_credit_buy_carbon_credits":"Adquirir tus créditos de carbono",
+    "projects_credit_view_project_on_verra":"Ver proyecto en Verra",
+    
+    "projects_credit_data1":"Créditos certificados",
+    "projects_credit_data1value":"234.324,2",
+    "projects_credit_data2":"Desarrollador",
+    "projects_credit_data2value":"Nideport",
+    "projects_credit_data3":"Ubicación",
+    "projects_credit_data3value":"Misiones, Argentina",
+    "projects_credit_data4":"Área del proyecto",
+    "projects_credit_data4value":"22.878,5 Hectáreas",
+    "projects_credit_data5":"VCS Registro",
+    "projects_credit_data5value":"ID: 3630",
+    "projects_credit_data6":"Estándar",
+    "projects_credit_data6_a_value":"VCS:",
+    "projects_credit_data6_a_subvalue":"Estándar de Carbón Verificado",
+    "projects_credit_data6_b_value":"CCB  Gold Level:",
+    "projects_credit_data6_b_subvalue":"Estándares de Clima, Comunidad y Biodiversidad",
+    "projects_credit_data6_c_value":"CCB Project Type:",
+    "projects_credit_data6_c_subvalue":"Improved Forest Management",
+    "projects_credit_data6_d_value":"VCS Project Type:",
+    "projects_credit_data6_d_subvalue":"Agriculture Forestry and Other Land Use",
+    "projects_credit_data6_e_value":"AFOLU Activity:",
+    "projects_credit_data6_e_subvalue":"IFM",
+    "projects_credit_data6_f_value":"VCS Methodology:",
+    "projects_credit_data6_f_subvalue":"VM0005",
+
+     "projects_credit_btn_cta":"Adquirí tus creditos de carbono",
+    
 
     "project_thematicAxes_box1":"56 especies autóctonas",
     "project_thematicAxes_box2":"10 en peligro de extinción",
@@ -216,6 +247,19 @@
     "map_app_acc2_content2":"Descripción fuera de proyecto dado que...",
 
     "map_app_acc_label": "áreas encontradas",
-    "map_app_acc_label2": "datos encontradas"
+    "map_app_acc_label2": "datos encontradas",
 
+     "pagination": {
+        "previous": "Anterior",
+        "next": "Siguiente"
+    },
+
+    "tags": {
+        "title": "Tématicas",
+        "all": "Todos"
+    },
+    "categories": {
+        "title": "Tématicas",
+        "all": "Todos"
+    }
 }

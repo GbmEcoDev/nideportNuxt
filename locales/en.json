@@ -81,7 +81,7 @@
     "about_join_our_team_btn":"Know searches",
     
     "project_title" : "Vida Nativa Project",
-    "project_gs1_phrase": "Over the past 80 years, the Atlantic Forest has suffered intensive logging of native species, which has led to severe degradation and significant losses of biodiversity and ecosystem services.",
+    "project_gs1_phrase": "Over the past 120 years, the Atlantic Forest has suffered intense extraction of native species and loss of structural integrity—first driven by industrialization and urbanization, and since the late 20th century by the expansion of mechanized agriculture, which consolidated deforestation and habitat fragmentation, leading to losses in biodiversity and essential ecosystem services.",
     "project_data_c1_title": "Forest composition",
     "project_data_c1_parag": "22,878 hectares of Atlantic forest",
     "project_data_c2_title": "Biodiversity",
@@ -118,14 +118,43 @@
  
 
     "project_object_title1": "Biodiversity conservation",
-    "project_object_phrase1": "We conduct wildlife inventories to identify diverse species and populations, prioritizing those that contribute to habitat conducive to the prosperity of native fauna. Our wide range of activities allows us to obtain the highest Climate, Community and Biodiversity (CCB) certification, evidencing our commitment to sustainability and preservation.",
+    "project_object_phrase1": "Together with specialized professionals, we conduct annual flora and fauna surveys to estimate species richness and the density or abundance of their populations. We prioritize monitoring keystone species, whose population dynamics allow us to assess ecosystem health and the impact of our interventions. This evidence base—integrating field monitoring and detection technologies—supports our compliance with the Climate, Community & Biodiversity (CCB) Standards at the Gold level, reflecting a verifiable commitment to sustainability and conservation.",
     "project_object_title2": "Local communities",
-    "project_object_phrase2": "The project is located near the indigenous community of Tekoa Alecrin. We conducted extensive research to understand their culture and social structure, making sure to respect their ways of interaction. We implemented a Free, Prior and Informed Consultation (FPIC) to establish a collaborative relationship and explore ways to improve their living conditions.",
+    "project_object_phrase2": "Selva Paranaense Vida Nativa is located near the Mbyá-Guaraní community of Tekoa Alecrín and other rural communities. Together with them, we carry out activities that strengthen relationships and deepen understanding of their culture and social organization, respecting their protocols for intercommunity relations and their relationship with the forest. We have implemented a public consultation with rural communities and a Free, Prior and Informed Consent (FPIC) process with the Indigenous community, aiming to establish a consensual and long-term collaboration, safeguard their rights, and co-design support programs for climate change adaptation and for improving their living conditions within the framework of their own worldview and relationship with nature.",
     "project_object_title3": "Conservation technology",
-    "project_object_phrase3": "We transform our land into a digital environment using satellite and drone technologies. We developed a Security and Early Warning system in collaboration with regional and local authorities, which allows us to prevent forest fires, intrusions, illegal hunting and uncontrolled logging. ",  
+    "project_object_phrase3": "At Nideport, we harness technology to serve the forest and those who protect it. Satellites, drones, IoT, monitoring cameras, and biotechnology are integrated into an artificial intelligence-powered platform that detects anomalies, generates verifiable automated alerts, and ensures full traceability of every intervention. This enables us to make precise decisions, reduce risks, and streamline MRV—accelerating native forest restoration and supporting ultra-high-quality carbon credits.",  
 
     "project_ods_title": "Our Project's Sustainable Development Goals",
 
+    "projects_credit_certifications_and_specs":"Certifications and specifications",
+    "projects_credit_buy_carbon_credits":"Acquire your carbon credits",
+    "projects_credit_view_project_on_verra":"View project on Verra",
+
+    "projects_credit_data1":"Credits certification",
+    "projects_credit_data1value":"234.324,2",
+    "projects_credit_data2":"Development",
+    "projects_credit_data2value":"Nideport",
+    "projects_credit_data3":"Location",
+    "projects_credit_data3value":"Misiones, Argentine",
+    "projects_credit_data4":"Project area",
+    "projects_credit_data4value":"22.878,5 Hectáreas",
+    "projects_credit_data5":"VCS Register",
+    "projects_credit_data5value":"ID: 3630",
+    "projects_credit_data6":"Standard",
+    "projects_credit_data6_a_value":"VCS:",
+    "projects_credit_data6_a_subvalue":"Standard of Verified Carbon",
+    "projects_credit_data6_b_value":"CCB Gold Level:",
+    "projects_credit_data6_b_subvalue":"Standard of Climate, Community and Biodiversity",
+    "projects_credit_data6_c_value":"CCB Project Type:",
+    "projects_credit_data6_c_subvalue":"Improved Forest Management",
+    "projects_credit_data6_d_value":"VCS Project Type:",
+    "projects_credit_data6_d_subvalue":"Agriculture Forestry and Other Land Use",
+    "projects_credit_data6_e_value":"AFOLU Activity:",
+    "projects_credit_data6_e_subvalue":"IFM",
+    "projects_credit_data6_f_value":"VCS Methodology:",
+    "projects_credit_data6_f_subvalue":"VM0005",
+
+    "projects_credit_btn_cta":"Acquire your carbon credits",
 
     "project_thematicAxes_box1": "56 native species",
     "project_thematicAxes_box2": "10 endangered species",
@@ -218,5 +247,18 @@
     "map_app_acc2_content2":"Descripción fuera de proyecto dado que...",
 
     "map_app_acc_label": "found areas",
-    "map_app_acc_label2": "data found"
+    "map_app_acc_label2": "data found",
+
+    "pagination": {
+        "previous": "Previous",
+        "next": "Next"
+    },
+    "tags": {
+        "title": "Thematic",
+        "all": "All"
+    },
+    "categories": {
+        "title": "Thematic",
+        "all": "All"
+}
 }

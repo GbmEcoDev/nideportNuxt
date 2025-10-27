@@ -9,11 +9,11 @@
     <template v-if="showVideo">
       <SectionsHomeVideoBackground
         v-if="isDesktop"
-        videoSrc='https://storage.googleapis.com/cdn-web-nideport/HomeDesktop.mp4'
+        videoSrc='/video/HomeDesktop.mp4'
       />
       <SectionsHomeVideoBackground
         v-else
-        videoSrc='https://storage.googleapis.com/cdn-web-nideport/HomeMobile.mp4'
+        videoSrc='/video/HomeMobile.mp4'
       />
     </template>
 

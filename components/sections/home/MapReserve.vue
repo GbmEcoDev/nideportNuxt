@@ -6,25 +6,14 @@
       ">
       <template v-if="showVideo">
         <SectionsHomeVideoBackground
-          videoSrc='https://storage.googleapis.com/cdn-web-nideport/map-fly.mp4'
-        />
-      </template>
-
-<!--       <video 
-      autoplay
-      loop
-      muted
-      preload="none"
-      class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
-      poster="/images/hero-home-min.webp"
-      loading="lazy"
-      >
-      <source
-        :src="`${urlImg}/video/map-fly.mp4`"
-        type="video/mp4"
+        v-if="isDesktop"
+        videoSrc='/video/map-fly.mp4'
       />
-      Your browser does not support the video tag.
-    </video> -->
+      <SectionsHomeVideoBackground
+        v-else
+        videoSrc='/video/map-fly-mobile.mp4'
+      />
+      </template>
 
     <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden parcialover bg-[hsla(0,0%,0%,0.10)] bg-fixed">
       <div class="flex h-full items-center justify-center">
@@ -48,7 +37,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 const localePath = useLocalePath()
-
+const { isDesktop, isMobile } = useDevice();
 const showVideo = ref(false);
 
 onMounted(() => {

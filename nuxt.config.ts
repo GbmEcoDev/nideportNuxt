@@ -1,71 +1,45 @@
-import axios from 'axios';
-/* const getPostRoutes = async () => {
-  const response = await axios.get(
-    'https://blog.nideport.xyz/wp-json/wp/v2/posts'
-  );
-  return response?.data?.map((post:any) => `/${post.slug}`);
-}; */
-
-const getPostRoutes = async () => {
-  let allPosts: { slug: string }[] = [];
-  let page = 1;
-  let hasMore = true;
-  const routes: string[] = [];
-  while (hasMore) {
-    try {
-      const response = await axios.get(
-        `https://blog.nideport.com/wp-json/wp/v2/posts?per_page=100&page=${page}`
-      );
-      allPosts = [...allPosts, ...response.data];
-      if (response.data.length < 100) hasMore = false;
-      page++;
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-      hasMore = false; // Detener la paginación en caso de error
-    }
-  }
-
-  allPosts.forEach((post) => {
-    if (post?.slug) { // Asegurarse de que el slug exista
-      routes.push(`/${post.slug}`); // Ruta para español
-      routes.push(`/en/${post.slug}`); // Ruta para inglés
-    } else {
-      console.warn("Post sin slug encontrado:", post);
-    }
-  });
-
-  return routes;
-};
-
-
 export default defineNuxtConfig({
-  ssr: true,
-  hooks: {
-    async 'nitro:config'(nitroConfig) {
-      const slugs = await getPostRoutes();
-      nitroConfig.prerender?.routes?.push(...slugs);
-    },
-  },
+  /* ssr: true, */
+
   nitro: {
     compressPublicAssets: {
-      brotli: true
+      brotli: true,
     },
     prerender: {
-      failOnError: true
-    }
+      failOnError: true,
+    },
   },
   generate: {
-    exclude: [
-      'robots.txt',
-      'sitemap.xml'
-    ],
+    exclude: ["robots.txt", "sitemap.xml"],
   },
-  routeRules: {
-    '/': { prerender: true },
-    '/blog': { isr: 3600 },
-    '/blog/**': { isr: true },
-    '/en/**': { prerender: true },
+
+  hooks: {
+    async "prerender:routes"(ctx) {
+      // Usaremos 'globby' para encontrar los archivos de forma segura
+      // Asegúrate de instalarlo: npm install -D globby
+      const { globby } = await import("globby");
+      const perPage = 10; // El mismo valor que en tus componentes
+      const locales = ["es", "en"]; // Tus idiomas
+      const defaultLocale = "es"; // Tu idioma por defecto
+
+      for (const locale of locales) {
+        // Obtener el total de posts para cada idioma
+        const files = await globby(`content/blog/${locale}/*.md`);
+        const totalPosts = files.length;
+        const totalPages = Math.ceil(totalPosts / perPage);
+
+        // Agregar las rutas de paginación al prerender
+        for (let page = 2; page <= totalPages; page++) {
+          const path = `/blog/page/${page}`;
+          const route = locale === defaultLocale ? path : `/${locale}${path}`;
+          // Añadir la ruta al set de rutas a pre-renderizar
+          ctx.routes.add(route);
+          console.log(`Añadiendo ruta para prerender: ${route}`);
+        }
+      }
+    },
   },
+
   css: [
     '@/assets/css/main.css',
   ],
@@ -86,13 +60,40 @@ export default defineNuxtConfig({
     'nuxt3-leaflet', 
     '@nuxt/ui', 
     '@nuxtjs/device',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
   ],
+  content: {
+    locales: ['es', 'en'],
+
+        // https://content.nuxtjs.org/api/configuration
+        highlight: {
+            theme: 'github-dark',
+            preload: ['java','javascript']
+        },
+        markdown: {
+            // https://github.com/rehypejs/rehype-external-links
+            rehypePlugins: [
+                [
+                    'rehype-external-links',
+                    {
+                        target: '_blank',
+                        rel: 'noopener noreferer'
+                    }
+                ]
+            ]
+        }
+    },
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {}, 
     },
+  },
+  routeRules: {
+    '/': { prerender: true },
+/**/     '/blog': { isr: 3600 },
+    '/blog/**': { isr: true },
+    '/en/blog/**': { isr: true }, 
   },
   i18n: {
     detectBrowserLanguage: {
@@ -151,22 +152,23 @@ export default defineNuxtConfig({
     defaultLocale: "es",
   },
   runtimeConfig: {
+   /*  // Estas variables solo estarán disponibles en el servidor
+    // Nuxt las leerá automáticamente de tu archivo .env
+    CONTACTMAILTO: '',
+    CONTACTMAILFROM: process.env.CONTACT_MAIL_FROM,
+    CONTACTMAILSUBJECT: process.env.CONTACT_MAIL_SUBJECT,
+    SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
+    // Las claves públicas también se declaran aquí */
     public: {
-      wpEventos: process.env.WP_EVENT,
-      wpPosteos: process.env.WP_POSTS,
-      wpCategories: process.env.WP_CATS,
-      wpTags: process.env.WP_TAGS,
-      wpFindings: process.env.WP_FIND,
-      wpRestora: process.env.WP_RESTO,
-      wordpressUrl: process.env.WP_POST,
-      url_base: process.env.BASE_URL,
-      wpUri: process.env.WP_URI,
+       url_base: process.env.BASE_URL,
       CONTACTMAILTO: process.env.CONTACTMAILTO,
       CONTACTMAILFROM: process.env.CONTACTMAILFROM,
       SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
       /* gtmContainerId: process.env.NUXT_PUBLIC_GTM_CONTAINER_ID, */
       adsContainerId: process.env.NUXT_PUBLIC_ADS_CONTAINER_ID,
       gaTrackingId: process.env.NUXT_PUBLIC_GA_CONTAINER_ID,
+      hotjarId: process.env.CODE_HOTJAR_ID,
+
     }
   },
   plugins: ['~/plugins/nuxt-helpers.js'], 

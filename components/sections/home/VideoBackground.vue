@@ -4,7 +4,7 @@
       muted
       loop
       playsinline
-      preload="auto">
+      preload="none">
       <source :src="videoSrc" type="video/mp4">
     </video>
   </div>
