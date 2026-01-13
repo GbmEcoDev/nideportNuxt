@@ -206,7 +206,8 @@
   width: 100%;*/
   box-sizing: border-box;
   border-radius: 20px;/* 
-  margin:12px; */ height: auto;
+  margin:12px;   border: olive 1px solid;*/ height: auto;
+
 }
 
 .carousel {
@@ -215,5 +216,33 @@
   --vc-pgn-border-radius: 4px;
   --vc-pgn-height: 8px;
   --vc-pgn-width: 8px;
+}
+
+/* Efecto Fade in/out */
+:deep(.carousel__track) {
+  transform: none !important;
+  width: 100% !important;
+}
+
+:deep(.carousel__slide) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+:deep(.carousel__slide--active) {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}
+
+:deep(.carousel__pagination) {
+  position: relative;
+  z-index: 10;
+  margin-top: 50px;
 }
 </style>
