@@ -174,7 +174,7 @@
     { logo: '/images/partners/laciudadposible.png', alt: 'La Ciudad Posible', url:'https://www.laciudadposible.net/' , width:'160px' },
     { logo: '/images/partners/calice.png', alt: 'Calice', url:'https://calice.ai/' , width:'85px' },
     { logo: '/images/partners/nunatak.png', alt: 'Nunatak', url:'https://www.nunatakbio.com/' , width:'111px' },
-    { logo: '/images/partners/Olive.png', alt: 'Olive', url:'#' , width:'52px' },
+    { logo: '/images/partners/olive.png', alt: 'Olive', url:'#' , width:'52px' },
     { logo: '/images/partners/hyphen.png', alt: 'Hyphen', url:'https://hyphen.earth' , width:'144px' },
 
   ]);   
@@ -185,7 +185,7 @@
     { logo: '/images/partners/eiru.png', alt: 'Eirú', url:'https://eiru.tech' , width:'135px' },
     { logo: '/images/partners/iov.png', alt: 'Iov Foundation', url:'https://www.iovf.org' , width:'140px' },
     { logo: '/images/partners/netto.png', alt: 'Netto', url:'https://www.netto.finance/' , width:'70px' },
-    { logo: '/images/partners/soundtitles.png', alt: 'SoundTitles', url:'https://www.soundtitles.com' , width:'142px' },
+    { logo: '/images/partners/Soundtitles.png', alt: 'SoundTitles', url:'https://www.soundtitles.com' , width:'142px' },
     { logo: '/images/partners/kawsay.png', alt: 'Kawsay', url:'https://www.viverokawsay.com/' , width:'110px' },
   ]);   
 

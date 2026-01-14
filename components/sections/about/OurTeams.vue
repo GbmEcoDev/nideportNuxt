@@ -31,7 +31,7 @@ const teamData = ref([
   },
   {
     name: 'Tomas Gutierrez',
-    position: locale.value === 'es' ? 'Co-founder and CFO @ Nideport' : 'Co-founder and CFO @ Nideport',
+    position: locale.value === 'es' ? 'CFO - Director de finanzas' : ' CFO - Chief Financial Officer',
     coverImage: '/images/team/TRV.png'
   },
   {
@@ -41,7 +41,7 @@ const teamData = ref([
   },
   {
     name: 'Tomas Arata',
-    position: locale.value === 'es' ? 'Presidente y CPO de Nideport' : 'Nideport\'s President and CPO',
+    position: locale.value === 'es' ? 'Presidente & CPO - Director de Producto' : 'President & CPO - Chief Product Officer',
     coverImage: '/images/team/Tomas_Arata.png'
   },
   {
@@ -52,7 +52,7 @@ const teamData = ref([
 
   {
     name: 'Marcelo Taboada',
-    position: locale.value === 'es' ? 'CFO - Director de Finanzas' : 'CFO - Chief Financial Officer',
+    position: locale.value === 'es' ? 'Responsable de Certificación' : 'Head of Certification',
     coverImage: '/images/team/Marcelo_Taboada.png'
   },
 /*   {
@@ -143,7 +143,7 @@ const teamData = ref([
   },
   {
     name: 'Fabiana Tarzian',
-    position: locale.value === 'es' ? 'Asesora de Expansión / Gestión Contable Intercompany' : 'Advisor',
+    position: locale.value === 'es' ? 'Responsable de Finanzas' : 'Head of Finance', //Asesora de Expansión / Gestión Contable Intercompany
     coverImage: '/images/team/Fabiana_Tarzian.png'
   },
   {
