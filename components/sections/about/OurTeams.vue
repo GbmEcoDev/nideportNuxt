@@ -26,12 +26,12 @@ const { locale } = useI18n();
 const teamData = ref([
   {
     name: 'Juan Nuñez',
-    position: locale.value === 'es' ? 'CEO - Director Ejecutivo' : 'CEO - Chief Executive Officer',
+    position: locale.value === 'es' ? 'Co-Founder & CEO' : 'Co-Founder & CEO',
     coverImage: '/images/team/Juan_Nunez.png'
   },
   {
     name: 'Tomas Gutierrez',
-    position: locale.value === 'es' ? 'CFO - Director de finanzas' : ' CFO - Chief Financial Officer',
+    position: locale.value === 'es' ? 'Co-Founder & CFO' : 'Co-Founder & CFO',
     coverImage: '/images/team/TRV.png'
   },
   {
