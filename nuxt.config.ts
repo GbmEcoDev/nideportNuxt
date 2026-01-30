@@ -2,12 +2,26 @@ export default defineNuxtConfig({
   /* ssr: true, */
 
   nitro: {
+    preset: 'cloudflare-pages',
     compressPublicAssets: {
       brotli: true,
     },
     prerender: {
       failOnError: true,
+      autoSubfolderIndex: false, // Route matching en Cloudflare Pages
     },
+    rollupConfig: {
+      plugins: [
+        {
+          name: 'ignore-images',
+          load(id) {
+            if (/\.(png|jpg|jpeg|gif|svg)$/.test(id)) {
+              return 'export default ""'
+            }
+          }
+        }
+      ]
+    }
   },
 
   hooks: {
@@ -89,7 +103,6 @@ export default defineNuxtConfig({
     url: process.env.BASE_URL || 'https://www.nideport.com',
   },
   sitemap: {
-    gzip: true,
     routes: async () => {
       try {
         // queryContent está disponible como auto-import en Nuxt
@@ -152,7 +165,6 @@ export default defineNuxtConfig({
     customRoutes: 'config',
     pages: {
       index: {
-        en: '/', 
         es: '/'     
       },
       about: {
@@ -200,6 +212,9 @@ export default defineNuxtConfig({
     defaultLocale: "es",
   },
   runtimeConfig: {
+    // Variables privadas (solo servidor)
+    notionApiKey: process.env.NUXT_NOTION_API_KEY,
+    notionDatabaseId: process.env.NUXT_NOTION_DATABASE_ID,
    /*  // Estas variables solo estarán disponibles en el servidor
     // Nuxt las leerá automáticamente de tu archivo .env
     CONTACTMAILTO: '',

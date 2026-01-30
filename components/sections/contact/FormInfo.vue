@@ -103,6 +103,20 @@ const sendForm = async () => {
   if (!checkOneChecked.value) { alert('Debe seleccionar una opción');return; }
 
   try {
+    // 1. Primero guardamos en Notion (Llamada a nuestra API interna)
+    await $fetch('/api/save-to-notion', {
+      method: 'POST',
+      body: {
+        nombre: nombre.value,
+        empresa: empresa.value,
+        telefono: telefono.value,
+        email: email.value,
+        terminos: terminos.value,
+        notificaciones: notificaciones.value
+      }
+    });
+
+    // 2. Si Notion responde OK, procedemos a enviar a Formspree
     const formData = new FormData();
     formData.append('nombre', nombre.value);
     formData.append('empresa', empresa.value);
