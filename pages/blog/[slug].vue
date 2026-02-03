@@ -134,7 +134,9 @@ watch(post, (newPost) => {
 }, { immediate: true })
 
 const formatDate = (date) => {
-  return new Date(date).toLocaleDateString(locale.value === 'es' ? 'es-ES' : 'en-US', {
+  // Parsear como YYYY-MM-DD local, no UTC
+  const [year, month, day] = date.split('T')[0].split('-')
+  return new Date(year, month - 1, day).toLocaleDateString(locale.value === 'es' ? 'es-ES' : 'en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
