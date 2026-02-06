@@ -4,7 +4,7 @@ date: "2024-10-14"
 author: "Victoria Gardella"
 slug: "the-argentine-carbon-exchange-will-market-nideports-credits-in-argentina"
 description: "Nideport selected the Argentine Carbon Exchange (BACX) to market 50,000 credits (verified carbon units, VCU’s) from the future issuance of the Selva Paranaense Vida Nativa project under the Verra standard, an ambitious project covering 24,643 hectares in the province of Misiones, aimed at the restoration of degraded forests."
-category: ["Featured"]
+category: ["Sustainability"]
 image: '/blogs-img/la-bolsa-argentina-de-carbono.png'
 tags: ["Carbon Credits", "Sustainability", "Biodiversity", "Climate Action"]
 ---

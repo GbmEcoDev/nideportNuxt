@@ -3,7 +3,7 @@ title: "¿Qué tipo de proyectos de carbono necesitamos priorizar? Una mirada cr
 date: "2025-06-25"
 author: "Victoria Gardella"
 slug: "que-tipo-de-proyectos-de-carbono-necesitamos-priorizar-una-mirada-critica-a-las-nbs"
-category: ["Destacadas", "Sostenibilidad"]
+category: ["Sostenibilidad"]
 description: "Exploramos la importancia de priorizar proyectos de carbono de alta calidad y su impacto real en la lucha contra el cambio climático. ¿Qué tipo de proyectos deberíamos apoyar?"
 image: "/blogs-img/que-tipo-de-proyectos-de-carbono-necesitamos-priorizar.png"
 tags: ["Nideport", "Proyectos de Carbono", "Sostenibilidad", "NBS"]

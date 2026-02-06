@@ -4,7 +4,7 @@ date: "2024-04-04"
 author: "Victoria Gardella"
 description: "Desde el área de relación con las comunidades de Nideport, hemos logrado avances significativos en los programas, proyectos y acciones llevados a cabo durante el período 2023."
 slug: "2023-communities-summary"
-category: ["Featured"]
+category: ["Communities"]
 image: '/blogs-img/2023-communities-summary.jpg'
 tags: ["Nideport", "Vida Nativa", "Community Relations", "Participative Carbon Program", "Óga Project", "Mujeres Cultivadoras Project"]
 ---

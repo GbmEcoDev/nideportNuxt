@@ -4,7 +4,7 @@ date: "2024-10-07"
 author: "Victoria Gardella"
 description: "The partnership between Nideport and Fundación IOV also allows for the possibility of transferring technologies, providing technical assistance, conducting studies and carrying out research to promote the use of decentralized and technological solutions to improve traceability and transparency in projects with social and environmental impact."
 slug: "nideport-and-iov-foundation-partner-up-to-implement-blockchain-solutions-in-native-forest-restoration-projects"
-category: ["Featured"]
+category: ["Technology"]
 image: '/blogs-img/nideport-y-fundacion-iov-se-unen-para-implementar-soluciones-blockchain-en-proyectos-de-restauracion-de-bosques-nativos.png'
 tags: ["Nideport", "Blockchain", "Sustainability", "Impact Investment", "Forest Restoration"]
 ---

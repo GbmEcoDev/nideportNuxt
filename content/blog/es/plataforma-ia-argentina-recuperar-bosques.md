@@ -3,7 +3,7 @@ title: "De Argentina al mundo: la plataforma digital basada en IA que busca recu
 date: "2025-10-03"
 author: "Victoria Gardella"
 slug: "plataforma-ia-argentina-recuperar-bosques"
-category: ["Destacadas", "Tecnología"]
+category: ["Tecnología"]
 description: "En Nideport creemos que la tecnología puede ser una aliada clave para enfrentar la crisis climática. Por eso desarrollamos una plataforma digital avanzada basada en inteligencia artificial (IA) para recuperar ecosistemas de manera medible y a gran escala."
 image: "/blogs-img/plataforma-ia-argentina-recuperar-bosques.png"
 tags: ["IA", "Restauración de Bosques", "Cambio Climático", "Tecnología Ambiental"]

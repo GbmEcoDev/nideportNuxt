@@ -4,7 +4,7 @@ date: "2025-09-03"
 author: Gestor
 slug: 'camaras-trampa-miradas-secretas-a-la-vida-silvestre'
 description: 'La conservación empieza con el conocimiento profundo del territorio. Por eso, en el marco del proyecto Selva Paranaense Vida Nativa, venimos trabajando de forma articulada con Fundación Vida Silvestre y CONICET para evaluar el estado de la fauna local e identificar posibles amenazas en la región.'
-category: ["Destacadas", "Biodiversidad"]
+category: [ "Biodiversidad"]
 image: "/blogs-img/camaras-trampa-miradas-secretas-a-la-vida-silvestre.png"
 tags: ['agricultura', 'biodiversidad', 'emisionesGEH', 'comidasustentable']
 ---
