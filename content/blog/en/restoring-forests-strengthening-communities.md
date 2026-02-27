@@ -4,7 +4,7 @@ date: "2026-01-30"
 author: Gestor
 slug: 'restoring-forests-strengthening-communities'
 description: 'Large-scale ecological restoration is not only an environmental challenge, but a deeply human process. At Nideport, every forest restoration project is built together with the communities that have inhabited and cared for the territory for generations, integrating science, technology, and ancestral knowledge.'
-category: ["Featured", "Communities"]
+category: ["Communities"]
 image: "/blogs-img/restaurar-bosques-fortalecer-comunidades.webp"
 tags: ['restoration', 'communities', 'biodiversity', 'socialimpact']
 ---

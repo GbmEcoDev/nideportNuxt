@@ -3,7 +3,7 @@ title: "First certified carbon credit project in Misiones, Argentina"
 date: "2025-10-20"
 author: "Victoria Gardella"
 slug: "first-certified-carbon-credit-project-misiones-argentina"
-category: ["Featured", "Technology"]
+category: ["Technology"]
 description: "Nideport has achieved certification for its first project in the Misiones Jungle, marking a historic step in our mission of ecological restoration and biodiversity conservation."
 image: "/blogs-img/primer-proyecto-creditos-carbono-certificado-misiones-argentina.png"
 tags: ["Carbon Credits", "Forest Restoration", "Environmental Technology"]

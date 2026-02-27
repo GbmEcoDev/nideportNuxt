@@ -4,7 +4,7 @@ date: "2026-01-30"
 author: Gestor
 slug: 'restaurar-bosques-fortalecer-comunidades'
 description: 'La restauración ecológica a gran escala no es solo un desafío ambiental, sino un proceso profundamente humano. En Nideport, cada proyecto de restauración forestal se construye junto a las comunidades que habitan y cuidan el territorio, integrando ciencia, tecnología y saberes ancestrales.'
-category: ["Destacadas", "Comunidades"]
+category: ["Comunidades"]
 image: "/blogs-img/restaurar-bosques-fortalecer-comunidades.webp"
 tags: ['restauracion', 'comunidades', 'biodiversidad', 'impactosocial']
 ---

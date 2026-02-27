@@ -3,7 +3,7 @@ title: "Primer proyecto de créditos de carbono certificado en Misiones, Argenti
 date: "2025-10-20"
 author: "Victoria Gardella"
 slug: "primer-proyecto-creditos-carbono-certificado-misiones-argentina"
-category: ["Destacadas", "Tecnología"]
+category: ["Tecnología"]
 description: "Nideport ha logrado la certificación de su primer proyecto en la Selva Misionera, marcando un paso histórico en nuestra misión de restauración ecológica y conservación de la biodiversidad."
 image: "/blogs-img/primer-proyecto-creditos-carbono-certificado-misiones-argentina.png"
 tags: ["Creditos de carbono", "Restauración de Bosques", "Tecnología Ambiental"]
