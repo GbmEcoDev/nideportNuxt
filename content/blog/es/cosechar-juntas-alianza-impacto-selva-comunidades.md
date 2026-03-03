@@ -4,7 +4,7 @@ date: "2026-02-06"
 author: Gestor
 slug: 'cosechar-juntas-alianza-impacto-selva-comunidades'
 description: 'La restauración ecológica es un proceso integral que va más allá de plantar árboles. En Nideport celebramos una alianza con Belleza India que fortalece economías locales, regenera vínculos y amplifica el impacto ambiental y social en la Selva Misionera.'
-category: ["Destacadas", "Comunidades"]
+category: ["Comunidades"]
 image: "/blogs-img/cosechar-juntas-alianza-impacto-selva-comunidades.webp"
 tags: ['restauracion', 'comunidades', 'alianzas', 'economialocal', 'biodiversidad']
 ---

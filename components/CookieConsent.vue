@@ -18,8 +18,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { useConsent } from '~/composables/useConsent'; // Asegúrate de que esta línea no esté comentada
-import { useRuntimeConfig } from '#app'; // Importamos useRuntimeConfig
+import { useConsent } from '~/composables/useConsent';
 
 // Obtenemos el estado global del consentimiento
 const { consentState } = useConsent();
@@ -42,11 +41,6 @@ const handleConsent = (hasConsented: boolean) => {
   consentCookie.value = hasConsented;
   // Ocultamos el banner
   showBanner.value = false;
-
-  // Si el usuario aceptó, cargamos los scripts de rastreo
-  if (hasConsented) {
-    loadTrackingScripts();
-  }
 };
 
 // Lógica que se ejecuta solo en el cliente
@@ -57,75 +51,8 @@ onMounted(() => {
   // Si la cookie no existe (es la primera visita o ha expirado), mostramos el banner
   if (consentCookie.value === undefined) {
     showBanner.value = true;
-  } else if (consentCookie.value === true) {
-    // Si la cookie ya existe y es 'true', cargamos los scripts inmediatamente
-    loadTrackingScripts();
   }
 });
-
-// Función para inyectar los scripts de rastreo en el <head>
-function loadTrackingScripts() {
-  console.log('Consentimiento otorgado. Cargando scripts de rastreo...');
-  
-  const runtimeConfig = useRuntimeConfig();
-  const gaId = runtimeConfig.public.gaContainerId;
-  const adsId = runtimeConfig.public.adsContainerId;
-  const hotjarId = runtimeConfig.public.hotjarId;
-
-  // Aseguramos que window.dataLayer y window.gtag estén inicializados una sola vez
-  if (typeof window !== 'undefined') {
-    window.dataLayer = window.dataLayer || [];
-    if (!window.gtag) {
-      window.gtag = function() {
-        window.dataLayer.push(arguments);
-      };
-      window.gtag('js', new Date());
-    }
-  }
-
-  // Cargar el script base de gtag.js si algún servicio de Google lo necesita
-  // y si no ha sido cargado ya.
-  const needsGtagScript = gaId || adsId;
-  if (needsGtagScript && typeof window !== 'undefined' && !document.querySelector(`script[src*="googletagmanager.com/gtag/js"]`)) {
-    const gtagScript = document.createElement('script');
-    gtagScript.async = true;
-    // Usamos el ID de GA o Ads para la URL del script base
-    gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId || adsId}`;
-    document.head.appendChild(gtagScript);
-  }
-
-  // Configurar Google Analytics
-  if (gaId && typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', gaId, { 'send_page_view': true });
-    console.log(`Google Analytics configurado con ID: ${gaId}`);
-  }
-
-  // Configurar Google Ads Conversion Tracking
-  if (adsId && typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', adsId);
-    console.log(`Google Ads configurado con ID: ${adsId}`);
-  }
-
-  // Hotjar
-  if (hotjarId && typeof window !== 'undefined') {
-    // Verificar si el script de Hotjar ya está cargado para evitar duplicados
-    if (!document.querySelector(`script[src*="static.hotjar.com/c/hotjar-${hotjarId}"]`)) {
-      const hotjarScript = document.createElement('script');
-      hotjarScript.innerHTML = `
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:${hotjarId},hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-      `;
-      document.head.appendChild(hotjarScript);
-      console.log(`Hotjar configurado con ID: ${hotjarId}`);
-    }
-  }
-}
 </script>
 <style scoped>
 .cookie-banner {

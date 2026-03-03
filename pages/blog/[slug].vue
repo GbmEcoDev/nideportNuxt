@@ -37,7 +37,7 @@
           v-if="post.image"
           :src="post.image"
           :alt="`Imagen de portada para ${post.title}`"
-          class="w-full h-auto object-cover rounded-lg mb-8 max-h-96"
+          class="w-full h-auto object-cover rounded-lg mb-8 max-h-100"
         />
         <!-- <p v-if="post.description" class="text-xl text-gray-600 leading-relaxed">
             {{ post.description }}

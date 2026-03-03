@@ -4,7 +4,7 @@ date: "2026-02-06"
 author: Gestor
 slug: 'harvesting-together-partnership-forest-local-communities'
 description: 'We understand ecological restoration as a holistic process that goes beyond planting trees. This partnership with Belleza India strengthens local economies, regenerates relationships, and amplifies environmental and social impact in the forest and surrounding communities.'
-category: ["Featured", "Communities"]
+category: ["Communities"]
 image: "/blogs-img/cosechar-juntas-alianza-impacto-selva-comunidades.webp"
 tags: ['restoration', 'communities', 'partnerships', 'localeconomy', 'biodiversity']
 ---

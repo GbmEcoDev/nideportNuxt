@@ -208,15 +208,14 @@ export default defineNuxtConfig({
     SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
     // Las claves públicas también se declaran aquí */
     public: {
-       url_base: process.env.BASE_URL || 'https://www.nideport.com',
+      url_base: process.env.BASE_URL || 'https://www.nideport.com',
       CONTACTMAILTO: process.env.CONTACTMAILTO,
       CONTACTMAILFROM: process.env.CONTACTMAILFROM,
       SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
-      /* gtmContainerId: process.env.NUXT_PUBLIC_GTM_CONTAINER_ID, */
+      gtmContainerId: process.env.NUXT_PUBLIC_GTM_CONTAINER_ID,
       adsContainerId: process.env.NUXT_PUBLIC_ADS_CONTAINER_ID,
       gaContainerId: process.env.NUXT_PUBLIC_GA_CONTAINER_ID,
       hotjarId: process.env.CODE_HOTJAR_ID,
-
     }
   },
   plugins: ['~/plugins/nuxt-helpers.js'], 
