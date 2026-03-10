@@ -44,12 +44,12 @@ const teamData = ref([
     position: locale.value === 'es' ? 'Presidente & CPO - Director de Producto' : 'President & CPO - Chief Product Officer',
     coverImage: '/images/team/Tomas_Arata.png'
   },
-  {
+ /*  {
     name: 'Juan Durañona y Vedia',
     position: locale.value === 'es' ? 'Idea Creator' : 'Idea Creator',
     coverImage: '/images/team/Juan_Duranona_y_Vedia.png'
   },
-
+ */
   {
     name: 'Marcelo Taboada',
     position: locale.value === 'es' ? 'Responsable de Certificación' : 'Head of Certification',
@@ -85,12 +85,12 @@ const teamData = ref([
     name: 'Javier Ureta',
     position: locale.value === 'es' ? 'Responsable de Expansión' : 'Head of the expansion area',
     coverImage: '/images/team/Javier_Ureta.png'
-  }, */
+  }, 
   {
     name: 'Pepe Verdejos',
     position: locale.value === 'es' ? 'Tesorería y Logística Global' : 'Head of the Treasury and Global Logistics Area',
     coverImage: '/images/team/Pepe_Verdejos.png'
-  },
+  },*/
   {
     name: 'Eugenia Strobbe Pellegrini',
     position: locale.value === 'es' ? 'Responsable Capital Humano' : 'Head of the Human Capital Area',

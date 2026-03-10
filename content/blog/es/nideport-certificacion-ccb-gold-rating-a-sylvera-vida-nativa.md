@@ -4,7 +4,7 @@ date: "2026-02-13"
 author: Gestor
 slug: "nideport-certificacion-ccb-gold-rating-a-sylvera-vida-nativa"
 description: "El proyecto Selva Paranaense Vida Nativa de Nideport obtuvo la certificación CCB Gold y el Rating A de Sylvera, posicionándose entre los proyectos forestales de mayor integridad climática, ambiental y social a nivel global."
-category: ["Destacadas", "Certificaciones"]
+category: ["Certificaciones"]
 image: "/blogs-img/nideport-certificacion-vida-nativa.webp"
 tags: ["clima", "biodiversidad", "carbono", "restauracion", "impactosocial"]
 ---

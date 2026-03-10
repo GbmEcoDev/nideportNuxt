@@ -1,0 +1,64 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+	<defs>
+		<image  width="668" height="59" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApwAAAA7AQMAAADsA8iZAAAAAXNSR0IB2cksfwAAAANQTFRFK29RbWuC0QAAACxJREFUeJztzDEBAAAMAqDZv/Qa+PlBAHIDkUqlUqlUKpVKpVKpVCqVSqXFA19nADxiZR6IAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre } 
+		.s0 { fill: #ffffff } 
+		.s1 { fill: #3b82f6 } 
+		.t2 { font-size: 14px;fill: #ffffff;font-family: "Arial" } 
+		.s3 { fill: #f9fafb } 
+		.s4 { fill: #000000;stroke: #e5e7eb } 
+		.t5 { font-size: 12px;fill: #1f2937;font-family: "Arial" } 
+		.s6 { fill: #60a5fa } 
+		.s7 { fill: #10b981 } 
+	</style>
+	<path fill-rule="evenodd" class="s0" d="m0 0h600v400h-600z"/>
+	<path fill-rule="evenodd" class="s1" d="m0 0h600v50h-600z"/>
+	<path id="Forma 1" fill-rule="evenodd" class="s1" d="m617-13v62h-633v-62z"/>
+	<use id="Capa 1" href="#img1" x="-47" y="-8"/>
+	<text id="Dashboard de Certificación - Gantt" transform="translate(20,35)">
+		<tspan x="0" y="0" class="t2">Dashboard de Certificación - Gantt
+</tspan>
+	</text>
+	<path fill-rule="evenodd" class="s3" d="m0 50h600v350h-600z"/>
+	<path fill-rule="evenodd" class="s4" d="m0 100h600"/>
+	<path fill-rule="evenodd" class="s4" d="m0 150h600"/>
+	<path fill-rule="evenodd" class="s4" d="m0 200h600"/>
+	<path fill-rule="evenodd" class="s4" d="m0 250h600"/>
+	<path fill-rule="evenodd" class="s4" d="m0 300h600"/>
+	<path fill-rule="evenodd" class="s4" d="m0 350h600"/>
+	<text id="Fase 1: Planificación" transform="translate(20,80)">
+		<tspan x="0" y="0" class="t5">Fase 1: Planificación
+</tspan>
+	</text>
+	<path fill-rule="evenodd" class="s6" d="m153 60h114c1.66 0 3 1.34 3 3v14c0 1.66-1.34 3-3 3h-114c-1.66 0-3-1.34-3-3v-14c0-1.66 1.34-3 3-3z"/>
+	<text id="Fase 2: Desarrollo" transform="translate(20,130)">
+		<tspan x="0" y="0" class="t5">Fase 2: Desarrollo
+</tspan>
+	</text>
+	<path fill-rule="evenodd" class="s6" d="m283 110h174c1.66 0 3 1.34 3 3v14c0 1.66-1.34 3-3 3h-174c-1.66 0-3-1.34-3-3v-14c0-1.66 1.34-3 3-3z"/>
+	<text id="Fase 3: Testing" transform="translate(20,180)">
+		<tspan x="0" y="0" class="t5">Fase 3: Testing
+</tspan>
+	</text>
+	<path fill-rule="evenodd" class="s6" d="m423 160h134c1.66 0 3 1.34 3 3v14c0 1.66-1.34 3-3 3h-134c-1.66 0-3-1.34-3-3v-14c0-1.66 1.34-3 3-3z"/>
+	<text id="Fase 4: Implementación" transform="translate(20,230)">
+		<tspan x="0" y="0" class="t5">Fase 4: Implementación
+</tspan>
+	</text>
+	<path fill-rule="evenodd" class="s6" d="m483 210h94c1.66 0 3 1.34 3 3v14c0 1.66-1.34 3-3 3h-94c-1.66 0-3-1.34-3-3v-14c0-1.66 1.34-3 3-3z"/>
+	<text id="Certificación Final" transform="translate(20,280)">
+		<tspan x="0" y="0" class="t5">Certificación Final
+</tspan>
+	</text>
+	<path fill-rule="evenodd" class="s7" d="m523 260h54c1.66 0 3 1.34 3 3v14c0 1.66-1.34 3-3 3h-54c-1.66 0-3-1.34-3-3v-14c0-1.66 1.34-3 3-3z"/>
+	<text id="
+    Abre el dashboard completo para más detalles y funcionalidades interactivas
+  " transform="translate(20,365)">
+		<tspan x="0" y="14.4" class="t5">    Abre el dashboard completo para más detalles y funcionalidades interactivas
+</tspan>
+		<tspan x="0" y="28.8" class="t5">  
+</tspan>
+	</text>
+</svg>
