@@ -171,6 +171,10 @@ export default defineNuxtConfig({
         en: '/contact', 
         es: '/contacto'     
       },
+      'contact-info': {
+        en: '/contact-info', 
+        es: '/contacto-info'     
+      },
       map: {
         en: '/map', 
         es: '/mapa'     
@@ -200,13 +204,14 @@ export default defineNuxtConfig({
     defaultLocale: "es",
   },
   runtimeConfig: {
-   /*  // Estas variables solo estarán disponibles en el servidor
-    // Nuxt las leerá automáticamente de tu archivo .env
-    CONTACTMAILTO: '',
+    // Variables privadas del servidor
+    NUXT_NOTION_API_KEY: process.env.NUXT_NOTION_API_KEY,
+    NUXT_NOTION_DATABASE_ID: process.env.NUXT_NOTION_DATABASE_ID,
+    CONTACTMAILTO: process.env.CONTACTMAILTO,
     CONTACTMAILFROM: process.env.CONTACT_MAIL_FROM,
     CONTACTMAILSUBJECT: process.env.CONTACT_MAIL_SUBJECT,
     SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
-    // Las claves públicas también se declaran aquí */
+    // Las claves públicas también se declaran aquí
     public: {
       url_base: process.env.BASE_URL || 'https://www.nideport.com',
       CONTACTMAILTO: process.env.CONTACTMAILTO,
