@@ -205,6 +205,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     // Variables privadas del servidor
+    DIRECTUS_URL: process.env.DIRECTUS_URL,
+    DIRECTUS_FORM_TOKEN: process.env.DIRECTUS_FORM_TOKEN,
+    DIRECTUS_READER_TOKEN: process.env.DIRECTUS_READER_TOKEN,
     NUXT_NOTION_API_KEY: process.env.NUXT_NOTION_API_KEY,
     NUXT_NOTION_DATABASE_ID: process.env.NUXT_NOTION_DATABASE_ID,
     CONTACTMAILTO: process.env.CONTACTMAILTO,

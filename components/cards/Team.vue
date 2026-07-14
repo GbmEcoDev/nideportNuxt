@@ -1,7 +1,7 @@
 <template>
     <div class="lg:p-1 relative h-[190px] md:h-auto lg:h-[270px] flex flex-col rounded-[20px] scale-100 hover:scale-105 bg-gradient-to-b from-[rgba(255,255,255,0.1)] to-[rgb(255,255,255,0.2)]">
       <div class="relative h-max min-h-max flex items-center px-4 ">
-        <NuxtImg format="webp" :src="`${urlImg}${coverImage}`" :alt="name" width="60" 
+        <NuxtImg format="webp" :src="coverImage?.startsWith('http') ? coverImage : `${urlImg}${coverImage}`" :alt="name" width="60"
         class=" mt-6 aspect-ratio-square mx-auto w-[60px] h-[60px] lg:w-32 lg:h-32 rounded-full object-cover "/>
         <!--  xs:max-w-16 xs:max-h-16 sm:w-14 sm:h-14 md:w-24 md:h-24 max-lg:h-full max-lg:w-full 
           <span class="absolute bottom-2 right-0 max-sm:right-0 px-2 rounded-full text-sm text-white ">

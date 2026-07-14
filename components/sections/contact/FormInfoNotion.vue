@@ -188,6 +188,14 @@ const sendForm = async () => {
       typeof payload.notion_page_id === 'string';
 
     if (notionOk) {
+      // Evento de conversión para GTM/GA4/Google Ads (envío exitoso del formulario)
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'generate_lead',
+        form_name: 'contact_form',
+        form_destination: 'notion',
+      });
+
       // Mostrar modal de éxito
       const modal = document.getElementById('myModal');
       modal.style.display = 'block';

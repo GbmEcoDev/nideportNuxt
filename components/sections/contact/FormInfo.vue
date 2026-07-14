@@ -90,55 +90,44 @@ const checkOneChecked = computed(() => terminos.value || notificaciones.value);
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const sendForm = async () => {
-  
-  const validateEmail = (email) => {
-    return emailRegex.test(email);
-  };
-
-  if (!nombre.value) { alert('Debe ingresar un nombre');return; }
-  if (!empresa.value) { alert('Debe ingresar una empresa');return; }
-  if (!telefono.value) { alert('Debe ingresar un telefono');return; }
-  if (!email.value) { alert('Debe ingresar un email');return; }
-  if (!validateEmail(email.value)) { alert('El email no es válido'); return; }
-  if (!checkOneChecked.value) { alert('Debe seleccionar una opción');return; }
+  if (!nombre.value) { alert('Debe ingresar un nombre'); return; }
+  if (!empresa.value) { alert('Debe ingresar una empresa'); return; }
+  if (!telefono.value) { alert('Debe ingresar un telefono'); return; }
+  if (!email.value) { alert('Debe ingresar un email'); return; }
+  if (!emailRegex.test(email.value)) { alert('El email no es válido'); return; }
+  if (!checkOneChecked.value) { alert('Debe seleccionar una opción'); return; }
 
   try {
-    const formData = new FormData();
-    formData.append('nombre', nombre.value);
-    formData.append('empresa', empresa.value);
-    formData.append('telefono', telefono.value);
-    formData.append('email', email.value);
-    formData.append('Solicita información para adquirir creditos', terminos.value ? 'Sí' : 'No');
-    formData.append('Solicita información sobre el manejo de tierras', notificaciones.value ? 'Sí' : 'No');
-
-    const response = await fetch("https://formspree.io/f/xnnodkko", {
+    await $fetch('/api/leads', {
       method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
+      body: {
+        nombre: nombre.value,
+        empresa: empresa.value,
+        telefono: telefono.value,
+        email: email.value,
+        terminos: terminos.value,
+        notificaciones: notificaciones.value,
+      },
     });
 
-    if (response.ok) {
-      // El formulario se envió correctamente, mostramos el modal
-      const modal = document.getElementById("myModal");
-      modal.style.display = "block";
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'generate_lead',
+      form_name: 'contact_form',
+      form_destination: 'directus',
+    });
 
-      // Lógica para cerrar el modal
-      const span = document.getElementsByClassName("close")[0];
-      span.onclick = () => { modal.style.display = "none"; };
-      window.onclick = (event) => { if (event.target == modal) { modal.style.display = "none"; } };
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'block';
+    const span = document.getElementsByClassName('close')[0];
+    span.onclick = () => { modal.style.display = 'none'; };
+    window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; };
 
-      // Limpiamos el formulario
-      nombre.value = ""; empresa.value = ""; telefono.value = ""; email.value = "";
-      terminos.value = false; notificaciones.value = false;
-    } else {
-      // Hubo un error con Formspree
-      alert('Hubo un error al enviar el formulario. Por favor, intente de nuevo.');
-    }
+    nombre.value = ''; empresa.value = ''; telefono.value = ''; email.value = '';
+    terminos.value = false; notificaciones.value = false;
   } catch (error) {
     console.error('Error al enviar el formulario:', error);
-    alert('Hubo un problema de conexión. Por favor, verifique su red e intente de nuevo.');
+    alert('Hubo un problema al enviar. Por favor, intente de nuevo.');
   }
 }
 </script>
